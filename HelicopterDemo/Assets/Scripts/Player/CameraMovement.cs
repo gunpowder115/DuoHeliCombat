@@ -1,5 +1,4 @@
 using UnityEngine;
-using static InputController;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -26,16 +25,15 @@ public class CameraMovement : MonoBehaviour
     private Vector2 input, direction, playerInput;
     private Vector3 cameraAimPosLeft;
     private Vector3 cameraAimPos;
-    private InputController inputController;
     private Crosshair crosshair;
 
     private bool Aiming => player.Aiming;
     private Vector3 AimAngles => player.AimAngles;
     private Vector3 PlayerDir => player.CurrentDirection;
+    private InputDeviceBase inputController => player.InputDevice;
 
     private void Start()
     {
-        inputController = InputController.singleton;
         crosshair = Crosshair.singleton;
         cameraAimPos = cameraAimPosRight;
     }

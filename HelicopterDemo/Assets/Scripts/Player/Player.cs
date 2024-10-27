@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static InputController;
+using static InputDeviceBase;
 
-[RequireComponent(typeof(InputController))]
 [RequireComponent(typeof(Translation))]
 [RequireComponent(typeof(Shooter))]
 [RequireComponent(typeof(LineDrawer))]
@@ -20,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] float lateralMovingCoef = 0.1f;
     [SerializeField] float acceleration = 1f;
     [SerializeField] Health health;
+    [SerializeField] ControllerType controllerType = ControllerType.Keyboard;
 
     bool rotateToDirection;
     float yawAngle;
@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     Crosshair crosshairController;
     NpcController npcController;
     PlatformController platformController;
+    InputDeviceBase inputDevice;
     InputController inputController;
     Shooter shooter;
     private LineDrawer lineDrawer;
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour
     public bool Aiming { get; private set; }
     public Vector3 AimAngles { get; private set; }
     public Vector3 CurrentDirection { get; private set; }
+    public InputDeviceBase InputDevice => inputDevice;
 
     // Start is called before the first frame update
     void Start()
@@ -59,14 +61,16 @@ public class Player : MonoBehaviour
 
         inputController = InputController.singleton;
         if (!inputController) return;
-        inputController.TryBindingToObject += TryBindingToObject;
-        inputController.TryLaunchUnguidedMissile += TryLaunchUnguidedMissile;
-        inputController.CancelBuildSelection += CancelBuildSelection;
-        inputController.TryLaunchGuidedMissile += TryLaunchGuidedMissile;
-        inputController.StartSelectionFarTarget += StartSelectionFarTarget;
-        inputController.StartSelectionAnyTarget += StartSelectionAnyTarget;
-        inputController.CancelSelectionAnytarget += CancelSelectionAnytarget;
-        inputController.CancelAiming += CancelAiming;
+        inputDevice = inputController.GetDevice(controllerType);
+
+        inputDevice.TryBindingToObject += TryBindingToObject;
+        inputDevice.TryLaunchUnguidedMissile += TryLaunchUnguidedMissile;
+        inputDevice.CancelBuildSelection += CancelBuildSelection;
+        inputDevice.TryLaunchGuidedMissile += TryLaunchGuidedMissile;
+        inputDevice.StartSelectionFarTarget += StartSelectionFarTarget;
+        inputDevice.StartSelectionAnyTarget += StartSelectionAnyTarget;
+        inputDevice.CancelSelectionAnytarget += CancelSelectionAnytarget;
+        inputDevice.CancelAiming += CancelAiming;
 
         rotateToDirection = false;
         targetDirection = transform.forward;
@@ -80,7 +84,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 inputDirection = inputController.GetInput();
+        Vector2 inputDirection = inputDevice.GetInput();
         float inputX = inputDirection.x;
         float inputZ = inputDirection.y;
 
@@ -96,25 +100,25 @@ public class Player : MonoBehaviour
         if (rotation != null)
             Rotate(inputX);
 
-        if (inputController.MinigunFire)
+        if (inputDevice.MinigunFire)
             shooter.BarrelFire(selectedTarget);
 
-        if (inputController.PlayerState == PlayerStates.Normal)
+        if (inputDevice.PlayerState == PlayerStates.Normal)
             DrawLineToTarget();
         else
             lineDrawer.Enabled = false;
 
-        if (inputController.PlayerState == PlayerStates.Aiming && !selectedTarget)
+        if (inputDevice.PlayerState == PlayerStates.Aiming && !selectedTarget)
         {
-            inputController.ForceChangePlayerState(PlayerStates.Normal);
+            inputDevice.ForceChangePlayerState(PlayerStates.Normal);
             ChangeAimState();
         }
     }
 
     void Translate(float inputX, float inputZ)
     {
-        float inputVerticalDirection = inputController.VerticalMoving;
-        float inputVerticalFast = inputController.VerticalFastMoving;
+        float inputVerticalDirection = inputDevice.VerticalMoving;
+        float inputVerticalFast = inputDevice.VerticalFastMoving;
 
         float inputXZ = Mathf.Clamp01(new Vector3(inputX, 0f, inputZ).magnitude);
         float inputY = inputVerticalFast != 0f ? inputVerticalFast : inputVerticalDirection;
@@ -125,10 +129,10 @@ public class Player : MonoBehaviour
 
         targetDirection = translation.TargetDirectionNorm;
 
-        if (!inputController.PlayerCanTranslate)
+        if (!inputDevice.PlayerCanTranslate)
             inputX = inputY = inputZ = 0f;
 
-        if (inputController.PlayerState == PlayerStates.Aiming && selectedTarget)
+        if (inputDevice.PlayerState == PlayerStates.Aiming && selectedTarget)
         {
             Vector3 inputXYZ = new Vector3(inputX, inputY, inputZ);
             inputXYZ = BalanceDistToTarget(inputXYZ);
@@ -141,7 +145,7 @@ public class Player : MonoBehaviour
         {
             Vector3 inputXYZ = new Vector3(inputX, inputY, inputZ);
 
-            if (inputController.FastMoving)
+            if (inputDevice.FastMoving)
             {
                 inputXYZ = new Vector3(inputX, inputY, inputZ);
                 targetSpeed = Vector3.ClampMagnitude(inputXYZ * speed * highSpeedCoef, speed * highSpeedCoef);
@@ -167,12 +171,12 @@ public class Player : MonoBehaviour
         AimAngles = rotation.AimAngles;
         yawAngle = rotation.YawAngle;
 
-        if (inputController.PlayerState == PlayerStates.Aiming && selectedTarget)
+        if (inputDevice.PlayerState == PlayerStates.Aiming && selectedTarget)
         {
             Quaternion rotToTarget = Quaternion.LookRotation((selectedTarget.transform.position - this.transform.position));
             rotation.RotateToTarget(rotToTarget, inputX);
         }
-        else if (inputController.AimMovement)
+        else if (inputDevice.AimMovement)
         {
             var direction = crosshairController.HitPoint - transform.position;
             rotation.RotateToDirection(direction, 0f, true);
