@@ -89,5 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866eb0bcdbb91ce48961692b339f1be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delta: 2
+  alwaysRot: 1
+  aroundSelf: 0
+  rotSpeed: 2
+  rotAcceleration: 0.2
+  spdCoefToTakeoff: 0.9
   axis: 2
