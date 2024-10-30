@@ -20,7 +20,7 @@ public class CargoPlatform : MonoBehaviour
     public float DropHeight => dropHeight;
     public float ParachuteHeight => parachuteHeight;
 
-    private void Awake()
+    private void Start()
     {
         building = GetComponent<Building>();
         npcController = NpcController.singleton;
