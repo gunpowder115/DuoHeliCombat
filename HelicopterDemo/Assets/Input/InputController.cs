@@ -5,8 +5,10 @@ public class InputController : MonoBehaviour
 {
     private InputKeyboard keyboard;
     private InputGamepad gamepad;
+    private InputCommon inputCommon;
 
     public static InputController singleton { get; private set; }
+    public InputDeviceBase GetInputCommon => inputCommon;
 
     private void Awake()
     {
@@ -17,18 +19,23 @@ public class InputController : MonoBehaviour
 
         gamepad = new InputGamepad();
         gamepad.Init();
+
+        inputCommon = new InputCommon();
+        inputCommon.Init();
     }
 
     private void OnEnable()
     {
         keyboard.OnEnable();
         gamepad.OnEnable();
+        inputCommon.OnEnable();
     }
 
     private void OnDisable()
     {
         keyboard.OnDisable();
         gamepad.OnDisable();
+        inputCommon.OnDisable();
     }
 
     public InputDeviceBase GetDevice(ControllerType controllerType)

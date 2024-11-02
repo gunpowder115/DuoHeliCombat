@@ -14,6 +14,10 @@ public abstract class InputDeviceBase
     public event Action CancelSelectionAnytarget;
     public event Action CancelAiming;
 
+    public event Action<int> ChangePlayerConnection;
+    public event Action ChangeConfiguration;
+    public event Action ChangeOrientation;
+
     #endregion
 
     #region Properties
@@ -243,6 +247,12 @@ public abstract class InputDeviceBase
     }
 
     protected void CancelVerticalSingleFast() => fastUp = fastDown = false;
+
+    protected void SwitchPlayerConnection(int playerNumber) => ChangePlayerConnection?.Invoke(playerNumber);
+
+    protected void SwitchConfiguration() => ChangeConfiguration?.Invoke();
+
+    protected void SwitchOrientation() => ChangeOrientation?.Invoke();
 
     protected enum VerticalMoveDirection : int
     {
