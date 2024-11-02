@@ -1256,6 +1256,94 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ViewportDebug",
+            "id": "879e8656-d847-49ff-9532-0ae2d04f73e2",
+            "actions": [
+                {
+                    "name": "ChangePlayer1",
+                    "type": "Button",
+                    "id": "1682026d-8c8d-4c87-a01f-3f2cc9f9ccff",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangePlayer2",
+                    "type": "Button",
+                    "id": "ecc13d65-2c44-4fdd-9a3a-64cb96746fe1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeConfiguration",
+                    "type": "Button",
+                    "id": "8b881223-d773-4e10-a123-7c81dd3d124c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeOrientation",
+                    "type": "Button",
+                    "id": "e83bf052-535d-41d9-9ef0-592209618e0b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4f573bda-1cdb-4587-a971-8ff4b26d0b8a",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ChangePlayer1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96248c82-5b80-4777-b10e-98427eb1dee5",
+                    "path": "<Keyboard>/f2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ChangePlayer2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31351573-fa8f-42c5-9a8a-885e13b36d28",
+                    "path": "<Keyboard>/f3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ChangeConfiguration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b8511b7-bb46-4050-ae3d-cd0753f97adc",
+                    "path": "<Keyboard>/f4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ChangeOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -1278,6 +1278,94 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ViewportDebug"",
+            ""id"": ""879e8656-d847-49ff-9532-0ae2d04f73e2"",
+            ""actions"": [
+                {
+                    ""name"": ""ChangePlayer1"",
+                    ""type"": ""Button"",
+                    ""id"": ""1682026d-8c8d-4c87-a01f-3f2cc9f9ccff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangePlayer2"",
+                    ""type"": ""Button"",
+                    ""id"": ""ecc13d65-2c44-4fdd-9a3a-64cb96746fe1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeConfiguration"",
+                    ""type"": ""Button"",
+                    ""id"": ""8b881223-d773-4e10-a123-7c81dd3d124c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeOrientation"",
+                    ""type"": ""Button"",
+                    ""id"": ""e83bf052-535d-41d9-9ef0-592209618e0b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4f573bda-1cdb-4587-a971-8ff4b26d0b8a"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ChangePlayer1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96248c82-5b80-4777-b10e-98427eb1dee5"",
+                    ""path"": ""<Keyboard>/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ChangePlayer2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31351573-fa8f-42c5-9a8a-885e13b36d28"",
+                    ""path"": ""<Keyboard>/f3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ChangeConfiguration"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b8511b7-bb46-4050-ae3d-cd0753f97adc"",
+                    ""path"": ""<Keyboard>/f4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ChangeOrientation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1358,6 +1446,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CommonGamepad_MinorAction = m_CommonGamepad.FindAction("MinorAction", throwIfNotFound: true);
         m_CommonGamepad_MinorActionHold = m_CommonGamepad.FindAction("MinorActionHold", throwIfNotFound: true);
         m_CommonGamepad_AnyTargetSelection = m_CommonGamepad.FindAction("AnyTargetSelection", throwIfNotFound: true);
+        // ViewportDebug
+        m_ViewportDebug = asset.FindActionMap("ViewportDebug", throwIfNotFound: true);
+        m_ViewportDebug_ChangePlayer1 = m_ViewportDebug.FindAction("ChangePlayer1", throwIfNotFound: true);
+        m_ViewportDebug_ChangePlayer2 = m_ViewportDebug.FindAction("ChangePlayer2", throwIfNotFound: true);
+        m_ViewportDebug_ChangeConfiguration = m_ViewportDebug.FindAction("ChangeConfiguration", throwIfNotFound: true);
+        m_ViewportDebug_ChangeOrientation = m_ViewportDebug.FindAction("ChangeOrientation", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1918,6 +2012,63 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public CommonGamepadActions @CommonGamepad => new CommonGamepadActions(this);
+
+    // ViewportDebug
+    private readonly InputActionMap m_ViewportDebug;
+    private IViewportDebugActions m_ViewportDebugActionsCallbackInterface;
+    private readonly InputAction m_ViewportDebug_ChangePlayer1;
+    private readonly InputAction m_ViewportDebug_ChangePlayer2;
+    private readonly InputAction m_ViewportDebug_ChangeConfiguration;
+    private readonly InputAction m_ViewportDebug_ChangeOrientation;
+    public struct ViewportDebugActions
+    {
+        private @PlayerInput m_Wrapper;
+        public ViewportDebugActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ChangePlayer1 => m_Wrapper.m_ViewportDebug_ChangePlayer1;
+        public InputAction @ChangePlayer2 => m_Wrapper.m_ViewportDebug_ChangePlayer2;
+        public InputAction @ChangeConfiguration => m_Wrapper.m_ViewportDebug_ChangeConfiguration;
+        public InputAction @ChangeOrientation => m_Wrapper.m_ViewportDebug_ChangeOrientation;
+        public InputActionMap Get() { return m_Wrapper.m_ViewportDebug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ViewportDebugActions set) { return set.Get(); }
+        public void SetCallbacks(IViewportDebugActions instance)
+        {
+            if (m_Wrapper.m_ViewportDebugActionsCallbackInterface != null)
+            {
+                @ChangePlayer1.started -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangePlayer1;
+                @ChangePlayer1.performed -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangePlayer1;
+                @ChangePlayer1.canceled -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangePlayer1;
+                @ChangePlayer2.started -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangePlayer2;
+                @ChangePlayer2.performed -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangePlayer2;
+                @ChangePlayer2.canceled -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangePlayer2;
+                @ChangeConfiguration.started -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangeConfiguration;
+                @ChangeConfiguration.performed -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangeConfiguration;
+                @ChangeConfiguration.canceled -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangeConfiguration;
+                @ChangeOrientation.started -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangeOrientation;
+                @ChangeOrientation.performed -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangeOrientation;
+                @ChangeOrientation.canceled -= m_Wrapper.m_ViewportDebugActionsCallbackInterface.OnChangeOrientation;
+            }
+            m_Wrapper.m_ViewportDebugActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ChangePlayer1.started += instance.OnChangePlayer1;
+                @ChangePlayer1.performed += instance.OnChangePlayer1;
+                @ChangePlayer1.canceled += instance.OnChangePlayer1;
+                @ChangePlayer2.started += instance.OnChangePlayer2;
+                @ChangePlayer2.performed += instance.OnChangePlayer2;
+                @ChangePlayer2.canceled += instance.OnChangePlayer2;
+                @ChangeConfiguration.started += instance.OnChangeConfiguration;
+                @ChangeConfiguration.performed += instance.OnChangeConfiguration;
+                @ChangeConfiguration.canceled += instance.OnChangeConfiguration;
+                @ChangeOrientation.started += instance.OnChangeOrientation;
+                @ChangeOrientation.performed += instance.OnChangeOrientation;
+                @ChangeOrientation.canceled += instance.OnChangeOrientation;
+            }
+        }
+    }
+    public ViewportDebugActions @ViewportDebug => new ViewportDebugActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -1997,5 +2148,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnMinorAction(InputAction.CallbackContext context);
         void OnMinorActionHold(InputAction.CallbackContext context);
         void OnAnyTargetSelection(InputAction.CallbackContext context);
+    }
+    public interface IViewportDebugActions
+    {
+        void OnChangePlayer1(InputAction.CallbackContext context);
+        void OnChangePlayer2(InputAction.CallbackContext context);
+        void OnChangeConfiguration(InputAction.CallbackContext context);
+        void OnChangeOrientation(InputAction.CallbackContext context);
     }
 }

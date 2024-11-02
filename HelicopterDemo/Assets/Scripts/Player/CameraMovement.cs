@@ -26,31 +26,33 @@ public class CameraMovement : MonoBehaviour
     private Vector3 cameraAimPosLeft;
     private Vector3 cameraAimPos;
     private Crosshair crosshair;
+    private ViewPortController viewPortController;
 
     private bool Aiming => player.Aiming;
     private Vector3 AimAngles => player.AimAngles;
     private Vector3 PlayerDir => player.CurrentDirection;
-    private InputDeviceBase inputController => player.InputDevice;
+    private InputDeviceBase inputDevice => player.InputDevice;
 
     private void Start()
     {
+        viewPortController = ViewPortController.singleton;
         crosshair = Crosshair.singleton;
         cameraAimPos = cameraAimPosRight;
     }
 
     private void Update()
     {
-        input = inputController.GetCameraInput();
-        playerInput = inputController.GetInput();
+        input = inputDevice.GetCameraInput();
+        playerInput = inputDevice.GetInput();
 
         Vector2 toTargetSelection = new Vector2();
-        if (inputController.AimMovement)
+        if (inputDevice.AimMovement)
         {
             crosshair.Translate(playerInput);
             toTargetSelection = crosshair.ToTargetSelection;
         }
-        direction = new Vector2(inputController.AimMovement ? toTargetSelection.x : PlayerDir.x,
-            inputController.AimMovement ? toTargetSelection.y : 0f);
+        direction = new Vector2(inputDevice.AimMovement ? toTargetSelection.x : PlayerDir.x,
+            inputDevice.AimMovement ? toTargetSelection.y : 0f);
 
         if (!Aiming)
         {
@@ -124,7 +126,7 @@ public class CameraMovement : MonoBehaviour
 
     private void SetDefault()
     {
-        Vector3 cameraPos = inputController.AimMovement ? cameraTgtSelPos : cameraDefaultPos;
+        Vector3 cameraPos = inputDevice.AimMovement ? cameraTgtSelPos : cameraDefaultPos;
         transform.localPosition = Vector3.Lerp(transform.localPosition, cameraPos, aimingSpeed * Time.deltaTime);
         cameraContainer.transform.rotation = Quaternion.Lerp(cameraContainer.transform.rotation, Quaternion.Euler(0f, 0f, 0f), aimingSpeed * Time.deltaTime);
     }
