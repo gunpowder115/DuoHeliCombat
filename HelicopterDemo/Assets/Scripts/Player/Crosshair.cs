@@ -2,38 +2,45 @@ using UnityEngine;
 
 public class Crosshair : MonoBehaviour
 {
-    [SerializeField] private float aimSpeed = 5f;
-    [SerializeField] private float rayRadius = 1f;
-    [SerializeField] private float maxDistance = 100f;
-    [SerializeField] private float targetHoldTime = 1f;
-    [SerializeField] private GameObject aimItem;
-    [SerializeField] private GameObject targetAimItem;
-
     public Vector2 ToTargetSelection => toTargetSelection;
     public Vector3 HitPoint { get; private set; }
     public GameObject SelectedTarget { get; private set; }
-    public static Crosshair singleton { get; private set; }
 
-    private float currHoldTime;
+    private GameObject aimItem;
+    private GameObject targetAimItem;
+    private Camera crosshairCamera;
+    private float currHoldTime, targetHoldTime;
+    private float aimSpeed;
+    private float rayRadius;
+    private float maxDistance;
     private Vector2 toTargetSelection, targetScreenPos;
-    private Camera mainCamera;
 
-    void Awake()
+    public Crosshair(Camera camera, GameObject aimItem, GameObject tgtAimItem, float tgtHoldTime, float aimSpeed, float rayRadius, float maxDist)
     {
-        singleton = this;
+        this.crosshairCamera = camera;
+        this.aimItem = aimItem;
+        this.targetAimItem = tgtAimItem;
+        this.targetHoldTime = tgtHoldTime;
+        this.aimSpeed = aimSpeed;
+        this.rayRadius = rayRadius;
+        this.maxDistance = maxDist;
     }
 
     void Start()
     {
-        mainCamera = GetComponent<Camera>();
         aimItem.SetActive(false);
         targetAimItem.SetActive(false);
+    }
+
+    public void InitCrosshair()
+    {
+
     }
 
     public void Show()
     {
         aimItem.SetActive(true);
-        aimItem.transform.position = new Vector3(mainCamera.pixelWidth / 2f, mainCamera.pixelHeight / 2f, 0f);
+        aimItem.transform.position = new Vector3(crosshairCamera.pixelWidth / 2f, crosshairCamera.pixelHeight / 2f, 0f);
     }
 
     public void Hide()
@@ -47,12 +54,12 @@ public class Crosshair : MonoBehaviour
     public void Translate(Vector2 direction)
     {
         float aimX, aimY;
-        aimX = Limit(aimItem.transform.position.x + direction.x * aimSpeed, 0f, mainCamera.pixelWidth);
-        aimY = Limit(aimItem.transform.position.y + direction.y * aimSpeed, 0f, mainCamera.pixelHeight);
+        aimX = Limit(aimItem.transform.position.x + direction.x * aimSpeed, 0f, crosshairCamera.pixelWidth);
+        aimY = Limit(aimItem.transform.position.y + direction.y * aimSpeed, 0f, crosshairCamera.pixelHeight);
         aimItem.transform.position = new Vector3(aimX, aimY, 0f);
 
-        float cameraCoefX = 2f * aimX / mainCamera.pixelWidth - 1f;
-        float cameraCoefY = 2f * aimY / mainCamera.pixelHeight - 1f;
+        float cameraCoefX = 2f * aimX / crosshairCamera.pixelWidth - 1f;
+        float cameraCoefY = 2f * aimY / crosshairCamera.pixelHeight - 1f;
         toTargetSelection = new Vector2(cameraCoefX, -cameraCoefY);
 
         SetTargetAim();
@@ -60,7 +67,7 @@ public class Crosshair : MonoBehaviour
 
     private void SetTargetAim()
     {
-        Ray ray = mainCamera.ScreenPointToRay(aimItem.transform.position);
+        Ray ray = crosshairCamera.ScreenPointToRay(aimItem.transform.position);
         var raycastHits = Physics.SphereCastAll(ray, rayRadius, maxDistance);
         bool hitEnemy = false;
         for (int i = 0; i < raycastHits.Length; i++)
@@ -69,8 +76,8 @@ public class Crosshair : MonoBehaviour
             var hitObject = raycastHits[i].transform.gameObject;
             if (hitObject.GetComponent<Npc>())
             {
-                targetScreenPos = mainCamera.WorldToScreenPoint(hitObject.transform.position);
-                Ray rayCenter = mainCamera.ScreenPointToRay(targetScreenPos);
+                targetScreenPos = crosshairCamera.WorldToScreenPoint(hitObject.transform.position);
+                Ray rayCenter = crosshairCamera.ScreenPointToRay(targetScreenPos);
                 Physics.Raycast(rayCenter, out RaycastHit hitCenter);
                 var hitCenterObject = hitCenter.transform.gameObject;
                 if (hitObject == hitCenterObject)
@@ -89,7 +96,7 @@ public class Crosshair : MonoBehaviour
             if ((currHoldTime -= Time.deltaTime) > 0f && SelectedTarget)
             {
                 HitPoint = SelectedTarget.transform.position;
-                targetScreenPos = mainCamera.WorldToScreenPoint(SelectedTarget.transform.position);
+                targetScreenPos = crosshairCamera.WorldToScreenPoint(SelectedTarget.transform.position);
                 targetAimItem.transform.position = new Vector3(targetScreenPos.x, targetScreenPos.y, targetAimItem.transform.position.z);
                 targetAimItem.SetActive(true);
             }

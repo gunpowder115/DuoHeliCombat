@@ -28,7 +28,8 @@ public class CameraMovement : MonoBehaviour
     private Vector3 cameraAimPos;
     private Crosshair crosshair;
     private ViewPortController viewPortController;
-    private Camera camera;
+    private Camera playerCamera;
+    private CrosshairController crosshairController;
 
     private bool Aiming => player.Aiming;
     private Vector3 AimAngles => player.AimAngles;
@@ -37,20 +38,22 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        camera = GetComponent<Camera>();
+        playerCamera = GetComponent<Camera>();
 
         viewPortController = ViewPortController.singleton;
         switch(player.PlayerNumber)
         {
             case Players.Player2:
-                viewPortController.SetCameraPlayer2(camera);
+                viewPortController.SetCameraPlayer2(playerCamera);
                 break;
             default:
-                viewPortController.SetCameraPlayer1(camera);
+                viewPortController.SetCameraPlayer1(playerCamera);
                 break;
         }
 
-        crosshair = Crosshair.singleton;
+        crosshairController = CrosshairController.singleton;
+        crosshair = crosshairController.GetCrosshair(1);
+
         cameraAimPos = cameraAimPosRight;
     }
 
