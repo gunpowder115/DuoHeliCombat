@@ -31,12 +31,13 @@ public class Player : MonoBehaviour
     GameObject possibleTarget, selectedTarget, possiblePlatform, selectedPlatform;
     Translation translation;
     Rotation rotation;
-    Crosshair crosshairController;
+    CrosshairController crosshairController;
     NpcController npcController;
     PlatformController platformController;
     InputDeviceBase inputDevice;
     InputController inputController;
     Shooter shooter;
+    Crosshair crosshair;
     private LineDrawer lineDrawer;
     private List<SimpleRotor> rotors;
 
@@ -60,7 +61,8 @@ public class Player : MonoBehaviour
 
         npcController = NpcController.singleton;
         platformController = PlatformController.singleton;
-        crosshairController = Crosshair.singleton;
+        crosshairController = CrosshairController.singleton;
+        crosshair = crosshairController.GetCrosshair(playerNumber);
 
         inputController = InputController.singleton;
         if (!inputController) return;
@@ -181,7 +183,7 @@ public class Player : MonoBehaviour
         }
         else if (inputDevice.AimMovement)
         {
-            var direction = crosshairController.HitPoint - transform.position;
+            var direction = crosshair.HitPoint - transform.position;
             rotation.RotateToDirection(direction, 0f, true);
         }
         else
@@ -267,15 +269,15 @@ public class Player : MonoBehaviour
 
     void TryLaunchGuidedMissile()
     {
-        if (crosshairController.SelectedTarget) shooter.GuidedMissileLaunch(crosshairController.SelectedTarget);
-        crosshairController.Hide();
+        if (crosshair.SelectedTarget) shooter.GuidedMissileLaunch(crosshair.SelectedTarget);
+        crosshair.Hide();
     }
 
-    void StartSelectionFarTarget() => crosshairController.Show();
+    void StartSelectionFarTarget() => crosshair.Show();
 
-    void StartSelectionAnyTarget() => crosshairController.Show();
+    void StartSelectionAnyTarget() => crosshair.Show();
 
-    void CancelSelectionAnytarget() => crosshairController.Hide();
+    void CancelSelectionAnytarget() => crosshair.Hide();
 
     void CancelAiming() => ChangeAimState();
 

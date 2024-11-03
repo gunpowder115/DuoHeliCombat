@@ -52,7 +52,8 @@ public class CameraMovement : MonoBehaviour
         }
 
         crosshairController = CrosshairController.singleton;
-        crosshair = crosshairController.GetCrosshair(1);
+        crosshairController.SetCamera(playerCamera, player.PlayerNumber);
+        crosshair = crosshairController.GetCrosshair(player.PlayerNumber);
 
         cameraAimPos = cameraAimPosRight;
     }
