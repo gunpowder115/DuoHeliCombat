@@ -8,10 +8,9 @@ public class ViewPortController : MonoBehaviour
     [SerializeField] private Orientation orientation = Orientation.Vertical;
     [SerializeField] private CameraPosition posCamera1;
     [SerializeField] private CameraPosition posCamera2;
-    [SerializeField] private Camera cameraPlayer1;
-    [SerializeField] private Camera cameraPlayer2;
 
     private bool animForConnect, animForDisconnect;
+    private Camera cameraPlayer1, cameraPlayer2;
     private InputController inputController;
     private InputDeviceBase inputDevice;
 
@@ -51,7 +50,6 @@ public class ViewPortController : MonoBehaviour
 
         if (cameraPlayer1 && cameraPlayer2)
         {
-
             if (animForConnect)
             {
                 currRect1 = LerpRect(cameraPlayer1.rect, rect1, speed * Time.deltaTime);
@@ -88,14 +86,22 @@ public class ViewPortController : MonoBehaviour
 
             cameraPlayer1.rect = currRect1;
             cameraPlayer2.rect = currRect2;
-        }
 
-        Debug.Log("Camera 1: " + PrintRect(cameraPlayer1.rect) + " / " + cameraPlayer1.enabled);
-        Debug.Log("Camera 2: " + PrintRect(cameraPlayer2.rect) + " / " + cameraPlayer2.enabled);
+            Debug.Log("Camera 1: " + PrintRect(cameraPlayer1.rect) + " / " + cameraPlayer1.enabled);
+            Debug.Log("Camera 2: " + PrintRect(cameraPlayer2.rect) + " / " + cameraPlayer2.enabled);
+        }
     }
 
-    public void SetCameraPlayer1(Camera cam) => cameraPlayer1 = cam;
-    public void SetCameraPlayer2(Camera cam) => cameraPlayer2 = cam;
+    public void SetCameraPlayer1(Camera cam)
+    {
+        cameraPlayer1 = cam;
+        cameraPlayer1.rect = GetRect(posCamera1);
+    }
+    public void SetCameraPlayer2(Camera cam)
+    {
+        cameraPlayer2 = cam;
+        cameraPlayer2.rect = GetRect(posCamera2);
+    }
     public void SwitchConfiguration()
     {
         if (camerasConfig == CamerasConfig.player1_player2)
@@ -352,6 +358,12 @@ public class ViewPortController : MonoBehaviour
         EmptyUp,
         EmptyDown,
         None
+    }
+
+    public enum Players
+    {
+        Player1,
+        Player2
     }
 
     public class Viewport

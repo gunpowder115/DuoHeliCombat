@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static InputDeviceBase;
+using static ViewPortController;
 
 [RequireComponent(typeof(Translation))]
 [RequireComponent(typeof(Shooter))]
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] float acceleration = 1f;
     [SerializeField] Health health;
     [SerializeField] ControllerType controllerType = ControllerType.Keyboard;
+    [SerializeField] Players playerNumber = Players.Player1;
 
     bool rotateToDirection;
     float yawAngle;
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour
     private List<SimpleRotor> rotors;
 
     public bool Aiming { get; private set; }
+    public Players PlayerNumber => playerNumber;
     public Vector3 AimAngles { get; private set; }
     public Vector3 CurrentDirection { get; private set; }
     public InputDeviceBase InputDevice => inputDevice;

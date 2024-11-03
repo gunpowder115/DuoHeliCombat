@@ -1,4 +1,5 @@
 using UnityEngine;
+using static ViewPortController;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class CameraMovement : MonoBehaviour
     private Vector3 cameraAimPos;
     private Crosshair crosshair;
     private ViewPortController viewPortController;
+    private Camera camera;
 
     private bool Aiming => player.Aiming;
     private Vector3 AimAngles => player.AimAngles;
@@ -35,7 +37,19 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
+        camera = GetComponent<Camera>();
+
         viewPortController = ViewPortController.singleton;
+        switch(player.PlayerNumber)
+        {
+            case Players.Player2:
+                viewPortController.SetCameraPlayer2(camera);
+                break;
+            default:
+                viewPortController.SetCameraPlayer1(camera);
+                break;
+        }
+
         crosshair = Crosshair.singleton;
         cameraAimPos = cameraAimPosRight;
     }
