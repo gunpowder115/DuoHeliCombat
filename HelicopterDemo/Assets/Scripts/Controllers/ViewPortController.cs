@@ -1,18 +1,23 @@
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
+
 public class ViewPortController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float deltaRounding = 0.01f;
+    [SerializeField] private float dividingLineWidth = 0.01f;
     [SerializeField] private CamerasConfig camerasConfig = CamerasConfig.player1_player2;
     [SerializeField] private Orientation orientation = Orientation.Vertical;
     [SerializeField] private CameraPosition posCamera1;
     [SerializeField] private CameraPosition posCamera2;
 
     private bool animForConnect, animForDisconnect;
+    private Vector3 divPoint1, divPoint2;
     private Camera cameraPlayer1, cameraPlayer2;
     private InputController inputController;
     private InputDeviceBase inputDevice;
+    private LineRenderer dividingLine;
 
     private CameraSize SizeCamera1 => GetCameraSize(posCamera1);
     private CameraSize SizeCamera2 => GetCameraSize(posCamera2);
@@ -39,6 +44,8 @@ public class ViewPortController : MonoBehaviour
         inputDevice.ChangePlayerConnection += SwitchConnection;
         inputDevice.ChangeConfiguration += SwitchConfiguration;
         inputDevice.ChangeOrientation += SwitchOrientation;
+
+        dividingLine = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -92,15 +99,23 @@ public class ViewPortController : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        SetDividingLine();
+        if (dividingLine.enabled) DrawDividingLine();
+    }
+
     public void SetCameraPlayer1(Camera cam)
     {
         cameraPlayer1 = cam;
         cameraPlayer1.rect = GetRect(posCamera1);
+        cameraPlayer1.enabled = IsViewportEnabled(cameraPlayer1.rect);
     }
     public void SetCameraPlayer2(Camera cam)
     {
         cameraPlayer2 = cam;
         cameraPlayer2.rect = GetRect(posCamera2);
+        cameraPlayer2.enabled = IsViewportEnabled(cameraPlayer2.rect);
     }
     public void SwitchConfiguration()
     {
@@ -324,6 +339,37 @@ public class ViewPortController : MonoBehaviour
 
     private string PrintRect(in Rect rect) => rect.x.ToString() + " " + rect.y.ToString() + " " + rect.width.ToString() + " " + rect.height.ToString();
 
+    private void DrawDividingLine()
+    {
+        dividingLine.startWidth = dividingLine.endWidth = orientation == Orientation.Vertical ? dividingLineWidth : dividingLineWidth * 2f;
+        dividingLine.SetPosition(0, divPoint1);
+        dividingLine.SetPosition(1, divPoint2);
+    }
+
+    private void SetDividingLine()
+    {
+        if (cameraPlayer1 && cameraPlayer2 && cameraPlayer1.enabled && cameraPlayer2.enabled)
+        {
+            dividingLine.enabled = cameraPlayer1.enabled && cameraPlayer2.enabled;
+            if (orientation == Orientation.Vertical)
+            {
+                Camera rightCamera = posCamera1.ToString().Contains("Right") ? cameraPlayer1 : cameraPlayer2;
+                divPoint1 = rightCamera.ViewportToWorldPoint(new Vector3(0f, 0f, 1f));
+                divPoint2 = rightCamera.ViewportToWorldPoint(new Vector3(0f, 1f, 1f));
+            }
+            else
+            {
+                Camera downCamera = posCamera1.ToString().Contains("Down") ? cameraPlayer1 : cameraPlayer2;
+                divPoint1 = downCamera.ViewportToWorldPoint(new Vector3(0f, 0f, 1f));
+                divPoint2 = downCamera.ViewportToWorldPoint(new Vector3(1f, 0f, 1f));
+            }
+        }
+        else
+        {
+            dividingLine.enabled = false;
+        }
+    }
+
     public enum CameraSize
     {
         Full,
@@ -364,13 +410,5 @@ public class ViewPortController : MonoBehaviour
     {
         Player1,
         Player2
-    }
-
-    public class Viewport
-    {
-        public bool Enabled => Rect.width != 0f && Rect.height != 0f;
-        public Rect Rect { get; set; }
-
-        public Viewport(Rect rect) => Rect = rect;
     }
 }

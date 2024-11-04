@@ -22,18 +22,6 @@ public class CrosshairController : MonoBehaviour
         singleton = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SetCamera(Camera cam, Players playerNumber)
     {
         switch(playerNumber)
