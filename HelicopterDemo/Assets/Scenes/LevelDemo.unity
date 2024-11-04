@@ -2441,6 +2441,7 @@ MonoBehaviour:
   rayRadius: 1
   maxDistance: 100
   targetHoldTime: 1
+  borderCoef: 0.01
   aimItem1: {fileID: 892820725}
   targetAimItem1: {fileID: 1512980396}
   aimItem2: {fileID: 454057405}

@@ -6,12 +6,12 @@ public class Crosshair
     public Vector3 HitPoint { get; private set; }
     public GameObject SelectedTarget { get; private set; }
 
-    private float LeftCameraBorder => crosshairCamera.pixelRect.x;
+    private float LeftCameraBorder => crosshairCamera.pixelRect.x + borderCoef * CameraWidth;
     private float CameraWidth => crosshairCamera.pixelRect.width;
-    private float RightCameraBorder => LeftCameraBorder + CameraWidth;
-    private float UpCameraBorder => crosshairCamera.pixelRect.y;
+    private float RightCameraBorder => crosshairCamera.pixelRect.x + CameraWidth * (1 - borderCoef);
+    private float UpCameraBorder => crosshairCamera.pixelRect.y + borderCoef * CameraHeight;
     private float CameraHeight => crosshairCamera.pixelRect.height;
-    private float DownCameraBorder => UpCameraBorder + CameraHeight;
+    private float DownCameraBorder => crosshairCamera.pixelRect.y + CameraHeight * (1 - borderCoef);
     private Vector3 CameraCenter => new Vector3(LeftCameraBorder + CameraWidth / 2f, UpCameraBorder + CameraHeight / 2f, 0f);
 
     private GameObject aimItem;
@@ -21,9 +21,11 @@ public class Crosshair
     private float aimSpeed;
     private float rayRadius;
     private float maxDistance;
+    private float borderCoef;
     private Vector2 toTargetSelection, targetScreenPos;
 
-    public Crosshair(Camera camera, GameObject aimItem, GameObject tgtAimItem, float tgtHoldTime, float aimSpeed, float rayRadius, float maxDist)
+    public Crosshair(Camera camera, GameObject aimItem, GameObject tgtAimItem, 
+        float tgtHoldTime, float aimSpeed, float rayRadius, float maxDist, float borderCoef)
     {
         this.crosshairCamera = camera;
         this.aimItem = aimItem;
@@ -32,6 +34,7 @@ public class Crosshair
         this.aimSpeed = aimSpeed;
         this.rayRadius = rayRadius;
         this.maxDistance = maxDist;
+        this.borderCoef = borderCoef;
 
         aimItem.SetActive(false);
         targetAimItem.SetActive(false);
