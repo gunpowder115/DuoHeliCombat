@@ -29,10 +29,8 @@ public class NpcController : MonoBehaviour
 
     #endregion
 
-    private GameObject player;
+    private List<GameObject> players;
     List<GameObject> npcs;
-
-    static NpcController instance;
 
     public void Add(GameObject npc)
     {
@@ -50,10 +48,11 @@ public class NpcController : MonoBehaviour
     public SortedDictionary<float, GameObject> FindDistToFriendlies(in Vector3 origin) => FindDistToNpcs(in origin, false);
     public KeyValuePair<float, GameObject> FindNearestEnemy(in Vector3 origin) => FindNearestNpc(in origin, FindDistToEnemies(in origin));
     public KeyValuePair<float, GameObject> FindNearestFriendly(in Vector3 origin) => FindNearestNpc(in origin, FindDistToFriendlies(in origin));
-    public KeyValuePair<float, GameObject> GetPlayer(in Vector3 origin)
+    public KeyValuePair<float, GameObject> FindNearestPlayer(in Vector3 origin)
     {
-        float distTo = Vector3.Magnitude(player.transform.position - origin);
-        return new KeyValuePair<float, GameObject>(distTo, player);
+        bool arePlayers = players.Count > 0;
+        KeyValuePair<float, GameObject> nearestPlayer = arePlayers ? FindDistToPlayers(origin).ElementAt(0) : new KeyValuePair<float, GameObject>(Mathf.Infinity, null);
+        return nearestPlayer;
     }
 
     void Awake()
@@ -66,7 +65,8 @@ public class NpcController : MonoBehaviour
         npcs.AddRange(GameObject.FindGameObjectsWithTag(friendlyGroundTag));
         npcs.AddRange(GameObject.FindGameObjectsWithTag(enemyBuildTag));
         npcs.AddRange(GameObject.FindGameObjectsWithTag(friendlyBuildTag));
-        player = GameObject.FindGameObjectWithTag(playerTag);
+        players = new List<GameObject>();
+        players.AddRange(GameObject.FindGameObjectsWithTag(playerTag));
     }
 
     int GetNpcCount(string tag)
@@ -91,6 +91,18 @@ public class NpcController : MonoBehaviour
                 float distTo = Vector3.Magnitude(npc.transform.position - origin);
                 result.Add(distTo, npc);
             }
+        }
+        return result;
+    }
+
+    private SortedDictionary<float, GameObject> FindDistToPlayers(in Vector3 origin)
+    {
+        SortedDictionary<float, GameObject> result = new SortedDictionary<float, GameObject>();
+
+        foreach (var player in players)
+        {
+            float distTo = Vector3.Magnitude(player.transform.position - origin);
+            result.Add(distTo, player);
         }
         return result;
     }
