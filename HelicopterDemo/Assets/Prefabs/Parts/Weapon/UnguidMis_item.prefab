@@ -81,6 +81,7 @@ MonoBehaviour:
   speed: 30
   lifetime: 10
   damage: 10
+  explosion: {fileID: 7933494299129013832, guid: 2bc2d05a847d1224ab904b6ae8556137, type: 3}
 --- !u!1001 &488910746614466062
 PrefabInstance:
   m_ObjectHideFlags: 0

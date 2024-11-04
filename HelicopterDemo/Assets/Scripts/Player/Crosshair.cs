@@ -1,10 +1,18 @@
 using UnityEngine;
 
-public class Crosshair : MonoBehaviour
+public class Crosshair
 {
     public Vector2 ToTargetSelection => toTargetSelection;
     public Vector3 HitPoint { get; private set; }
     public GameObject SelectedTarget { get; private set; }
+
+    private float LeftCameraBorder => crosshairCamera.pixelRect.x + borderCoef * CameraWidth;
+    private float CameraWidth => crosshairCamera.pixelRect.width;
+    private float RightCameraBorder => crosshairCamera.pixelRect.x + CameraWidth * (1 - borderCoef);
+    private float UpCameraBorder => crosshairCamera.pixelRect.y + borderCoef * CameraHeight;
+    private float CameraHeight => crosshairCamera.pixelRect.height;
+    private float DownCameraBorder => crosshairCamera.pixelRect.y + CameraHeight * (1 - borderCoef);
+    private Vector3 CameraCenter => new Vector3(LeftCameraBorder + CameraWidth / 2f, UpCameraBorder + CameraHeight / 2f, 0f);
 
     private GameObject aimItem;
     private GameObject targetAimItem;
@@ -13,9 +21,11 @@ public class Crosshair : MonoBehaviour
     private float aimSpeed;
     private float rayRadius;
     private float maxDistance;
+    private float borderCoef;
     private Vector2 toTargetSelection, targetScreenPos;
 
-    public Crosshair(Camera camera, GameObject aimItem, GameObject tgtAimItem, float tgtHoldTime, float aimSpeed, float rayRadius, float maxDist)
+    public Crosshair(Camera camera, GameObject aimItem, GameObject tgtAimItem, 
+        float tgtHoldTime, float aimSpeed, float rayRadius, float maxDist, float borderCoef)
     {
         this.crosshairCamera = camera;
         this.aimItem = aimItem;
@@ -24,23 +34,20 @@ public class Crosshair : MonoBehaviour
         this.aimSpeed = aimSpeed;
         this.rayRadius = rayRadius;
         this.maxDistance = maxDist;
-    }
+        this.borderCoef = borderCoef;
 
-    void Start()
-    {
         aimItem.SetActive(false);
         targetAimItem.SetActive(false);
     }
 
     public void InitCrosshair()
     {
-
     }
 
     public void Show()
     {
         aimItem.SetActive(true);
-        aimItem.transform.position = new Vector3(crosshairCamera.pixelWidth / 2f, crosshairCamera.pixelHeight / 2f, 0f);
+        aimItem.transform.position = CameraCenter;
     }
 
     public void Hide()
@@ -54,12 +61,12 @@ public class Crosshair : MonoBehaviour
     public void Translate(Vector2 direction)
     {
         float aimX, aimY;
-        aimX = Limit(aimItem.transform.position.x + direction.x * aimSpeed, 0f, crosshairCamera.pixelWidth);
-        aimY = Limit(aimItem.transform.position.y + direction.y * aimSpeed, 0f, crosshairCamera.pixelHeight);
+        aimX = Limit(aimItem.transform.position.x + direction.x * aimSpeed, LeftCameraBorder, RightCameraBorder);
+        aimY = Limit(aimItem.transform.position.y + direction.y * aimSpeed, UpCameraBorder, DownCameraBorder);
         aimItem.transform.position = new Vector3(aimX, aimY, 0f);
 
-        float cameraCoefX = 2f * aimX / crosshairCamera.pixelWidth - 1f;
-        float cameraCoefY = 2f * aimY / crosshairCamera.pixelHeight - 1f;
+        float cameraCoefX = 2f * (aimX - LeftCameraBorder) / CameraWidth - 1f;
+        float cameraCoefY = 2f * (aimY - UpCameraBorder) / CameraHeight - 1f;
         toTargetSelection = new Vector2(cameraCoefX, -cameraCoefY);
 
         SetTargetAim();

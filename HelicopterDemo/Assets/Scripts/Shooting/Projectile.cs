@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -5,6 +6,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] float speed = 10.0f;
     [SerializeField] float lifetime = 10.0f;
     [SerializeField] float damage = 5.0f;
+    [SerializeField] private GameObject explosion;
 
     float currLifetime;
 
@@ -28,6 +30,7 @@ public class Projectile : MonoBehaviour
         if (!FriendlyFire(other.gameObject.tag) && health)
             health.Hurt(damage, other.GetComponent<Npc>());
 
+        if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
         Destroy(gameObject);
     }
 

@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 2922934411479645264}
+    - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: controllerType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9059915131655930513, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -75,7 +83,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 545756921521180709, guid: c63fbea46abdf8b4cacc4083ac3dd246, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 545756921521180709, guid: c63fbea46abdf8b4cacc4083ac3dd246, type: 3}
       propertyPath: m_LocalPosition.x

@@ -47,7 +47,7 @@ public class NpcExplorer : MonoBehaviour
 
         if (IsGround)
         {
-            DrawLine();
+            //DrawLine();
             npcSquad.MoveSquad(targetDirection, Speed);
         }
         else

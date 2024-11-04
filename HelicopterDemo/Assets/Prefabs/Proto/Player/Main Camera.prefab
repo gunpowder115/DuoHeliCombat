@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6878582592513183703}
   - component: {fileID: 6878582592513183704}
   - component: {fileID: 3422478316054150462}
-  - component: {fileID: 8973785694044723657}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -105,21 +104,3 @@ MonoBehaviour:
   cameraTgtSelPos: {x: 0, y: 15, z: -40}
   player: {fileID: 0}
   cameraContainer: {fileID: 0}
---- !u!114 &8973785694044723657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6878582592513183706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c509a3e212785746b5d094626b2b8bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aimSpeed: 5
-  rayRadius: 1
-  maxDistance: 200
-  targetHoldTime: 2
-  aimItem: {fileID: 0}
-  targetAimItem: {fileID: 0}
