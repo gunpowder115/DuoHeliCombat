@@ -2509,7 +2509,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 1
+    m_SubmeshIndex: 6
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -3036,7 +3036,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 1
+    m_SubmeshIndex: 6
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -4056,7 +4056,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 1
+    m_SubmeshIndex: 6
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -7811,7 +7811,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1706
+  m_VersionIndex: 1710
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -7867,7 +7867,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 961bf71be851c6645924fdf696a970ab, type: 2}
-  - {fileID: 2100000, guid: 412c13e8ecaf6fd4191f4d7e85472f70, type: 2}
+  - {fileID: 2100000, guid: 60e7f845b4a8453468787a7feba58c2d, type: 2}
   - {fileID: 2100000, guid: 298d49c70220e4e418b38e9356bb5cc1, type: 2}
   - {fileID: 2100000, guid: ed3091dea518e1c4dbef9511bcffbae2, type: 2}
   - {fileID: 2100000, guid: d8fdc5c4bed5e1f49a9804099d8aa874, type: 2}
