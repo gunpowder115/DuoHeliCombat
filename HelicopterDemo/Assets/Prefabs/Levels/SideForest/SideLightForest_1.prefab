@@ -1762,6 +1762,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1544039334261607335}
     m_Modifications:
+    - target: {fileID: 602881515971297898, guid: 4b798ed7567eae4499d3b18df66f216e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d7c658804d3846245bdf8e88a4514640, type: 2}
     - target: {fileID: 1654599388718565449, guid: 4b798ed7567eae4499d3b18df66f216e, type: 3}
       propertyPath: m_Name
       value: ForestPlane
