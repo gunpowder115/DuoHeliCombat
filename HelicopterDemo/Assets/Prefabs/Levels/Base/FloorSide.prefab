@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9122158035842583967}
   - component: {fileID: 1487716309090665125}
   - component: {fileID: 7823044633766101533}
-  - component: {fileID: 6254933179666447936}
   m_Layer: 0
   m_Name: FloorSide
   m_TagString: Untagged
@@ -14595,18 +14594,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2266789987517812974}
-  m_Mesh: {fileID: 0}
---- !u!64 &6254933179666447936
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2266789987517812974}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}

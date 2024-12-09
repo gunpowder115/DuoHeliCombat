@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7434126850664644038}
   - component: {fileID: 3099142222571966113}
   - component: {fileID: 5318810851747939259}
-  - component: {fileID: 3187709908655383141}
   m_Layer: 0
   m_Name: FloorCentral
   m_TagString: Untagged
@@ -12191,18 +12190,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9120415021382465869}
-  m_Mesh: {fileID: 0}
---- !u!64 &3187709908655383141
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9120415021382465869}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
