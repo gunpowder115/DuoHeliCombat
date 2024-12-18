@@ -15,6 +15,7 @@ public class NpcExplorer : MonoBehaviour
     private NpcAir npcAir;
     private NpcSquad npcSquad;
     private LineRenderer lineToTarget;
+    private bool isAvoiding;
 
     private bool IsGround => npc.IsGround;
     private float Speed => npc.LowSpeed;
@@ -47,8 +48,20 @@ public class NpcExplorer : MonoBehaviour
 
         if (IsGround)
         {
+            if (!isAvoiding)
+            {
+                GameObject obstacle = CheckStraightObstacle();
+                if (obstacle)
+                {
+                    npcSquad._SetSpeed(0f);
+                    //targetDirection = GetObstacleAvoiding(obstacle);
+                    isAvoiding = true;
+                }
+            }
+
             //DrawLine();
             npcSquad.MoveSquad(targetDirection, Speed);
+
         }
         else
         {
@@ -88,7 +101,7 @@ public class NpcExplorer : MonoBehaviour
         {
             if (Wait())
             {
-                targetDirection = Vector2.zero;
+                //targetDirection = Vector2.zero;
                 targetHeight = transform.position.y;
             }
             else
@@ -140,12 +153,38 @@ public class NpcExplorer : MonoBehaviour
             targetDirection = new Vector3(targetDirection.x, targetDirection.y, -targetDirection.z);
     }
 
-    private void DrawLine()
+    private void DrawLine(Color color, Vector3 endPoint)
     {
         lineToTarget.enabled = true;
-        lineToTarget.startColor = Color.red;
-        lineToTarget.endColor = Color.red;
+        lineToTarget.startColor = color;
+        lineToTarget.endColor = color;
         lineToTarget.SetPosition(0, npc.NpcPos);
-        lineToTarget.SetPosition(1, npc.NpcPos + targetDirection.normalized * 20f);
+        lineToTarget.SetPosition(1, npc.NpcPos + endPoint);
+    }
+
+    private GameObject CheckStraightObstacle()
+    {
+        var raycastHits = Physics.SphereCastAll(npc.NpcPos + npc.NpcCurrDir, 5f, targetDirection, 5f);
+        foreach (var hit in raycastHits)
+        {
+            GameObject hitObject = hit.transform.gameObject;
+            if (hitObject.GetComponent<CentralObstacle>())
+                return hitObject;
+        }
+        return null;
+    }
+
+    private Vector3 GetObstacleAvoiding(GameObject obstacle)
+    {
+        Vector3 toObstacle = obstacle.transform.position - npc.NpcPos;
+        toObstacle.y = 0f;
+        toObstacle.Normalize();
+
+        float proj = Vector3.Dot(toObstacle, npc.NpcCurrDir);
+        Vector3 vecProj = proj * npc.NpcCurrDir;
+        Vector3 turnDir = vecProj - toObstacle;
+        turnDir.Normalize();
+
+        return turnDir;
     }
 }

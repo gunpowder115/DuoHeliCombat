@@ -92,7 +92,7 @@ public class NpcSquad : Npc
             for (int i = 0; i < Npcs.Count; i++)
             {
                 Npcs[i].Translate(Npcs[i].NpcCurrDir * newNpcSpeed[i].magnitude);
-                Npcs[i].Rotation.RotateByYaw(newNpcSpeed[i].normalized);
+                Npcs[i].Rotation.RotateByYaw(Npcs[i].NpcCurrDir);
             }
         }
         else
@@ -192,14 +192,14 @@ public class NpcSquad : Npc
                 }
                 break;
             case NpcState.Exploring:
-                if (EnemyForPursuit)
-                    npcState = NpcState.MoveToTarget;
-                else if (MemberUnderAttack != null)
-                {
-                    npcState = NpcState.MoveToTarget;
-                    selectedTarget = attackSource.gameObject;
-                    MemberUnderAttack = null;
-                }
+                //if (EnemyForPursuit)
+                //    npcState = NpcState.MoveToTarget;
+                //else if (MemberUnderAttack != null)
+                //{
+                //    npcState = NpcState.MoveToTarget;
+                //    selectedTarget = attackSource.gameObject;
+                //    MemberUnderAttack = null;
+                //}
                 break;
             case NpcState.MoveToTarget:
                 if (EnemyForAttack)

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1654599388718565455}
   - component: {fileID: 1252312648759548007}
+  - component: {fileID: 5310413455825073071}
   m_Layer: 0
   m_Name: CenterRockPlane
   m_TagString: Untagged
@@ -46,6 +47,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3.962881
   m_Center: {x: 0.5141878, y: -2.1372309, z: 0.4895277}
+--- !u!114 &5310413455825073071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654599388718565449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c5d04ec0cfbca54ea7e4e0e987cba50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6765775044677071118
 GameObject:
   m_ObjectHideFlags: 0
