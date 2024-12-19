@@ -50,7 +50,7 @@ public abstract class Npc : MonoBehaviour
         set => isFriendly = value;
     }
     public bool IsGround => isGround;
-    public float Speed => speed * lowSpeedCoef;
+    public float Speed => speed;
     public float LowSpeed => speed * lowSpeedCoef;
     public float HighSpeed => speed * highSpeedCoef;
     public float Acceleration => acceleration;

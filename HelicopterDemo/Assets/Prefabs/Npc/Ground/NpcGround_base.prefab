@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41175428f113cb24a811def3c61d2f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 3
+  rotationSpeed: 2
   normAttitudeAngle: 30
 --- !u!114 &6391886208304851064
 MonoBehaviour:
@@ -105,10 +105,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFriendly: 1
   isGround: 1
-  speed: 20
-  lowSpeedCoef: 0.5
+  speed: 15
+  lowSpeedCoef: 0.4
   highSpeedCoef: 1.5
-  acceleration: 1
+  acceleration: 5
   minPursuitDist: 40
   maxPursuitDist: 50
   minAttackDist: 10

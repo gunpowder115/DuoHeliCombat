@@ -15,10 +15,17 @@ public class NpcExplorer : MonoBehaviour
     private NpcAir npcAir;
     private NpcSquad npcSquad;
     private LineRenderer lineToTarget;
+
     private bool isAvoiding;
+    private Vector3 initialDirection, avoidingOffset;
+    private float sideToAvoid;
+    private float currentSpeed;
+    private float obstacleRadius;
+    GameObject obstacle;
 
     private bool IsGround => npc.IsGround;
-    private float Speed => npc.LowSpeed;
+    private float Speed => npc.Speed;
+    private float LowSpeed => npc.LowSpeed;
     private float VerticalSpeed => npcAir.VerticalSpeed;
     private float HeightDelta => npcAir.HeightDelta;
     private float Acceleration => npc.Acceleration;
@@ -38,30 +45,30 @@ public class NpcExplorer : MonoBehaviour
         if (!lineToTarget)
             lineToTarget = gameObject.AddComponent<LineRenderer>();
         lineToTarget.enabled = false;
+
+        targetDirection = npc.NpcCurrDir;
+        currentSpeed = Speed;
     }
 
     public void Move()
     {
-        SetDirection();
-        if (CheckObstacles())
-            currMoveTime = maxMoveTime;
-
         if (IsGround)
         {
             if (!isAvoiding)
             {
-                GameObject obstacle = CheckStraightObstacle();
-                if (obstacle)
-                {
-                    npcSquad._SetSpeed(0f);
-                    //targetDirection = GetObstacleAvoiding(obstacle);
-                    isAvoiding = true;
-                }
+                SetDirection();
+                if (!obstacle)
+                    obstacle = DetectFarObstacle();
+                else
+                    DetectNearObstacle();
+                npcSquad.MoveSquad(targetDirection, currentSpeed);
             }
-
-            //DrawLine();
-            npcSquad.MoveSquad(targetDirection, Speed);
-
+            else
+            {
+                NavigateAroundObstacle();
+                npcSquad.MoveSquad(targetDirection, currentSpeed);
+                //DrawLine();
+            }
         }
         else
         {
@@ -101,17 +108,12 @@ public class NpcExplorer : MonoBehaviour
         {
             if (Wait())
             {
-                //targetDirection = Vector2.zero;
                 targetHeight = transform.position.y;
             }
             else
             {
-                do
-                {
-                    targetDirection = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized;
-                    targetHeight = IsGround ? 0f : Random.Range(MinHeight, MaxHeight);
-                    CheckBorders();
-                } while (CheckObstacles());
+                targetDirection = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized;
+                targetHeight = IsGround ? 0f : Random.Range(MinHeight, MaxHeight);
                 currMoveTime = 0f;
             }
         }
@@ -131,28 +133,6 @@ public class NpcExplorer : MonoBehaviour
         return true;
     }
 
-    private bool CheckObstacles()
-    {
-        var raycastHits = Physics.SphereCastAll(npc.NpcPos + npc.NpcCurrDir * 5, 8f, targetDirection, 20f);
-        for (int i = 0; i < raycastHits.Length; i++)
-        {
-            var hit = raycastHits[i];
-            GameObject hitObject = hit.transform.gameObject;
-            if (hitObject.CompareTag("Obstacle"))
-                return true;
-        }
-        return false;
-    }
-
-    private void CheckBorders()
-    {
-        if (transform.position.x > absBorderX || transform.position.x < -absBorderX)
-            targetDirection = new Vector3(-targetDirection.x, targetDirection.y, targetDirection.z);
-
-        if (transform.position.z > absBorderZ || transform.position.z < -absBorderZ)
-            targetDirection = new Vector3(targetDirection.x, targetDirection.y, -targetDirection.z);
-    }
-
     private void DrawLine(Color color, Vector3 endPoint)
     {
         lineToTarget.enabled = true;
@@ -162,29 +142,55 @@ public class NpcExplorer : MonoBehaviour
         lineToTarget.SetPosition(1, npc.NpcPos + endPoint);
     }
 
-    private GameObject CheckStraightObstacle()
+    private GameObject DetectFarObstacle()
     {
-        var raycastHits = Physics.SphereCastAll(npc.NpcPos + npc.NpcCurrDir, 5f, targetDirection, 5f);
+        var raycastHits = Physics.SphereCastAll(npc.NpcPos + npc.NpcCurrDir, 5f, npc.NpcCurrDir, 5f);
         foreach (var hit in raycastHits)
         {
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.GetComponent<CentralObstacle>())
+            {
+                obstacleRadius = (hitObject.transform.position - npc.NpcPos).magnitude - 5f;
+                currentSpeed = LowSpeed;
                 return hitObject;
+            }
         }
         return null;
     }
 
-    private Vector3 GetObstacleAvoiding(GameObject obstacle)
+    private void DetectNearObstacle()
+    {
+        if ((npc.NpcPos - obstacle.transform.position).magnitude < obstacleRadius + 3f)
+        {
+            initialDirection = npc.NpcCurrDir;
+            GetSideOfAvoid(obstacle);
+            isAvoiding = true;
+        }
+    }
+
+    private void GetSideOfAvoid(GameObject obstacle)
     {
         Vector3 toObstacle = obstacle.transform.position - npc.NpcPos;
         toObstacle.y = 0f;
         toObstacle.Normalize();
 
-        float proj = Vector3.Dot(toObstacle, npc.NpcCurrDir);
-        Vector3 vecProj = proj * npc.NpcCurrDir;
-        Vector3 turnDir = vecProj - toObstacle;
-        turnDir.Normalize();
+        sideToAvoid = Vector3.Cross(npc.NpcCurrDir, toObstacle).y;
+        avoidingOffset = new Vector3(-sideToAvoid * toObstacle.z, 0f, sideToAvoid * toObstacle.x);
+        targetDirection = avoidingOffset;
+    }
 
-        return turnDir;
+    private void NavigateAroundObstacle()
+    {
+        Vector3 toObstacle = obstacle.transform.position - npc.NpcPos;
+        toObstacle.y = 0f;
+        toObstacle.Normalize();
+        targetDirection = new Vector3(-sideToAvoid * toObstacle.z, 0f, sideToAvoid * toObstacle.x);
+
+        if (Vector3.Angle(targetDirection, initialDirection) < 5f)
+        {
+            currentSpeed = Speed;
+            isAvoiding = false;
+            obstacle = null;
+        }
     }
 }

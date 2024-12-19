@@ -91,8 +91,8 @@ public class NpcSquad : Npc
 
             for (int i = 0; i < Npcs.Count; i++)
             {
-                Npcs[i].Translate(Npcs[i].NpcCurrDir * newNpcSpeed[i].magnitude);
-                Npcs[i].Rotation.RotateByYaw(Npcs[i].NpcCurrDir);
+                Npcs[i].Translate(Npcs[i].NpcCurrDir * speed);
+                Npcs[i].Rotation.RotateByYaw(targetDir);
             }
         }
         else
