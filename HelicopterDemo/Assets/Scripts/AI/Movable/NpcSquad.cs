@@ -161,7 +161,7 @@ public class NpcSquad : Npc
             case NpcState.Delivery:
                 if (Npcs[0].gameObject.transform.position.y <= transform.position.y)
                 {
-                    npcState = NpcState.Patrolling;
+                    npcState = NpcState.Exploring;
                     IsExplorer = false;
                     IsPatroller = true;
                     for (int i = 0; i < Npcs.Count; i++)

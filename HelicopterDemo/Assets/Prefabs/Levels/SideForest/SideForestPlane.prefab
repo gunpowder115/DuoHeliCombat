@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1654599388718565455}
   - component: {fileID: 3538440910665399810}
+  - component: {fileID: 6338465097938762613}
   m_Layer: 0
   m_Name: SideForestPlane
   m_TagString: Untagged
@@ -46,6 +47,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5.554943
   m_Center: {x: 0.0052022934, y: 0, z: 0}
+--- !u!114 &6338465097938762613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654599388718565449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82284705aa6a1a4f927f69070910c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6765775044677071118
 GameObject:
   m_ObjectHideFlags: 0
@@ -4511,7 +4524,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f2c62a6a83f33f24c83fd4a5980d2c66, type: 2}
+  - {fileID: 2100000, guid: d7c658804d3846245bdf8e88a4514640, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

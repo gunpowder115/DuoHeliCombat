@@ -56,9 +56,11 @@ public class NpcExplorer : MonoBehaviour
         {
             if (!isAvoiding)
             {
-                SetDirection();
                 if (!obstacle)
+                {
+                    SetDirection();
                     obstacle = DetectFarObstacle();
+                }
                 else
                     DetectNearObstacle();
                 npcSquad.MoveSquad(targetDirection, currentSpeed);
@@ -148,7 +150,7 @@ public class NpcExplorer : MonoBehaviour
         foreach (var hit in raycastHits)
         {
             GameObject hitObject = hit.transform.gameObject;
-            if (hitObject.GetComponent<CentralObstacle>())
+            if (hitObject.GetComponent<CentralObstacle>() || hitObject.GetComponent<SideObstacle>())
             {
                 obstacleRadius = (hitObject.transform.position - npc.NpcPos).magnitude - 5f;
                 currentSpeed = LowSpeed;
@@ -170,13 +172,25 @@ public class NpcExplorer : MonoBehaviour
 
     private void GetSideOfAvoid(GameObject obstacle)
     {
+        var centralObst = obstacle.GetComponent<CentralObstacle>();
+        var sideObst = obstacle.GetComponent<SideObstacle>();
+
         Vector3 toObstacle = obstacle.transform.position - npc.NpcPos;
         toObstacle.y = 0f;
         toObstacle.Normalize();
 
-        sideToAvoid = Vector3.Cross(npc.NpcCurrDir, toObstacle).y;
-        avoidingOffset = new Vector3(-sideToAvoid * toObstacle.z, 0f, sideToAvoid * toObstacle.x);
-        targetDirection = avoidingOffset;
+        if (centralObst)
+        {
+            sideToAvoid = Vector3.Cross(npc.NpcCurrDir, toObstacle).y;
+            avoidingOffset = new Vector3(-sideToAvoid * toObstacle.z, 0f, sideToAvoid * toObstacle.x);
+            targetDirection = avoidingOffset;
+        }
+        else if (sideObst)
+        {
+            sideToAvoid = Vector3.Cross(sideObst.ForwardDir, npc.NpcCurrDir).y;
+            avoidingOffset = new Vector3(-sideToAvoid * toObstacle.z, 0f, sideToAvoid * toObstacle.x);
+            targetDirection = avoidingOffset;
+        }
     }
 
     private void NavigateAroundObstacle()

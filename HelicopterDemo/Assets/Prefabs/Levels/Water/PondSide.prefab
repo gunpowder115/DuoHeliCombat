@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1654599388718565455}
   - component: {fileID: 2810659256984188678}
+  - component: {fileID: 7434444710590041583}
   m_Layer: 0
   m_Name: PondSide
   m_TagString: Untagged
@@ -30,8 +31,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4624401199087536730}
-  - {fileID: 7221111220069726370}
-  - {fileID: 2920820061250138375}
   - {fileID: 3582692057354011456}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,6 +48,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5.0283165
   m_Center: {x: 0.008471489, y: 0, z: 0}
+--- !u!114 &7434444710590041583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654599388718565449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82284705aa6a1a4f927f69070910c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2211274852604379491
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,8 +90,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1654599388718565455}
-  m_RootOrder: 1
+  m_Father: {fileID: 6814695130144715697}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -41.32, y: 180, z: 0}
 --- !u!198 &6723707141781933270
 ParticleSystem:
@@ -4886,13 +4897,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3737900355782625387}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1654599388718565455}
-  m_RootOrder: 2
+  m_Father: {fileID: 6814695130144715697}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!198 &1527645899316830855
 ParticleSystem:
@@ -4977,7 +4988,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5030,7 +5041,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5728,7 +5739,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 200
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5855,11 +5866,11 @@ ParticleSystem:
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -4.528953
-          outSlope: -4.528953
+          inSlope: -3.3966026
+          outSlope: -3.3966026
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.10144937
+          inWeight: 0.111399055
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -9673,6 +9684,39 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &6678080334685741653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6814695130144715697}
+  m_Layer: 0
+  m_Name: Particles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6814695130144715697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6678080334685741653}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7221111220069726370}
+  - {fileID: 2920820061250138375}
+  m_Father: {fileID: 3582692057354011456}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8961679069252861766
 GameObject:
   m_ObjectHideFlags: 0
@@ -9683,7 +9727,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3582692057354011456}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WaterFall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9696,16 +9740,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8961679069252861766}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4267506827186785230}
   - {fileID: 9053182358685783109}
+  - {fileID: 6814695130144715697}
   m_Father: {fileID: 1654599388718565455}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &3300975498311746433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9865,7 +9910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8502021953987261910, guid: 622a1364fde25d64f89dda5bc1b1ce5b, type: 3}
       propertyPath: speed
-      value: 0.7
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8502021953987261910, guid: 622a1364fde25d64f89dda5bc1b1ce5b, type: 3}
       propertyPath: xOffset
