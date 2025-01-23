@@ -14,6 +14,8 @@ public abstract class Npc : MonoBehaviour
     [SerializeField] protected float minAttackDist = 10f;
     [SerializeField] protected float maxAttackDist = 20f;
     [SerializeField] protected float distDelta = 1f;
+    [SerializeField] protected GameObject deadPrefab;
+    [SerializeField] protected GameObject explosion;
 
     protected NpcState npcState;
     protected NpcExplorer npcExplorer;
@@ -105,6 +107,8 @@ public abstract class Npc : MonoBehaviour
         foreach (var track in trackers)
             track.SetRotation(selectedTarget, NpcCurrDir);
     }
+
+    public void _SetSpeed(float speed) => this.speed = speed;
 
     public abstract void RequestDestroy();
 

@@ -138,8 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFriendly: 1
   isGround: 1
-  speed: 20
-  lowSpeedCoef: 0.5
+  speed: 8
+  lowSpeedCoef: 0.7
   highSpeedCoef: 1.5
   acceleration: 1
   minPursuitDist: 40

@@ -1,0 +1,125 @@
+newmtl RockAll
+map_Kd rock_all.png
+Kd 1 1 1
+d 1
+
+newmtl RockDarkAll
+map_Kd rock_dark_all.png
+Kd 1 1 1
+d 1
+
+newmtl RockLightAll
+map_Kd rock_light_all.png
+Kd 1 1 1
+d 1
+
+newmtl MossyRock
+map_Kd mossy_rock.png
+Kd 1 1 1
+d 1
+
+newmtl DryMossyRock
+map_Kd dry_mossy_rock.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_007
+map_Kd image_part_007.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_008
+map_Kd image_part_008.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_011
+map_Kd image_part_011.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_012
+map_Kd image_part_012.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_013
+map_Kd image_part_013.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_014
+map_Kd image_part_014.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_015
+map_Kd image_part_015.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_018
+map_Kd image_part_018.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_019
+map_Kd image_part_019.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_020
+map_Kd image_part_020.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_021
+map_Kd image_part_021.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_022
+map_Kd image_part_022.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_023
+map_Kd image_part_023.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_025
+map_Kd image_part_025.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_026
+map_Kd image_part_026.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_027
+map_Kd image_part_027.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_028
+map_Kd image_part_028.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_029
+map_Kd image_part_029.png
+Kd 1 1 1
+d 1
+
+newmtl image_part_030
+map_Kd image_part_030.png
+Kd 1 1 1
+d 1
+
+newmtl RockBase
+map_Kd rock_base.png
+Kd 1 1 1
+d 1
+

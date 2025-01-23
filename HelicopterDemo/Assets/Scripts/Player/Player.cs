@@ -113,10 +113,23 @@ public class Player : MonoBehaviour
         else
             lineDrawer.Enabled = false;
 
-        if (inputDevice.PlayerState == PlayerStates.Aiming && !selectedTarget)
+        if (inputDevice.PlayerState == PlayerStates.Aiming)
         {
-            inputDevice.ForceChangePlayerState(PlayerStates.Normal);
-            ChangeAimState();
+            if (selectedTarget && !possibleTarget)
+            {
+                var npcGround = selectedTarget.GetComponent<NpcGround>();
+                possibleTarget = npcGround ? npcGround.GetNextMember() : possibleTarget;
+            }
+            else if (!selectedTarget && possibleTarget)
+            {
+                selectedTarget = possibleTarget;
+                possibleTarget = null;
+            }
+            else if (!selectedTarget)
+            {
+                inputDevice.ForceChangePlayerState(PlayerStates.Normal);
+                ChangeAimState();
+            }
         }
     }
 
@@ -243,6 +256,7 @@ public class Player : MonoBehaviour
         if (possibleTarget)
         {
             ChangeAimState();
+            possibleTarget = null;
             return PlayerStates.Aiming;
         }
         else if (possiblePlatform)

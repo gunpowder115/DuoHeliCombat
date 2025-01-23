@@ -39,12 +39,43 @@ public class NpcGround : Npc
 
     public void Drop(float speed) => translation.SetVerticalTranslation(speed);
 
+    public GameObject GetNextMember()
+    {
+        if (NpcSquad.Members.Count <= 1)
+            return null;
+        else
+        {
+            int currIndex = NpcSquad.Members.IndexOf(gameObject);
+            currIndex++;
+            if (currIndex >= NpcSquad.Members.Count) currIndex = 0;
+            return NpcSquad.Members[currIndex];
+        }
+    }
+
     public override void RequestDestroy()
     {
         npcController.Remove(gameObject);
         bool isSquad = NpcSquad.RemoveMember(this);
+
+        if (deadPrefab)
+        {
+            var deadNpc = Instantiate(deadPrefab, transform.position, transform.rotation);
+
+            var currTrackers = GetComponentsInChildren(typeof(TargetTracker));
+            Vector3 towerAngle = (currTrackers[0] as TargetTracker).gameObject.transform.rotation.eulerAngles;
+            Vector3 barrelAngle = (currTrackers[1] as TargetTracker).gameObject.transform.rotation.eulerAngles;
+
+            var trackers = deadNpc.GetComponentsInChildren(typeof(TargetTracker));
+            (trackers[0] as TargetTracker).SetRotation(null, towerAngle);
+            (trackers[1] as TargetTracker).SetRotation(null, barrelAngle);
+        }
+
+        if (explosion)
+            Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+
         Destroy(gameObject);
-        if (!isSquad) Destroy(NpcSquad.gameObject);
+        if (!isSquad)
+            Destroy(NpcSquad.gameObject);
     }
 
     public bool FarFrom(NpcGround npc, float dist) => Vector3.Magnitude(transform.position - npc.gameObject.transform.position) > dist;
