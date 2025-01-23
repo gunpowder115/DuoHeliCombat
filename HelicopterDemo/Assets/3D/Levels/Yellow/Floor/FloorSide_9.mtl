@@ -1,0 +1,30 @@
+newmtl SandAll
+map_Kd sand_all.png
+Kd 1 1 1
+d 1
+
+newmtl SandDarkAll
+map_Kd sand_dark_all.png
+Kd 1 1 1
+d 1
+
+newmtl MidSand_4
+map_Kd mid_sand_4.png
+Kd 1 1 1
+d 1
+
+newmtl MidSand_1
+map_Kd mid_sand_1.png
+Kd 1 1 1
+d 1
+
+newmtl MidSand_2
+map_Kd mid_sand_2.png
+Kd 1 1 1
+d 1
+
+newmtl MidSand_3
+map_Kd mid_sand_3.png
+Kd 1 1 1
+d 1
+

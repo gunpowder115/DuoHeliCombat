@@ -3,6 +3,7 @@ using UnityEngine;
 public class BarrelLauncher : BaseLauncher
 {
     [SerializeField] GameObject projectilePrefab;
+    [SerializeField] GameObject flashPrefab;
     [SerializeField] float shotDeltaTime = 0.5f;
     [SerializeField] float rechargeTime = 5f;
     [SerializeField] int maxClipVolume = 1;
@@ -28,8 +29,11 @@ public class BarrelLauncher : BaseLauncher
     {
         if (currShotDeltaTime >= shotDeltaTime)
         {
-            if (projectilePrefab)
+            if (projectilePrefab && flashPrefab)
             {
+                GameObject flash = Instantiate(flashPrefab, transform);
+                Destroy(flash, 0.05f);
+
                 var proj = Instantiate(projectilePrefab, this.transform.position, CalculateDeflection());
                 proj.tag = gameObject.tag;
             }

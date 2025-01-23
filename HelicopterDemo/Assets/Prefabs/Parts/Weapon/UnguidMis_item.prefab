@@ -81,7 +81,7 @@ MonoBehaviour:
   speed: 30
   lifetime: 10
   damage: 10
-  explosion: {fileID: 7933494299129013832, guid: 2bc2d05a847d1224ab904b6ae8556137, type: 3}
+  explosion: {fileID: 3013695635673224168, guid: 6c0fed8f101a03145bb27014844a670f, type: 3}
 --- !u!1001 &488910746614466062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -220,6 +220,10 @@ PrefabInstance:
     - target: {fileID: 14396856207633455, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
       propertyPath: m_Name
       value: UnguidMis_smoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6860972130369659931, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
       propertyPath: m_RootOrder

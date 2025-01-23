@@ -1,0 +1,55 @@
+newmtl RedSandAll
+map_Kd red_sand_all.png
+Kd 1 1 1
+d 1
+
+newmtl RedSandDarkAll
+map_Kd red_sand_dark_all.png
+Kd 1 1 1
+d 1
+
+newmtl MidSand_3
+map_Kd mid_red_sand_3.png
+Kd 1 1 1
+d 1
+
+newmtl MidSand_4
+map_Kd mid_red_sand_4.png
+Kd 1 1 1
+d 1
+
+newmtl MidSand_1
+map_Kd mid_red_sand_1.png
+Kd 1 1 1
+d 1
+
+newmtl MidSand_2
+map_Kd mid_red_sand_2.png
+Kd 1 1 1
+d 1
+
+newmtl GravelAll
+map_Kd gravel_all.png
+Kd 1 1 1
+d 1
+
+newmtl GravelRedSand_1
+map_Kd gravel_red_sand_1.png
+Kd 1 1 1
+d 1
+
+newmtl GravelHor
+map_Kd gravel_hor.png
+Kd 1 1 1
+d 1
+
+newmtl GravelBase
+map_Kd gravel_base.png
+Kd 1 1 1
+d 1
+
+newmtl GravelVert
+map_Kd gravel_vert.png
+Kd 1 1 1
+d 1
+

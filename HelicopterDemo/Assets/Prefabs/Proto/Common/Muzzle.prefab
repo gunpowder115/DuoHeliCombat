@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDeflectionAngle: 5
   projectilePrefab: {fileID: 365423850167827603, guid: e45a7075be468e54483e3d6125d9d7fb, type: 3}
+  flashPrefab: {fileID: 4783508519245101791, guid: 99bfaa7e7b5e8d8429e3562cb6a012c4, type: 3}
   shotDeltaTime: 0.1
   rechargeTime: 3
   maxClipVolume: 0

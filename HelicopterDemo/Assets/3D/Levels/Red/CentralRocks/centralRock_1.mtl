@@ -1,0 +1,40 @@
+newmtl RockDarkBase
+map_Kd rock_dark_base.png
+Kd 1 1 1
+d 1
+
+newmtl RockDarkAll
+map_Kd rock_dark_all.png
+Kd 1 1 1
+d 1
+
+newmtl RockDarkVert
+map_Kd rock_dark_vert.png
+Kd 1 1 1
+d 1
+
+newmtl RockDarkHor
+map_Kd rock_dark_hor.png
+Kd 1 1 1
+d 1
+
+newmtl RedSandVert
+map_Kd red_sand_vert.png
+Kd 1 1 1
+d 1
+
+newmtl RedSandHor
+map_Kd red_sand_hor.png
+Kd 1 1 1
+d 1
+
+newmtl RedSandBase
+map_Kd red_sand_base.png
+Kd 1 1 1
+d 1
+
+newmtl LavaRock
+map_Kd lava_rock.png
+Kd 1 1 1
+d 1
+
