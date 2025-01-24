@@ -59,15 +59,17 @@ public class NpcGround : Npc
 
         if (deadPrefab)
         {
-            var deadNpc = Instantiate(deadPrefab, transform.position, transform.rotation);
+            Instantiate(deadPrefab, transform.position, transform.rotation);
 
-            var currTrackers = GetComponentsInChildren(typeof(TargetTracker));
-            Vector3 towerAngle = (currTrackers[0] as TargetTracker).gameObject.transform.rotation.eulerAngles;
-            Vector3 barrelAngle = (currTrackers[1] as TargetTracker).gameObject.transform.rotation.eulerAngles;
+            //for initial trackers in dead model equals to alive model's trackers
 
-            var trackers = deadNpc.GetComponentsInChildren(typeof(TargetTracker));
-            (trackers[0] as TargetTracker).SetRotation(null, towerAngle);
-            (trackers[1] as TargetTracker).SetRotation(null, barrelAngle);
+            //var currTrackers = GetComponentsInChildren(typeof(TargetTracker));
+            //Vector3 towerAngle = (currTrackers[0] as TargetTracker).gameObject.transform.rotation.eulerAngles;
+            //Vector3 barrelAngle = (currTrackers[1] as TargetTracker).gameObject.transform.rotation.eulerAngles;
+
+            //var trackers = deadNpc.GetComponentsInChildren(typeof(TargetTracker));
+            //(trackers[0] as TargetTracker).SetRotation(null, towerAngle);
+            //(trackers[1] as TargetTracker).SetRotation(null, barrelAngle);
         }
 
         if (explosion)

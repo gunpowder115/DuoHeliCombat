@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class FadingOut : MonoBehaviour
 {
-    [SerializeField] private float fadeOutSpeed = 0.1f;
-    [SerializeField] private float waitTime = 1f;
+    [SerializeField] private float fadeOutSpeed = 0.5f;
+    [SerializeField] private float waitTime = 10f;
 
     private Renderer[] rends;
     private float currTime;

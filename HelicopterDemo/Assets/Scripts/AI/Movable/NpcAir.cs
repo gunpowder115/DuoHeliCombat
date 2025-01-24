@@ -57,7 +57,8 @@ public class NpcAir : Npc
         lineToTarget = gameObject.AddComponent<LineRenderer>();
         lineToTarget.enabled = false;
 
-        npcState = NpcState.Delivery;
+        npcState = NpcState.Takeoff;
+        //npcState = NpcState.Delivery;
     }
 
     void Update()
@@ -74,6 +75,13 @@ public class NpcAir : Npc
     public override void RequestDestroy()
     {
         npcController.Remove(gameObject);
+
+        if (deadPrefab)
+            Instantiate(deadPrefab, transform.position, transform.rotation);
+
+        if (explosion)
+            Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+
         Destroy(gameObject);
     }
 
