@@ -57,8 +57,7 @@ public class NpcAir : Npc
         lineToTarget = gameObject.AddComponent<LineRenderer>();
         lineToTarget.enabled = false;
 
-        npcState = NpcState.Takeoff;
-        //npcState = NpcState.Delivery;
+        npcState = NpcState.Delivery;
     }
 
     void Update()

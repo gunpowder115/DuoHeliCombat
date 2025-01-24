@@ -113,3 +113,4 @@ MonoBehaviour:
   speed: 30
   lifetime: 5
   damage: 20
+  explosion: {fileID: 2197625208462685866, guid: 4f7cdfee846a1384f94f8ce277b6b715, type: 3}
