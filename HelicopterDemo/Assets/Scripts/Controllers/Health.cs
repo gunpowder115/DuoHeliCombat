@@ -3,10 +3,12 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float baseHealth = 100f;
+    [SerializeField] private GameObject smokePrefab;
 
     private float health;
     private NpcController npcController;
     private Npc npc;
+    private GameObject smoke;
 
     public bool IsAlive { get; private set; }
     public bool IsHurt { get; set; }
@@ -19,6 +21,20 @@ public class Health : MonoBehaviour
         IsHurt = true;
         IsUnderAttack = true;
         AttackSource = attackSource;
+
+        if (health <= 50f)
+        {
+            if (!smoke && smokePrefab)
+            {
+                smoke = Instantiate(smokePrefab, transform);
+                smoke.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
+            else if (smoke)
+            {
+                float scale = (baseHealth - health) / baseHealth;
+                smoke.transform.localScale = new Vector3(scale, scale, scale);
+            }
+        }
 
         if (health <= 0f)
         {
