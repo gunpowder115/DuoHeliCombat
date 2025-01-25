@@ -12,6 +12,7 @@ public class NpcTakeoff : MonoBehaviour
     private Translation translation => npc.Translation;
 
     public bool EndOfTakeoff => transform.position.y > MinHeight && currVerticalSpeed == 0f;
+    public float altCoef => transform.position.y / MinHeight;
 
     private void Start()
     {

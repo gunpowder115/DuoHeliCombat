@@ -12,6 +12,7 @@ public class SimpleRotor : MonoBehaviour
     private float currRotorSpeed, tgtRotorSpeed;
 
     public bool ReadyToTakeoff => currRotorSpeed >= rotSpeed * spdCoefToTakeoff;
+    public float RotSpeedCoef => currRotorSpeed / tgtRotorSpeed;
 
     // Update is called once per frame
     void Update()

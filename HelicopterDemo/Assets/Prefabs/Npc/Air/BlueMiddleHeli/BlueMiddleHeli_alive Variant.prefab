@@ -628,6 +628,7 @@ MonoBehaviour:
   verticalSpeed: 20
   minHeight: 15
   maxHeight: 50
+  airDustPrefab: {fileID: 9117464957027130638, guid: 8cb157bf585ff7945a1958d3db898b09, type: 3}
 --- !u!114 &2113112153
 MonoBehaviour:
   m_ObjectHideFlags: 0
