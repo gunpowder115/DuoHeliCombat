@@ -31,15 +31,5 @@ public class AirDuster : MonoBehaviour
         }
         else
             dust.Stop();
-        //if (normRotorSpeed < 1f)
-        //    transform.localScale = new Vector3(normRotorSpeed, normRotorSpeed, normRotorSpeed);
-        //else if (normAltitiude < 1f)
-        //{
-        //    float altDustCoef = 1f - normAltitiude;
-        //    if (altDustCoef < 0f) altDustCoef = 0f;
-        //    transform.localScale = new Vector3(altDustCoef, altDustCoef, altDustCoef);
-        //}
-        //else
-        //    transform.localScale = new Vector3(0f, 0f, 0f);
     }
 }
