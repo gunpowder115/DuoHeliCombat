@@ -131,6 +131,7 @@ MonoBehaviour:
   lateralMovingCoef: 0.18
   acceleration: 2.5
   health: {fileID: 0}
+  airDustPrefab: {fileID: 9117464957027130638, guid: 8cb157bf585ff7945a1958d3db898b09, type: 3}
   controllerType: 0
   playerNumber: 0
 --- !u!54 &8945114845874213960

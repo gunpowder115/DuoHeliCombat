@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1507663302920336042, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: cameraAimingRot.x
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507663302920336042, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: cameraAimPosRight.y
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507663302920336042, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: cameraAimPosRight.z
+      value: -4.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5233668109151000797, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
       propertyPath: m_Name
       value: Player_yellow

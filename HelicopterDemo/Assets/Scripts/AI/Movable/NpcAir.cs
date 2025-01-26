@@ -17,10 +17,12 @@ public class NpcAir : Npc
     [SerializeField] private float verticalSpeed = 20f;
     [SerializeField] private float minHeight = 15f;
     [SerializeField] private float maxHeight = 50f;
+    [SerializeField] private GameObject airDustPrefab;
 
     private NpcTakeoff npcTakeoff;
     private List<SimpleRotor> rotors;
     private LineRenderer lineToTarget;
+    private AirDuster airDuster;
 
     #region Properties
 
@@ -58,6 +60,9 @@ public class NpcAir : Npc
         lineToTarget.enabled = false;
 
         npcState = NpcState.Delivery;
+
+        if (airDustPrefab)
+            airDuster = Instantiate(airDustPrefab, transform).GetComponent<AirDuster>();
     }
 
     void Update()
@@ -74,6 +79,13 @@ public class NpcAir : Npc
     public override void RequestDestroy()
     {
         npcController.Remove(gameObject);
+
+        if (deadPrefab)
+            Instantiate(deadPrefab, transform.position, transform.rotation);
+
+        if (explosion)
+            Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+
         Destroy(gameObject);
     }
 
@@ -119,17 +131,27 @@ public class NpcAir : Npc
                     transform.position = thisItem.CargoPlatform.transform.position;
                     foreach (var rotor in rotors)
                         rotor.StartRotor();
+
+                    if (airDuster)
+                        airDuster.normRotorSpeed = rotors[0].RotSpeedCoef;
                 }
                 if (rotors[0].ReadyToTakeoff)
                 {
+                    if (airDuster)
+                    {
+                        airDuster.normRotorSpeed = 1f;
+                        airDuster.normAltitiude = 0f;
+                    }
                     npcState = NpcState.Takeoff;
                     IsExplorer = false;
                     IsPatroller = true;
                 }
                 break;
             case NpcState.Takeoff:
+                if (airDuster) airDuster.normAltitiude = npcTakeoff.altCoef;
                 if (EndOfTakeoff)
                 {
+                    if (airDuster) airDuster.normAltitiude = 1f;
                     npcState = NpcState.Patrolling;
                     IsExplorer = false;
                     IsPatroller = true;

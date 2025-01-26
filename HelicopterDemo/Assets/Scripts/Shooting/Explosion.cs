@@ -3,22 +3,21 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    private ParticleSystem explosionSystem;
-
-    // Start is called before the first frame update
     void Start()
     {
-        explosionSystem = GetComponent<ParticleSystem>();
-        explosionSystem.Play();
-        StartCoroutine(WaitForParticleSystemToStop(explosionSystem));
+        ParticleSystem[] parts = GetComponentsInChildren<ParticleSystem>();
+        StartCoroutine(WaitForParticleSystemToStop(parts));
     }
 
-    private IEnumerator WaitForParticleSystemToStop(ParticleSystem particleSystem)
+    private IEnumerator WaitForParticleSystemToStop(ParticleSystem[] parts)
     {
-        while (particleSystem.isPlaying)
+        while (parts[0].isPlaying)
         {
             yield return null;
         }
+
+        foreach (var part in parts)
+            Destroy(part.gameObject);
         Destroy(gameObject);
     }
 }

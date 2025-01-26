@@ -94,6 +94,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GuidMis_smoke
       objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6860972130369659931, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -221,6 +225,10 @@ PrefabInstance:
     - target: {fileID: 1274777087102040713, guid: 3c98d65e1c0a44443b13e7f7e86068e7, type: 3}
       propertyPath: m_Name
       value: GuidMis_fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: 3c98d65e1c0a44443b13e7f7e86068e7, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5671403098299216573, guid: 3c98d65e1c0a44443b13e7f7e86068e7, type: 3}
       propertyPath: m_RootOrder

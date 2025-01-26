@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2122680461638760058, guid: c9648c1b7bfd85e4198bb8d49a55cd61, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2122680461638760058, guid: c9648c1b7bfd85e4198bb8d49a55cd61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -75,6 +75,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1507663302920336042, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: cameraAimingRot.x
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507663302920336042, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: cameraAimPosRight.y
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507663302920336042, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: cameraAimPosRight.z
+      value: -4.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5233668109151000797, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
       propertyPath: m_Name
       value: Player_red
@@ -83,6 +95,10 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 1784525136082404271}
+    - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: airDustPrefab
+      value: 
+      objectReference: {fileID: 9117464957027130638, guid: 8cb157bf585ff7945a1958d3db898b09, type: 3}
     - target: {fileID: 9059915131655930513, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
       propertyPath: m_RootOrder
       value: 0

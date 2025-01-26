@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
         if (!FriendlyFire(other.gameObject.tag) && health)
             health.Hurt(damage, other.GetComponent<Npc>());
 
-        if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+        if (explosion) Instantiate(explosion, gameObject.transform.position + transform.forward, gameObject.transform.rotation);
         Destroy(gameObject);
     }
 

@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] float lateralMovingCoef = 0.1f;
     [SerializeField] float acceleration = 1f;
     [SerializeField] Health health;
+    [SerializeField] GameObject airDustPrefab;
     [SerializeField] ControllerType controllerType = ControllerType.Keyboard;
     [SerializeField] Players playerNumber = Players.Player1;
 
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
     InputController inputController;
     Shooter shooter;
     Crosshair crosshair;
+    private AirDuster airDuster;
     private LineDrawer lineDrawer;
     private List<SimpleRotor> rotors;
 
@@ -63,6 +65,10 @@ public class Player : MonoBehaviour
         platformController = PlatformController.singleton;
         crosshairController = CrosshairController.singleton;
         crosshair = crosshairController.GetCrosshair(playerNumber);
+
+        if (airDustPrefab)
+            airDuster = Instantiate(airDustPrefab, transform).GetComponent<AirDuster>();
+        airDuster.normRotorSpeed = 1f;
 
         inputController = InputController.singleton;
         if (!inputController) return;
@@ -113,11 +119,27 @@ public class Player : MonoBehaviour
         else
             lineDrawer.Enabled = false;
 
-        if (inputDevice.PlayerState == PlayerStates.Aiming && !selectedTarget)
+        if (inputDevice.PlayerState == PlayerStates.Aiming)
         {
-            inputDevice.ForceChangePlayerState(PlayerStates.Normal);
-            ChangeAimState();
+            if (selectedTarget && !possibleTarget)
+            {
+                var npcGround = selectedTarget.GetComponent<NpcGround>();
+                possibleTarget = npcGround ? npcGround.GetNextMember() : possibleTarget;
+            }
+            else if (!selectedTarget && possibleTarget)
+            {
+                selectedTarget = possibleTarget;
+                possibleTarget = null;
+            }
+            else if (!selectedTarget)
+            {
+                inputDevice.ForceChangePlayerState(PlayerStates.Normal);
+                ChangeAimState();
+            }
         }
+
+        airDuster.normRotorSpeed = 1f;
+        airDuster.normAltitiude = transform.position.y / 10f;
     }
 
     void Translate(float inputX, float inputZ)
@@ -243,6 +265,7 @@ public class Player : MonoBehaviour
         if (possibleTarget)
         {
             ChangeAimState();
+            possibleTarget = null;
             return PlayerStates.Aiming;
         }
         else if (possiblePlatform)

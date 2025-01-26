@@ -91,8 +91,8 @@ public class NpcSquad : Npc
 
             for (int i = 0; i < Npcs.Count; i++)
             {
-                Npcs[i].Translate(Npcs[i].NpcCurrDir * newNpcSpeed[i].magnitude);
-                Npcs[i].Rotation.RotateByYaw(newNpcSpeed[i].normalized);
+                Npcs[i].Translate(Npcs[i].NpcCurrDir * speed);
+                Npcs[i].Rotation.RotateByYaw(targetDir);
             }
         }
         else
@@ -161,7 +161,7 @@ public class NpcSquad : Npc
             case NpcState.Delivery:
                 if (Npcs[0].gameObject.transform.position.y <= transform.position.y)
                 {
-                    npcState = NpcState.Patrolling;
+                    npcState = NpcState.Exploring;
                     IsExplorer = false;
                     IsPatroller = true;
                     for (int i = 0; i < Npcs.Count; i++)
