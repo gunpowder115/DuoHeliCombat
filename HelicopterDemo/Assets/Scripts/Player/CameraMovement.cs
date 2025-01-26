@@ -5,20 +5,20 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] private bool twoShoulders = false;
     [SerializeField] private float defaultVerticalAngle = 15f;
-    [SerializeField] private float maxHorizontalAngle = 30f;
+    [SerializeField] private float maxHorizontalAngle = 25f;
     [SerializeField] private float maxVerticalAngle_cameraUp = 40f;
     [SerializeField] private float maxVerticalAngle_cameraDown = 5f;
-    [SerializeField] private float rotSpeed = 1f;
+    [SerializeField] private float rotSpeed = 0.5f;
     [SerializeField] private float rotSpeedManual = 1f;
-    [SerializeField] private float aimingSpeed = 3f;
+    [SerializeField] private float aimingSpeed = 6f;
 
     [Header("Camera positions & rotations")]
-    [SerializeField] private Vector3 cameraDefaultPos = new Vector3(0, 11, -22);
+    [SerializeField] private Vector3 cameraDefaultPos = new Vector3(0, 5, -11);
     [SerializeField] private Vector3 cameraDefaultRot = new Vector3(15, 0, 0); //unused
-    [SerializeField] private Vector3 cameraAimPosCenter = new Vector3(0f, 3.8f, -8f);
-    [SerializeField] private Vector3 cameraAimPosRight = new Vector3(3f, 3.8f, -8f);
-    [SerializeField] private Vector3 cameraAimingRot = new Vector3(0, 0, 0);
-    [SerializeField] private Vector3 cameraTgtSelPos = new Vector3(0, 15, -40);
+    [SerializeField] private Vector3 cameraAimPosCenter = new Vector3(1.5f, 1.9f, -4.3f);
+    [SerializeField] private Vector3 cameraAimPosRight = new Vector3(1.5f, 1.9f, -4.3f);
+    [SerializeField] private Vector3 cameraAimingRot = new Vector3(3.3f, 0, 0);
+    [SerializeField] private Vector3 cameraTgtSelPos = new Vector3(0, 11, -22);
 
     [SerializeField] private Player player;
     [SerializeField] private GameObject cameraContainer;

@@ -32333,6 +32333,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5182018802816092102, guid: f4ca87cb53bbdcc4e824db9a14ae2446, type: 3}
+      propertyPath: cameraAimPosRight.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182018802816092102, guid: f4ca87cb53bbdcc4e824db9a14ae2446, type: 3}
+      propertyPath: cameraAimPosRight.z
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848520506524119505, guid: f4ca87cb53bbdcc4e824db9a14ae2446, type: 3}
+      propertyPath: rotSpeed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4ca87cb53bbdcc4e824db9a14ae2446, type: 3}
 --- !u!1001 &1896394359
