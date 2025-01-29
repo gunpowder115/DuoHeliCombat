@@ -7,6 +7,9 @@ public class ViewPortController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float deltaRounding = 0.01f;
     [SerializeField] private float dividingLineWidth = 0.01f;
+    [SerializeField] private float defaultFov = 60f;
+    [SerializeField] private float verticalFov = 70f;
+    [SerializeField] private float horizontalFov = 35f;
     [SerializeField] private CamerasConfig camerasConfig = CamerasConfig.player1_player2;
     [SerializeField] private Orientation orientation = Orientation.Vertical;
     [SerializeField] private CameraPosition posCamera1;
@@ -356,17 +359,21 @@ public class ViewPortController : MonoBehaviour
                 Camera rightCamera = posCamera1.ToString().Contains("Right") ? cameraPlayer1 : cameraPlayer2;
                 divPoint1 = rightCamera.ViewportToWorldPoint(new Vector3(0f, 0f, 1f));
                 divPoint2 = rightCamera.ViewportToWorldPoint(new Vector3(0f, 1f, 1f));
+                cameraPlayer1.fieldOfView = cameraPlayer2.fieldOfView = verticalFov;
             }
             else
             {
                 Camera downCamera = posCamera1.ToString().Contains("Down") ? cameraPlayer1 : cameraPlayer2;
                 divPoint1 = downCamera.ViewportToWorldPoint(new Vector3(0f, 0f, 1f));
                 divPoint2 = downCamera.ViewportToWorldPoint(new Vector3(1f, 0f, 1f));
+                cameraPlayer1.fieldOfView = cameraPlayer2.fieldOfView = horizontalFov;
             }
         }
         else
         {
             dividingLine.enabled = false;
+            if (cameraPlayer1) cameraPlayer1.fieldOfView = defaultFov;
+            if (cameraPlayer2) cameraPlayer2.fieldOfView = defaultFov;
         }
     }
 
