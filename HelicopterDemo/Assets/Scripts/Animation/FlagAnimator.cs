@@ -2,38 +2,27 @@ using UnityEngine;
 
 public class FlagAnimator : MonoBehaviour
 {
-    [SerializeField] private float angle = 30f;
-    [SerializeField] private float speed = 50f;
+    [SerializeField] private float partOffset = 0.6f;
+    [SerializeField] private GameObject[] flagPartsPrefabs;
 
-    private bool toRight;
-    private float currAngle;
+    private int partCount;
+    private GameObject[] flagParts;
 
-    private void Start()
+    void Start()
     {
-        toRight = true;
-        currAngle = 0f;
-    }
+        partCount = flagPartsPrefabs.Length;
+        flagParts = new GameObject[partCount];
 
-    void Update()
-    {
-        if (toRight)
+        for (int i = 0; i < partCount; i++)
         {
-            currAngle += speed * Time.deltaTime;
-            if (currAngle >= angle)
+            if (i == 0)
+                flagParts[i] = Instantiate(flagPartsPrefabs[i], transform);
+            else
             {
-                currAngle = angle;
-                toRight = false;
+                flagParts[i] = Instantiate(flagPartsPrefabs[i], flagParts[i - 1].transform);
+                Vector3 pos = flagParts[i].transform.position;
+                flagParts[i].transform.position = new Vector3(pos.x + partOffset, pos.y, pos.z);
             }
         }
-        else
-        {
-            currAngle -= speed * Time.deltaTime;
-            if (currAngle <= -angle)
-            {
-                currAngle = -angle;
-                toRight = true;
-            }
-        }
-        transform.rotation = Quaternion.Euler(0f, currAngle, 0f);
     }
 }
