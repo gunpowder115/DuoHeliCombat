@@ -11,6 +11,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float rotSpeed = 0.5f;
     [SerializeField] private float rotSpeedManual = 1f;
     [SerializeField] private float aimingSpeed = 6f;
+    [SerializeField] private float maxDelay = 0.5f;
 
     [Header("Camera positions & rotations")]
     [SerializeField] private Vector3 cameraDefaultPos = new Vector3(0, 5, -11);
@@ -23,6 +24,9 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private GameObject cameraContainer;
 
+    private bool delayAfterTargetDestroy;
+    private float delay;
+    private float currAimingSpeed;
     private Vector2 input, direction, playerInput;
     private Vector3 cameraAimPosLeft;
     private Vector3 cameraAimPos;
@@ -74,6 +78,11 @@ public class CameraMovement : MonoBehaviour
 
         if (!Aiming)
         {
+            if (IsDelayAfterTargetDestroy())
+                currAimingSpeed = 0f;
+            else
+                currAimingSpeed = aimingSpeed / 2f;
+
             RotateHorizontally();
             RotateVertically();
             SetDefault();
@@ -145,7 +154,32 @@ public class CameraMovement : MonoBehaviour
     private void SetDefault()
     {
         Vector3 cameraPos = inputDevice.AimMovement ? cameraTgtSelPos : cameraDefaultPos;
-        transform.localPosition = Vector3.Lerp(transform.localPosition, cameraPos, aimingSpeed * Time.deltaTime);
-        cameraContainer.transform.rotation = Quaternion.Lerp(cameraContainer.transform.rotation, Quaternion.Euler(0f, 0f, 0f), aimingSpeed * Time.deltaTime);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, cameraPos, currAimingSpeed * Time.deltaTime);
+        cameraContainer.transform.rotation = Quaternion.Lerp(cameraContainer.transform.rotation, Quaternion.Euler(0f, 0f, 0f), currAimingSpeed * Time.deltaTime);
+    }
+
+    private bool IsDelayAfterTargetDestroy()
+    {
+        if (player.TargetDestroy)
+        {
+            delayAfterTargetDestroy = true;
+            player.TargetDestroy = false;
+        }
+
+        if (delayAfterTargetDestroy)
+        {
+            delay += Time.deltaTime;
+
+            if (delay >= maxDelay)
+            {
+                delayAfterTargetDestroy = false;
+                delay = 0f;
+                return false;
+            }
+            else
+                return true;
+        }
+        else
+            return false;
     }
 }

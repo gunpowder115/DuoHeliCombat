@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     private List<SimpleRotor> rotors;
 
     public bool Aiming { get; private set; }
+    public bool TargetDestroy { get; set; }
     public Players PlayerNumber => playerNumber;
     public Vector3 AimAngles { get; private set; }
     public Vector3 CurrentDirection { get; private set; }
@@ -133,6 +134,7 @@ public class Player : MonoBehaviour
             }
             else if (!selectedTarget)
             {
+                TargetDestroy = true;
                 inputDevice.ForceChangePlayerState(PlayerStates.Normal);
                 ChangeAimState();
             }
