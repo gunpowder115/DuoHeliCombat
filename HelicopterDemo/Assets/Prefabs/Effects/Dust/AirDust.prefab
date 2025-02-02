@@ -286,8 +286,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.3
-      minScalar: 0.1
+      scalar: 0.2
+      minScalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -868,7 +868,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 30
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -985,21 +985,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0.35134947
-          inSlope: 3.0363698
-          outSlope: 3.0363698
+          value: 1
+          inSlope: 0.12966473
+          outSlope: 0.12966473
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.08011049
+          outWeight: 0.104218364
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -3.4243221
-          outSlope: -3.4243221
+          inSlope: -3.2928967
+          outSlope: -3.2928967
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.110497296
+          inWeight: 0.106699765
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
