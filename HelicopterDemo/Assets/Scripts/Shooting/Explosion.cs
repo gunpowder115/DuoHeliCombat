@@ -26,6 +26,9 @@ public class Explosion : MonoBehaviour
                 case ExplosionType.CannonHit:
                     explosionSound.pitch = Random.Range(0.7f, 0.9f);
                     break;
+                case ExplosionType.Death:
+                    explosionSound.pitch = Random.Range(1f, 1.2f);
+                    break;
                 default:
                     explosionSound.pitch = 1f;
                     break;
