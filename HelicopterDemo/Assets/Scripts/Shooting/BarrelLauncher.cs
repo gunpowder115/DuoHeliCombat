@@ -10,6 +10,7 @@ public class BarrelLauncher : BaseLauncher
 
     int currClipVolume;
     float currShotDeltaTime, currRechargeTime;
+    private float tgtShortDeltaTime;
 
     public void Fire(GameObject target)
     {
@@ -27,7 +28,7 @@ public class BarrelLauncher : BaseLauncher
 
     void Shoot()
     {
-        if (currShotDeltaTime >= shotDeltaTime)
+        if (currShotDeltaTime >= tgtShortDeltaTime)
         {
             if (projectilePrefab && flashPrefab)
             {
@@ -42,6 +43,7 @@ public class BarrelLauncher : BaseLauncher
 
             if (maxClipVolume > 0f) currClipVolume--;
             currShotDeltaTime = 0f;
+            tgtShortDeltaTime = Random.Range(shotDeltaTime, shotDeltaTime * 1.5f);
         }
         else
             currShotDeltaTime += Time.deltaTime;

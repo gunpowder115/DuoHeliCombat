@@ -25,6 +25,9 @@ public class Projectile : MonoBehaviour
                 case ProjectileType.UnguidMissile:
                     projSound.pitch = Random.Range(1.3f, 1.5f);
                     break;
+                case ProjectileType.Cannon:
+                    projSound.pitch = Random.Range(0.7f, 0.9f);
+                    break;
                 default:
                     projSound.pitch = 1f;
                     break;
