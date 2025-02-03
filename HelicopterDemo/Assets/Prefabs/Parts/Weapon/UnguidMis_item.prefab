@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3756116497887608221}
   - component: {fileID: 6612662374974758779}
   - component: {fileID: 3423529500703127893}
+  - component: {fileID: 793831967301536909}
   m_Layer: 0
   m_Name: UnguidMis_item
   m_TagString: Untagged
@@ -82,6 +83,105 @@ MonoBehaviour:
   lifetime: 10
   damage: 10
   explosion: {fileID: 3013695635673224168, guid: 6c0fed8f101a03145bb27014844a670f, type: 3}
+  launchSound: {fileID: 8300000, guid: e2cfd8b8b8d0e5e43997109da0505f62, type: 3}
+  flyingSound: {fileID: 8300000, guid: c51a2006524cc434e8cc6bb293f14c33, type: 3}
+  projectileType: 2
+--- !u!82 &793831967301536909
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488910746283738793}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 40
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &488910746614466062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,6 +259,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnguidMis_fire
       objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: cfe46c446844edb408774e54e8710b40, type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 1.5707963
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: cfe46c446844edb408774e54e8710b40, type: 3}
+      propertyPath: InitialModule.startRotation.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: cfe46c446844edb408774e54e8710b40, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: cfe46c446844edb408774e54e8710b40, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5671403098299216573, guid: cfe46c446844edb408774e54e8710b40, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -224,6 +340,22 @@ PrefabInstance:
     - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
       propertyPath: moveWithTransform
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 1.5707963
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
+      propertyPath: InitialModule.startRotation.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6860972130369659931, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
       propertyPath: m_RootOrder
