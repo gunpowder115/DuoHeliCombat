@@ -3,6 +3,7 @@ using UnityEngine;
 public class FadingOut : MonoBehaviour
 {
     [SerializeField] private bool destroy = true;
+    [SerializeField] private bool defaultVisible = true;
     [SerializeField] private float fadeOutSpeed = 0.5f;
     [SerializeField] private float waitTime = 10f;
 
@@ -14,8 +15,8 @@ public class FadingOut : MonoBehaviour
     void Start()
     {
         rends = GetComponentsInChildren<Renderer>();
-        CurrTime = 0f;
-        currAlpha = 1f;
+        CurrTime = defaultVisible ? 0f : Mathf.Infinity;
+        currAlpha = 0f;
     }
 
     // Update is called once per frame

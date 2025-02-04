@@ -11,20 +11,36 @@ public class Health : MonoBehaviour
     private Npc npc;
     private GameObject smoke;
     private HealthBar healthBar;
+    private GameObject damageSourcePlayer;
 
     public bool IsAlive { get; private set; }
     public bool IsHurt { get; set; }
     public bool IsUnderAttack { get; set; }
     public Npc AttackSource { get; private set; }
 
-    public void Hurt(float damage, Npc attackSource = null)
+    public void Hurt(float damage, bool damageFromPlayer = false, Npc attackSource = null)
     {
         health -= damage;
         IsHurt = true;
         IsUnderAttack = true;
         AttackSource = attackSource;
 
-        if (healthBar) healthBar.SetHealth(health);
+        if (damageFromPlayer)
+        {
+            if (healthBarPrefab && !healthBar)
+            {
+                healthBar = Instantiate(healthBarPrefab, transform.position + Vector3.up * 3f, transform.rotation, transform).GetComponent<HealthBar>();
+                healthBar.SetFullHealth(baseHealth);
+
+                damageSourcePlayer = npcController.FindNearestPlayer(transform.position).Value;
+            }
+
+            if (healthBar)
+            {
+                healthBar.SetHealth(health);
+                healthBar.SetDamageSource(damageSourcePlayer);
+            }
+        }
 
         if (health <= 50f)
         {
@@ -59,11 +75,5 @@ public class Health : MonoBehaviour
         health = baseHealth;
         npcController = NpcController.singleton;
         npc = GetComponent<Npc>();
-
-        if (healthBarPrefab)
-        {
-            healthBar = Instantiate(healthBarPrefab, transform.position + Vector3.up * 3f, transform.rotation, transform).GetComponent<HealthBar>();
-            healthBar.SetFullHealth(baseHealth);
-        }
     }
 }

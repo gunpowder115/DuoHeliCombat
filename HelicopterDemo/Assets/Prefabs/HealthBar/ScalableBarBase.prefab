@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroy: 0
+  defaultVisible: 0
   fadeOutSpeed: 0.5
   waitTime: 2
 --- !u!1001 &5634870819630367775
