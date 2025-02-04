@@ -2,34 +2,43 @@ using UnityEngine;
 
 public class FadingOut : MonoBehaviour
 {
+    [SerializeField] private bool destroy = true;
     [SerializeField] private float fadeOutSpeed = 0.5f;
     [SerializeField] private float waitTime = 10f;
 
     private Renderer[] rends;
-    private float currTime;
+    private float currAlpha;
+
+    public float CurrTime { get; set; }
 
     void Start()
     {
         rends = GetComponentsInChildren<Renderer>();
-        currTime = 0f;
+        CurrTime = 0f;
+        currAlpha = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currTime += Time.deltaTime;
+        CurrTime += Time.deltaTime;
 
-        if (currTime > waitTime)
+        if (CurrTime > waitTime)
         {
-            foreach (var rend in rends)
-            {
-                Color color = rend.material.color;
-                color.a -= fadeOutSpeed * Time.deltaTime;
-                rend.material.color = color;
+            currAlpha -= fadeOutSpeed * Time.deltaTime;
+            if (currAlpha < 0f) currAlpha = 0f;
+        }
+        else
+            currAlpha = 1f;
 
-                if (color.a <= 0f)
-                    Destroy(gameObject);
-            }
+        foreach (var rend in rends)
+        {
+            Color color = rend.material.color;
+            color.a = currAlpha;
+            rend.material.color = color;
+
+            if (color.a <= 0f && destroy)
+                Destroy(gameObject);
         }
     }
 }

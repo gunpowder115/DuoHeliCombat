@@ -4,11 +4,13 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private float baseHealth = 100f;
     [SerializeField] private GameObject smokePrefab;
+    [SerializeField] private GameObject healthBarPrefab;
 
     private float health;
     private NpcController npcController;
     private Npc npc;
     private GameObject smoke;
+    private HealthBar healthBar;
 
     public bool IsAlive { get; private set; }
     public bool IsHurt { get; set; }
@@ -21,6 +23,8 @@ public class Health : MonoBehaviour
         IsHurt = true;
         IsUnderAttack = true;
         AttackSource = attackSource;
+
+        if (healthBar) healthBar.SetHealth(health);
 
         if (health <= 50f)
         {
@@ -55,5 +59,11 @@ public class Health : MonoBehaviour
         health = baseHealth;
         npcController = NpcController.singleton;
         npc = GetComponent<Npc>();
+
+        if (healthBarPrefab)
+        {
+            healthBar = Instantiate(healthBarPrefab, transform.position + Vector3.up * 3f, transform.rotation, transform).GetComponent<HealthBar>();
+            healthBar.SetFullHealth(baseHealth);
+        }
     }
 }
