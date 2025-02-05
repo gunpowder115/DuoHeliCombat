@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
+    [SerializeField] private float increaseScale = 1.5f;
+    [SerializeField] private float decreaseSpeed = 1f;
+
     private float prevHP, fullHP;
     private float timeFromDamage;
+    private float currScale, defaultScale, bigScale;
     private ScalableBar[] bars;
     private GameObject damageSource;
 
@@ -11,11 +15,17 @@ public class HealthBar : MonoBehaviour
     {
         bars = GetComponentsInChildren<ScalableBar>();
         prevHP = Mathf.Infinity;
+        defaultScale = currScale = Mathf.Abs(transform.localScale.x);
+        bigScale = defaultScale * increaseScale;
     }
 
     private void Update()
     {
         timeFromDamage += Time.deltaTime;
+        currScale -= decreaseSpeed * Time.deltaTime;
+        transform.localScale = new Vector3(-currScale, currScale, currScale);
+
+        if (currScale <= defaultScale) currScale = defaultScale;
 
         if (damageSource)
         {
@@ -31,6 +41,7 @@ public class HealthBar : MonoBehaviour
         {
             timeFromDamage = 0f;
             prevHP = currHP;
+            currScale = bigScale;
         }
 
         foreach (var bar in bars)
