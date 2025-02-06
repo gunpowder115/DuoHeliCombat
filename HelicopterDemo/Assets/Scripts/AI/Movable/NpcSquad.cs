@@ -93,6 +93,10 @@ public class NpcSquad : Npc
             {
                 Npcs[i].Translate(Npcs[i].NpcCurrDir * speed);
                 Npcs[i].Rotation.RotateByYaw(targetDir);
+
+                //check this for user corrected speed!
+                //Npcs[i].Translate(Npcs[i].NpcCurrDir * newNpcSpeed[i].magnitude);
+                //Npcs[i].Rotation.RotateByYaw(newNpcSpeed[i]);
             }
         }
         else
