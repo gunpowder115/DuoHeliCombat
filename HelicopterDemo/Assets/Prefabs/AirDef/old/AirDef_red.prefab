@@ -366,6 +366,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: EnemyGround
       objectReference: {fileID: 0}
+    - target: {fileID: 6442767739397881717, guid: bf5a70ac93cfead48b207ee497f418ce, type: 3}
+      propertyPath: smokePrefab
+      value: 
+      objectReference: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
+    - target: {fileID: 6442767739397881717, guid: bf5a70ac93cfead48b207ee497f418ce, type: 3}
+      propertyPath: healthBarPrefab
+      value: 
+      objectReference: {fileID: 9123654501395373740, guid: 32366473a0622994d8fc730a37961f74, type: 3}
     - target: {fileID: 6442767739397881719, guid: bf5a70ac93cfead48b207ee497f418ce, type: 3}
       propertyPath: m_Size.x
       value: 1.8052605
@@ -392,6 +400,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf5a70ac93cfead48b207ee497f418ce, type: 3}
+--- !u!1 &1614056822835950466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6442767739397881673, guid: bf5a70ac93cfead48b207ee497f418ce, type: 3}
+  m_PrefabInstance: {fileID: 5696780022309096651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6995566461461144928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614056822835950466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 50
+  minHeight: 10
+--- !u!114 &2975314369240529787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614056822835950466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41175428f113cb24a811def3c61d2f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 0
+  normAttitudeAngle: 30
+--- !u!114 &6997108218237136316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614056822835950466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b303d9ccd126e4e861555e78e183f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFriendly: 1
+  isGround: 0
+  speed: 0
+  lowSpeedCoef: 0
+  highSpeedCoef: 0
+  acceleration: 0
+  minPursuitDist: 40
+  maxPursuitDist: 50
+  minAttackDist: 10
+  maxAttackDist: 20
+  distDelta: 1
+  deadPrefab: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!4 &1614056822835950467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6442767739397881672, guid: bf5a70ac93cfead48b207ee497f418ce, type: 3}
