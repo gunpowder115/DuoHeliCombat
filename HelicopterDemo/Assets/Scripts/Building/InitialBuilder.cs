@@ -29,7 +29,7 @@ public class InitialBuilder : MonoBehaviour
         return platforms;
     }
 
-    public GameObject[] InitBuildings(in Platform[] platforms)
+    public GameObject[] InitBuildings(Platform[] platforms)
     {
         var buildings = new GameObject[platformCount];
 
@@ -49,6 +49,8 @@ public class InitialBuilder : MonoBehaviour
                 if (building)
                     building.SetPlatform(platforms[i]);
             }
+            else
+                platforms[i].gameObject.SetActive(false);
         }
 
         return buildings;

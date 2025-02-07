@@ -53,8 +53,6 @@ public class NpcGroundAlone : Npc
     {
         switch (npcState)
         {
-            case NpcState.Exploring:
-                break;
             case NpcState.Attack:
                 npcAttack.Shoot();
                 break;
