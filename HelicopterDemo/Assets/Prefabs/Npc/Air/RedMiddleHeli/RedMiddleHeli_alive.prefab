@@ -579,6 +579,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: EnemyAir
       objectReference: {fileID: 0}
+    - target: {fileID: 6157169485387400614, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7494316
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157169485387400614, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0010179281
+      objectReference: {fileID: 0}
     - target: {fileID: 6157169485387400615, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}
       propertyPath: m_RootOrder
       value: 0
