@@ -69,7 +69,7 @@ public class CommandCenter : MonoBehaviour
         {
             Vector3 toPlatform = (platforms[i].transform.position - transform.position).normalized * distToPlatform;
             Vector3 platfromTranslation = (transform.position + toPlatform) - platforms[i].transform.position;
-            platfromTranslation.y = 0f;
+            platfromTranslation.y = -1f;
             platforms[i].transform.Translate(platfromTranslation, Space.World);
 
             platforms[i].SetCommandCenter(this);
@@ -83,6 +83,7 @@ public class CommandCenter : MonoBehaviour
         {
             if (platform.Building)
             {
+                platform.transform.Translate(0f, 1f, 0f);
                 buildings.Add(platform.Building);
                 if (commandCenterSide == GlobalSide3.Neutral) commandCenterSide = platform.GetPlatformSide();
             }

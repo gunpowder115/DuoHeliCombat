@@ -4,8 +4,11 @@ using static Types;
 public class Building : MonoBehaviour
 {
     [SerializeField] private GlobalSide2 buildingSide = GlobalSide2.Blue;
+    [SerializeField] private GameObject deadPrefab;
+    [SerializeField] private GameObject explosion;
 
     private Platform platform;
+    private NpcController npcController;
 
     public CommandCenter CommandCenter => platform.CommandCenter;
     public GlobalSide2 BuildingSide => buildingSide;
@@ -17,5 +20,25 @@ public class Building : MonoBehaviour
             platform.SetBuilding(this);
     }
 
+    private void Start()
+    {
+        npcController = NpcController.singleton;
+        npcController.Add(gameObject);
+    }
+
     public void Remove() => CommandCenter.RemoveBuilding(this);
+
+    public void RequestDestroy()
+    {
+        npcController.Remove(gameObject);
+
+        if (deadPrefab)
+            Instantiate(deadPrefab, transform.position, transform.rotation);
+
+        if (explosion)
+            Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+
+        Remove();
+        Destroy(gameObject);
+    }
 }

@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     private float health;
     private NpcController npcController;
     private Npc npc;
+    private Building building;
     private GameObject smoke;
     private HealthBar healthBar;
     private GameObject damageSourcePlayer;
@@ -61,6 +62,7 @@ public class Health : MonoBehaviour
         {
             IsAlive = false;
             if (npc) npc.RequestDestroy();
+            if (building) building.RequestDestroy();
         }
     }
 
@@ -76,5 +78,6 @@ public class Health : MonoBehaviour
         health = baseHealth;
         npcController = NpcController.singleton;
         npc = GetComponent<Npc>();
+        building = GetComponent<Building>();
     }
 }
