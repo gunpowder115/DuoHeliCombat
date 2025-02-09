@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 207395817383125997}
-  - component: {fileID: 207395817383125996}
   - component: {fileID: 207395817383125999}
   m_Layer: 0
-  m_Name: Base
+  m_Name: CommandCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,28 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &207395817383125996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 207395817383125998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b334adcc499af24cb92833d6e84ace9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  distToPlatform: 20
 --- !u!114 &207395817383125999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +53,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e44164949c46be4da643c38a25d8af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distToPlatform: 20
+  redAttributesPrefab: {fileID: 5537462435802606336, guid: d1f30173e4ec95a4eaec24f31cb80f0c, type: 3}
+  blueAttributesPrefab: {fileID: 3324522833982793333, guid: 6da3437374be9824e9b9ddbdb2704fde, type: 3}
+  neutralAttributePrefab: {fileID: 3269973152517100145, guid: 86a38c0654b2fc649a39bff6f4d55c1e, type: 3}
 --- !u!1001 &207395816807263674
 PrefabInstance:
   m_ObjectHideFlags: 0

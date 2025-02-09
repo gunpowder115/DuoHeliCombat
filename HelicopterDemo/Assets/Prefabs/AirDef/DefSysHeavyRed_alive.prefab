@@ -613,7 +613,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3751767114510227840, guid: 92dac6de73a08fb4bb754dfa2885a080, type: 3}
       propertyPath: m_Name
-      value: DefSysHeavyRed_alive Variant
+      value: DefSysHeavyRed_alive
       objectReference: {fileID: 0}
     - target: {fileID: 3751767114510227840, guid: 92dac6de73a08fb4bb754dfa2885a080, type: 3}
       propertyPath: m_TagString
@@ -791,6 +791,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToNextLaunch: 1
+--- !u!114 &7040714222183006998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4016027788399251488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef181ce7dc0acb04caafefdfc50e3692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingSide: 0
 --- !u!4 &4016027788399251489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3751767114510227841, guid: 92dac6de73a08fb4bb754dfa2885a080, type: 3}

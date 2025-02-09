@@ -44,10 +44,13 @@ public class HealthBar : MonoBehaviour
             currScale = bigScale;
         }
 
-        foreach (var bar in bars)
+        if (bars != null)
         {
-            bar.SetScale(currHP / fullHP);
-            bar.SetTimeFromDamage(timeFromDamage);
+            foreach (var bar in bars)
+            {
+                bar.SetScale(currHP / fullHP);
+                bar.SetTimeFromDamage(timeFromDamage);
+            }
         }
     }
 

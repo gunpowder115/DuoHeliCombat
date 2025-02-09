@@ -537,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1491153474279174191, guid: 289843f4d8352584da31507e3052cd7a, type: 3}
       propertyPath: m_Name
-      value: DefSysHeavyBlue_alive Variant
+      value: DefSysHeavyBlue_alive
       objectReference: {fileID: 0}
     - target: {fileID: 1491153474279174191, guid: 289843f4d8352584da31507e3052cd7a, type: 3}
       propertyPath: m_TagString
@@ -671,6 +671,19 @@ MonoBehaviour:
   distDelta: 1
   deadPrefab: {fileID: 7945780487119277729, guid: 2627238a9d82f754795d58f935866f5a, type: 3}
   explosion: {fileID: 4954313840775520740, guid: 8d752563071e2c441ac6ab8f2823c632, type: 3}
+--- !u!114 &1661962833004578129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8449829510872370401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef181ce7dc0acb04caafefdfc50e3692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingSide: 1
 --- !u!4 &8449829510872370414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1491153474279174176, guid: 289843f4d8352584da31507e3052cd7a, type: 3}

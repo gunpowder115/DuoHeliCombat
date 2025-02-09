@@ -80,7 +80,6 @@ public abstract class Npc : MonoBehaviour
     public Rotation Rotation => rotation;
     public Building Building => thisItem.Building;
     public CommandCenter CommandCenter => thisItem.CommandCenter;
-    public Platform[] BasePlatforms => thisItem.CommandCenter.Platforms;
 
     #endregion
 

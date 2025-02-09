@@ -31,10 +31,6 @@ public class NpcPatroller : MonoBehaviour
     {
         patrolPositions = new List<Vector3>();
         currPatrolPosIndex = 0;
-        foreach (var platform in npc.BasePlatforms)
-        {
-            patrolPositions.Add(platform.gameObject.transform.position + platform.gameObject.transform.forward * patrolDist);
-        }
     }
 
     public void Move()

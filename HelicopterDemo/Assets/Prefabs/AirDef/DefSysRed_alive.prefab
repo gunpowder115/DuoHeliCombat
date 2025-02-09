@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2043951984725440549, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
       propertyPath: m_Name
-      value: DefSysRed_alive Variant
+      value: DefSysRed_alive
       objectReference: {fileID: 0}
     - target: {fileID: 2043951984725440549, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
       propertyPath: m_TagString
@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249e88c79374bbb4991e7aa56922b92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToNextLaunch: 0.5
 --- !u!114 &4430383022110327027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +246,19 @@ MonoBehaviour:
   distDelta: 1
   deadPrefab: {fileID: 1510866225054500462, guid: f51d8af1c8bd88148994f1294b47d8a7, type: 3}
   explosion: {fileID: 4954313840775520740, guid: 8d752563071e2c441ac6ab8f2823c632, type: 3}
+--- !u!114 &2583832088216066815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241589566971415264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef181ce7dc0acb04caafefdfc50e3692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingSide: 0
 --- !u!4 &1241589566971415265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2043951984725440548, guid: feffc4c298398ed42b69a54de1f01985, type: 3}

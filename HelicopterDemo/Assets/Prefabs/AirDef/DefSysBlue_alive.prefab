@@ -74,7 +74,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6532075244570268276, guid: 2c7e87df7039856439f7a2202b09628a, type: 3}
       propertyPath: m_Name
-      value: DefSysBlue_alive Variant
+      value: DefSysBlue_alive
       objectReference: {fileID: 0}
     - target: {fileID: 6532075244570268276, guid: 2c7e87df7039856439f7a2202b09628a, type: 3}
       propertyPath: m_TagString
@@ -261,6 +261,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249e88c79374bbb4991e7aa56922b92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToNextLaunch: 0.5
+--- !u!114 &7394072118991589759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10442990432225384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef181ce7dc0acb04caafefdfc50e3692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingSide: 1
 --- !u!4 &10442990432225385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6532075244570268277, guid: 2c7e87df7039856439f7a2202b09628a, type: 3}

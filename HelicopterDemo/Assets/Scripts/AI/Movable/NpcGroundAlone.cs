@@ -16,7 +16,7 @@ public class NpcGroundAlone : Npc
 
     #endregion
 
-    private void Awake()
+    private void Start()
     {
         base.Init();
 
@@ -44,6 +44,10 @@ public class NpcGroundAlone : Npc
 
         if (explosion)
             Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+
+        var building = GetComponent<Building>();
+        if (building)
+            building.Remove();
 
         Destroy(gameObject);
     }
