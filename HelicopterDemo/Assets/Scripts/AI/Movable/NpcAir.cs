@@ -71,7 +71,6 @@ public class NpcAir : Npc
         SetTrackersRotation();
         ChangeState();
         Move();
-        Debug.Log(npcState);
     }
 
     public void RemoveTarget() => selectedTarget = null;
