@@ -115,13 +115,6 @@ public class NpcAir : Npc
     
     private void ChangeState()
     {
-        if (!BaseHasProtection && IsExplorer)
-        {
-            npcState = NpcState.Patrolling;
-            IsExplorer = false;
-            IsPatroller = true;
-        }
-
         switch (npcState)
         {
             case NpcState.Delivery:
@@ -157,22 +150,11 @@ public class NpcAir : Npc
                 }
                 break;
             case NpcState.Patrolling:
-                if (BaseHasProtection)
-                {
-                    npcState = NpcState.Exploring;
-                    IsExplorer = true;
-                    IsPatroller = false;
-                }
-                else if (NpcUnderAttack)
+                if (NpcUnderAttack)
                 {
                     npcState = NpcState.MoveToTarget;
                     selectedTarget = health.AttackSource.gameObject;
                     NpcUnderAttack = false;
-                }
-                else if (BaseUnderAttack)
-                {
-                    npcState = NpcState.MoveToTarget;
-                    //todo
                 }
                 break;
             case NpcState.Exploring:

@@ -35,8 +35,6 @@ public abstract class Npc : MonoBehaviour
 
     #region For change state
 
-    protected bool BaseHasProtection => BaseCenter.HasPrimaryProtection || (BaseCenter.HasSecondaryProtection && BaseCenter.Protection != thisItem); //4
-    protected bool BaseUnderAttack => BaseCenter.IsUnderAttack; //6
     protected bool EnemyForAttack => HorDistToTgt <= MinAttackDist; //7
     protected bool EnemyForPursuit => npcState == NpcState.Attack ?
         HorDistToTgt > MaxAttackDist : HorDistToTgt <= MinPursuitDist; //8
@@ -81,8 +79,8 @@ public abstract class Npc : MonoBehaviour
     public Translation Translation => translation;
     public Rotation Rotation => rotation;
     public Building Building => thisItem.Building;
-    public BaseCenter BaseCenter => thisItem.BaseCenter;
-    public Platform[] BasePlatforms => thisItem.BaseCenter.Platforms;
+    public CommandCenter CommandCenter => thisItem.CommandCenter;
+    public Platform[] BasePlatforms => thisItem.CommandCenter.Platforms;
 
     #endregion
 

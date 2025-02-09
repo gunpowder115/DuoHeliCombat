@@ -11,7 +11,7 @@ public class CargoItem : MonoBehaviour
     public float ParachuteHeight => CargoPlatform.ParachuteHeight;
     public GameObject ParachutePrefab => parachutePrefab;
     public Building Building { get; private set; }
-    public BaseCenter BaseCenter => Building.BaseCenter;
+    public CommandCenter CommandCenter => Building.CommandCenter;
     public CargoPlatform CargoPlatform { get; private set; }
     public Action InitCargoItem { get; set;  }
 

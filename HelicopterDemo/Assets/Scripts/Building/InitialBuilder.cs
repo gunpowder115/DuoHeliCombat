@@ -8,7 +8,7 @@ public class InitialBuilder : MonoBehaviour
     [SerializeField] private GameObject[] buildPrefabs = new GameObject[platformCount];
     [SerializeField] private float distToPlatform = 40f;
 
-    public Platform[] GetPlatforms(in BaseCenter baseCenter)
+    public Platform[] GetPlatforms(in CommandCenter baseCenter)
     {
         var platforms = new Platform[platformCount];
 
@@ -23,7 +23,7 @@ public class InitialBuilder : MonoBehaviour
             platfromTranslation.y = 0f;
             platforms[i].transform.Translate(platfromTranslation, Space.World);
 
-            platforms[i].SetBaseCenter(baseCenter);
+            platforms[i].SetCommandCenter(baseCenter);
         }
 
         return platforms;

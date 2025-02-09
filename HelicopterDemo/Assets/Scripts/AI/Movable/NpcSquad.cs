@@ -151,13 +151,6 @@ public class NpcSquad : Npc
 
     private void ChangeState()
     {
-        if (!BaseHasProtection && IsExplorer)
-        {
-            npcState = NpcState.Patrolling;
-            IsExplorer = false;
-            IsPatroller = true;
-        }
-
         switch (npcState)
         {
             case NpcState.Delivery:
@@ -176,21 +169,11 @@ public class NpcSquad : Npc
                 }
                 break;
             case NpcState.Patrolling:
-                if (BaseHasProtection)
-                {
-                    npcState = NpcState.Exploring;
-                    IsExplorer = true;
-                    IsPatroller = false;
-                }
-                else if (MemberUnderAttack != null)
+                if (MemberUnderAttack != null)
                 {
                     npcState = NpcState.MoveToTarget;
                     selectedTarget = attackSource.gameObject;
                     MemberUnderAttack = null;
-                }
-                else if (BaseUnderAttack)
-                {
-                    //todo
                 }
                 break;
             case NpcState.Exploring:
