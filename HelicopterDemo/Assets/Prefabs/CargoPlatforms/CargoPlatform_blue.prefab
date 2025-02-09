@@ -51,6 +51,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1683657815074892363, guid: 41d51f3b5d057c043bac703d63cd201d, type: 3}
+      propertyPath: healthBarPrefab
+      value: 
+      objectReference: {fileID: 6534110175669022320, guid: 355e48911d66ab44ebe8338bf01d585d, type: 3}
     - target: {fileID: 4188944427035180862, guid: 41d51f3b5d057c043bac703d63cd201d, type: 3}
       propertyPath: m_Name
       value: CargoPlatform_blue
