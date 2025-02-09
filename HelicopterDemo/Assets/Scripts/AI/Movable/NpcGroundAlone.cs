@@ -31,7 +31,6 @@ public class NpcGroundAlone : Npc
         SetTrackersRotation();
         ChangeState();
         Move();
-        Debug.Log(npcState);
     }
 
     public void RemoveTarget() => selectedTarget = null;
@@ -65,11 +64,19 @@ public class NpcGroundAlone : Npc
         switch (npcState)
         {
             case NpcState.Exploring:
+                if (EnemyForPursuit)
+                    npcState = NpcState.MoveToTarget;
+                break;
+            case NpcState.MoveToTarget:
                 if (EnemyForAttack)
                     npcState = NpcState.Attack;
+                else if (EnemyLost && IsExplorer)
+                    npcState = NpcState.Exploring;
                 break;
             case NpcState.Attack:
-                if (EnemyLost && IsExplorer)
+                if (EnemyForPursuit)
+                    npcState = NpcState.MoveToTarget;
+                else if (EnemyLost && IsExplorer)
                     npcState = NpcState.Exploring;
                 break;
         }
@@ -93,6 +100,9 @@ public class NpcGroundAlone : Npc
         {
             case NpcState.Attack:
                 selectedTarget = nearestNpc.Value;
+                break;
+            case NpcState.MoveToTarget:
+                selectedTarget = nearestNpc.Key > MaxPursuitDist ? null : nearestNpc.Value;
                 break;
             default:
                 selectedTarget = nearestNpc.Key <= MinPursuitDist ? nearestNpc.Value : null;

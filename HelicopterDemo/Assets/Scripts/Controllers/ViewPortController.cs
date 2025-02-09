@@ -96,9 +96,6 @@ public class ViewPortController : MonoBehaviour
 
             cameraPlayer1.rect = currRect1;
             cameraPlayer2.rect = currRect2;
-
-            Debug.Log("Camera 1: " + PrintRect(cameraPlayer1.rect) + " / " + cameraPlayer1.enabled);
-            Debug.Log("Camera 2: " + PrintRect(cameraPlayer2.rect) + " / " + cameraPlayer2.enabled);
         }
     }
 

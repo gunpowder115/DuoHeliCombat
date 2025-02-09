@@ -73,8 +73,6 @@ public class NpcSquad : Npc
             ChangeState();
             Move();
         }
-
-        Debug.Log(npcState);
     }
 
     public void MoveSquad(Vector3 targetDir, float speed)

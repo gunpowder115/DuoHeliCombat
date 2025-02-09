@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
     public bool IsAlive { get; private set; }
     public bool IsHurt { get; set; }
     public bool IsUnderAttack { get; set; }
+    public float CurrHp => health;
     public Npc AttackSource { get; private set; }
 
     public void Hurt(float damage, bool damageFromPlayer = false, Npc attackSource = null)

@@ -142,6 +142,8 @@ public class Player : MonoBehaviour
 
         airDuster.normRotorSpeed = 1f;
         airDuster.normAltitiude = transform.position.y / 10f;
+
+        if (playerNumber == Players.Player1) Debug.Log(health.CurrHp);
     }
 
     void Translate(float inputX, float inputZ)
@@ -310,6 +312,7 @@ public class Player : MonoBehaviour
     {
         transform.position = new Vector3(0, 10, 0);
         transform.rotation = Quaternion.Euler(0, 0, 0);
+        inputDevice.ForceChangePlayerState(PlayerStates.Normal);
     }
 
     public enum Axis_Proto : int
