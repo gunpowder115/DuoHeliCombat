@@ -19,7 +19,6 @@ public abstract class Npc : MonoBehaviour
 
     protected NpcState npcState;
     protected NpcExplorer npcExplorer;
-    protected NpcPatroller npcPatroller;
     protected NpcMoveToTgt npcMoveToTgt;
     protected NpcAttack npcAttack;
     protected Translation translation;
@@ -39,8 +38,6 @@ public abstract class Npc : MonoBehaviour
     protected bool EnemyForPursuit => npcState == NpcState.Attack ?
         HorDistToTgt > MaxAttackDist : HorDistToTgt <= MinPursuitDist; //8
     protected bool EnemyLost => selectedTarget == null; //9
-    protected bool IsExplorer { get; set; } //10
-    protected bool IsPatroller { get; set; } //11
 
     #endregion
 
@@ -86,7 +83,6 @@ public abstract class Npc : MonoBehaviour
     protected void Init()
     {
         npcExplorer = GetComponent<NpcExplorer>();
-        npcPatroller = GetComponent<NpcPatroller>();
         npcMoveToTgt = GetComponent<NpcMoveToTgt>();
         npcAttack = GetComponent<NpcAttack>();
         translation = GetComponent<Translation>();
@@ -115,7 +111,6 @@ public abstract class Npc : MonoBehaviour
         Delivery,
         Takeoff,
         Exploring,
-        Patrolling,
         MoveToTarget,
         Attack,
     }

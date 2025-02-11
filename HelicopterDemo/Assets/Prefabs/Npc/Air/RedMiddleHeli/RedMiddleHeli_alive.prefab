@@ -573,7 +573,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6157169485387400612, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}
       propertyPath: m_Name
-      value: RedMiddleHeli_alive Variant
+      value: RedMiddleHeli_alive
       objectReference: {fileID: 0}
     - target: {fileID: 6157169485387400612, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}
       propertyPath: m_TagString
@@ -770,6 +770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249e88c79374bbb4991e7aa56922b92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToNextLaunch: 0.5
 --- !u!114 &474047304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,21 +783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b456389afe2684438b9fa6feea6e72b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &474047305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5718092796241895158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 334580511bba2ef4ba8a80e50b498615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopTime: 1
-  height: 30
-  patrolDist: 20
 --- !u!114 &474047306
 MonoBehaviour:
   m_ObjectHideFlags: 0

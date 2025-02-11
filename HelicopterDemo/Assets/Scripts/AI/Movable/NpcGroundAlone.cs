@@ -74,13 +74,13 @@ public class NpcGroundAlone : Npc
             case NpcState.MoveToTarget:
                 if (EnemyForAttack)
                     npcState = NpcState.Attack;
-                else if (EnemyLost && IsExplorer)
+                else if (EnemyLost)
                     npcState = NpcState.Exploring;
                 break;
             case NpcState.Attack:
                 if (EnemyForPursuit)
                     npcState = NpcState.MoveToTarget;
-                else if (EnemyLost && IsExplorer)
+                else if (EnemyLost)
                     npcState = NpcState.Exploring;
                 break;
         }

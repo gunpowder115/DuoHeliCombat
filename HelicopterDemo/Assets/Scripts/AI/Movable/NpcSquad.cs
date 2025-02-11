@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(NpcExplorer))]
-[RequireComponent(typeof(NpcPatroller))]
 [RequireComponent(typeof(NpcMoveToTgt))]
 [RequireComponent(typeof(NpcAttack))]
 [RequireComponent(typeof(CargoItem))]
@@ -157,8 +156,6 @@ public class NpcSquad : Npc
                 if (Npcs[0].gameObject.transform.position.y <= transform.position.y)
                 {
                     npcState = NpcState.Exploring;
-                    IsExplorer = false;
-                    IsPatroller = true;
                     for (int i = 0; i < Npcs.Count; i++)
                     {
                         Npcs[i].Drop(0f);
@@ -166,14 +163,6 @@ public class NpcSquad : Npc
                         Destroy(parachutes[i]);
                     }
                     parachutes.Clear();
-                }
-                break;
-            case NpcState.Patrolling:
-                if (MemberUnderAttack != null)
-                {
-                    npcState = NpcState.MoveToTarget;
-                    selectedTarget = attackSource.gameObject;
-                    MemberUnderAttack = null;
                 }
                 break;
             case NpcState.Exploring:
@@ -189,23 +178,17 @@ public class NpcSquad : Npc
             case NpcState.MoveToTarget:
                 if (EnemyForAttack)
                     npcState = NpcState.Attack;
-                else if (EnemyLost && IsExplorer)
+                else if (EnemyLost)
                     npcState = NpcState.Exploring;
-                else if (EnemyLost && IsPatroller)
-                    npcState = NpcState.Patrolling;
                 break;
             case NpcState.Attack:
                 if (EnemyForPursuit)
                 {
                     npcState = NpcState.MoveToTarget;
                 }
-                else if (EnemyLost && IsExplorer)
+                else if (EnemyLost)
                 {
                     npcState = NpcState.Exploring;
-                }
-                else if (EnemyLost && IsPatroller)
-                {
-                    npcState = NpcState.Patrolling;
                 }
                 break;
         }
@@ -218,9 +201,6 @@ public class NpcSquad : Npc
             case NpcState.Delivery:
                 foreach (var npc in Npcs)
                     npc.Drop(-thisItem.DeliverySpeed);
-                break;
-            case NpcState.Patrolling:
-                npcPatroller.Move();
                 break;
             case NpcState.Exploring:
                 npcExplorer.Move();

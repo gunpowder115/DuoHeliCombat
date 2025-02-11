@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8068553150965633047}
   - component: {fileID: 8068553150965633046}
-  - component: {fileID: 8068553150965633045}
   - component: {fileID: 8068553150965633044}
   - component: {fileID: 8068553150965633043}
   - component: {fileID: 8068553150965633042}
@@ -54,21 +53,6 @@ MonoBehaviour:
   stopTime: 1
   absBorderX: 200
   absBorderZ: 200
---- !u!114 &8068553150965633045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8068553150965633055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 334580511bba2ef4ba8a80e50b498615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopTime: 1
-  height: 30
-  patrolDist: 20
 --- !u!114 &8068553150965633044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249e88c79374bbb4991e7aa56922b92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToNextLaunch: 0.5
 --- !u!114 &8068553150965633042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +132,8 @@ MonoBehaviour:
   minAttackDist: 10
   maxAttackDist: 20
   distDelta: 1
+  deadPrefab: {fileID: 0}
+  explosion: {fileID: 0}
   membersCount: 3
   squadRadius: 6
   memberRadius: 3

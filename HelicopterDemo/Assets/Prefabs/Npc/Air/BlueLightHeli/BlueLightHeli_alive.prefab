@@ -127,7 +127,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8873599739998337664, guid: a3a190fa4eb994846979d133898459df, type: 3}
       propertyPath: m_Name
-      value: BlueLightHeli_alive Variant
+      value: BlueLightHeli_alive
       objectReference: {fileID: 0}
     - target: {fileID: 8873599739998337664, guid: a3a190fa4eb994846979d133898459df, type: 3}
       propertyPath: m_TagString
@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249e88c79374bbb4991e7aa56922b92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToNextLaunch: 0.5
 --- !u!114 &1389849222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,21 +334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b456389afe2684438b9fa6feea6e72b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1389849223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132880165559326954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 334580511bba2ef4ba8a80e50b498615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopTime: 1
-  height: 30
-  patrolDist: 20
 --- !u!114 &1389849224
 MonoBehaviour:
   m_ObjectHideFlags: 0

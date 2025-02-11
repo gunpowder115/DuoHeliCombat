@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(NpcExplorer))]
-[RequireComponent(typeof(NpcPatroller))]
 [RequireComponent(typeof(NpcMoveToTgt))]
 [RequireComponent(typeof(NpcAttack))]
 [RequireComponent(typeof(Shooter))]
@@ -96,9 +95,6 @@ public class NpcAir : Npc
             case NpcState.Takeoff:
                 npcTakeoff.Move();
                 break;
-            case NpcState.Patrolling:
-                npcPatroller.Move();
-                break;
             case NpcState.Exploring:
                 npcExplorer.Move();
                 break;
@@ -135,8 +131,6 @@ public class NpcAir : Npc
                         airDuster.normAltitiude = 0f;
                     }
                     npcState = NpcState.Takeoff;
-                    IsExplorer = false;
-                    IsPatroller = true;
                 }
                 break;
             case NpcState.Takeoff:
@@ -144,17 +138,7 @@ public class NpcAir : Npc
                 if (EndOfTakeoff)
                 {
                     if (airDuster) airDuster.normAltitiude = 1f;
-                    npcState = NpcState.Patrolling;
-                    IsExplorer = false;
-                    IsPatroller = true;
-                }
-                break;
-            case NpcState.Patrolling:
-                if (NpcUnderAttack)
-                {
-                    npcState = NpcState.MoveToTarget;
-                    selectedTarget = health.AttackSource.gameObject;
-                    NpcUnderAttack = false;
+                    npcState = NpcState.Exploring;
                 }
                 break;
             case NpcState.Exploring:
@@ -170,22 +154,16 @@ public class NpcAir : Npc
             case NpcState.MoveToTarget:
                 if (EnemyForAttack)
                     npcState = NpcState.Attack;
-                else if (EnemyLost && IsExplorer)
+                else if (EnemyLost)
                 {
                     npcState = NpcState.Exploring;
-                }
-                else if (EnemyLost && IsPatroller)
-                {
-                    npcState = NpcState.Patrolling;
                 }
                 break;
             case NpcState.Attack:
                 if (EnemyForPursuit)
                     npcState = NpcState.MoveToTarget;
-                else if (EnemyLost && IsExplorer)
+                else if (EnemyLost)
                     npcState = NpcState.Exploring;
-                else if (EnemyLost && IsPatroller)
-                    npcState = NpcState.Patrolling;
                 break;
         }
     }
