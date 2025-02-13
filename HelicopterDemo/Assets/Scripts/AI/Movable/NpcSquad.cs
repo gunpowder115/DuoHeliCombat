@@ -115,7 +115,7 @@ public class NpcSquad : Npc
 
     private void SelectTarget()
     {
-        KeyValuePair<float, GameObject> nearestNpc, nearestPlayer;
+        KeyValuePair<GameObject, float> nearestNpc, nearestPlayer;
         if (Npcs[0].IsFriendly)
         {
             nearestNpc = npcController.FindNearestEnemy(squadPos);
@@ -124,22 +124,22 @@ public class NpcSquad : Npc
         {
             nearestNpc = npcController.FindNearestFriendly(squadPos);
             nearestPlayer = npcController.FindNearestPlayer(squadPos);
-            nearestNpc = nearestPlayer.Key < nearestNpc.Key ? nearestPlayer : nearestNpc;
+            nearestNpc = nearestPlayer.Value < nearestNpc.Value ? nearestPlayer : nearestNpc;
         }
 
         switch (npcState)
         {
             case NpcState.Attack:
-                selectedTarget = nearestNpc.Value;
+                selectedTarget = nearestNpc.Key;
                 break;
             case NpcState.MoveToTarget:
-                selectedTarget = nearestNpc.Key > MaxPursuitDist ? null : nearestNpc.Value;
+                selectedTarget = nearestNpc.Value > MaxPursuitDist ? null : nearestNpc.Key;
                 break;
             case NpcState.Delivery:
                 selectedTarget = null;
                 break;
             default:
-                selectedTarget = nearestNpc.Key <= MinPursuitDist ? nearestNpc.Value : null;
+                selectedTarget = nearestNpc.Value <= MinPursuitDist ? nearestNpc.Key : null;
                 break;
 
         }

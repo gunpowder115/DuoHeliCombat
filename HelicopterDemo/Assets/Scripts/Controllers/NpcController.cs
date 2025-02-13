@@ -44,14 +44,14 @@ public class NpcController : MonoBehaviour
             npcs.Remove(npc);
     }
 
-    public SortedDictionary<float, GameObject> FindDistToEnemies(in Vector3 origin) => FindDistToNpcs(in origin, true);
-    public SortedDictionary<float, GameObject> FindDistToFriendlies(in Vector3 origin) => FindDistToNpcs(in origin, false);
-    public KeyValuePair<float, GameObject> FindNearestEnemy(in Vector3 origin) => FindNearestNpc(in origin, FindDistToEnemies(in origin));
-    public KeyValuePair<float, GameObject> FindNearestFriendly(in Vector3 origin) => FindNearestNpc(in origin, FindDistToFriendlies(in origin));
-    public KeyValuePair<float, GameObject> FindNearestPlayer(in Vector3 origin)
+    public Dictionary<GameObject, float> FindDistToEnemies(in Vector3 origin) => FindDistToNpcs(in origin, true);
+    public Dictionary<GameObject, float> FindDistToFriendlies(in Vector3 origin) => FindDistToNpcs(in origin, false);
+    public KeyValuePair<GameObject, float> FindNearestEnemy(in Vector3 origin) => FindNearestNpc(in origin, FindDistToEnemies(in origin));
+    public KeyValuePair<GameObject, float> FindNearestFriendly(in Vector3 origin) => FindNearestNpc(in origin, FindDistToFriendlies(in origin));
+    public KeyValuePair<GameObject, float> FindNearestPlayer(in Vector3 origin)
     {
         bool arePlayers = players.Count > 0;
-        KeyValuePair<float, GameObject> nearestPlayer = arePlayers ? FindDistToPlayers(origin).ElementAt(0) : new KeyValuePair<float, GameObject>(Mathf.Infinity, null);
+        KeyValuePair<GameObject, float> nearestPlayer = arePlayers ? FindDistToPlayers(origin).ElementAt(0) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
         return nearestPlayer;
     }
 
@@ -59,12 +59,6 @@ public class NpcController : MonoBehaviour
     {
         singleton = this;
         npcs = new List<GameObject>();
-        npcs.AddRange(GameObject.FindGameObjectsWithTag(enemyAirTag));
-        npcs.AddRange(GameObject.FindGameObjectsWithTag(friendlyAirTag));
-        npcs.AddRange(GameObject.FindGameObjectsWithTag(enemyGroundTag));
-        npcs.AddRange(GameObject.FindGameObjectsWithTag(friendlyGroundTag));
-        npcs.AddRange(GameObject.FindGameObjectsWithTag(enemyBuildTag));
-        npcs.AddRange(GameObject.FindGameObjectsWithTag(friendlyBuildTag));
         players = new List<GameObject>();
         players.AddRange(GameObject.FindGameObjectsWithTag(playerTag));
     }
@@ -77,40 +71,46 @@ public class NpcController : MonoBehaviour
         return count;
     }
 
-    SortedDictionary<float, GameObject> FindDistToNpcs(in Vector3 origin, bool findEnemies = true)
+    Dictionary<GameObject, float> FindDistToNpcs(in Vector3 origin, bool findEnemies = true)
     {
         string selAirTag = findEnemies ? enemyAirTag : friendlyAirTag;
         string selGroundTag = findEnemies ? enemyGroundTag : friendlyGroundTag;
         string selBuildTag = findEnemies ? enemyBuildTag : friendlyBuildTag;
-        SortedDictionary<float, GameObject> result = new SortedDictionary<float, GameObject>();
+        Dictionary<GameObject, float> result = new Dictionary<GameObject, float>();
 
         foreach (var npc in npcs)
         {
             if (npc.CompareTag(selAirTag) || npc.CompareTag(selGroundTag) || npc.CompareTag(selBuildTag))
             {
                 float distTo = Vector3.Magnitude(npc.transform.position - origin);
-                result.Add(distTo, npc);
+                result.Add(npc, distTo);
             }
         }
-        return result;
+        var sortedResult = result.OrderBy(npc => npc.Value)
+                              .ToDictionary(npc => npc.Key, npc => npc.Value);
+
+        return sortedResult;
     }
 
-    private SortedDictionary<float, GameObject> FindDistToPlayers(in Vector3 origin)
+    private Dictionary<GameObject, float> FindDistToPlayers(in Vector3 origin)
     {
-        SortedDictionary<float, GameObject> result = new SortedDictionary<float, GameObject>();
+        Dictionary<GameObject, float> result = new Dictionary<GameObject, float>();
 
         foreach (var player in players)
         {
             float distTo = Vector3.Magnitude(player.transform.position - origin);
-            result.Add(distTo, player);
+            result.Add(player, distTo);
         }
-        return result;
+        var sortedResult = result.OrderBy(npc => npc.Value)
+                      .ToDictionary(npc => npc.Key, npc => npc.Value);
+
+        return sortedResult;
     }
 
-    KeyValuePair<float, GameObject> FindNearestNpc(in Vector3 origin, SortedDictionary<float, GameObject> npcs)
+    KeyValuePair<GameObject, float> FindNearestNpc(in Vector3 origin, Dictionary<GameObject, float> npcs)
     {
         bool areNpcs = npcs.Count > 0;
-        KeyValuePair<float, GameObject> nearestNpc = areNpcs ? npcs.ElementAt(0) : new KeyValuePair<float, GameObject>(Mathf.Infinity, null);
+        KeyValuePair<GameObject, float> nearestNpc = areNpcs ? npcs.ElementAt(0) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
         return nearestNpc;
     }
 }

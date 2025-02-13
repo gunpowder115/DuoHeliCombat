@@ -11,25 +11,25 @@ public class PlatformController : MonoBehaviour
 
     List<GameObject> platforms;
 
-    public SortedDictionary<float, GameObject> FindDistToPlatforms(in Vector3 origin)
+    public Dictionary<GameObject, float> FindDistToPlatforms(in Vector3 origin)
     {
-        SortedDictionary<float, GameObject> result = new SortedDictionary<float, GameObject>();
+        Dictionary<GameObject, float> result = new Dictionary<GameObject, float>();
 
         foreach (var platform in platforms)
         {
-            if (!result.ContainsValue(platform))
+            if (!result.ContainsKey(platform))
             {
                 float distTo = Vector3.Magnitude(platform.transform.position - origin);
-                result.Add(distTo, platform);
+                result.Add(platform, distTo);
             }
         }
         return result;
     }
-    public KeyValuePair<float, GameObject> FindNearestPlatform(in Vector3 origin)
+    public KeyValuePair<GameObject, float> FindNearestPlatform(in Vector3 origin)
     {
-        SortedDictionary<float, GameObject> platforms = FindDistToPlatforms(in origin);
+        Dictionary<GameObject, float> platforms = FindDistToPlatforms(in origin);
         bool arePlatforms = platforms.Count > 0;
-        KeyValuePair<float, GameObject> nearestPlatform = arePlatforms ? platforms.ElementAt(0) : new KeyValuePair<float, GameObject>(Mathf.Infinity, null);
+        KeyValuePair<GameObject, float> nearestPlatform = arePlatforms ? platforms.ElementAt(0) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
         return nearestPlatform;
     }
 

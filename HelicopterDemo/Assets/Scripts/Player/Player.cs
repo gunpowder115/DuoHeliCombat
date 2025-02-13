@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
         airDuster.normRotorSpeed = 1f;
         airDuster.normAltitiude = transform.position.y / 10f;
 
-        if (playerNumber == Players.Player1) Debug.Log(health.CurrHp);
+        //if (playerNumber == Players.Player1) Debug.Log(health.CurrHp);
     }
 
     void Translate(float inputX, float inputZ)
@@ -229,25 +229,25 @@ public class Player : MonoBehaviour
 
     void DrawLineToTarget()
     {
-        KeyValuePair<float, GameObject> nearest;
+        KeyValuePair<GameObject, float> nearest;
         TargetTypes targetType;
-        var nearestNpc = npcController ? npcController.FindNearestEnemy(transform.position) : new KeyValuePair<float, GameObject>(Mathf.Infinity, null);
-        var nearestPlatform = platformController ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<float, GameObject>(Mathf.Infinity, null);
+        var nearestNpc = npcController ? npcController.FindNearestEnemy(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
+        var nearestPlatform = platformController ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
 
-        nearest = nearestNpc.Key < nearestPlatform.Key ? nearestNpc : nearestPlatform;
-        targetType = nearestNpc.Key < nearestPlatform.Key ? TargetTypes.Enemy : TargetTypes.Platform;
+        nearest = nearestNpc.Value < nearestPlatform.Value ? nearestNpc : nearestPlatform;
+        targetType = nearestNpc.Value < nearestPlatform.Value ? TargetTypes.Enemy : TargetTypes.Platform;
 
-        if (nearest.Value)
+        if (nearest.Key)
         {
-            var aimOrigin = nearest.Value.GetComponentInChildren<AimOrigin>();
-            if (nearest.Key < minDistToAim)
+            var aimOrigin = nearest.Key.GetComponentInChildren<AimOrigin>();
+            if (nearest.Value < minDistToAim)
             {
                 lineDrawer.Enabled = true;
                 Color lineColor = targetType == TargetTypes.Enemy ? Color.red : Color.blue;
                 lineDrawer.SetColor(lineColor);
-                lineDrawer.SetPosition(transform.position, aimOrigin ? aimOrigin.gameObject.transform.position : nearest.Value.transform.position);
-                possibleTarget = targetType == TargetTypes.Enemy ? nearest.Value : null;
-                possiblePlatform = targetType == TargetTypes.Platform ? nearest.Value : null;
+                lineDrawer.SetPosition(transform.position, aimOrigin ? aimOrigin.gameObject.transform.position : nearest.Key.transform.position);
+                possibleTarget = targetType == TargetTypes.Enemy ? nearest.Key : null;
+                possiblePlatform = targetType == TargetTypes.Platform ? nearest.Key : null;
             }
             else
             {
