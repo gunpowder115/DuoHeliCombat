@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Types;
 
 [RequireComponent(typeof(NpcExplorer))]
 [RequireComponent(typeof(NpcMoveToTgt))]
@@ -215,7 +216,7 @@ public class NpcSquad : Npc
         }
     }
 
-    private void InitMembers()
+    private void InitMembers(Caravan caravan)
     {
         Members = new List<GameObject>();
         Npcs = new List<NpcGround>();

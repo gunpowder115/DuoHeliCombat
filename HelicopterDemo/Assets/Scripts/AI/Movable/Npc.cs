@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Types;
 
 public abstract class Npc : MonoBehaviour
 {
@@ -75,8 +76,6 @@ public abstract class Npc : MonoBehaviour
     public GameObject SelectedTarget => selectedTarget;
     public Translation Translation => translation;
     public Rotation Rotation => rotation;
-    public Building Building => thisItem.Building;
-    public CommandCenter CommandCenter => thisItem.CommandCenter;
 
     #endregion
 
@@ -104,14 +103,4 @@ public abstract class Npc : MonoBehaviour
     public void _SetSpeed(float speed) => this.speed = speed;
 
     public abstract void RequestDestroy();
-
-    public enum NpcState
-    {
-        Idle,
-        Delivery,
-        Takeoff,
-        Exploring,
-        MoveToTarget,
-        Attack,
-    }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Types;
 
 [RequireComponent(typeof(NpcExplorer))]
 [RequireComponent(typeof(NpcMoveToTgt))]
@@ -22,6 +23,7 @@ public class NpcAir : Npc
     private List<SimpleRotor> rotors;
     private LineRenderer lineToTarget;
     private AirDuster airDuster;
+    private Caravan caravan;
 
     #region Properties
 
@@ -62,6 +64,8 @@ public class NpcAir : Npc
 
         if (airDustPrefab)
             airDuster = Instantiate(airDustPrefab, transform).GetComponent<AirDuster>();
+
+        thisItem.InitCargoItem += InitHelicopter;
     }
 
     void Update()
@@ -105,6 +109,20 @@ public class NpcAir : Npc
                 npcAttack.Move();
                 npcAttack.Shoot();
                 break;
+
+            //for caravan
+            case NpcState.CatchUpCaravan:
+                transform.position = caravan.GetEscortItemTargetPosition(gameObject);
+                transform.rotation = caravan.transform.rotation;
+                npcState = NpcState.FollowCaravan;
+                break;
+            case NpcState.FollowCaravan:
+                translation.SetHorizontalTranslation(caravan.Speed);
+                break;
+            case NpcState.DefendCaravan:
+                npcAttack.Move();
+                npcAttack.Shoot();
+                break;
         }
     }
 
@@ -138,7 +156,7 @@ public class NpcAir : Npc
                 if (EndOfTakeoff)
                 {
                     if (airDuster) airDuster.normAltitiude = 1f;
-                    npcState = NpcState.Exploring;
+                    npcState = caravan ? NpcState.CatchUpCaravan : NpcState.Exploring;
                 }
                 break;
             case NpcState.Exploring:
@@ -164,6 +182,19 @@ public class NpcAir : Npc
                     npcState = NpcState.MoveToTarget;
                 else if (EnemyLost)
                     npcState = NpcState.Exploring;
+                break;
+
+            //for caravan
+            case NpcState.CatchUpCaravan:
+
+                break;
+            case NpcState.FollowCaravan:
+                if (EnemyForAttack)
+                    npcState = NpcState.DefendCaravan;
+                break;
+            case NpcState.DefendCaravan:
+                if (EnemyLost)
+                    npcState = NpcState.CatchUpCaravan;
                 break;
         }
     }
@@ -207,4 +238,10 @@ public class NpcAir : Npc
     }
 
     private void EraseLine() => LineToTarget.enabled = false;
+
+    private void InitHelicopter(Caravan caravan)
+    {
+        if (caravan) caravan.AddEscortItem(gameObject);
+        this.caravan = caravan;
+    }
 }

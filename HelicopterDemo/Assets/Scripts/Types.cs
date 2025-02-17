@@ -21,5 +21,21 @@ public class Types
         Blue
     }
 
+    public enum NpcState
+    {
+        //default
+        Idle,
+        Delivery,
+        Takeoff,
+        Exploring,
+        MoveToTarget,
+        Attack,
+
+        //for caravan
+        CatchUpCaravan,
+        FollowCaravan,
+        DefendCaravan,
+    }
+
     #endregion
 }

@@ -10,15 +10,12 @@ public class CargoItem : MonoBehaviour
     public float DropHeight => CargoPlatform.DropHeight;
     public float ParachuteHeight => CargoPlatform.ParachuteHeight;
     public GameObject ParachutePrefab => parachutePrefab;
-    public Building Building { get; private set; }
-    public CommandCenter CommandCenter => Building.CommandCenter;
     public CargoPlatform CargoPlatform { get; private set; }
-    public Action InitCargoItem { get; set;  }
+    public Action<Caravan> InitCargoItem { get; set;  }
 
-    public void Init(Building building)
+    public void Init(CargoPlatform cargoPlatform)
     {
-        Building = building;
-        CargoPlatform = Building.gameObject.GetComponent<CargoPlatform>();
-        InitCargoItem?.Invoke();
+        CargoPlatform = cargoPlatform;
+        InitCargoItem?.Invoke(cargoPlatform.Caravan);
     }
 }

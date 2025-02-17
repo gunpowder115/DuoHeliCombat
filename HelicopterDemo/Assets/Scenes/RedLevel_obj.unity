@@ -5557,6 +5557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CargoPlatform_heli_middle_red
       objectReference: {fileID: 0}
+    - target: {fileID: 7979082462997855437, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
+      propertyPath: caravan
+      value: 
+      objectReference: {fileID: 939161311}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
 --- !u!4 &269753030 stripped
@@ -6353,6 +6357,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2107285311}
     m_Modifications:
+    - target: {fileID: 4589176702261890176, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: caravan
+      value: 
+      objectReference: {fileID: 939161311}
     - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -8842,6 +8850,10 @@ PrefabInstance:
     - target: {fileID: 207395817383125998, guid: 5eca5b6c0cb4c744692b234faf8909a2, type: 3}
       propertyPath: m_Name
       value: Base (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 207395817383125998, guid: 5eca5b6c0cb4c744692b234faf8909a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 893285885021857185, guid: 5eca5b6c0cb4c744692b234faf8909a2, type: 3}
       propertyPath: m_IsActive
@@ -18026,6 +18038,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86a38c0654b2fc649a39bff6f4d55c1e, type: 3}
+--- !u!114 &939161311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4910640961604317406, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+  m_PrefabInstance: {fileID: 1284014637}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6af7057784896f44bfef3872c70da89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &949633523
 Mesh:
   m_ObjectHideFlags: 0
@@ -24120,6 +24143,71 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1422e2a67ba52d24a9658e88ad58a885, type: 3}
+--- !u!1001 &1284014637
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4910640961604317406, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910640961604317406, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: caravanDist
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819530, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_Name
+      value: HeliBomber_red
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819533, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819533, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -190.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819533, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 50.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819533, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 31.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819533, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819533, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819533, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819533, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819533, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819533, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506306306480819533, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 21ed11560fb6eab48b0f5b50ff5c6c04, type: 3}
 --- !u!1 &1291867315
 GameObject:
   m_ObjectHideFlags: 0
@@ -30975,6 +31063,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 955117134}
     m_Modifications:
+    - target: {fileID: 4589176702261890176, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: caravan
+      value: 
+      objectReference: {fileID: 939161311}
     - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -31483,6 +31575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CargoPlatform_heli_middle_red
       objectReference: {fileID: 0}
+    - target: {fileID: 7979082462997855437, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
+      propertyPath: caravan
+      value: 
+      objectReference: {fileID: 939161311}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
 --- !u!1001 &1707211564
@@ -34787,6 +34883,10 @@ PrefabInstance:
     - target: {fileID: 207395817383125998, guid: 5eca5b6c0cb4c744692b234faf8909a2, type: 3}
       propertyPath: m_Name
       value: Base (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 207395817383125998, guid: 5eca5b6c0cb4c744692b234faf8909a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 893285885021857185, guid: 5eca5b6c0cb4c744692b234faf8909a2, type: 3}
       propertyPath: m_IsActive
