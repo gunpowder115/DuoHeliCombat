@@ -96,6 +96,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1784525136082404271}
     - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: deadPrefab
+      value: 
+      objectReference: {fileID: 4989350652572415037, guid: 62ea6519c7f445942a2ea904d2d857c5, type: 3}
+    - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
       propertyPath: airDustPrefab
       value: 
       objectReference: {fileID: 9117464957027130638, guid: 8cb157bf585ff7945a1958d3db898b09, type: 3}

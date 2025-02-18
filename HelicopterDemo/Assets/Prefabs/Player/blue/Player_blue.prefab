@@ -131,6 +131,14 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 9124027695500458632}
+    - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 4954313840775520740, guid: cf4516811cbb5b046947ae5d79ad6a2e, type: 3}
+    - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: deadPrefab
+      value: 
+      objectReference: {fileID: 3527683377208532888, guid: 6b8ebed267e706d4996853dc2ee0f36c, type: 3}
     - target: {fileID: 9059915131655930513, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
       propertyPath: m_RootOrder
       value: 0

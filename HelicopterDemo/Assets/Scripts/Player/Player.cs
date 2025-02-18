@@ -19,14 +19,18 @@ public class Player : MonoBehaviour
     [SerializeField] float verticalSpeed = 30f;
     [SerializeField] float lateralMovingCoef = 0.1f;
     [SerializeField] float acceleration = 1f;
+    [SerializeField] float delayAfterDestroy = 1f;
     [SerializeField] Health health;
     [SerializeField] GameObject airDustPrefab;
+    [SerializeField] GameObject deadPrefab;
+    [SerializeField] GameObject explosion;
     [SerializeField] ControllerType controllerType = ControllerType.Keyboard;
     [SerializeField] Players playerNumber = Players.Player1;
 
     bool rotateToDirection;
     float yawAngle;
     float currVerticalSpeed, targetVerticalSpeed;
+    private float currDelayAfterDestroy;
     Vector3 currSpeed, targetSpeed;
     Vector3 targetDirection;
     GameObject possibleTarget, selectedTarget, possiblePlatform, selectedPlatform;
@@ -100,9 +104,8 @@ public class Player : MonoBehaviour
         float inputX = inputDirection.x;
         float inputZ = inputDirection.y;
 
-        if (!health.IsAlive)
+        if (!health.IsAlive && Respawn())
         {
-            Respawn();
             health.SetAlive(true);
         }
         else
@@ -308,11 +311,32 @@ public class Player : MonoBehaviour
 
     void CancelAiming() => ChangeAimState();
 
-    void Respawn()
+    private bool Respawn()
     {
-        transform.position = new Vector3(0, 10, 0);
-        transform.rotation = Quaternion.Euler(0, 0, 0);
         inputDevice.ForceChangePlayerState(PlayerStates.Normal);
+        if (Aiming) ChangeAimState();
+
+        if (currDelayAfterDestroy > delayAfterDestroy)
+        {
+            health.gameObject.SetActive(true);
+            transform.position = new Vector3(0, 10, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            currDelayAfterDestroy = 0f;
+            return true;
+        }
+        else
+        {
+            if (health.gameObject.activeSelf)
+            {
+                health.gameObject.SetActive(false);
+                if (deadPrefab) Instantiate(deadPrefab, transform.position, health.gameObject.transform.rotation);
+                if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+            }
+
+            currDelayAfterDestroy += Time.deltaTime;
+            return false;
+        }
     }
 
     public enum Axis_Proto : int
