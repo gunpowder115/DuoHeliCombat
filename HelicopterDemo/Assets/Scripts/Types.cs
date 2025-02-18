@@ -37,5 +37,11 @@ public class Types
         DefendCaravan,
     }
 
+    public enum Axes
+    {
+        X, Y, Z,
+        X_Y_Z
+    }
+
     #endregion
 }
