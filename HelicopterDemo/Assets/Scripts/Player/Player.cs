@@ -339,9 +339,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public enum Axis_Proto : int
-    { X, Y, Z }
-
     public enum TargetTypes
     {
         None,

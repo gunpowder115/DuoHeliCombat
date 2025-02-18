@@ -46,7 +46,11 @@ public class PlatformController
                 result.Add(platform, distTo);
             }
         }
-        return result;
+
+        var sortedResult = result.OrderBy(platform => platform.Value)
+                      .ToDictionary(platform => platform.Key, platform => platform.Value);
+
+        return sortedResult;
     }
 
     public KeyValuePair<GameObject, float> FindNearestPlatform(in Vector3 origin)
