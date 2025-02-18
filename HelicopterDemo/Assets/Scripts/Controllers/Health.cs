@@ -76,7 +76,7 @@ public class Health : MonoBehaviour
     {
         IsAlive = true;
         health = baseHealth;
-        npcController = NpcController.singleton;
+        npcController = NpcController.Singleton;
         npc = GetComponent<Npc>();
         building = GetComponent<Building>();
     }

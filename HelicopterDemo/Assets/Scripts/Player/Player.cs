@@ -66,8 +66,8 @@ public class Player : MonoBehaviour
             rotor.StartRotor();
         lineDrawer = GetComponent<LineDrawer>();
 
-        npcController = NpcController.singleton;
-        platformController = PlatformController.singleton;
+        npcController = NpcController.Singleton;
+        platformController = PlatformController.Singleton;
         crosshairController = CrosshairController.singleton;
         crosshair = crosshairController.GetCrosshair(playerNumber);
 
@@ -234,8 +234,8 @@ public class Player : MonoBehaviour
     {
         KeyValuePair<GameObject, float> nearest;
         TargetTypes targetType;
-        var nearestNpc = npcController ? npcController.FindNearestEnemy(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
-        var nearestPlatform = platformController ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
+        var nearestNpc = npcController != null ? npcController.FindNearestEnemy(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
+        var nearestPlatform = platformController != null ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
 
         nearest = nearestNpc.Value < nearestPlatform.Value ? nearestNpc : nearestPlatform;
         targetType = nearestNpc.Value < nearestPlatform.Value ? TargetTypes.Enemy : TargetTypes.Platform;

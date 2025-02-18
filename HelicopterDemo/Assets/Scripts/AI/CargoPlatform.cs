@@ -25,7 +25,7 @@ public class CargoPlatform : MonoBehaviour
     private void Start()
     {
         building = GetComponent<Building>();
-        npcController = NpcController.singleton;
+        npcController = NpcController.Singleton;
         cargoState = CargoState.Lost;
     }
 

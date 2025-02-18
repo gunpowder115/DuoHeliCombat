@@ -22,7 +22,7 @@ public class Building : MonoBehaviour
 
     private void Start()
     {
-        npcController = NpcController.singleton;
+        npcController = NpcController.Singleton;
         npcController.Add(gameObject);
     }
 

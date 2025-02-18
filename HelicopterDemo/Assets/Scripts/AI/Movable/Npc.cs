@@ -88,7 +88,7 @@ public abstract class Npc : MonoBehaviour
         rotation = GetComponent<Rotation>();
         shooter = GetComponent<Shooter>();
         health = GetComponent<Health>();
-        npcController = NpcController.singleton;
+        npcController = NpcController.Singleton;
 
         trackers = new List<TargetTracker>();
         trackers.AddRange(gameObject.GetComponentsInChildren<TargetTracker>());

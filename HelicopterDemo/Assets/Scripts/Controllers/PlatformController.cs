@@ -2,14 +2,37 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PlatformController : MonoBehaviour
+public class PlatformController
 {
-    public static PlatformController singleton {get; private set;}
-    public List<GameObject> Platforms => platforms;
+    public static PlatformController Singleton 
+    {
+        get
+        {
+            if (singleton == null)
+                singleton = new PlatformController();
+            return singleton;
+        }
+    }
 
-    readonly string platformTag = "Platform";
+    private List<GameObject> platforms;
+    private static PlatformController singleton;
 
-    List<GameObject> platforms;
+    private PlatformController()
+    {
+        platforms = new List<GameObject>();
+    }
+
+    public void Add(GameObject platform)
+    {
+        if (!platforms.Contains(platform))
+            platforms.Add(platform);
+    }
+
+    public void Remove(GameObject platform)
+    {
+        if (platforms.Contains(platform))
+            platforms.Remove(platform);
+    }
 
     public Dictionary<GameObject, float> FindDistToPlatforms(in Vector3 origin)
     {
@@ -25,23 +48,12 @@ public class PlatformController : MonoBehaviour
         }
         return result;
     }
+
     public KeyValuePair<GameObject, float> FindNearestPlatform(in Vector3 origin)
     {
         Dictionary<GameObject, float> platforms = FindDistToPlatforms(in origin);
         bool arePlatforms = platforms.Count > 0;
         KeyValuePair<GameObject, float> nearestPlatform = arePlatforms ? platforms.ElementAt(0) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
         return nearestPlatform;
-    }
-
-    void Awake()
-    {
-        singleton = this;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        platforms = new List<GameObject>();
-        platforms.AddRange(GameObject.FindGameObjectsWithTag(platformTag));
     }
 }

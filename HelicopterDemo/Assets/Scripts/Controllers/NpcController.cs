@@ -2,11 +2,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class NpcController : MonoBehaviour
+public class NpcController
 {
     #region Properties
 
-    public static NpcController singleton { get; private set; }
+    public static NpcController Singleton 
+    { 
+        get
+        {
+            if (singleton == null)
+                singleton = new NpcController();
+            return singleton;
+        }
+    }
     public List<GameObject> NPCs => npcs;
     public int EnemyAirCount => GetNpcCount(enemyAirTag);
     public int FriendlyAirCount => GetNpcCount(friendlyAirTag);
@@ -30,7 +38,15 @@ public class NpcController : MonoBehaviour
     #endregion
 
     private List<GameObject> players;
-    List<GameObject> npcs;
+    private List<GameObject> npcs;
+    private static NpcController singleton;
+    
+    private NpcController()
+    {
+        npcs = new List<GameObject>();
+        players = new List<GameObject>();
+        players.AddRange(GameObject.FindGameObjectsWithTag(playerTag));
+    }
 
     public void Add(GameObject npc)
     {
@@ -53,14 +69,6 @@ public class NpcController : MonoBehaviour
         bool arePlayers = players.Count > 0;
         KeyValuePair<GameObject, float> nearestPlayer = arePlayers ? FindDistToPlayers(origin).ElementAt(0) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
         return nearestPlayer;
-    }
-
-    void Awake()
-    {
-        singleton = this;
-        npcs = new List<GameObject>();
-        players = new List<GameObject>();
-        players.AddRange(GameObject.FindGameObjectsWithTag(playerTag));
     }
 
     int GetNpcCount(string tag)

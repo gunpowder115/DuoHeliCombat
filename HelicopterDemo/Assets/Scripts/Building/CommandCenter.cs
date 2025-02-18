@@ -13,9 +13,11 @@ public class CommandCenter : MonoBehaviour
     private List<Building> buildings;
     private GameObject redAttribute, blueAttribute, neutralAttribute;
     private GlobalSide3 commandCenterSide;
+    private PlatformController platformController;
 
     private void Awake()
     {
+        platformController = PlatformController.Singleton;
         platforms = new List<Platform>();
         platforms.AddRange(GetComponentsInChildren<Platform>());
         PlaceAllPlatforms();
@@ -73,6 +75,7 @@ public class CommandCenter : MonoBehaviour
             platforms[i].transform.Translate(platfromTranslation, Space.World);
 
             platforms[i].SetCommandCenter(this);
+            platformController.Add(platforms[i].gameObject);
         }
     }
 
@@ -86,6 +89,7 @@ public class CommandCenter : MonoBehaviour
                 platform.transform.Translate(0f, 1f, 0f);
                 buildings.Add(platform.Building);
                 if (commandCenterSide == GlobalSide3.Neutral) commandCenterSide = platform.GetPlatformSide();
+                platformController.Remove(platform.gameObject);
             }
         }
     }
