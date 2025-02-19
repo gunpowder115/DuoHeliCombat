@@ -37,7 +37,7 @@ public class CommandCenter : MonoBehaviour
             commandCenterSide = GlobalSide3.Neutral;
         }
 
-        switch(commandCenterSide)
+        switch (commandCenterSide)
         {
             case GlobalSide3.Neutral:
                 if (redAttribute) Destroy(redAttribute);
@@ -71,8 +71,8 @@ public class CommandCenter : MonoBehaviour
         {
             Vector3 toPlatform = (platforms[i].transform.position - transform.position).normalized * distToPlatform;
             Vector3 platfromTranslation = (transform.position + toPlatform) - platforms[i].transform.position;
-            platfromTranslation.y = -1f;
             platforms[i].transform.Translate(platfromTranslation, Space.World);
+            platforms[i].HidePlatform();
 
             platforms[i].SetCommandCenter(this);
             platformController.Add(platforms[i].gameObject);
@@ -86,7 +86,7 @@ public class CommandCenter : MonoBehaviour
         {
             if (platform.Building)
             {
-                platform.transform.Translate(0f, 1f, 0f);
+                platform.ShowPlatform();
                 buildings.Add(platform.Building);
                 if (commandCenterSide == GlobalSide3.Neutral) commandCenterSide = platform.GetPlatformSide();
                 platformController.Remove(platform.gameObject);

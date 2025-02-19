@@ -9,6 +9,7 @@ public class Building : MonoBehaviour
 
     private Platform platform;
     private NpcController npcController;
+    private PlatformController platformController;
 
     public CommandCenter CommandCenter => platform.CommandCenter;
     public GlobalSide2 BuildingSide => buildingSide;
@@ -23,6 +24,7 @@ public class Building : MonoBehaviour
     private void Start()
     {
         npcController = NpcController.Singleton;
+        platformController = PlatformController.Singleton;
         npcController.Add(gameObject);
     }
 
@@ -31,12 +33,11 @@ public class Building : MonoBehaviour
     public void RequestDestroy()
     {
         npcController.Remove(gameObject);
+        platformController.Add(platform.gameObject);
 
-        if (deadPrefab)
-            Instantiate(deadPrefab, transform.position, transform.rotation);
-
-        if (explosion)
-            Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+        if (platform) platform.HidePlatform();
+        if (deadPrefab) Instantiate(deadPrefab, transform.position, transform.rotation);
+        if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
 
         Remove();
         Destroy(gameObject);

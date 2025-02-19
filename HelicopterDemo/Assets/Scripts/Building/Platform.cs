@@ -5,26 +5,37 @@ public class Platform : MonoBehaviour
 {
     private bool isActive;
 
-    public bool isFree => !Building.gameObject;
+    public bool IsFree => !Building.gameObject;
     public CommandCenter CommandCenter { get; private set; }
     public Building Building { get; private set; }
 
-    private void Update()
+    private void Awake()
     {
-        if (Building && !isActive)
+        isActive = true;
+    }
+
+    public void SetCommandCenter(CommandCenter baseCenter) => CommandCenter = baseCenter;
+
+    public void SetBuilding(Building building) => Building = building;
+
+    public void ShowPlatform()
+    {
+        if (!isActive)
         {
-            transform.Translate(0f, 0f, 0f);
+            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
             isActive = true;
         }
-        else if (!Building && isActive)
+    }
+
+    public void HidePlatform()
+    {
+        if (isActive)
         {
-            transform.Translate(0f, -1f, 0f);
+            transform.position = new Vector3(transform.position.x, -1f, transform.position.z);
             isActive = false;
         }
     }
 
-    public void SetCommandCenter(CommandCenter baseCenter) => CommandCenter = baseCenter;
-    public void SetBuilding(Building building) => Building = building;
     public GlobalSide3 GetPlatformSide()
     {
         if (!Building.gameObject)
@@ -32,6 +43,6 @@ public class Platform : MonoBehaviour
         else if (Building.BuildingSide == GlobalSide2.Red)
             return GlobalSide3.Red;
         else
-            return GlobalSide3.Blue;        
+            return GlobalSide3.Blue;
     }
 }

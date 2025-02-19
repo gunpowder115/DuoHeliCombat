@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     private float currDelayAfterDestroy;
     Vector3 currSpeed, targetSpeed;
     Vector3 targetDirection;
-    GameObject possibleTarget, selectedTarget, possiblePlatform, selectedPlatform;
+    GameObject possibleTarget, selectedTarget, possiblePlatform, selectedPlatform, lastPlatform;
     Translation translation;
     Rotation rotation;
     CrosshairController crosshairController;
@@ -251,6 +251,13 @@ public class Player : MonoBehaviour
                 lineDrawer.SetPosition(transform.position, aimOrigin ? aimOrigin.gameObject.transform.position : nearest.Key.transform.position);
                 possibleTarget = targetType == TargetTypes.Enemy ? nearest.Key : null;
                 possiblePlatform = targetType == TargetTypes.Platform ? nearest.Key : null;
+
+                if (possiblePlatform)
+                {
+                    possiblePlatform.GetComponent<Platform>().ShowPlatform();
+                    if (lastPlatform && possiblePlatform != lastPlatform) lastPlatform.GetComponent<Platform>().HidePlatform();
+                    lastPlatform = possiblePlatform;
+                }
             }
             else
             {

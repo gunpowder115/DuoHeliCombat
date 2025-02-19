@@ -18,7 +18,7 @@ public class EmptyMissileTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 toSelTarget = SelectedTarget.transform.position - transform.position;
+        Vector3 toSelTarget = SelectedTarget ? (SelectedTarget.transform.position - transform.position) : new Vector3();
 
         if (currStandTime <= 0f)
         {
