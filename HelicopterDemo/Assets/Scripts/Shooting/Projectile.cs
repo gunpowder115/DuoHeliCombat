@@ -63,7 +63,10 @@ public class Projectile : MonoBehaviour
     {
         Health health = other.GetComponent<Health>();
         if (!FriendlyFire(other.gameObject.tag) && health)
-            health.Hurt(damage, other.GetComponent<Npc>());
+        {
+            bool damageFromPlayer = gameObject.tag == "Player";
+            health.Hurt(damage, damageFromPlayer, other.GetComponent<Npc>());
+        }
 
         if (explosion) Instantiate(explosion, gameObject.transform.position + transform.forward, gameObject.transform.rotation);
         Destroy(gameObject);
@@ -72,11 +75,10 @@ public class Projectile : MonoBehaviour
     private bool FriendlyFire(string anotherTag) //todo remove tags
     {
         string thisTag = gameObject.tag;
-        bool isPlayer = thisTag == "Player" || anotherTag == "Player";
-        bool isFriendly = thisTag.Contains("Friendly") || anotherTag.Contains("Friendly");
-        bool isEnemy = thisTag.Contains("Enemy") || anotherTag.Contains("Enemy");
+        bool bothIsFriendly = (thisTag.Contains("Friendly") || thisTag.Contains("Player")) && (anotherTag.Contains("Friendly") || anotherTag.Contains("Player"));
+        bool bothIsEnemy = thisTag.Contains("Enemy") && anotherTag.Contains("Enemy");
 
-        return !((isFriendly && isEnemy) || (isPlayer && isEnemy));
+        return bothIsFriendly || bothIsEnemy;
     }
 
     private enum ProjectileType

@@ -19,17 +19,21 @@ public class Player : MonoBehaviour
     [SerializeField] float verticalSpeed = 30f;
     [SerializeField] float lateralMovingCoef = 0.1f;
     [SerializeField] float acceleration = 1f;
+    [SerializeField] float delayAfterDestroy = 1f;
     [SerializeField] Health health;
     [SerializeField] GameObject airDustPrefab;
+    [SerializeField] GameObject deadPrefab;
+    [SerializeField] GameObject explosion;
     [SerializeField] ControllerType controllerType = ControllerType.Keyboard;
     [SerializeField] Players playerNumber = Players.Player1;
 
     bool rotateToDirection;
     float yawAngle;
     float currVerticalSpeed, targetVerticalSpeed;
+    private float currDelayAfterDestroy;
     Vector3 currSpeed, targetSpeed;
     Vector3 targetDirection;
-    GameObject possibleTarget, selectedTarget, possiblePlatform, selectedPlatform;
+    GameObject possibleTarget, selectedTarget, possiblePlatform, selectedPlatform, lastPlatform;
     Translation translation;
     Rotation rotation;
     CrosshairController crosshairController;
@@ -62,8 +66,8 @@ public class Player : MonoBehaviour
             rotor.StartRotor();
         lineDrawer = GetComponent<LineDrawer>();
 
-        npcController = NpcController.singleton;
-        platformController = PlatformController.singleton;
+        npcController = NpcController.Singleton;
+        platformController = PlatformController.Singleton;
         crosshairController = CrosshairController.singleton;
         crosshair = crosshairController.GetCrosshair(playerNumber);
 
@@ -100,9 +104,8 @@ public class Player : MonoBehaviour
         float inputX = inputDirection.x;
         float inputZ = inputDirection.y;
 
-        if (!health.IsAlive)
+        if (!health.IsAlive && Respawn())
         {
-            Respawn();
             health.SetAlive(true);
         }
         else
@@ -142,6 +145,8 @@ public class Player : MonoBehaviour
 
         airDuster.normRotorSpeed = 1f;
         airDuster.normAltitiude = transform.position.y / 10f;
+
+        //if (playerNumber == Players.Player1) Debug.Log(health.CurrHp);
     }
 
     void Translate(float inputX, float inputZ)
@@ -227,25 +232,32 @@ public class Player : MonoBehaviour
 
     void DrawLineToTarget()
     {
-        KeyValuePair<float, GameObject> nearest;
+        KeyValuePair<GameObject, float> nearest;
         TargetTypes targetType;
-        var nearestNpc = npcController ? npcController.FindNearestEnemy(transform.position) : new KeyValuePair<float, GameObject>(Mathf.Infinity, null);
-        var nearestPlatform = platformController ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<float, GameObject>(Mathf.Infinity, null);
+        var nearestNpc = npcController != null ? npcController.FindNearestEnemy(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
+        var nearestPlatform = platformController != null ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
 
-        nearest = nearestNpc.Key < nearestPlatform.Key ? nearestNpc : nearestPlatform;
-        targetType = nearestNpc.Key < nearestPlatform.Key ? TargetTypes.Enemy : TargetTypes.Platform;
+        nearest = nearestNpc.Value < nearestPlatform.Value ? nearestNpc : nearestPlatform;
+        targetType = nearestNpc.Value < nearestPlatform.Value ? TargetTypes.Enemy : TargetTypes.Platform;
 
-        if (nearest.Value)
+        if (nearest.Key)
         {
-            var aimOrigin = nearest.Value.GetComponentInChildren<AimOrigin>();
-            if (nearest.Key < minDistToAim)
+            var aimOrigin = nearest.Key.GetComponentInChildren<AimOrigin>();
+            if (nearest.Value < minDistToAim)
             {
                 lineDrawer.Enabled = true;
                 Color lineColor = targetType == TargetTypes.Enemy ? Color.red : Color.blue;
                 lineDrawer.SetColor(lineColor);
-                lineDrawer.SetPosition(transform.position, aimOrigin ? aimOrigin.gameObject.transform.position : nearest.Value.transform.position);
-                possibleTarget = targetType == TargetTypes.Enemy ? nearest.Value : null;
-                possiblePlatform = targetType == TargetTypes.Platform ? nearest.Value : null;
+                lineDrawer.SetPosition(transform.position, aimOrigin ? aimOrigin.gameObject.transform.position : nearest.Key.transform.position);
+                possibleTarget = targetType == TargetTypes.Enemy ? nearest.Key : null;
+                possiblePlatform = targetType == TargetTypes.Platform ? nearest.Key : null;
+
+                if (possiblePlatform)
+                {
+                    possiblePlatform.GetComponent<Platform>().ShowPlatform();
+                    if (lastPlatform && possiblePlatform != lastPlatform) lastPlatform.GetComponent<Platform>().HidePlatform();
+                    lastPlatform = possiblePlatform;
+                }
             }
             else
             {
@@ -306,14 +318,33 @@ public class Player : MonoBehaviour
 
     void CancelAiming() => ChangeAimState();
 
-    void Respawn()
+    private bool Respawn()
     {
-        transform.position = new Vector3(0, 10, 0);
-        transform.rotation = Quaternion.Euler(0, 0, 0);
-    }
+        inputDevice.ForceChangePlayerState(PlayerStates.Normal);
+        if (Aiming) ChangeAimState();
 
-    public enum Axis_Proto : int
-    { X, Y, Z }
+        if (currDelayAfterDestroy > delayAfterDestroy)
+        {
+            health.gameObject.SetActive(true);
+            transform.position = new Vector3(0, 10, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            currDelayAfterDestroy = 0f;
+            return true;
+        }
+        else
+        {
+            if (health.gameObject.activeSelf)
+            {
+                health.gameObject.SetActive(false);
+                if (deadPrefab) Instantiate(deadPrefab, transform.position, health.gameObject.transform.rotation);
+                if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+            }
+
+            currDelayAfterDestroy += Time.deltaTime;
+            return false;
+        }
+    }
 
     public enum TargetTypes
     {

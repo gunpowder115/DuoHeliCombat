@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    int unguidedMissileIndex, guidedMissileIndex;
-    List<BarrelLauncher> barrels;
-    List<MissileLauncher> unguidedMissiles, guidedMissiles;
+    [SerializeField] private float timeToNextLaunch = 0.5f;
+
+    private int unguidedMissileIndex, guidedMissileIndex;
+    private float currTimeFromLaunch;
+    private List<BarrelLauncher> barrels;
+    private List<MissileLauncher> unguidedMissiles, guidedMissiles;
 
     public void BarrelFire(GameObject target)
     {
@@ -15,21 +18,17 @@ public class Shooter : MonoBehaviour
                 if (barrel) barrel.Fire(target);
         }
     }
+
     public void UnguidedMissileLaunch(GameObject target)
     {
         if (unguidedMissiles.Count > 0 && unguidedMissiles[unguidedMissileIndex].IsEnable)
-        {
-            unguidedMissiles[unguidedMissileIndex++].Launch(target);
-            if (unguidedMissileIndex >= unguidedMissiles.Count) unguidedMissileIndex = 0;
-        }
+            unguidedMissiles[unguidedMissileIndex].Launch(target);
     }
+
     public void GuidedMissileLaunch(GameObject target)
     {
         if (guidedMissiles.Count > 0 && guidedMissiles[guidedMissileIndex].IsEnable)
-        {
-            guidedMissiles[guidedMissileIndex++].Launch(target);
-            if (guidedMissileIndex >= guidedMissiles.Count) guidedMissileIndex = 0;
-        }
+            guidedMissiles[guidedMissileIndex].Launch(target);
     }
 
     void Start()
@@ -52,6 +51,18 @@ public class Shooter : MonoBehaviour
                 else
                     unguidedMissiles.Add(missile);
             }
+        }
+    }
+
+    private void Update()
+    {
+        currTimeFromLaunch += Time.deltaTime;
+        if (currTimeFromLaunch > timeToNextLaunch)
+        {
+            currTimeFromLaunch = 0f;
+
+            if (++unguidedMissileIndex >= unguidedMissiles.Count) unguidedMissileIndex = 0;
+            if (++guidedMissileIndex >= guidedMissiles.Count) guidedMissileIndex = 0;
         }
     }
 }

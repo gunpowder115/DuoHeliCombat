@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Types;
 
 public abstract class Npc : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public abstract class Npc : MonoBehaviour
 
     protected NpcState npcState;
     protected NpcExplorer npcExplorer;
-    protected NpcPatroller npcPatroller;
     protected NpcMoveToTgt npcMoveToTgt;
     protected NpcAttack npcAttack;
     protected Translation translation;
@@ -35,14 +35,10 @@ public abstract class Npc : MonoBehaviour
 
     #region For change state
 
-    protected bool BaseHasProtection => BaseCenter.HasPrimaryProtection || (BaseCenter.HasSecondaryProtection && BaseCenter.Protection != thisItem); //4
-    protected bool BaseUnderAttack => BaseCenter.IsUnderAttack; //6
     protected bool EnemyForAttack => HorDistToTgt <= MinAttackDist; //7
     protected bool EnemyForPursuit => npcState == NpcState.Attack ?
         HorDistToTgt > MaxAttackDist : HorDistToTgt <= MinPursuitDist; //8
     protected bool EnemyLost => selectedTarget == null; //9
-    protected bool IsExplorer { get; set; } //10
-    protected bool IsPatroller { get; set; } //11
 
     #endregion
 
@@ -80,23 +76,19 @@ public abstract class Npc : MonoBehaviour
     public GameObject SelectedTarget => selectedTarget;
     public Translation Translation => translation;
     public Rotation Rotation => rotation;
-    public Building Building => thisItem.Building;
-    public BaseCenter BaseCenter => thisItem.BaseCenter;
-    public Platform[] BasePlatforms => thisItem.BaseCenter.Platforms;
 
     #endregion
 
     protected void Init()
     {
         npcExplorer = GetComponent<NpcExplorer>();
-        npcPatroller = GetComponent<NpcPatroller>();
         npcMoveToTgt = GetComponent<NpcMoveToTgt>();
         npcAttack = GetComponent<NpcAttack>();
         translation = GetComponent<Translation>();
         rotation = GetComponent<Rotation>();
         shooter = GetComponent<Shooter>();
         health = GetComponent<Health>();
-        npcController = NpcController.singleton;
+        npcController = NpcController.Singleton;
 
         trackers = new List<TargetTracker>();
         trackers.AddRange(gameObject.GetComponentsInChildren<TargetTracker>());
@@ -111,15 +103,4 @@ public abstract class Npc : MonoBehaviour
     public void _SetSpeed(float speed) => this.speed = speed;
 
     public abstract void RequestDestroy();
-
-    public enum NpcState
-    {
-        Idle,
-        Delivery,
-        Takeoff,
-        Exploring,
-        Patrolling,
-        MoveToTarget,
-        Attack,
-    }
 }

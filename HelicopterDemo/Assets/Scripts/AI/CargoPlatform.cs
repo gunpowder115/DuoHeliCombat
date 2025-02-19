@@ -6,6 +6,7 @@ public class CargoPlatform : MonoBehaviour
 {
     [SerializeField] private GameObject cargoHelicopterPrefab;
     [SerializeField] private GameObject cargoPrefab;
+    [SerializeField] private Caravan caravan;
     [SerializeField] private float dropHeight = 25f;
     [SerializeField] private float parachuteHeight = 10f;
     [SerializeField] private CargoType cargoType = CargoType.Air;
@@ -19,11 +20,12 @@ public class CargoPlatform : MonoBehaviour
 
     public float DropHeight => dropHeight;
     public float ParachuteHeight => parachuteHeight;
+    public Caravan Caravan => caravan;
 
     private void Start()
     {
         building = GetComponent<Building>();
-        npcController = NpcController.singleton;
+        npcController = NpcController.Singleton;
         cargoState = CargoState.Lost;
     }
 
@@ -63,7 +65,7 @@ public class CargoPlatform : MonoBehaviour
                         npcController.Add(cargoObject);
                     CargoItem cargoItem = cargoObject.GetComponent<CargoItem>();
                     if (cargoItem)
-                        cargoItem.Init(building);
+                        cargoItem.Init(this);
                     cargoState = CargoState.Works;
                 }
                 break;
@@ -87,7 +89,7 @@ public class CargoPlatform : MonoBehaviour
                     cargoHelicopter.transform.rotation, cargoHelicopter.transform);
                 CargoItem cargoItem_ = cargoObject.GetComponent<CargoItem>();
                 if (cargoItem_)
-                    cargoItem_.Init(building);
+                    cargoItem_.Init(this);
                 cargoState = CargoState.Expecting;
                 break;
             case CargoState.Expecting:
@@ -99,7 +101,7 @@ public class CargoPlatform : MonoBehaviour
                         npcController.Add(cargoObject);
                     CargoItem cargoItem = cargoObject.GetComponent<CargoItem>();
                     if (cargoItem)
-                        cargoItem.Init(building);
+                        cargoItem.Init(this);
                     cargoState = CargoState.Works;
                 }
                 break;

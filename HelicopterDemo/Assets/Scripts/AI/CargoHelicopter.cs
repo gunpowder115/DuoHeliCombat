@@ -65,8 +65,8 @@ public class CargoHelicopter : MonoBehaviour
     {
         dropPoint = new Vector3(cargoPlatformPos.x, cargoPlatformPos.y + height, cargoPlatformPos.z);
         deliveryPoint = dropPoint;
-        currDist = distance;
-        transform.Translate(0, height, -distance);
+        currDist = Random.Range(0.8f * distance, 1.2f * distance);
+        transform.Translate(0, height, -currDist);
         escapePoint = transform.position + transform.forward * 2.5f * distance;
     }
 
@@ -74,8 +74,8 @@ public class CargoHelicopter : MonoBehaviour
     {
         dropPoint = new Vector3(cargoPlatformPos.x, cargoPlatformPos.y + height + cableLength, cargoPlatformPos.z);
         deliveryPoint = new Vector3(cargoPlatformPos.x, cargoPlatformPos.y + cableLength, cargoPlatformPos.z);
-        currDist = distance;
-        transform.Translate(0, height + cableLength, -distance);
+        currDist = Random.Range(0.8f * distance, 1.2f * distance);
+        transform.Translate(0, height + cableLength, -currDist);
         escapePoint = transform.position + transform.forward * 2.5f * distance;
     }
 }

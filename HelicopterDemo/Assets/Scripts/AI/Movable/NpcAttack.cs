@@ -85,7 +85,11 @@ public class NpcAttack : MonoBehaviour
     public void Shoot()
     {
         shooter.BarrelFire(Target);
+        shooter.UnguidedMissileLaunch(Target);
+        shooter.GuidedMissileLaunch(Target);
     }
+
+    public void GuidedMissileLaunch() => shooter.GuidedMissileLaunch(Target);
 
     private void TranslateAir()
     {

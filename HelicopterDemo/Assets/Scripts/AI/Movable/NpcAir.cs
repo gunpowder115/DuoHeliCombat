@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Types;
 
 [RequireComponent(typeof(NpcExplorer))]
-[RequireComponent(typeof(NpcPatroller))]
 [RequireComponent(typeof(NpcMoveToTgt))]
 [RequireComponent(typeof(NpcAttack))]
 [RequireComponent(typeof(Shooter))]
@@ -23,6 +23,7 @@ public class NpcAir : Npc
     private List<SimpleRotor> rotors;
     private LineRenderer lineToTarget;
     private AirDuster airDuster;
+    private Caravan caravan;
 
     #region Properties
 
@@ -63,6 +64,8 @@ public class NpcAir : Npc
 
         if (airDustPrefab)
             airDuster = Instantiate(airDustPrefab, transform).GetComponent<AirDuster>();
+
+        thisItem.InitCargoItem += InitHelicopter;
     }
 
     void Update()
@@ -71,7 +74,6 @@ public class NpcAir : Npc
         SetTrackersRotation();
         ChangeState();
         Move();
-        Debug.Log(npcState);
     }
 
     public void RemoveTarget() => selectedTarget = null;
@@ -97,9 +99,6 @@ public class NpcAir : Npc
             case NpcState.Takeoff:
                 npcTakeoff.Move();
                 break;
-            case NpcState.Patrolling:
-                npcPatroller.Move();
-                break;
             case NpcState.Exploring:
                 npcExplorer.Move();
                 break;
@@ -110,19 +109,26 @@ public class NpcAir : Npc
                 npcAttack.Move();
                 npcAttack.Shoot();
                 break;
+
+            //for caravan
+            case NpcState.CatchUpCaravan:
+                transform.position = caravan.GetEscortItemTargetPosition(gameObject);
+                transform.rotation = caravan.transform.rotation;
+                npcState = NpcState.FollowCaravan;
+                break;
+            case NpcState.FollowCaravan:
+                translation.SetHorizontalTranslation(caravan.Speed);
+                break;
+            case NpcState.DefendCaravan:
+                npcAttack.Move();
+                npcAttack.Shoot();
+                break;
         }
     }
 
     
     private void ChangeState()
     {
-        if (!BaseHasProtection && IsExplorer)
-        {
-            npcState = NpcState.Patrolling;
-            IsExplorer = false;
-            IsPatroller = true;
-        }
-
         switch (npcState)
         {
             case NpcState.Delivery:
@@ -143,8 +149,6 @@ public class NpcAir : Npc
                         airDuster.normAltitiude = 0f;
                     }
                     npcState = NpcState.Takeoff;
-                    IsExplorer = false;
-                    IsPatroller = true;
                 }
                 break;
             case NpcState.Takeoff:
@@ -152,28 +156,7 @@ public class NpcAir : Npc
                 if (EndOfTakeoff)
                 {
                     if (airDuster) airDuster.normAltitiude = 1f;
-                    npcState = NpcState.Patrolling;
-                    IsExplorer = false;
-                    IsPatroller = true;
-                }
-                break;
-            case NpcState.Patrolling:
-                if (BaseHasProtection)
-                {
-                    npcState = NpcState.Exploring;
-                    IsExplorer = true;
-                    IsPatroller = false;
-                }
-                else if (NpcUnderAttack)
-                {
-                    npcState = NpcState.MoveToTarget;
-                    selectedTarget = health.AttackSource.gameObject;
-                    NpcUnderAttack = false;
-                }
-                else if (BaseUnderAttack)
-                {
-                    npcState = NpcState.MoveToTarget;
-                    //todo
+                    npcState = caravan ? NpcState.CatchUpCaravan : NpcState.Exploring;
                 }
                 break;
             case NpcState.Exploring:
@@ -189,29 +172,36 @@ public class NpcAir : Npc
             case NpcState.MoveToTarget:
                 if (EnemyForAttack)
                     npcState = NpcState.Attack;
-                else if (EnemyLost && IsExplorer)
+                else if (EnemyLost)
                 {
                     npcState = NpcState.Exploring;
-                }
-                else if (EnemyLost && IsPatroller)
-                {
-                    npcState = NpcState.Patrolling;
                 }
                 break;
             case NpcState.Attack:
                 if (EnemyForPursuit)
                     npcState = NpcState.MoveToTarget;
-                else if (EnemyLost && IsExplorer)
+                else if (EnemyLost)
                     npcState = NpcState.Exploring;
-                else if (EnemyLost && IsPatroller)
-                    npcState = NpcState.Patrolling;
+                break;
+
+            //for caravan
+            case NpcState.CatchUpCaravan:
+
+                break;
+            case NpcState.FollowCaravan:
+                if (EnemyForAttack)
+                    npcState = NpcState.DefendCaravan;
+                break;
+            case NpcState.DefendCaravan:
+                if (EnemyLost)
+                    npcState = NpcState.CatchUpCaravan;
                 break;
         }
     }
 
     private void SelectTarget()
     {
-        KeyValuePair<float, GameObject> nearestNpc, nearestPlayer;
+        KeyValuePair<GameObject, float> nearestNpc, nearestPlayer;
         if (IsFriendly)
         {
             nearestNpc = npcController.FindNearestEnemy(transform.position);
@@ -220,19 +210,19 @@ public class NpcAir : Npc
         {
             nearestNpc = npcController.FindNearestFriendly(transform.position);
             nearestPlayer = npcController.FindNearestPlayer(transform.position);
-            nearestNpc = nearestPlayer.Key < nearestNpc.Key ? nearestPlayer : nearestNpc;
+            nearestNpc = nearestPlayer.Value < nearestNpc.Value ? nearestPlayer : nearestNpc;
         }
 
         switch (npcState)
         {
             case NpcState.Attack:
-                selectedTarget = nearestNpc.Value;
+                selectedTarget = nearestNpc.Key;
                 break;
             case NpcState.MoveToTarget:
-                selectedTarget = nearestNpc.Key > MaxPursuitDist ? null : nearestNpc.Value;
+                selectedTarget = nearestNpc.Value > MaxPursuitDist ? null : nearestNpc.Key;
                 break;
             default:
-                selectedTarget = nearestNpc.Key <= MinPursuitDist ? nearestNpc.Value : null;
+                selectedTarget = nearestNpc.Value <= MinPursuitDist ? nearestNpc.Key : null;
                 break;
 
         }
@@ -248,4 +238,10 @@ public class NpcAir : Npc
     }
 
     private void EraseLine() => LineToTarget.enabled = false;
+
+    private void InitHelicopter(Caravan caravan)
+    {
+        if (caravan) caravan.AddEscortItem(gameObject);
+        this.caravan = caravan;
+    }
 }

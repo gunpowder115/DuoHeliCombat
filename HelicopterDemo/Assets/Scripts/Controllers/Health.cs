@@ -4,23 +4,45 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private float baseHealth = 100f;
     [SerializeField] private GameObject smokePrefab;
+    [SerializeField] private GameObject healthBarPrefab;
 
     private float health;
     private NpcController npcController;
     private Npc npc;
+    private Building building;
     private GameObject smoke;
+    private HealthBar healthBar;
+    private GameObject damageSourcePlayer;
 
     public bool IsAlive { get; private set; }
     public bool IsHurt { get; set; }
     public bool IsUnderAttack { get; set; }
+    public float CurrHp => health;
     public Npc AttackSource { get; private set; }
 
-    public void Hurt(float damage, Npc attackSource = null)
+    public void Hurt(float damage, bool damageFromPlayer = false, Npc attackSource = null)
     {
         health -= damage;
         IsHurt = true;
         IsUnderAttack = true;
         AttackSource = attackSource;
+
+        if (damageFromPlayer)
+        {
+            if (healthBarPrefab && !healthBar)
+            {
+                healthBar = Instantiate(healthBarPrefab, transform.position + Vector3.up * 3f, transform.rotation, transform).GetComponent<HealthBar>();
+                healthBar.SetFullHealth(baseHealth);
+
+                damageSourcePlayer = npcController.FindNearestPlayer(transform.position).Key;
+            }
+
+            if (healthBar)
+            {
+                healthBar.SetHealth(health);
+                healthBar.SetDamageSource(damageSourcePlayer);
+            }
+        }
 
         if (health <= 50f)
         {
@@ -40,6 +62,7 @@ public class Health : MonoBehaviour
         {
             IsAlive = false;
             if (npc) npc.RequestDestroy();
+            if (building) building.RequestDestroy();
         }
     }
 
@@ -53,7 +76,8 @@ public class Health : MonoBehaviour
     {
         IsAlive = true;
         health = baseHealth;
-        npcController = NpcController.singleton;
+        npcController = NpcController.Singleton;
         npc = GetComponent<Npc>();
+        building = GetComponent<Building>();
     }
 }

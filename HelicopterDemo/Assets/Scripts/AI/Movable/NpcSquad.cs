@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Types;
 
 [RequireComponent(typeof(NpcExplorer))]
-[RequireComponent(typeof(NpcPatroller))]
 [RequireComponent(typeof(NpcMoveToTgt))]
 [RequireComponent(typeof(NpcAttack))]
 [RequireComponent(typeof(CargoItem))]
@@ -73,8 +73,6 @@ public class NpcSquad : Npc
             ChangeState();
             Move();
         }
-
-        Debug.Log(npcState);
     }
 
     public void MoveSquad(Vector3 targetDir, float speed)
@@ -93,6 +91,10 @@ public class NpcSquad : Npc
             {
                 Npcs[i].Translate(Npcs[i].NpcCurrDir * speed);
                 Npcs[i].Rotation.RotateByYaw(targetDir);
+
+                //check this for user corrected speed!
+                //Npcs[i].Translate(Npcs[i].NpcCurrDir * newNpcSpeed[i].magnitude);
+                //Npcs[i].Rotation.RotateByYaw(newNpcSpeed[i]);
             }
         }
         else
@@ -114,7 +116,7 @@ public class NpcSquad : Npc
 
     private void SelectTarget()
     {
-        KeyValuePair<float, GameObject> nearestNpc, nearestPlayer;
+        KeyValuePair<GameObject, float> nearestNpc, nearestPlayer;
         if (Npcs[0].IsFriendly)
         {
             nearestNpc = npcController.FindNearestEnemy(squadPos);
@@ -123,22 +125,22 @@ public class NpcSquad : Npc
         {
             nearestNpc = npcController.FindNearestFriendly(squadPos);
             nearestPlayer = npcController.FindNearestPlayer(squadPos);
-            nearestNpc = nearestPlayer.Key < nearestNpc.Key ? nearestPlayer : nearestNpc;
+            nearestNpc = nearestPlayer.Value < nearestNpc.Value ? nearestPlayer : nearestNpc;
         }
 
         switch (npcState)
         {
             case NpcState.Attack:
-                selectedTarget = nearestNpc.Value;
+                selectedTarget = nearestNpc.Key;
                 break;
             case NpcState.MoveToTarget:
-                selectedTarget = nearestNpc.Key > MaxPursuitDist ? null : nearestNpc.Value;
+                selectedTarget = nearestNpc.Value > MaxPursuitDist ? null : nearestNpc.Key;
                 break;
             case NpcState.Delivery:
                 selectedTarget = null;
                 break;
             default:
-                selectedTarget = nearestNpc.Key <= MinPursuitDist ? nearestNpc.Value : null;
+                selectedTarget = nearestNpc.Value <= MinPursuitDist ? nearestNpc.Key : null;
                 break;
 
         }
@@ -149,21 +151,12 @@ public class NpcSquad : Npc
 
     private void ChangeState()
     {
-        if (!BaseHasProtection && IsExplorer)
-        {
-            npcState = NpcState.Patrolling;
-            IsExplorer = false;
-            IsPatroller = true;
-        }
-
         switch (npcState)
         {
             case NpcState.Delivery:
                 if (Npcs[0].gameObject.transform.position.y <= transform.position.y)
                 {
                     npcState = NpcState.Exploring;
-                    IsExplorer = false;
-                    IsPatroller = true;
                     for (int i = 0; i < Npcs.Count; i++)
                     {
                         Npcs[i].Drop(0f);
@@ -171,24 +164,6 @@ public class NpcSquad : Npc
                         Destroy(parachutes[i]);
                     }
                     parachutes.Clear();
-                }
-                break;
-            case NpcState.Patrolling:
-                if (BaseHasProtection)
-                {
-                    npcState = NpcState.Exploring;
-                    IsExplorer = true;
-                    IsPatroller = false;
-                }
-                else if (MemberUnderAttack != null)
-                {
-                    npcState = NpcState.MoveToTarget;
-                    selectedTarget = attackSource.gameObject;
-                    MemberUnderAttack = null;
-                }
-                else if (BaseUnderAttack)
-                {
-                    //todo
                 }
                 break;
             case NpcState.Exploring:
@@ -204,23 +179,17 @@ public class NpcSquad : Npc
             case NpcState.MoveToTarget:
                 if (EnemyForAttack)
                     npcState = NpcState.Attack;
-                else if (EnemyLost && IsExplorer)
+                else if (EnemyLost)
                     npcState = NpcState.Exploring;
-                else if (EnemyLost && IsPatroller)
-                    npcState = NpcState.Patrolling;
                 break;
             case NpcState.Attack:
                 if (EnemyForPursuit)
                 {
                     npcState = NpcState.MoveToTarget;
                 }
-                else if (EnemyLost && IsExplorer)
+                else if (EnemyLost)
                 {
                     npcState = NpcState.Exploring;
-                }
-                else if (EnemyLost && IsPatroller)
-                {
-                    npcState = NpcState.Patrolling;
                 }
                 break;
         }
@@ -233,9 +202,6 @@ public class NpcSquad : Npc
             case NpcState.Delivery:
                 foreach (var npc in Npcs)
                     npc.Drop(-thisItem.DeliverySpeed);
-                break;
-            case NpcState.Patrolling:
-                npcPatroller.Move();
                 break;
             case NpcState.Exploring:
                 npcExplorer.Move();
@@ -250,7 +216,7 @@ public class NpcSquad : Npc
         }
     }
 
-    private void InitMembers()
+    private void InitMembers(Caravan caravan)
     {
         Members = new List<GameObject>();
         Npcs = new List<NpcGround>();

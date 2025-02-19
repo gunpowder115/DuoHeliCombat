@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Types;
 
 public class SimpleRotor : MonoBehaviour
 {
@@ -38,9 +39,4 @@ public class SimpleRotor : MonoBehaviour
     public void StartRotor() => tgtRotorSpeed = rotSpeed;
     public void FastStartRotor() => tgtRotorSpeed = currRotorSpeed = rotSpeed;
     public void StopRotor() => tgtRotorSpeed = 0f;
-
-    public enum Axes
-    {
-        X, Y, Z
-    }
 }

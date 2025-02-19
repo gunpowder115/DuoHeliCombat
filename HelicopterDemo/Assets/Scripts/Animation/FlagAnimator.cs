@@ -20,8 +20,8 @@ public class FlagAnimator : MonoBehaviour
             else
             {
                 flagParts[i] = Instantiate(flagPartsPrefabs[i], flagParts[i - 1].transform);
-                Vector3 pos = flagParts[i].transform.position;
-                flagParts[i].transform.position = new Vector3(pos.x + partOffset, pos.y, pos.z);
+                Vector3 pos = flagParts[i].transform.localPosition;
+                flagParts[i].transform.localPosition = new Vector3(pos.x + partOffset, pos.y, pos.z);
             }
         }
     }

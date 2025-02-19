@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Types;
 
 public class TargetTracker : MonoBehaviour
 {
@@ -41,11 +42,5 @@ public class TargetTracker : MonoBehaviour
         }
         else
             targetRotation = Quaternion.LookRotation(defaultDir);
-    }
-
-    public enum Axes
-    {
-        X, Y, Z,
-        X_Y_Z
     }
 }

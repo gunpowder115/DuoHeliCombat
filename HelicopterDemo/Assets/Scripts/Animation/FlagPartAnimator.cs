@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Types;
 
 public class FlagPartAnimator : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class FlagPartAnimator : MonoBehaviour
     [SerializeField] private float angleTo = 30f;
     [SerializeField] private float speedFrom = 50f;
     [SerializeField] private float speedTo = 150f;
+    [SerializeField] private Axes axis = Axes.Y;
 
     private bool toRight;
     private float currAngle;
@@ -41,6 +43,15 @@ public class FlagPartAnimator : MonoBehaviour
                 toRight = true;
             }
         }
-        transform.localRotation = Quaternion.Euler(0f, currAngle, 0f);
+
+        float x = 0f, y = 0f, z = 0f;
+        switch(axis)
+        {
+            case Axes.X: x = currAngle; break;
+            case Axes.Y: y = currAngle; break;
+            case Axes.Z: z = currAngle; break;
+        }
+
+        transform.localRotation = Quaternion.Euler(x, y, z);
     }
 }

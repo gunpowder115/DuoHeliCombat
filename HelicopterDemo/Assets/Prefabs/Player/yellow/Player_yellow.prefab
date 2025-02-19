@@ -32,6 +32,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 627561381226884827}
     - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: deadPrefab
+      value: 
+      objectReference: {fileID: 3527683377208532888, guid: 6b8ebed267e706d4996853dc2ee0f36c, type: 3}
+    - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
       propertyPath: playerNumber
       value: 1
       objectReference: {fileID: 0}

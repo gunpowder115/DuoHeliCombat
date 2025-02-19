@@ -1,8 +1,48 @@
 using UnityEngine;
+using static Types;
 
 public class Platform : MonoBehaviour
 {
-    public BaseCenter BaseCenter { get; private set; }
+    private bool isActive;
 
-    public void SetBaseCenter(BaseCenter baseCenter) => BaseCenter = baseCenter;
+    public bool IsFree => !Building.gameObject;
+    public CommandCenter CommandCenter { get; private set; }
+    public Building Building { get; private set; }
+
+    private void Awake()
+    {
+        isActive = true;
+    }
+
+    public void SetCommandCenter(CommandCenter baseCenter) => CommandCenter = baseCenter;
+
+    public void SetBuilding(Building building) => Building = building;
+
+    public void ShowPlatform()
+    {
+        if (!isActive)
+        {
+            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+            isActive = true;
+        }
+    }
+
+    public void HidePlatform()
+    {
+        if (isActive)
+        {
+            transform.position = new Vector3(transform.position.x, -1f, transform.position.z);
+            isActive = false;
+        }
+    }
+
+    public GlobalSide3 GetPlatformSide()
+    {
+        if (!Building.gameObject)
+            return GlobalSide3.Neutral;
+        else if (Building.BuildingSide == GlobalSide2.Red)
+            return GlobalSide3.Red;
+        else
+            return GlobalSide3.Blue;
+    }
 }

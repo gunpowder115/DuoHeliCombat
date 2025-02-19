@@ -2,46 +2,62 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PlatformController : MonoBehaviour
+public class PlatformController
 {
-    public static PlatformController singleton {get; private set;}
-    public List<GameObject> Platforms => platforms;
-
-    readonly string platformTag = "Platform";
-
-    List<GameObject> platforms;
-
-    public SortedDictionary<float, GameObject> FindDistToPlatforms(in Vector3 origin)
+    public static PlatformController Singleton 
     {
-        SortedDictionary<float, GameObject> result = new SortedDictionary<float, GameObject>();
+        get
+        {
+            if (singleton == null)
+                singleton = new PlatformController();
+            return singleton;
+        }
+    }
+
+    private List<GameObject> platforms;
+    private static PlatformController singleton;
+
+    private PlatformController()
+    {
+        platforms = new List<GameObject>();
+    }
+
+    public void Add(GameObject platform)
+    {
+        if (!platforms.Contains(platform))
+            platforms.Add(platform);
+    }
+
+    public void Remove(GameObject platform)
+    {
+        if (platforms.Contains(platform))
+            platforms.Remove(platform);
+    }
+
+    public Dictionary<GameObject, float> FindDistToPlatforms(in Vector3 origin)
+    {
+        Dictionary<GameObject, float> result = new Dictionary<GameObject, float>();
 
         foreach (var platform in platforms)
         {
-            if (!result.ContainsValue(platform))
+            if (!result.ContainsKey(platform))
             {
                 float distTo = Vector3.Magnitude(platform.transform.position - origin);
-                result.Add(distTo, platform);
+                result.Add(platform, distTo);
             }
         }
-        return result;
+
+        var sortedResult = result.OrderBy(platform => platform.Value)
+                      .ToDictionary(platform => platform.Key, platform => platform.Value);
+
+        return sortedResult;
     }
-    public KeyValuePair<float, GameObject> FindNearestPlatform(in Vector3 origin)
+
+    public KeyValuePair<GameObject, float> FindNearestPlatform(in Vector3 origin)
     {
-        SortedDictionary<float, GameObject> platforms = FindDistToPlatforms(in origin);
+        Dictionary<GameObject, float> platforms = FindDistToPlatforms(in origin);
         bool arePlatforms = platforms.Count > 0;
-        KeyValuePair<float, GameObject> nearestPlatform = arePlatforms ? platforms.ElementAt(0) : new KeyValuePair<float, GameObject>(Mathf.Infinity, null);
+        KeyValuePair<GameObject, float> nearestPlatform = arePlatforms ? platforms.ElementAt(0) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
         return nearestPlatform;
-    }
-
-    void Awake()
-    {
-        singleton = this;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        platforms = new List<GameObject>();
-        platforms.AddRange(GameObject.FindGameObjectsWithTag(platformTag));
     }
 }

@@ -87,4 +87,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef0f4fd4e27ad4081a6cc4ded100ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 100
+  baseHealth: 100000
+  smokePrefab: {fileID: 0}
+  healthBarPrefab: {fileID: 0}
