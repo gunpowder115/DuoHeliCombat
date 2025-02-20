@@ -1174,6 +1174,60 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AltBuild_1",
+                    "type": "Button",
+                    "id": "bc565a50-0db1-40a4-b0e7-98cd86de01e4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AltBuild_2",
+                    "type": "Button",
+                    "id": "5f2636bc-629e-4f12-90d5-1e48168068d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AltBuild_3",
+                    "type": "Button",
+                    "id": "64669ce8-2d90-4432-957b-f77af1cebaf4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AltBuild_4",
+                    "type": "Button",
+                    "id": "24acefae-c99c-4646-8420-54b72c3734f1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AltBuild_5",
+                    "type": "Button",
+                    "id": "527caf45-fa7a-4569-825b-1a2e8655e298",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AltBuild_6",
+                    "type": "Button",
+                    "id": "021c03a6-2381-441d-ae17-40ec1c0bb10f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1238,7 +1292,7 @@
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Build_1",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1249,7 +1303,7 @@
                     "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Build_3",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1260,7 +1314,7 @@
                     "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Build_4",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1271,7 +1325,7 @@
                     "path": "<Keyboard>/5",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Build_5",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1282,8 +1336,74 @@
                     "path": "<Keyboard>/6",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Build_6",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "475c90e2-f3ea-4583-8c78-d843a789a39e",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "AltBuild_1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e0cbf90-cf02-4da6-a94e-306987713c7f",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "AltBuild_2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "067f1960-c83f-4ae7-b3b2-96aec279d9f6",
+                    "path": "<Keyboard>/9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "AltBuild_3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "671a854d-f710-42e7-9e72-7851d5a1a09c",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "AltBuild_4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e425c878-844e-49f4-9a1a-35c6ad06cfed",
+                    "path": "<Keyboard>/minus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "AltBuild_5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fbe60635-3dab-402e-8c81-7127d9d87fc1",
+                    "path": "<Keyboard>/equals",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "AltBuild_6",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

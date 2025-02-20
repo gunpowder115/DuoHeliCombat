@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static InputDeviceBase;
+using static Types;
 using static ViewPortController;
 
 [RequireComponent(typeof(Translation))]
@@ -331,10 +332,10 @@ public class Player : MonoBehaviour
 
     void CancelAiming() => ChangeAimState();
 
-    private void SelectBuilding(int buildNumber)
+    private void SelectBuilding(int buildNumber, GlobalSide2 side)
     {
         if (selectedPlatform)
-            selectedPlatform.GetComponent<BuildingSelector>().SetBuilding(buildNumber);
+            selectedPlatform.GetComponent<BuildingSelector>().SetBuilding(buildNumber, side);
     }
 
     private bool Respawn()

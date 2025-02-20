@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static Types;
 
 public abstract class InputDeviceBase
 {
@@ -18,7 +19,7 @@ public abstract class InputDeviceBase
     public event Action ChangeConfiguration;
     public event Action ChangeOrientation;
 
-    public event Action<int> SelectBuildingEvent;
+    public event Action<int, GlobalSide2> SelectBuildingEvent;
 
     #endregion
 
@@ -256,12 +257,13 @@ public abstract class InputDeviceBase
 
     protected void SwitchOrientation() => ChangeOrientation?.Invoke();
 
-    protected void SelectBuilding(int buildNumber)
+    protected void SelectBuilding(int buildNumber, GlobalSide2 side)
     {
         switch(playerState)
         {
             case PlayerStates.BuildSelection:
-                SelectBuildingEvent?.Invoke(buildNumber);
+                SelectBuildingEvent?.Invoke(buildNumber, side);
+                ForceChangePlayerState(PlayerStates.Normal);
                 break;
         }
     }

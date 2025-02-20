@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Types;
 
 public class InputKeyboard : InputDeviceBase
 {
@@ -41,12 +42,19 @@ public class InputKeyboard : InputDeviceBase
 
         #region Building Selection
 
-        playerInput.CommonKeyboard.Build_1.performed += context => SelectBuilding(1);
-        playerInput.CommonKeyboard.Build_2.performed += context => SelectBuilding(2);
-        playerInput.CommonKeyboard.Build_3.performed += context => SelectBuilding(3);
-        playerInput.CommonKeyboard.Build_4.performed += context => SelectBuilding(4);
-        playerInput.CommonKeyboard.Build_5.performed += context => SelectBuilding(5);
-        playerInput.CommonKeyboard.Build_6.performed += context => SelectBuilding(6);
+        playerInput.CommonKeyboard.Build_1.performed += context => SelectBuilding(1, GlobalSide2.Blue);
+        playerInput.CommonKeyboard.Build_2.performed += context => SelectBuilding(2, GlobalSide2.Blue);
+        playerInput.CommonKeyboard.Build_3.performed += context => SelectBuilding(3, GlobalSide2.Blue);
+        playerInput.CommonKeyboard.Build_4.performed += context => SelectBuilding(4, GlobalSide2.Blue);
+        playerInput.CommonKeyboard.Build_5.performed += context => SelectBuilding(5, GlobalSide2.Blue);
+        playerInput.CommonKeyboard.Build_6.performed += context => SelectBuilding(6, GlobalSide2.Blue);
+
+        playerInput.CommonKeyboard.AltBuild_1.performed += context => SelectBuilding(1, GlobalSide2.Red);
+        playerInput.CommonKeyboard.AltBuild_2.performed += context => SelectBuilding(2, GlobalSide2.Red);
+        playerInput.CommonKeyboard.AltBuild_3.performed += context => SelectBuilding(3, GlobalSide2.Red);
+        playerInput.CommonKeyboard.AltBuild_4.performed += context => SelectBuilding(4, GlobalSide2.Red);
+        playerInput.CommonKeyboard.AltBuild_5.performed += context => SelectBuilding(5, GlobalSide2.Red);
+        playerInput.CommonKeyboard.AltBuild_6.performed += context => SelectBuilding(6, GlobalSide2.Red);
 
         #endregion
     }
