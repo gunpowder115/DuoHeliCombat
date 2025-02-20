@@ -1120,6 +1120,60 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Build_1",
+                    "type": "Button",
+                    "id": "93acb043-2e4d-4d93-8c5f-0269f591be7f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Build_2",
+                    "type": "Button",
+                    "id": "0e6f06e0-4aa0-4926-8c26-02237cd16f5c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Build_3",
+                    "type": "Button",
+                    "id": "6b87ef74-3e63-44ce-9415-0bf15987f117",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Build_4",
+                    "type": "Button",
+                    "id": "2f880b62-62ca-4bf9-a051-bc1d70126e4d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Build_5",
+                    "type": "Button",
+                    "id": "48c58390-42b6-4690-ad2d-e445b858d4cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Build_6",
+                    "type": "Button",
+                    "id": "abce3221-f2cc-41ce-a380-33b32ccd9dd0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1164,6 +1218,72 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "AnyTargetSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cff8f7fb-882a-4828-bb4c-12b734b93f4e",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Build_2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aba9d905-a0e6-4b6f-bb6a-6982dbe67e91",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Build_1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "baa7750f-639c-4c1b-9c2a-3830e08c4e25",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Build_3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4301ea40-ab3b-4c24-bcb4-f7293e6ffa94",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Build_4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c769ba6c-f3ab-4953-aa10-9d9cc2b7e29d",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Build_5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "642624b7-c773-43b4-bd9a-a154567d482b",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Build_6",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

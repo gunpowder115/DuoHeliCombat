@@ -1142,6 +1142,60 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Build_1"",
+                    ""type"": ""Button"",
+                    ""id"": ""93acb043-2e4d-4d93-8c5f-0269f591be7f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Build_2"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e6f06e0-4aa0-4926-8c26-02237cd16f5c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Build_3"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b87ef74-3e63-44ce-9415-0bf15987f117"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Build_4"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f880b62-62ca-4bf9-a051-bc1d70126e4d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Build_5"",
+                    ""type"": ""Button"",
+                    ""id"": ""48c58390-42b6-4690-ad2d-e445b858d4cb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Build_6"",
+                    ""type"": ""Button"",
+                    ""id"": ""abce3221-f2cc-41ce-a380-33b32ccd9dd0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1186,6 +1240,72 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""AnyTargetSelection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cff8f7fb-882a-4828-bb4c-12b734b93f4e"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Build_2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aba9d905-a0e6-4b6f-bb6a-6982dbe67e91"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Build_1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""baa7750f-639c-4c1b-9c2a-3830e08c4e25"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Build_3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4301ea40-ab3b-4c24-bcb4-f7293e6ffa94"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Build_4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c769ba6c-f3ab-4953-aa10-9d9cc2b7e29d"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Build_5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""642624b7-c773-43b4-bd9a-a154567d482b"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Build_6"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1440,6 +1560,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CommonKeyboard_MinorAction = m_CommonKeyboard.FindAction("MinorAction", throwIfNotFound: true);
         m_CommonKeyboard_MinorActionHold = m_CommonKeyboard.FindAction("MinorActionHold", throwIfNotFound: true);
         m_CommonKeyboard_AnyTargetSelection = m_CommonKeyboard.FindAction("AnyTargetSelection", throwIfNotFound: true);
+        m_CommonKeyboard_Build_1 = m_CommonKeyboard.FindAction("Build_1", throwIfNotFound: true);
+        m_CommonKeyboard_Build_2 = m_CommonKeyboard.FindAction("Build_2", throwIfNotFound: true);
+        m_CommonKeyboard_Build_3 = m_CommonKeyboard.FindAction("Build_3", throwIfNotFound: true);
+        m_CommonKeyboard_Build_4 = m_CommonKeyboard.FindAction("Build_4", throwIfNotFound: true);
+        m_CommonKeyboard_Build_5 = m_CommonKeyboard.FindAction("Build_5", throwIfNotFound: true);
+        m_CommonKeyboard_Build_6 = m_CommonKeyboard.FindAction("Build_6", throwIfNotFound: true);
         // CommonGamepad
         m_CommonGamepad = asset.FindActionMap("CommonGamepad", throwIfNotFound: true);
         m_CommonGamepad_MainAction = m_CommonGamepad.FindAction("MainAction", throwIfNotFound: true);
@@ -1906,6 +2032,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_CommonKeyboard_MinorAction;
     private readonly InputAction m_CommonKeyboard_MinorActionHold;
     private readonly InputAction m_CommonKeyboard_AnyTargetSelection;
+    private readonly InputAction m_CommonKeyboard_Build_1;
+    private readonly InputAction m_CommonKeyboard_Build_2;
+    private readonly InputAction m_CommonKeyboard_Build_3;
+    private readonly InputAction m_CommonKeyboard_Build_4;
+    private readonly InputAction m_CommonKeyboard_Build_5;
+    private readonly InputAction m_CommonKeyboard_Build_6;
     public struct CommonKeyboardActions
     {
         private @PlayerInput m_Wrapper;
@@ -1914,6 +2046,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @MinorAction => m_Wrapper.m_CommonKeyboard_MinorAction;
         public InputAction @MinorActionHold => m_Wrapper.m_CommonKeyboard_MinorActionHold;
         public InputAction @AnyTargetSelection => m_Wrapper.m_CommonKeyboard_AnyTargetSelection;
+        public InputAction @Build_1 => m_Wrapper.m_CommonKeyboard_Build_1;
+        public InputAction @Build_2 => m_Wrapper.m_CommonKeyboard_Build_2;
+        public InputAction @Build_3 => m_Wrapper.m_CommonKeyboard_Build_3;
+        public InputAction @Build_4 => m_Wrapper.m_CommonKeyboard_Build_4;
+        public InputAction @Build_5 => m_Wrapper.m_CommonKeyboard_Build_5;
+        public InputAction @Build_6 => m_Wrapper.m_CommonKeyboard_Build_6;
         public InputActionMap Get() { return m_Wrapper.m_CommonKeyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1935,6 +2073,24 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @AnyTargetSelection.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAnyTargetSelection;
                 @AnyTargetSelection.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAnyTargetSelection;
                 @AnyTargetSelection.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAnyTargetSelection;
+                @Build_1.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_1;
+                @Build_1.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_1;
+                @Build_1.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_1;
+                @Build_2.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_2;
+                @Build_2.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_2;
+                @Build_2.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_2;
+                @Build_3.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_3;
+                @Build_3.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_3;
+                @Build_3.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_3;
+                @Build_4.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_4;
+                @Build_4.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_4;
+                @Build_4.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_4;
+                @Build_5.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_5;
+                @Build_5.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_5;
+                @Build_5.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_5;
+                @Build_6.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_6;
+                @Build_6.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_6;
+                @Build_6.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_6;
             }
             m_Wrapper.m_CommonKeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -1951,6 +2107,24 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @AnyTargetSelection.started += instance.OnAnyTargetSelection;
                 @AnyTargetSelection.performed += instance.OnAnyTargetSelection;
                 @AnyTargetSelection.canceled += instance.OnAnyTargetSelection;
+                @Build_1.started += instance.OnBuild_1;
+                @Build_1.performed += instance.OnBuild_1;
+                @Build_1.canceled += instance.OnBuild_1;
+                @Build_2.started += instance.OnBuild_2;
+                @Build_2.performed += instance.OnBuild_2;
+                @Build_2.canceled += instance.OnBuild_2;
+                @Build_3.started += instance.OnBuild_3;
+                @Build_3.performed += instance.OnBuild_3;
+                @Build_3.canceled += instance.OnBuild_3;
+                @Build_4.started += instance.OnBuild_4;
+                @Build_4.performed += instance.OnBuild_4;
+                @Build_4.canceled += instance.OnBuild_4;
+                @Build_5.started += instance.OnBuild_5;
+                @Build_5.performed += instance.OnBuild_5;
+                @Build_5.canceled += instance.OnBuild_5;
+                @Build_6.started += instance.OnBuild_6;
+                @Build_6.performed += instance.OnBuild_6;
+                @Build_6.canceled += instance.OnBuild_6;
             }
         }
     }
@@ -2141,6 +2315,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnMinorAction(InputAction.CallbackContext context);
         void OnMinorActionHold(InputAction.CallbackContext context);
         void OnAnyTargetSelection(InputAction.CallbackContext context);
+        void OnBuild_1(InputAction.CallbackContext context);
+        void OnBuild_2(InputAction.CallbackContext context);
+        void OnBuild_3(InputAction.CallbackContext context);
+        void OnBuild_4(InputAction.CallbackContext context);
+        void OnBuild_5(InputAction.CallbackContext context);
+        void OnBuild_6(InputAction.CallbackContext context);
     }
     public interface ICommonGamepadActions
     {

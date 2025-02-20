@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1046321250367117506}
   - component: {fileID: 3177014851504595884}
+  - component: {fileID: 9023018373979235709}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Platform
@@ -45,6 +46,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a338a5d89385462458f87bbb1a06fd4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9023018373979235709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046321250367117507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61dcd20f437fe3478b7c32f0a68f329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingPrefabs:
+  - {fileID: 10442990432225384, guid: 6d1a9257b7f9a15498f6241a631ddd0b, type: 3}
+  - {fileID: 8449829510872370401, guid: 788bfb3738077aa4c9c2358d3e64deea, type: 3}
+  - {fileID: 4850961249104472355, guid: e9265c4707a9a7b47b3787497067018f, type: 3}
+  - {fileID: 3998826233734958742, guid: b7459e13904c65443bb9bc5c59fb8cbb, type: 3}
+  - {fileID: 2132880165559326954, guid: 120c48d81a96bc944a8da4b33839f03c, type: 3}
+  - {fileID: 8342007550954386640, guid: 195299a07efa10143beb4ad30348650b, type: 3}
 --- !u!1001 &1046321250178123380
 PrefabInstance:
   m_ObjectHideFlags: 0

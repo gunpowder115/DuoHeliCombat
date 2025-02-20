@@ -18,6 +18,8 @@ public abstract class InputDeviceBase
     public event Action ChangeConfiguration;
     public event Action ChangeOrientation;
 
+    public event Action<int> SelectBuildingEvent;
+
     #endregion
 
     #region Properties
@@ -253,6 +255,16 @@ public abstract class InputDeviceBase
     protected void SwitchConfiguration() => ChangeConfiguration?.Invoke();
 
     protected void SwitchOrientation() => ChangeOrientation?.Invoke();
+
+    protected void SelectBuilding(int buildNumber)
+    {
+        switch(playerState)
+        {
+            case PlayerStates.BuildSelection:
+                SelectBuildingEvent?.Invoke(buildNumber);
+                break;
+        }
+    }
 
     protected enum VerticalMoveDirection : int
     {

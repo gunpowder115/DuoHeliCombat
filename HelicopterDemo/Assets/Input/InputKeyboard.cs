@@ -38,5 +38,16 @@ public class InputKeyboard : InputDeviceBase
         playerInput.PlayerKeyboard.VertFastMod.canceled += context => CancelVerticalSingleFast();
 
         #endregion
+
+        #region Building Selection
+
+        playerInput.CommonKeyboard.Build_1.performed += context => SelectBuilding(1);
+        playerInput.CommonKeyboard.Build_2.performed += context => SelectBuilding(2);
+        playerInput.CommonKeyboard.Build_3.performed += context => SelectBuilding(3);
+        playerInput.CommonKeyboard.Build_4.performed += context => SelectBuilding(4);
+        playerInput.CommonKeyboard.Build_5.performed += context => SelectBuilding(5);
+        playerInput.CommonKeyboard.Build_6.performed += context => SelectBuilding(6);
+
+        #endregion
     }
 }

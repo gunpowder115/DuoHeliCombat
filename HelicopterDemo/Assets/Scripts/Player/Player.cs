@@ -88,6 +88,7 @@ public class Player : MonoBehaviour
         inputDevice.StartSelectionAnyTarget += StartSelectionAnyTarget;
         inputDevice.CancelSelectionAnytarget += CancelSelectionAnytarget;
         inputDevice.CancelAiming += CancelAiming;
+        inputDevice.SelectBuildingEvent += SelectBuilding;
 
         rotateToDirection = false;
         targetDirection = transform.forward;
@@ -148,6 +149,7 @@ public class Player : MonoBehaviour
         airDuster.normAltitiude = transform.position.y / 10f;
 
         //if (playerNumber == Players.Player1) Debug.Log(health.CurrHp);
+        //if (playerNumber == Players.Player1) Debug.Log(inputDevice.PlayerState);
     }
 
     void Translate(float inputX, float inputZ)
@@ -324,6 +326,12 @@ public class Player : MonoBehaviour
     void CancelSelectionAnytarget() => crosshair.Hide();
 
     void CancelAiming() => ChangeAimState();
+
+    private void SelectBuilding(int buildNumber)
+    {
+        if (selectedPlatform)
+            selectedPlatform.GetComponent<BuildingSelector>().SetBuilding(buildNumber);
+    }
 
     private bool Respawn()
     {

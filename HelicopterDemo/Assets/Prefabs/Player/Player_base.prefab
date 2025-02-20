@@ -125,6 +125,7 @@ MonoBehaviour:
   vertFastCoef: 5
   minDistToAim: 35
   maxDistToAim: 40
+  minDistToBuild: 10
   speed: 20
   lowSpeedCoef: 0.5
   highSpeedCoef: 3
