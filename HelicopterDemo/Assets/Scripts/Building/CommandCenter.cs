@@ -15,6 +15,12 @@ public class CommandCenter : MonoBehaviour
     private GlobalSide3 commandCenterSide;
     private PlatformController platformController;
 
+    public GlobalSide3 CommandCenterSide
+    {
+        get => commandCenterSide;
+        set => commandCenterSide = value;
+    }
+
     private void Awake()
     {
         platformController = PlatformController.Singleton;
@@ -60,6 +66,11 @@ public class CommandCenter : MonoBehaviour
     public void RemoveBuilding(Building building)
     {
         if (buildings.Contains(building)) buildings.Remove(building);
+    }
+
+    public void AddBuilding(Building building)
+    {
+        if (!buildings.Contains(building)) buildings.Add(building);
     }
 
     private void PlaceAllPlatforms()

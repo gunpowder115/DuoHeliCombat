@@ -268,7 +268,11 @@ public class Player : MonoBehaviour
             }
             else
             {
-                if (lastPlatform) lastPlatform.GetComponent<Platform>().HidePlatform();
+                if (lastPlatform)
+                {
+                    var platform = lastPlatform.GetComponent<Platform>();
+                    if (platform.IsFree) platform.HidePlatform();
+                }
 
                 lineDrawer.Enabled = false;
                 possibleTarget = possiblePlatform = null;

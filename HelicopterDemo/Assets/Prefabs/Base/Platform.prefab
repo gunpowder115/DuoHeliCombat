@@ -58,13 +58,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61dcd20f437fe3478b7c32f0a68f329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingPrefabs:
+  redBuildingsPrefabs:
+  - {fileID: 1241589566971415264, guid: 289a1673742971e4eb0255d38d5042a8, type: 3}
+  - {fileID: 4016027788399251488, guid: cfd01952d82fb764588f1b414a6b55e3, type: 3}
+  - {fileID: 5959230518848698939, guid: 1422e2a67ba52d24a9658e88ad58a885, type: 3}
+  - {fileID: 4809411199201516330, guid: cd6a908be2f643c41a93024e501acc59, type: 3}
+  - {fileID: 8225843475937071745, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+  - {fileID: 2531994769151304396, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
+  blueBuildingsPrefabs:
   - {fileID: 10442990432225384, guid: 6d1a9257b7f9a15498f6241a631ddd0b, type: 3}
   - {fileID: 8449829510872370401, guid: 788bfb3738077aa4c9c2358d3e64deea, type: 3}
-  - {fileID: 4850961249104472355, guid: e9265c4707a9a7b47b3787497067018f, type: 3}
-  - {fileID: 3998826233734958742, guid: b7459e13904c65443bb9bc5c59fb8cbb, type: 3}
-  - {fileID: 2132880165559326954, guid: 120c48d81a96bc944a8da4b33839f03c, type: 3}
-  - {fileID: 8342007550954386640, guid: 195299a07efa10143beb4ad30348650b, type: 3}
+  - {fileID: 2195878393953479226, guid: 58e171cacb5f5d2418f7d11f3ceaf2f9, type: 3}
+  - {fileID: 8043326094191053039, guid: 883143d0c8f08424eb92d3dc5d792abb, type: 3}
+  - {fileID: 2286403805574613104, guid: bd587911bd055c74f904b46acde67b8b, type: 3}
+  - {fileID: 5823282789280839773, guid: 03a7344912b910540b48a523105e1f71, type: 3}
 --- !u!1001 &1046321250178123380
 PrefabInstance:
   m_ObjectHideFlags: 0

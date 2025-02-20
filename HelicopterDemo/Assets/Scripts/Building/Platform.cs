@@ -4,14 +4,16 @@ using static Types;
 public class Platform : MonoBehaviour
 {
     private bool isActive;
+    private PlatformController platformController;
 
-    public bool IsFree => !Building.gameObject;
+    public bool IsFree => !Building;
     public CommandCenter CommandCenter { get; private set; }
     public Building Building { get; private set; }
 
     private void Awake()
     {
         isActive = true;
+        platformController = PlatformController.Singleton;
     }
 
     public void SetCommandCenter(CommandCenter baseCenter) => CommandCenter = baseCenter;
@@ -44,5 +46,15 @@ public class Platform : MonoBehaviour
             return GlobalSide3.Red;
         else
             return GlobalSide3.Blue;
+    }
+
+    public void InitBuilding(GameObject buildPrefab)
+    {
+        var build = Instantiate(buildPrefab, transform).GetComponent<Building>();
+        SetBuilding(build);
+        ShowPlatform();
+        CommandCenter.AddBuilding(build);
+        if (CommandCenter.CommandCenterSide == GlobalSide3.Neutral) CommandCenter.CommandCenterSide = GetPlatformSide();
+        platformController.Remove(gameObject);
     }
 }

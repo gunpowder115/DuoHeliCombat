@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class BuildingSelector : MonoBehaviour
 {
-    [SerializeField] private GameObject[] buildingPrefabs;
+    [SerializeField] private GameObject[] redBuildingsPrefabs;
+    [SerializeField] private GameObject[] blueBuildingsPrefabs;
 
     public void SetBuilding(int buildNumber)
     {
-        Instantiate(buildingPrefabs[buildNumber - 1], transform);
+        GetComponent<Platform>().InitBuilding(blueBuildingsPrefabs[buildNumber - 1]);
     }
 }
