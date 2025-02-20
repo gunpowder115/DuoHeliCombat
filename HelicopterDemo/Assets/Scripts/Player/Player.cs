@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] float vertFastCoef = 5f;
     [SerializeField] float minDistToAim = 17f;
     [SerializeField] float maxDistToAim = 20f;
+    [SerializeField] private float minDistToBuild = 5f;
     [SerializeField] float speed = 20f;
     [SerializeField] float lowSpeedCoef = 0.5f;
     [SerializeField] float highSpeedCoef = 3f;
@@ -243,24 +244,30 @@ public class Player : MonoBehaviour
         if (nearest.Key)
         {
             var aimOrigin = nearest.Key.GetComponentInChildren<AimOrigin>();
-            if (nearest.Value < minDistToAim)
+            if (nearest.Value < minDistToAim && targetType == TargetTypes.Enemy)
             {
                 lineDrawer.Enabled = true;
-                Color lineColor = targetType == TargetTypes.Enemy ? Color.red : Color.blue;
+                Color lineColor = Color.red;
                 lineDrawer.SetColor(lineColor);
                 lineDrawer.SetPosition(transform.position, aimOrigin ? aimOrigin.gameObject.transform.position : nearest.Key.transform.position);
-                possibleTarget = targetType == TargetTypes.Enemy ? nearest.Key : null;
-                possiblePlatform = targetType == TargetTypes.Platform ? nearest.Key : null;
-
-                if (possiblePlatform)
-                {
-                    possiblePlatform.GetComponent<Platform>().ShowPlatform();
-                    if (lastPlatform && possiblePlatform != lastPlatform) lastPlatform.GetComponent<Platform>().HidePlatform();
-                    lastPlatform = possiblePlatform;
-                }
+                possibleTarget = nearest.Key;
+                possiblePlatform = null;
+            }
+            else if (nearest.Value < minDistToBuild && targetType == TargetTypes.Platform)
+            {
+                lineDrawer.Enabled = true;
+                Color lineColor = Color.blue;
+                lineDrawer.SetColor(lineColor);
+                lineDrawer.SetPosition(transform.position, aimOrigin ? aimOrigin.gameObject.transform.position : nearest.Key.transform.position);
+                possibleTarget = null;
+                possiblePlatform = nearest.Key;
+                possiblePlatform.GetComponent<Platform>().ShowPlatform();
+                lastPlatform = possiblePlatform;
             }
             else
             {
+                if (lastPlatform) lastPlatform.GetComponent<Platform>().HidePlatform();
+
                 lineDrawer.Enabled = false;
                 possibleTarget = possiblePlatform = null;
             }
