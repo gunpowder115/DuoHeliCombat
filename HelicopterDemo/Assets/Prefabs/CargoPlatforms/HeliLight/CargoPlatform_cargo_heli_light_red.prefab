@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5696932702070879181
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102556418181850821, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225843475937071745, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+      propertyPath: m_Name
+      value: CargoPlatform_cargo_heli_light_red
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4589176702261890176, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+    - {fileID: 6870102765878659060, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+    - {fileID: 8544336742637457198, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+    - {fileID: 160054686174674222, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+    - {fileID: 7808810546366971474, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: f48ffb42c4e8e2d47a5e01d6c1ac4ee4, type: 3}
