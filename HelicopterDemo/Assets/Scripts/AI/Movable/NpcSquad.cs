@@ -234,7 +234,7 @@ public class NpcSquad : Npc
             dir = rot * dir;
             npcController.Add(member);
 
-            parachutes.Add(Instantiate(thisItem.ParachutePrefab, member.transform.position + new Vector3(0f, thisItem.ParachuteHeight, 0f), transform.rotation, member.transform));
+            parachutes.Add(Instantiate(thisItem.ParachutePrefab, member.transform.position, transform.rotation, member.transform));
         }
         squadPos = GetSquadPos();
     }

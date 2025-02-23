@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Types;
 
 [RequireComponent(typeof(Building))]
 
@@ -8,8 +9,7 @@ public class CargoPlatform : MonoBehaviour
     [SerializeField] private GameObject cargoPrefab;
     [SerializeField] private Caravan caravan;
     [SerializeField] private float dropHeight = 25f;
-    [SerializeField] private float parachuteHeight = 10f;
-    [SerializeField] private CargoType cargoType = CargoType.Air;
+    [SerializeField] private CargoType cargoType = CargoType.Rope;
 
     private Building building;
     private GameObject cargoHelicopterObject;
@@ -19,7 +19,6 @@ public class CargoPlatform : MonoBehaviour
     private CargoState cargoState;
 
     public float DropHeight => dropHeight;
-    public float ParachuteHeight => parachuteHeight;
     public Caravan Caravan => caravan;
 
     private void Start()
@@ -34,10 +33,10 @@ public class CargoPlatform : MonoBehaviour
     {
         switch(cargoType)
         {
-            case CargoType.Ground:
+            case CargoType.Squad:
                 CallGroundCargo();
                 break;
-            case CargoType.Air:
+            case CargoType.Rope:
                 CallAirCargo();
                 break;
         }
@@ -54,7 +53,7 @@ public class CargoPlatform : MonoBehaviour
             case CargoState.Lost:
                 cargoHelicopterObject = Instantiate(cargoHelicopterPrefab, transform.position, transform.rotation);
                 cargoHelicopter = cargoHelicopterObject.GetComponent<CargoHelicopter>();
-                cargoHelicopter.InitForDrop(transform.position, dropHeight + parachuteHeight);
+                cargoHelicopter.InitForDrop(transform.position, dropHeight);
                 cargoState = CargoState.Expecting;
                 break;
             case CargoState.Expecting:
@@ -83,7 +82,7 @@ public class CargoPlatform : MonoBehaviour
             case CargoState.Lost:
                 cargoHelicopterObject = Instantiate(cargoHelicopterPrefab, transform.position, transform.rotation);
                 cargoHelicopter = cargoHelicopterObject.GetComponent<CargoHelicopter>();
-                cargoHelicopter.InitForDelivery(transform.position, dropHeight + parachuteHeight);
+                cargoHelicopter.InitForDelivery(transform.position, dropHeight);
 
                 cargoObject = Instantiate(cargoPrefab, cargoHelicopter.transform.position - new Vector3(0f, cargoHelicopter.CableLength, 0f), 
                     cargoHelicopter.transform.rotation, cargoHelicopter.transform);
@@ -114,12 +113,5 @@ public class CargoPlatform : MonoBehaviour
         Lost,
         Expecting,
         Delivered
-    }
-
-    public enum CargoType
-    {
-        Air,
-        Ground,
-        Drop
     }
 }

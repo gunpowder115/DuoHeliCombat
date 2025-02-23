@@ -335,7 +335,7 @@ public class Player : MonoBehaviour
     private void SelectBuilding(int buildNumber, GlobalSide2 side)
     {
         if (selectedPlatform)
-            selectedPlatform.GetComponent<BuildingSelector>().SetBuilding(buildNumber, side);
+            selectedPlatform.GetComponent<BuildingSelector>().CallBuilding(buildNumber, side);
     }
 
     private bool Respawn()

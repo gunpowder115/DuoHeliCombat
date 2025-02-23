@@ -43,5 +43,13 @@ public class Types
         X_Y_Z
     }
 
+    public enum CargoType
+    {
+        Rope,
+        Squad,
+        OneParachute,
+        ThreeParachutes
+    }
+
     #endregion
 }

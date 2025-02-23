@@ -8,7 +8,6 @@ public class CargoItem : MonoBehaviour
 
     public float DeliverySpeed => deliverySpeed;
     public float DropHeight => CargoPlatform.DropHeight;
-    public float ParachuteHeight => CargoPlatform.ParachuteHeight;
     public GameObject ParachutePrefab => parachutePrefab;
     public CargoPlatform CargoPlatform { get; private set; }
     public Action<Caravan> InitCargoItem { get; set;  }
