@@ -1606,6 +1606,200 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Upgrade"",
+            ""id"": ""74e96e03-8817-4c6b-922d-80117607d4b4"",
+            ""actions"": [
+                {
+                    ""name"": ""WeaponUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""3e19d072-49c1-496b-833c-55b2a13db480"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""d290eb14-3bb0-405e-a91a-8c8c297e1d7e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlotLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""00dd2dea-e0a2-4abe-b445-207b124cc94a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlotRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b85f3fa-2f50-43a8-af15-07f11d2beb26"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WingUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc5dc416-add6-483e-80ab-125bb03bf34c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WingDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""89769d1c-022d-4228-bf85-aa0b8fd837f2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""423d4cfc-8955-496e-8e50-2e411c49ec66"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""WeaponUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91cb86bd-5169-4d99-9869-5cca299e2689"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""WeaponUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15119780-dcf3-4954-84d3-9edb5d7543b6"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""WeaponDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e73199e-80b4-4d74-8360-eea8478835cd"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""WeaponDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76d8e5fb-d4a8-4c96-9c95-1ac91a32ed12"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SlotLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80ce1ebb-22cc-4500-88cb-2d16829c0a20"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SlotLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f48e43f-8e15-4b2b-9609-e5bc393d424f"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SlotRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fe0b29e-ca1c-42eb-b561-ab133efe1adb"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SlotRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf5c4814-1fe6-482e-9ee2-31b8a30e439e"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""WingUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e82da073-e187-4fb9-8bf1-3883528e129f"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""WingUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4698f8ec-6ced-4de1-aa88-9fd7c9b830a6"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""WingDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dcfd5506-5539-438e-a19c-26bbdc3b835f"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""WingDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1704,6 +1898,14 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_ViewportDebug_ChangePlayer2 = m_ViewportDebug.FindAction("ChangePlayer2", throwIfNotFound: true);
         m_ViewportDebug_ChangeConfiguration = m_ViewportDebug.FindAction("ChangeConfiguration", throwIfNotFound: true);
         m_ViewportDebug_ChangeOrientation = m_ViewportDebug.FindAction("ChangeOrientation", throwIfNotFound: true);
+        // Upgrade
+        m_Upgrade = asset.FindActionMap("Upgrade", throwIfNotFound: true);
+        m_Upgrade_WeaponUp = m_Upgrade.FindAction("WeaponUp", throwIfNotFound: true);
+        m_Upgrade_WeaponDown = m_Upgrade.FindAction("WeaponDown", throwIfNotFound: true);
+        m_Upgrade_SlotLeft = m_Upgrade.FindAction("SlotLeft", throwIfNotFound: true);
+        m_Upgrade_SlotRight = m_Upgrade.FindAction("SlotRight", throwIfNotFound: true);
+        m_Upgrade_WingUp = m_Upgrade.FindAction("WingUp", throwIfNotFound: true);
+        m_Upgrade_WingDown = m_Upgrade.FindAction("WingDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -2417,6 +2619,79 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public ViewportDebugActions @ViewportDebug => new ViewportDebugActions(this);
+
+    // Upgrade
+    private readonly InputActionMap m_Upgrade;
+    private IUpgradeActions m_UpgradeActionsCallbackInterface;
+    private readonly InputAction m_Upgrade_WeaponUp;
+    private readonly InputAction m_Upgrade_WeaponDown;
+    private readonly InputAction m_Upgrade_SlotLeft;
+    private readonly InputAction m_Upgrade_SlotRight;
+    private readonly InputAction m_Upgrade_WingUp;
+    private readonly InputAction m_Upgrade_WingDown;
+    public struct UpgradeActions
+    {
+        private @PlayerInput m_Wrapper;
+        public UpgradeActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @WeaponUp => m_Wrapper.m_Upgrade_WeaponUp;
+        public InputAction @WeaponDown => m_Wrapper.m_Upgrade_WeaponDown;
+        public InputAction @SlotLeft => m_Wrapper.m_Upgrade_SlotLeft;
+        public InputAction @SlotRight => m_Wrapper.m_Upgrade_SlotRight;
+        public InputAction @WingUp => m_Wrapper.m_Upgrade_WingUp;
+        public InputAction @WingDown => m_Wrapper.m_Upgrade_WingDown;
+        public InputActionMap Get() { return m_Wrapper.m_Upgrade; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UpgradeActions set) { return set.Get(); }
+        public void SetCallbacks(IUpgradeActions instance)
+        {
+            if (m_Wrapper.m_UpgradeActionsCallbackInterface != null)
+            {
+                @WeaponUp.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponUp;
+                @WeaponUp.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponUp;
+                @WeaponUp.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponUp;
+                @WeaponDown.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponDown;
+                @WeaponDown.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponDown;
+                @WeaponDown.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponDown;
+                @SlotLeft.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotLeft;
+                @SlotLeft.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotLeft;
+                @SlotLeft.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotLeft;
+                @SlotRight.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotRight;
+                @SlotRight.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotRight;
+                @SlotRight.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotRight;
+                @WingUp.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingUp;
+                @WingUp.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingUp;
+                @WingUp.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingUp;
+                @WingDown.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingDown;
+                @WingDown.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingDown;
+                @WingDown.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingDown;
+            }
+            m_Wrapper.m_UpgradeActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @WeaponUp.started += instance.OnWeaponUp;
+                @WeaponUp.performed += instance.OnWeaponUp;
+                @WeaponUp.canceled += instance.OnWeaponUp;
+                @WeaponDown.started += instance.OnWeaponDown;
+                @WeaponDown.performed += instance.OnWeaponDown;
+                @WeaponDown.canceled += instance.OnWeaponDown;
+                @SlotLeft.started += instance.OnSlotLeft;
+                @SlotLeft.performed += instance.OnSlotLeft;
+                @SlotLeft.canceled += instance.OnSlotLeft;
+                @SlotRight.started += instance.OnSlotRight;
+                @SlotRight.performed += instance.OnSlotRight;
+                @SlotRight.canceled += instance.OnSlotRight;
+                @WingUp.started += instance.OnWingUp;
+                @WingUp.performed += instance.OnWingUp;
+                @WingUp.canceled += instance.OnWingUp;
+                @WingDown.started += instance.OnWingDown;
+                @WingDown.performed += instance.OnWingDown;
+                @WingDown.canceled += instance.OnWingDown;
+            }
+        }
+    }
+    public UpgradeActions @Upgrade => new UpgradeActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -2515,5 +2790,14 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnChangePlayer2(InputAction.CallbackContext context);
         void OnChangeConfiguration(InputAction.CallbackContext context);
         void OnChangeOrientation(InputAction.CallbackContext context);
+    }
+    public interface IUpgradeActions
+    {
+        void OnWeaponUp(InputAction.CallbackContext context);
+        void OnWeaponDown(InputAction.CallbackContext context);
+        void OnSlotLeft(InputAction.CallbackContext context);
+        void OnSlotRight(InputAction.CallbackContext context);
+        void OnWingUp(InputAction.CallbackContext context);
+        void OnWingDown(InputAction.CallbackContext context);
     }
 }

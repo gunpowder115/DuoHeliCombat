@@ -21,6 +21,10 @@ public abstract class InputDeviceBase
 
     public event Action<int, GlobalSide2> SelectBuildingEvent;
 
+    public event Action<int> WeaponUpEvent, WeaponDownEvent;
+    public event Action SlotLeftEvent, SlotRightEvent;
+    public event Action WingUpEvent, WingDownEvent;
+
     #endregion
 
     #region Properties
@@ -267,6 +271,13 @@ public abstract class InputDeviceBase
                 break;
         }
     }
+
+    protected void WeaponUp() => WeaponUpEvent?.Invoke(1);
+    protected void WeaponDown() => WeaponDownEvent?.Invoke(-1);
+    protected void SlotLeft() => SlotLeftEvent?.Invoke();
+    protected void SlotRight() => SlotRightEvent?.Invoke();
+    protected void WingUp() => WingUpEvent?.Invoke();
+    protected void WingDown() => WingDownEvent?.Invoke();
 
     protected enum VerticalMoveDirection : int
     {
