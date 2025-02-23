@@ -65,8 +65,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cargoHelicopterPrefab: {fileID: 0}
   cargoPrefab: {fileID: 0}
+  caravan: {fileID: 0}
   dropHeight: 12
-  parachuteHeight: 3
+  parachuteHeight: 0
   cargoType: 0
 --- !u!114 &1683657815074892363
 MonoBehaviour:
