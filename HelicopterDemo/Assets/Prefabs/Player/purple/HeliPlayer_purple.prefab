@@ -872,7 +872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7326983754198022884, guid: 012bbc5fe4922ca4e95c8c360c52e94c, type: 3}
       propertyPath: m_Name
-      value: HeliPlayer_green
+      value: HeliPlayer_purple
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 012bbc5fe4922ca4e95c8c360c52e94c, type: 3}
@@ -1100,7 +1100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4815506347493503304, guid: 6c1e6399c8bdfcc4f9dc0f530e5f22c6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.067
+      value: 2.217
       objectReference: {fileID: 0}
     - target: {fileID: 4815506347493503304, guid: 6c1e6399c8bdfcc4f9dc0f530e5f22c6, type: 3}
       propertyPath: m_LocalRotation.w
