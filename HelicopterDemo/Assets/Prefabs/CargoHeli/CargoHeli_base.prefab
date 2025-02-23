@@ -81,3 +81,5 @@ MonoBehaviour:
   leaveDistCoef: 1.1
   dropDistDelta: 0.5
   cableLength: 5
+  height: 12
+  parachutePrefab: {fileID: 0}

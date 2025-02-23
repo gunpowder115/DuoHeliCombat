@@ -72,6 +72,22 @@ MonoBehaviour:
   - {fileID: 8043326094191053039, guid: 883143d0c8f08424eb92d3dc5d792abb, type: 3}
   - {fileID: 2286403805574613104, guid: bd587911bd055c74f904b46acde67b8b, type: 3}
   - {fileID: 5823282789280839773, guid: 03a7344912b910540b48a523105e1f71, type: 3}
+  redCargosPrefabs:
+  - {fileID: 9173689993021602270, guid: 2d4f028f02c05f2469c1195fc55d90b7, type: 3}
+  - {fileID: 2464285537189157555, guid: d98c8c46914c5ee428d2efabbd8232ee, type: 3}
+  - {fileID: 6206562911790761232, guid: 8695cedd614818c468adde3fb99ca9d5, type: 3}
+  - {fileID: 5163617845018951992, guid: 896b00661abbf0b4698ab76f3d56b479, type: 3}
+  - {fileID: 4406634886506225996, guid: 4cbd26d14b3fe2741baf903f41faf495, type: 3}
+  - {fileID: 7503644415547845589, guid: 78ee90f4b4431f94d815f4ffdb8838eb, type: 3}
+  blueCargosPrefabs:
+  - {fileID: 1231389895014018067, guid: 31fca9076e075494a9f05e602c766e0b, type: 3}
+  - {fileID: 8433892636566312662, guid: 7030933c1fd9f9b46aca10cf56056396, type: 3}
+  - {fileID: 1256050563102430385, guid: 8dbe367c3da7fe8488588927c9c3a15d, type: 3}
+  - {fileID: 7124013903820249880, guid: 873715a935e6899448fb8f8c85a867ef, type: 3}
+  - {fileID: 9026364310566251456, guid: 6d40f81dc6b8cf74a8ecbe766055af47, type: 3}
+  - {fileID: 5445363937554214294, guid: a82ec60f07fae024287676ee71dff4d0, type: 3}
+  redCargoHelicopterPrefab: {fileID: 7161830809428624606, guid: 10b3c58114fb8f64890f78242150c2dc, type: 3}
+  blueCargoHelicopterPrefab: {fileID: 3039462896311314065, guid: 4611a701dfdd71549bd4552b54694e4a, type: 3}
 --- !u!1001 &1046321250178123380
 PrefabInstance:
   m_ObjectHideFlags: 0
