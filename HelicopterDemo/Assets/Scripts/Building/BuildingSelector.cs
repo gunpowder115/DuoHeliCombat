@@ -14,11 +14,13 @@ public class BuildingSelector : MonoBehaviour
     private CargoHelicopter cargoHelicopter;
     private GameObject buildingPrefab, cargoPrefab;
     private Platform platform;
+    private PlatformController platformController;
 
     private void Start()
     {
         isDeliveryWaiting = false;
         platform = GetComponent<Platform>();
+        platformController = PlatformController.Singleton;
     }
 
     private void Update()
@@ -26,6 +28,7 @@ public class BuildingSelector : MonoBehaviour
         if (isDeliveryWaiting && cargoHelicopter && cargoHelicopter.CargoIsDelivered)
         {
             platform.InitBuilding(buildingPrefab);
+            platform.IsReserved = false;
             isDeliveryWaiting = false;
         }
     }
@@ -40,6 +43,9 @@ public class BuildingSelector : MonoBehaviour
             cargoHelicopter = Instantiate(side == GlobalSide2.Blue ? blueCargoHelicopterPrefab : redCargoHelicopterPrefab, transform.position, transform.rotation).GetComponent<CargoHelicopter>();
             cargoHelicopter.Init(cargoPrefab, transform.position, CargoType.ThreeParachutes);
             isDeliveryWaiting = true;
+            platform.ShowPlatform();
+            platform.IsReserved = true;
+            platformController.Remove(gameObject);
         }
     }
 

@@ -272,7 +272,7 @@ public class Player : MonoBehaviour
                 if (lastPlatform)
                 {
                     var platform = lastPlatform.GetComponent<Platform>();
-                    if (platform.IsFree) platform.HidePlatform();
+                    if (!platform.IsReserved) platform.HidePlatform();
                 }
 
                 lineDrawer.Enabled = false;
