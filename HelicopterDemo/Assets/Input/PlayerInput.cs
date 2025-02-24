@@ -1612,7 +1612,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
             ""id"": ""74e96e03-8817-4c6b-922d-80117607d4b4"",
             ""actions"": [
                 {
-                    ""name"": ""WeaponUp"",
+                    ""name"": ""Up"",
                     ""type"": ""Button"",
                     ""id"": ""3e19d072-49c1-496b-833c-55b2a13db480"",
                     ""expectedControlType"": ""Button"",
@@ -1621,7 +1621,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""WeaponDown"",
+                    ""name"": ""Down"",
                     ""type"": ""Button"",
                     ""id"": ""d290eb14-3bb0-405e-a91a-8c8c297e1d7e"",
                     ""expectedControlType"": ""Button"",
@@ -1630,7 +1630,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SlotLeft"",
+                    ""name"": ""Left"",
                     ""type"": ""Button"",
                     ""id"": ""00dd2dea-e0a2-4abe-b445-207b124cc94a"",
                     ""expectedControlType"": ""Button"",
@@ -1639,7 +1639,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SlotRight"",
+                    ""name"": ""Right"",
                     ""type"": ""Button"",
                     ""id"": ""0b85f3fa-2f50-43a8-af15-07f11d2beb26"",
                     ""expectedControlType"": ""Button"",
@@ -1648,18 +1648,18 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""WingUp"",
+                    ""name"": ""Select"",
                     ""type"": ""Button"",
-                    ""id"": ""bc5dc416-add6-483e-80ab-125bb03bf34c"",
+                    ""id"": ""dafc3bf7-780b-406d-b868-7e6b18cefdfc"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""WingDown"",
+                    ""name"": ""Cancel"",
                     ""type"": ""Button"",
-                    ""id"": ""89769d1c-022d-4228-bf85-aa0b8fd837f2"",
+                    ""id"": ""1ecf5e13-76e7-4605-9b9a-ce8c70330fdd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -1674,7 +1674,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""WeaponUp"",
+                    ""action"": ""Up"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1685,7 +1685,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""WeaponUp"",
+                    ""action"": ""Up"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1696,7 +1696,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""WeaponDown"",
+                    ""action"": ""Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1707,7 +1707,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""WeaponDown"",
+                    ""action"": ""Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1718,7 +1718,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""SlotLeft"",
+                    ""action"": ""Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1729,7 +1729,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""SlotLeft"",
+                    ""action"": ""Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1740,7 +1740,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""SlotRight"",
+                    ""action"": ""Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1751,51 +1751,51 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""SlotRight"",
+                    ""action"": ""Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bf5c4814-1fe6-482e-9ee2-31b8a30e439e"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""id"": ""93d0367f-3273-48e6-a1ec-f57d18abc224"",
+                    ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""WingUp"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e82da073-e187-4fb9-8bf1-3883528e129f"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""id"": ""0e5c9aa9-0f7f-464e-8cde-14b488704365"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""WingUp"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4698f8ec-6ced-4de1-aa88-9fd7c9b830a6"",
-                    ""path"": ""<Keyboard>/ctrl"",
+                    ""id"": ""bfd571b6-d92c-40e0-a84b-e69d8ad7b2fb"",
+                    ""path"": ""<Keyboard>/backspace"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""WingDown"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""dcfd5506-5539-438e-a19c-26bbdc3b835f"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""id"": ""b10dc2e1-9cbb-40c3-9dba-c7d48d9c0d73"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""WingDown"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1900,12 +1900,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_ViewportDebug_ChangeOrientation = m_ViewportDebug.FindAction("ChangeOrientation", throwIfNotFound: true);
         // Upgrade
         m_Upgrade = asset.FindActionMap("Upgrade", throwIfNotFound: true);
-        m_Upgrade_WeaponUp = m_Upgrade.FindAction("WeaponUp", throwIfNotFound: true);
-        m_Upgrade_WeaponDown = m_Upgrade.FindAction("WeaponDown", throwIfNotFound: true);
-        m_Upgrade_SlotLeft = m_Upgrade.FindAction("SlotLeft", throwIfNotFound: true);
-        m_Upgrade_SlotRight = m_Upgrade.FindAction("SlotRight", throwIfNotFound: true);
-        m_Upgrade_WingUp = m_Upgrade.FindAction("WingUp", throwIfNotFound: true);
-        m_Upgrade_WingDown = m_Upgrade.FindAction("WingDown", throwIfNotFound: true);
+        m_Upgrade_Up = m_Upgrade.FindAction("Up", throwIfNotFound: true);
+        m_Upgrade_Down = m_Upgrade.FindAction("Down", throwIfNotFound: true);
+        m_Upgrade_Left = m_Upgrade.FindAction("Left", throwIfNotFound: true);
+        m_Upgrade_Right = m_Upgrade.FindAction("Right", throwIfNotFound: true);
+        m_Upgrade_Select = m_Upgrade.FindAction("Select", throwIfNotFound: true);
+        m_Upgrade_Cancel = m_Upgrade.FindAction("Cancel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -2623,22 +2623,22 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     // Upgrade
     private readonly InputActionMap m_Upgrade;
     private IUpgradeActions m_UpgradeActionsCallbackInterface;
-    private readonly InputAction m_Upgrade_WeaponUp;
-    private readonly InputAction m_Upgrade_WeaponDown;
-    private readonly InputAction m_Upgrade_SlotLeft;
-    private readonly InputAction m_Upgrade_SlotRight;
-    private readonly InputAction m_Upgrade_WingUp;
-    private readonly InputAction m_Upgrade_WingDown;
+    private readonly InputAction m_Upgrade_Up;
+    private readonly InputAction m_Upgrade_Down;
+    private readonly InputAction m_Upgrade_Left;
+    private readonly InputAction m_Upgrade_Right;
+    private readonly InputAction m_Upgrade_Select;
+    private readonly InputAction m_Upgrade_Cancel;
     public struct UpgradeActions
     {
         private @PlayerInput m_Wrapper;
         public UpgradeActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @WeaponUp => m_Wrapper.m_Upgrade_WeaponUp;
-        public InputAction @WeaponDown => m_Wrapper.m_Upgrade_WeaponDown;
-        public InputAction @SlotLeft => m_Wrapper.m_Upgrade_SlotLeft;
-        public InputAction @SlotRight => m_Wrapper.m_Upgrade_SlotRight;
-        public InputAction @WingUp => m_Wrapper.m_Upgrade_WingUp;
-        public InputAction @WingDown => m_Wrapper.m_Upgrade_WingDown;
+        public InputAction @Up => m_Wrapper.m_Upgrade_Up;
+        public InputAction @Down => m_Wrapper.m_Upgrade_Down;
+        public InputAction @Left => m_Wrapper.m_Upgrade_Left;
+        public InputAction @Right => m_Wrapper.m_Upgrade_Right;
+        public InputAction @Select => m_Wrapper.m_Upgrade_Select;
+        public InputAction @Cancel => m_Wrapper.m_Upgrade_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_Upgrade; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -2648,46 +2648,46 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_UpgradeActionsCallbackInterface != null)
             {
-                @WeaponUp.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponUp;
-                @WeaponUp.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponUp;
-                @WeaponUp.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponUp;
-                @WeaponDown.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponDown;
-                @WeaponDown.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponDown;
-                @WeaponDown.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWeaponDown;
-                @SlotLeft.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotLeft;
-                @SlotLeft.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotLeft;
-                @SlotLeft.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotLeft;
-                @SlotRight.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotRight;
-                @SlotRight.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotRight;
-                @SlotRight.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSlotRight;
-                @WingUp.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingUp;
-                @WingUp.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingUp;
-                @WingUp.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingUp;
-                @WingDown.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingDown;
-                @WingDown.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingDown;
-                @WingDown.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnWingDown;
+                @Up.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnUp;
+                @Down.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnDown;
+                @Left.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnLeft;
+                @Left.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnLeft;
+                @Left.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnLeft;
+                @Right.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnRight;
+                @Right.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnRight;
+                @Right.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnRight;
+                @Select.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnSelect;
+                @Cancel.started -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_UpgradeActionsCallbackInterface.OnCancel;
             }
             m_Wrapper.m_UpgradeActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @WeaponUp.started += instance.OnWeaponUp;
-                @WeaponUp.performed += instance.OnWeaponUp;
-                @WeaponUp.canceled += instance.OnWeaponUp;
-                @WeaponDown.started += instance.OnWeaponDown;
-                @WeaponDown.performed += instance.OnWeaponDown;
-                @WeaponDown.canceled += instance.OnWeaponDown;
-                @SlotLeft.started += instance.OnSlotLeft;
-                @SlotLeft.performed += instance.OnSlotLeft;
-                @SlotLeft.canceled += instance.OnSlotLeft;
-                @SlotRight.started += instance.OnSlotRight;
-                @SlotRight.performed += instance.OnSlotRight;
-                @SlotRight.canceled += instance.OnSlotRight;
-                @WingUp.started += instance.OnWingUp;
-                @WingUp.performed += instance.OnWingUp;
-                @WingUp.canceled += instance.OnWingUp;
-                @WingDown.started += instance.OnWingDown;
-                @WingDown.performed += instance.OnWingDown;
-                @WingDown.canceled += instance.OnWingDown;
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
+                @Left.started += instance.OnLeft;
+                @Left.performed += instance.OnLeft;
+                @Left.canceled += instance.OnLeft;
+                @Right.started += instance.OnRight;
+                @Right.performed += instance.OnRight;
+                @Right.canceled += instance.OnRight;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
             }
         }
     }
@@ -2793,11 +2793,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     }
     public interface IUpgradeActions
     {
-        void OnWeaponUp(InputAction.CallbackContext context);
-        void OnWeaponDown(InputAction.CallbackContext context);
-        void OnSlotLeft(InputAction.CallbackContext context);
-        void OnSlotRight(InputAction.CallbackContext context);
-        void OnWingUp(InputAction.CallbackContext context);
-        void OnWingDown(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
 }

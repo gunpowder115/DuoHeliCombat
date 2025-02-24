@@ -1590,7 +1590,7 @@
             "id": "74e96e03-8817-4c6b-922d-80117607d4b4",
             "actions": [
                 {
-                    "name": "WeaponUp",
+                    "name": "Up",
                     "type": "Button",
                     "id": "3e19d072-49c1-496b-833c-55b2a13db480",
                     "expectedControlType": "Button",
@@ -1599,7 +1599,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "WeaponDown",
+                    "name": "Down",
                     "type": "Button",
                     "id": "d290eb14-3bb0-405e-a91a-8c8c297e1d7e",
                     "expectedControlType": "Button",
@@ -1608,7 +1608,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SlotLeft",
+                    "name": "Left",
                     "type": "Button",
                     "id": "00dd2dea-e0a2-4abe-b445-207b124cc94a",
                     "expectedControlType": "Button",
@@ -1617,7 +1617,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SlotRight",
+                    "name": "Right",
                     "type": "Button",
                     "id": "0b85f3fa-2f50-43a8-af15-07f11d2beb26",
                     "expectedControlType": "Button",
@@ -1626,18 +1626,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "WingUp",
+                    "name": "Select",
                     "type": "Button",
-                    "id": "bc5dc416-add6-483e-80ab-125bb03bf34c",
+                    "id": "dafc3bf7-780b-406d-b868-7e6b18cefdfc",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "WingDown",
+                    "name": "Cancel",
                     "type": "Button",
-                    "id": "89769d1c-022d-4228-bf85-aa0b8fd837f2",
+                    "id": "1ecf5e13-76e7-4605-9b9a-ce8c70330fdd",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1652,7 +1652,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "WeaponUp",
+                    "action": "Up",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1663,7 +1663,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "WeaponUp",
+                    "action": "Up",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1674,7 +1674,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "WeaponDown",
+                    "action": "Down",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1685,7 +1685,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "WeaponDown",
+                    "action": "Down",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1696,7 +1696,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "SlotLeft",
+                    "action": "Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1707,7 +1707,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SlotLeft",
+                    "action": "Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1718,7 +1718,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "SlotRight",
+                    "action": "Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1729,51 +1729,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SlotRight",
+                    "action": "Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "bf5c4814-1fe6-482e-9ee2-31b8a30e439e",
-                    "path": "<Keyboard>/shift",
+                    "id": "93d0367f-3273-48e6-a1ec-f57d18abc224",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "WingUp",
+                    "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "e82da073-e187-4fb9-8bf1-3883528e129f",
-                    "path": "<Gamepad>/rightShoulder",
+                    "id": "0e5c9aa9-0f7f-464e-8cde-14b488704365",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "WingUp",
+                    "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "4698f8ec-6ced-4de1-aa88-9fd7c9b830a6",
-                    "path": "<Keyboard>/ctrl",
+                    "id": "bfd571b6-d92c-40e0-a84b-e69d8ad7b2fb",
+                    "path": "<Keyboard>/backspace",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "WingDown",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "dcfd5506-5539-438e-a19c-26bbdc3b835f",
-                    "path": "<Gamepad>/rightTrigger",
+                    "id": "b10dc2e1-9cbb-40c3-9dba-c7d48d9c0d73",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "WingDown",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
