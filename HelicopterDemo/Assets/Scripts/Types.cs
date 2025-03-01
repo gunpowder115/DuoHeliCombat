@@ -45,10 +45,10 @@ public class Types
 
     public enum CargoType
     {
-        Rope,
-        Squad,
-        OneParachute,
-        ThreeParachutes
+        Rope, //for helicopter
+        Squad, //for jeeps, tanks
+        OneParachute, //for bomb
+        ThreeParachutes //for any buildings
     }
 
     #endregion

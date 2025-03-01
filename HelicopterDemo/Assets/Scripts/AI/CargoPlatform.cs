@@ -11,7 +11,6 @@ public class CargoPlatform : MonoBehaviour
     [SerializeField] private float dropHeight = 25f;
     [SerializeField] private CargoType cargoType = CargoType.Rope;
 
-    private Building building;
     private GameObject cargoHelicopterObject;
     private GameObject cargoObject;
     private CargoHelicopter cargoHelicopter;
@@ -23,7 +22,6 @@ public class CargoPlatform : MonoBehaviour
 
     private void Start()
     {
-        building = GetComponent<Building>();
         npcController = NpcController.Singleton;
         cargoState = CargoState.Lost;
     }

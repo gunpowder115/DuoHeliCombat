@@ -48,13 +48,4 @@ public class BuildingSelector : MonoBehaviour
             platformController.Remove(gameObject);
         }
     }
-
-    public void SetBuilding(int buildNumber, GlobalSide2 side)
-    {
-        buildingPrefab = side == GlobalSide2.Blue ? blueBuildingsPrefabs[buildNumber - 1] : redBuildingsPrefabs[buildNumber - 1];
-        cargoPrefab = side == GlobalSide2.Blue ? blueCargosPrefabs[buildNumber - 1] : redCargosPrefabs[buildNumber - 1];
-
-        GetComponent<Platform>().InitBuilding(buildingPrefab);
-        platform.InitBuilding(buildingPrefab);
-    }
 }

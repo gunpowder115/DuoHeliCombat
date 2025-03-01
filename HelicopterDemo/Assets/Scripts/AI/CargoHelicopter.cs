@@ -47,7 +47,7 @@ public class CargoHelicopter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cargoType == CargoType.ThreeParachutes)
+        if (cargoType == CargoType.ThreeParachutes || cargoType == CargoType.OneParachute)
         {
             Vector3 toDeliveryPoint = deliveryPoint - transform.position;
             Vector3 toEscapePoint = (escapePoint - transform.position).normalized;
@@ -139,6 +139,10 @@ public class CargoHelicopter : MonoBehaviour
                 escapePoint = transform.position + transform.forward * 2.5f * distance;
                 break;
             case CargoType.OneParachute:
+                deliveryPoint = new Vector3(cargoPlatformPos.x, cargoPlatformPos.y + height, cargoPlatformPos.z);
+                currDist = Random.Range(0.8f * distance, 1.2f * distance);
+                transform.Translate(0, height, -currDist);
+                escapePoint = transform.position + transform.forward * 2.5f * distance;
                 break;
             case CargoType.ThreeParachutes:
                 deliveryPoint = new Vector3(cargoPlatformPos.x, cargoPlatformPos.y + height, cargoPlatformPos.z);
