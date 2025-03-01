@@ -1228,6 +1228,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Take",
+                    "type": "Button",
+                    "id": "d2236e42-7697-49f7-bea6-d14897661f9d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1406,6 +1415,17 @@
                     "action": "AltBuild_6",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97ccdfdb-12e4-4191-9979-65a586f10906",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Take",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1444,6 +1464,15 @@
                     "name": "AnyTargetSelection",
                     "type": "Button",
                     "id": "bbd0b028-8271-446c-a0fc-375aa20a90a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Take",
+                    "type": "Button",
+                    "id": "f859599a-fe04-4972-9a0f-4528a1ca3584",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1492,6 +1521,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "AnyTargetSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9d95134-89e0-42ff-b9a5-1c175192d2dc",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Take",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

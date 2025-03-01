@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
     InputController inputController;
     Shooter shooter;
     Crosshair crosshair;
+    private PlayerBody playerBody;
     private AirDuster airDuster;
     private LineDrawer lineDrawer;
     private List<SimpleRotor> rotors;
@@ -61,6 +62,7 @@ public class Player : MonoBehaviour
     {
         translation = GetComponent<Translation>();
         rotation = GetComponentInChildren<Rotation>();
+        playerBody = GetComponentInChildren<PlayerBody>();
         shooter = GetComponent<Shooter>();
         rotors = new List<SimpleRotor>();
         rotors.AddRange(GetComponentsInChildren<SimpleRotor>());
@@ -90,6 +92,7 @@ public class Player : MonoBehaviour
         inputDevice.CancelSelectionAnytarget += CancelSelectionAnytarget;
         inputDevice.CancelAiming += CancelAiming;
         inputDevice.SelectBuildingEvent += SelectBuilding;
+        inputDevice.TakeEvent += Take;
 
         rotateToDirection = false;
         targetDirection = transform.forward;
@@ -363,6 +366,15 @@ public class Player : MonoBehaviour
 
             currDelayAfterDestroy += Time.deltaTime;
             return false;
+        }
+    }
+
+    private void Take()
+    {
+        if (playerBody.BombForTake)
+        {
+            Bomb bomb = playerBody.BombForTake;
+            playerBody.Take(bomb.gameObject);
         }
     }
 

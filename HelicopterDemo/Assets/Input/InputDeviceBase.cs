@@ -25,6 +25,8 @@ public abstract class InputDeviceBase
     public event Action<int> UpgradeLeftEvent, UpgradeRightEvent;
     public event Action UpgradeSelectEvent, UpgradeCancelEvent;
 
+    public event Action TakeEvent;
+
     #endregion
 
     #region Properties
@@ -278,6 +280,8 @@ public abstract class InputDeviceBase
     protected void UpgradeRight() => UpgradeRightEvent?.Invoke(1);
     protected void UpgradeSelect() => UpgradeSelectEvent?.Invoke();
     protected void UpgradeCancel() => UpgradeCancelEvent?.Invoke();
+
+    protected void Take() => TakeEvent?.Invoke();
 
     protected enum VerticalMoveDirection : int
     {

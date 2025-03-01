@@ -28,6 +28,8 @@ public class InputKeyboard : InputDeviceBase
         playerInput.PlayerKeyboard.FastMove.performed += context => FastMove();
         playerInput.PlayerKeyboard.FastMove.canceled += context => FastMoveCancel();
 
+        playerInput.CommonKeyboard.Take.performed += context => Take();
+
         #region Vertical Move
 
         playerInput.PlayerKeyboard.SingleUp.performed += context => SetVerticalMove(VerticalMoveDirection.SingleUp);
