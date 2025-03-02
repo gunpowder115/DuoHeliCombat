@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
     public Vector3 AimAngles { get; private set; }
     public Vector3 CurrentDirection { get; private set; }
     public InputDeviceBase InputDevice => inputDevice;
+    public PlayerBody PlayerBody => playerBody;
 
     // Start is called before the first frame update
     void Start()
@@ -371,10 +372,13 @@ public class Player : MonoBehaviour
 
     private void Take()
     {
-        if (playerBody.BombForTake)
+        if (playerBody.ItemForTake && !playerBody.Item)
         {
-            Bomb bomb = playerBody.BombForTake;
-            playerBody.Take(bomb.gameObject);
+            playerBody.Take();
+        }
+        else if (playerBody.Item)
+        {
+            playerBody.Drop();
         }
     }
 

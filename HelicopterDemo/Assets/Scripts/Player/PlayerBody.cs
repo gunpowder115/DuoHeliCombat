@@ -2,10 +2,47 @@ using UnityEngine;
 
 public class PlayerBody : MonoBehaviour
 {
-    public Bomb BombForTake { get; set; }
+    [SerializeField] private GameObject bombHolder;
 
-    public void Take(GameObject item)
+    public PickableUp ItemForTake { get; set; }
+    public PickableUp Item { get; private set; }
+
+
+    private void Start()
     {
-        item.transform.SetParent(transform);
+        Item = null;
+    }
+
+    private void Update()
+    {
+        if (Item)
+        {
+            Item.transform.position = bombHolder.transform.position;
+            Item.transform.rotation = bombHolder.transform.rotation;
+        }
+    }
+
+    public void Take()
+    {
+        Bomb bomb = ItemForTake.GetComponent<Bomb>();
+        if (bomb && bombHolder)
+        {
+            Item = ItemForTake;
+            Item.transform.SetParent(transform);
+            Item.transform.position = bombHolder.transform.position;
+            Item.transform.rotation = bombHolder.transform.rotation;
+            Item.SetGravity(false);
+            Item.SetTrigger(false);
+        }
+    }
+
+    public void Drop()
+    {
+        if (Item)
+        {
+            Item.transform.SetParent(null);
+            Item.SetGravity(true);
+            Item = null;
+        }
     }
 }
