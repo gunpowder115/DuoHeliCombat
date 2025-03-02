@@ -6,13 +6,23 @@ public class Bomb : MonoBehaviour
     [SerializeField] private GameObject explosion;
 
     public bool IsActivated { get; set; }
+    public bool IsBombing { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         IsActivated = false;
+        IsBombing = false;
     }
 
     private void OnCollisionEnter(Collision collision)
+    {
+        if (IsBombing)        
+            BombingActivation();
+        else
+            InGameActivation(collision);
+    }
+
+    private void InGameActivation(Collision collision)
     {
         if (IsActivated)
         {
@@ -24,6 +34,15 @@ public class Bomb : MonoBehaviour
                 if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
                 Destroy(gameObject);
             }
+        }
+    }
+
+    private void BombingActivation()
+    {
+        if (IsActivated)
+        {
+            if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+            Destroy(gameObject);
         }
     }
 }

@@ -10,7 +10,7 @@ public class PickableUp : MonoBehaviour
     private BoxCollider boxCollider;
     private NpcController npcController;
 
-    private void Start()
+    private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
