@@ -33,6 +33,7 @@ public class PlayerBody : MonoBehaviour
             Item.transform.rotation = bombHolder.transform.rotation;
             Item.SetGravity(false);
             Item.SetTrigger(false);
+            bomb.IsActivated = true;
         }
     }
 
