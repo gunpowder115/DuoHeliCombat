@@ -186,8 +186,9 @@ public class Player : MonoBehaviour
         else
         {
             Vector3 inputXYZ = new Vector3(inputX, inputY, inputZ);
+            float bombMovingCoef = playerBody.Item ? lowSpeedCoef : 1f;
 
-            if (inputDevice.FastMoving)
+            if (inputDevice.FastMoving && !playerBody.Item)
             {
                 inputXYZ = new Vector3(inputX, inputY, inputZ);
                 targetSpeed = Vector3.ClampMagnitude(inputXYZ * speed * highSpeedCoef, speed * highSpeedCoef);
@@ -195,7 +196,7 @@ public class Player : MonoBehaviour
             else if (inputXZ == 0f)
                 targetSpeed = Vector3.zero;
             else
-                targetSpeed = Vector3.ClampMagnitude(inputXYZ * speed, speed);
+                targetSpeed = Vector3.ClampMagnitude(inputXYZ * speed * bombMovingCoef, speed * bombMovingCoef);
 
             currSpeed = Vector3.Lerp(currSpeed, targetSpeed, acceleration * Time.deltaTime);
             translation.SetHorizontalTranslation(currSpeed);
