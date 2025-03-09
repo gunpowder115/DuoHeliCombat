@@ -224,8 +224,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.0066853, z: 5.184926}
+  m_Center: {x: 0, y: -0.08356488, z: -0.56824064}
 --- !u!65 &349561171507842029
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -321,6 +321,10 @@ PrefabInstance:
     - target: {fileID: 7134557875477254832, guid: ca44a1038a012fb4d868553620176da4, type: 3}
       propertyPath: m_Name
       value: MainRotorClear_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134557875477254832, guid: ca44a1038a012fb4d868553620176da4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca44a1038a012fb4d868553620176da4, type: 3}
