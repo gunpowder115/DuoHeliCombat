@@ -305,6 +305,7 @@ public abstract class InputDeviceBase
         Aiming,
         SelectionFarTarget,
         SelectionAnyTarget,
-        BuildSelection
+        BuildSelection,
+        Takeoff,
     }
 }

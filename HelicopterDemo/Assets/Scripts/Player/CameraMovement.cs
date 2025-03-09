@@ -20,11 +20,13 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Vector3 cameraAimPosRight = new Vector3(1.5f, 1.9f, -4.3f);
     [SerializeField] private Vector3 cameraAimingRot = new Vector3(3.3f, 0, 0);
     [SerializeField] private Vector3 cameraTgtSelPos = new Vector3(0, 11, -22);
+    [SerializeField] private Vector3 cameraTakeoffPos = new Vector3(0, 5f, -10f);
 
     [SerializeField] private Player player;
     [SerializeField] private GameObject cameraContainer;
 
     private bool delayAfterTargetDestroy;
+    private bool takeoffMode;
     private float delay;
     private float currAimingSpeed;
     private Vector2 input, direction, playerInput;
@@ -60,6 +62,7 @@ public class CameraMovement : MonoBehaviour
         crosshair = crosshairController.GetCrosshair(player.PlayerNumber);
 
         cameraAimPos = cameraAimPosRight;
+        takeoffMode = false;
     }
 
     private void Update()
@@ -76,8 +79,24 @@ public class CameraMovement : MonoBehaviour
         direction = new Vector2(inputDevice.AimMovement ? toTargetSelection.x : PlayerDir.x,
             inputDevice.AimMovement ? toTargetSelection.y : 0f);
 
-        if (!Aiming)
+        if (player.IsTakeoff)
         {
+            if (!takeoffMode)
+            {
+                transform.SetParent(null);
+                transform.localPosition = player.transform.position + cameraTakeoffPos;
+                takeoffMode = true;
+            }
+            transform.LookAt(player.transform);
+        }
+        else if (!Aiming)
+        {
+            if (takeoffMode)
+            {
+                transform.SetParent(cameraContainer.transform);
+                takeoffMode = false;
+            }
+
             if (IsDelayAfterTargetDestroy())
                 currAimingSpeed = 0f;
             else

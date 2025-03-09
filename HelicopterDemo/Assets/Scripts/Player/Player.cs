@@ -10,6 +10,7 @@ using static ViewPortController;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private bool startWithTakeoff = false;
     [SerializeField] float changeSpeedInput = 0.7f;
     [SerializeField] float vertFastCoef = 5f;
     [SerializeField] float minDistToAim = 17f;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject explosion;
     [SerializeField] ControllerType controllerType = ControllerType.Keyboard;
     [SerializeField] Players playerNumber = Players.Player1;
+    [SerializeField] PlayerStates playerState = PlayerStates.Normal;
 
     bool rotateToDirection;
     float yawAngle;
@@ -49,8 +51,10 @@ public class Player : MonoBehaviour
     private AirDuster airDuster;
     private LineDrawer lineDrawer;
     private List<SimpleRotor> rotors;
+    private TakeoffProcess takeoff;
 
     public bool Aiming { get; private set; }
+    public bool IsTakeoff { get; private set; }
     public bool TargetDestroy { get; set; }
     public Players PlayerNumber => playerNumber;
     public Vector3 AimAngles { get; private set; }
@@ -70,6 +74,8 @@ public class Player : MonoBehaviour
         foreach (var rotor in rotors)
             rotor.StartRotor();
         lineDrawer = GetComponent<LineDrawer>();
+        takeoff = GetComponent<TakeoffProcess>();
+        IsTakeoff = startWithTakeoff;
 
         npcController = NpcController.Singleton;
         platformController = PlatformController.Singleton;
@@ -108,15 +114,18 @@ public class Player : MonoBehaviour
     void Update()
     {
         Vector2 inputDirection = inputDevice.GetInput();
+        float inputVerticalDirection = inputDevice.VerticalMoving;
+        float inputVerticalFast = inputDevice.VerticalFastMoving;
         float inputX = inputDirection.x;
         float inputZ = inputDirection.y;
+        float inputY = inputVerticalFast != 0f ? inputVerticalFast : inputVerticalDirection;
 
         if (!health.IsAlive && Respawn())
         {
             health.SetAlive(true);
         }
         else
-            Translate(inputX, inputZ);
+            Translate(inputX, inputY, inputZ, inputVerticalFast);
 
         //rotation around X, Y, Z
         if (rotation != null)
@@ -150,6 +159,18 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (IsTakeoff)
+        {
+            if (takeoff.Takeoff())
+            {
+                IsTakeoff = false;
+            }
+            else
+            {
+                Translate(0f, takeoff.ClimbSpeed, 0f, 0f);
+            }
+        }
+
         airDuster.normRotorSpeed = 1f;
         airDuster.normAltitiude = transform.position.y / 10f;
 
@@ -157,13 +178,9 @@ public class Player : MonoBehaviour
         //if (playerNumber == Players.Player1) Debug.Log(inputDevice.PlayerState);
     }
 
-    void Translate(float inputX, float inputZ)
+    void Translate(float inputX, float inputY, float inputZ, float inputVerticalFast)
     {
-        float inputVerticalDirection = inputDevice.VerticalMoving;
-        float inputVerticalFast = inputDevice.VerticalFastMoving;
-
         float inputXZ = Mathf.Clamp01(new Vector3(inputX, 0f, inputZ).magnitude);
-        float inputY = inputVerticalFast != 0f ? inputVerticalFast : inputVerticalDirection;
 
         if (inputXZ >= changeSpeedInput && !translation.RotToDir ||
             inputXZ < changeSpeedInput && translation.RotToDir)

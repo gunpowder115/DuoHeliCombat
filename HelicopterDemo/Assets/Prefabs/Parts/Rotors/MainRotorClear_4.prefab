@@ -52,7 +52,7 @@ MonoBehaviour:
   alwaysRot: 0
   aroundSelf: 1
   rotSpeed: 3
-  rotAcceleration: 0.1
+  rotAcceleration: 0.3
   spdCoefToTakeoff: 0.9
   axis: 1
 --- !u!1001 &1857032581222749409

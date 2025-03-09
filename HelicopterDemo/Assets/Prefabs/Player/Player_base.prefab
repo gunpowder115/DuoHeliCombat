@@ -171,10 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7838537ae87cad94c8668491bd1a3787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotorAccel: 0.2
-  beginRotorSpeed: 1
-  tgtRotorSpeed: 5
-  climbSpeed: 0.5
+  climbSpeed: 0.3
   takeoffHeight: 10
   clearRotor: {fileID: 6358393885554414344}
   blurryRotor: {fileID: 885729668997040816}
@@ -210,6 +207,14 @@ PrefabInstance:
     - target: {fileID: 3422478316054150462, guid: e07726d016e6690409d5aa448e69170b, type: 3}
       propertyPath: cameraDefaultPos.z
       value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422478316054150462, guid: e07726d016e6690409d5aa448e69170b, type: 3}
+      propertyPath: cameraTakeoffPos.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422478316054150462, guid: e07726d016e6690409d5aa448e69170b, type: 3}
+      propertyPath: cameraTakeoffPos.z
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 3422478316054150462, guid: e07726d016e6690409d5aa448e69170b, type: 3}
       propertyPath: cameraAimPosRight.x
