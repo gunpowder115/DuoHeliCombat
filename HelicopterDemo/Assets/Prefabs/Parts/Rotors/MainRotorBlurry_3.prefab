@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6672901258663642135}
   - component: {fileID: 7739982521229686093}
   m_Layer: 0
-  m_Name: MainRotorMoving_3
+  m_Name: MainRotorBlurry_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
