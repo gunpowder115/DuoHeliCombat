@@ -26,7 +26,6 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private GameObject cameraContainer;
 
     private bool delayAfterTargetDestroy;
-    private bool takeoffMode;
     private float delay;
     private float currAimingSpeed;
     private Vector2 input, direction, playerInput;
@@ -36,6 +35,10 @@ public class CameraMovement : MonoBehaviour
     private ViewPortController viewPortController;
     private Camera playerCamera;
     private CrosshairController crosshairController;
+
+    public bool CameraInTakeoff { get; set; }
+    public bool MoveCamera { get; set; }
+    public float CameraSpeedInTakeoff { get; set; }
 
     private bool Aiming => player.Aiming;
     private Vector3 AimAngles => player.AimAngles;
@@ -62,7 +65,12 @@ public class CameraMovement : MonoBehaviour
         crosshair = crosshairController.GetCrosshair(player.PlayerNumber);
 
         cameraAimPos = cameraAimPosRight;
-        takeoffMode = false;
+        CameraInTakeoff = player.StartWithTakeoff;
+        if (CameraInTakeoff)
+        {
+            transform.localPosition = player.transform.position + cameraTakeoffPos;
+            transform.LookAt(player.transform);
+        }
     }
 
     private void Update()
@@ -79,24 +87,18 @@ public class CameraMovement : MonoBehaviour
         direction = new Vector2(inputDevice.AimMovement ? toTargetSelection.x : PlayerDir.x,
             inputDevice.AimMovement ? toTargetSelection.y : 0f);
 
-        if (player.IsTakeoff)
+        if (CameraInTakeoff)
         {
-            if (!takeoffMode)
+            if (MoveCamera)
             {
-                transform.SetParent(null);
-                transform.localPosition = player.transform.position + cameraTakeoffPos;
-                takeoffMode = true;
+                RotateHorizontally();
+                RotateVertically();
             }
-            transform.LookAt(player.transform);
+            SetDefault();
+            currAimingSpeed = CameraSpeedInTakeoff;
         }
         else if (!Aiming)
         {
-            if (takeoffMode)
-            {
-                transform.SetParent(cameraContainer.transform);
-                takeoffMode = false;
-            }
-
             if (IsDelayAfterTargetDestroy())
                 currAimingSpeed = 0f;
             else

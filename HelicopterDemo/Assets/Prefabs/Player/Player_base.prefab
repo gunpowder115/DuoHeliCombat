@@ -175,7 +175,7 @@ MonoBehaviour:
   takeoffHeight: 10
   clearRotor: {fileID: 6358393885554414344}
   blurryRotor: {fileID: 885729668997040816}
-  playerCamera: {fileID: 7270776002332590156}
+  playerCamera: {fileID: 1507663302920336042}
   audioSource: {fileID: 4365838574372581158}
 --- !u!1001 &4292878413097013140
 PrefabInstance:
@@ -209,12 +209,16 @@ PrefabInstance:
       value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 3422478316054150462, guid: e07726d016e6690409d5aa448e69170b, type: 3}
+      propertyPath: cameraTakeoffPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422478316054150462, guid: e07726d016e6690409d5aa448e69170b, type: 3}
       propertyPath: cameraTakeoffPos.y
-      value: 4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3422478316054150462, guid: e07726d016e6690409d5aa448e69170b, type: 3}
       propertyPath: cameraTakeoffPos.z
-      value: -6
+      value: -4.4
       objectReference: {fileID: 0}
     - target: {fileID: 3422478316054150462, guid: e07726d016e6690409d5aa448e69170b, type: 3}
       propertyPath: cameraAimPosRight.x
@@ -299,14 +303,20 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8973785694044723657, guid: e07726d016e6690409d5aa448e69170b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e07726d016e6690409d5aa448e69170b, type: 3}
+--- !u!114 &1507663302920336042 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3422478316054150462, guid: e07726d016e6690409d5aa448e69170b, type: 3}
+  m_PrefabInstance: {fileID: 4292878413097013140}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e0a03487111734cb3d2a6aa0786844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7270776002332590147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6878582592513183703, guid: e07726d016e6690409d5aa448e69170b, type: 3}
-  m_PrefabInstance: {fileID: 4292878413097013140}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &7270776002332590156 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 6878582592513183704, guid: e07726d016e6690409d5aa448e69170b, type: 3}
   m_PrefabInstance: {fileID: 4292878413097013140}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5129332577593371650

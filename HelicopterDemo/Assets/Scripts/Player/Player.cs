@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     private TakeoffProcess takeoff;
 
     public bool Aiming { get; private set; }
-    public bool IsTakeoff { get; private set; }
+    public bool StartWithTakeoff => startWithTakeoff;
     public bool TargetDestroy { get; set; }
     public Players PlayerNumber => playerNumber;
     public Vector3 AimAngles { get; private set; }
@@ -75,7 +75,6 @@ public class Player : MonoBehaviour
             rotor.StartRotor();
         lineDrawer = GetComponent<LineDrawer>();
         takeoff = GetComponent<TakeoffProcess>();
-        IsTakeoff = startWithTakeoff;
 
         npcController = NpcController.Singleton;
         platformController = PlatformController.Singleton;
@@ -159,11 +158,11 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (IsTakeoff)
+        if (startWithTakeoff)
         {
             if (takeoff.Takeoff())
             {
-                IsTakeoff = false;
+                startWithTakeoff = false;
             }
             else
             {

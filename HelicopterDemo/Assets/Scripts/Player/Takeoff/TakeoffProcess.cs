@@ -6,7 +6,7 @@ public class TakeoffProcess : MonoBehaviour
     [SerializeField] private float takeoffHeight = 10f;
     [SerializeField] private SimpleRotor clearRotor;
     [SerializeField] private SimpleRotor blurryRotor;
-    [SerializeField] private Camera playerCamera;
+    [SerializeField] private CameraMovement playerCamera;
     [SerializeField] private AudioSource audioSource;
 
     private Player player;
@@ -26,18 +26,32 @@ public class TakeoffProcess : MonoBehaviour
 
     public bool Takeoff()
     {
-        switch(TakeoffPhase)
+        if (clearRotor.isActiveAndEnabled)
+            audioSource.pitch = clearRotor.RotSpeedCoef;
+        else
+            audioSource.pitch = 1f;
+
+        switch (TakeoffPhase)
         {
             case TakeoffPhases.RotorAcceleration:
                 ClimbSpeed = 0f;
                 if (clearRotor.ReadyToTakeoff)
+                {
                     TakeoffPhase = TakeoffPhases.Climbing;
+                    playerCamera.MoveCamera = true;
+                }
+                playerCamera.CameraSpeedInTakeoff = 0f;
                 return false;
             case TakeoffPhases.Climbing:
                 ClimbSpeed = climbSpeed;
-                if (clearRotor.transform.position.y >= playerCamera.transform.position.y)
+                bool result = player.transform.position.y > takeoffHeight;
+                playerCamera.CameraSpeedInTakeoff = 0.7f;
+                if (result)
+                {
                     BladesSwipe();
-                return player.transform.position.y > takeoffHeight;
+                    playerCamera.CameraInTakeoff = false;
+                }
+                return result;
             default: return false;
         }
     }
