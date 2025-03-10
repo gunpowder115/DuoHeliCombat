@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
     private LineDrawer lineDrawer;
     private List<SimpleRotor> rotors;
     private TakeoffProcess takeoff;
+    private RandomMovement randomMovement;
 
     public bool Aiming { get; private set; }
     public bool StartWithTakeoff => startWithTakeoff;
@@ -75,6 +76,7 @@ public class Player : MonoBehaviour
             rotor.StartRotor();
         lineDrawer = GetComponent<LineDrawer>();
         takeoff = GetComponent<TakeoffProcess>();
+        randomMovement = GetComponent<RandomMovement>();
 
         npcController = NpcController.Singleton;
         platformController = PlatformController.Singleton;
@@ -123,8 +125,31 @@ public class Player : MonoBehaviour
         {
             health.SetAlive(true);
         }
+        else if (startWithTakeoff)
+        {
+            if (takeoff.Takeoff())
+            {
+                startWithTakeoff = false;
+            }
+            else
+            {
+                Vector3 randMov = new Vector3();
+                if (takeoff.ClimbSpeed > 0f)
+                    randMov = randomMovement.GetRandomInput();
+                Translate(randMov.x, takeoff.ClimbSpeed, randMov.z, 0f);
+            }
+        }
         else
+        {
+            //todo: random movement in idle state
+            //if (inputX == 0f && inputZ == 0f)
+            //{
+            //    var randomInput = randomMovement.GetRandomInput();
+            //    inputX = randomInput.x;
+            //    inputZ = randomInput.z;
+            //}
             Translate(inputX, inputY, inputZ, inputVerticalFast);
+        }
 
         //rotation around X, Y, Z
         if (rotation != null)
@@ -155,18 +180,6 @@ public class Player : MonoBehaviour
                 TargetDestroy = true;
                 inputDevice.ForceChangePlayerState(PlayerStates.Normal);
                 ChangeAimState();
-            }
-        }
-
-        if (startWithTakeoff)
-        {
-            if (takeoff.Takeoff())
-            {
-                startWithTakeoff = false;
-            }
-            else
-            {
-                Translate(0f, takeoff.ClimbSpeed, 0f, 0f);
             }
         }
 
