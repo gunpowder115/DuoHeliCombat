@@ -79,7 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067a092fa6c83b74fa083e4f65413228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openingTime: 0.5
   speed: 3
+  fastSpeedCoef: 1.5
 --- !u!4 &8308901731859101052 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8528000240746164078, guid: cd6a908be2f643c41a93024e501acc59, type: 3}
