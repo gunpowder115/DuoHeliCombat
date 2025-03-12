@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: cargoPrefab
       value: 
       objectReference: {fileID: 5004009015114839929, guid: 2bfb8b912c92fe945ad2195aecd355d5, type: 3}
+    - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8bd0973fac8598469f041ea38683839, type: 3}
 --- !u!4 &8528000240746164078 stripped

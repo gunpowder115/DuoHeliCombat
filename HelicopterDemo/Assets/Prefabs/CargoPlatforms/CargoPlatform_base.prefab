@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1683657815074892363}
   - component: {fileID: 5346528326966759569}
   - component: {fileID: 2617849351958942701}
+  - component: {fileID: 5918485158210834639}
   m_Layer: 0
   m_Name: CargoPlatform_base
   m_TagString: Untagged
@@ -67,7 +68,6 @@ MonoBehaviour:
   cargoPrefab: {fileID: 0}
   caravan: {fileID: 0}
   dropHeight: 12
-  parachuteHeight: 0
   cargoType: 0
 --- !u!114 &1683657815074892363
 MonoBehaviour:
@@ -110,3 +110,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.406754, y: 1.9589016, z: 1.274612}
   m_Center: {x: 1.7829387, y: 0.95399725, z: -1.6897507}
+--- !u!114 &5918485158210834639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188944427035180862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad062e57709838e4fa012a0018a5ba52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cargoOffsetY: 0
+  itemPrefab: {fileID: 0}
+  cargoPrefab: {fileID: 0}
+  redCargoHelicopterPrefab: {fileID: 7161830809428624606, guid: 10b3c58114fb8f64890f78242150c2dc, type: 3}
+  blueCargoHelicopterPrefab: {fileID: 3039462896311314065, guid: 4611a701dfdd71549bd4552b54694e4a, type: 3}
+  cargoType: 2

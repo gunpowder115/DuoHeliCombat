@@ -177,35 +177,28 @@ PrefabInstance:
       propertyPath: m_TagString
       value: FriendlyBuild
       objectReference: {fileID: 0}
+    - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 3477326976187641239, guid: 181b9bc09fdc8a1468c2f58d4c01bd09, type: 3}
+    - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: cargoPrefab
+      value: 
+      objectReference: {fileID: 4838037512019052711, guid: 20b2b1444bf556749a2d14e8a8ddc012, type: 3}
+    - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: cargoOffsetY
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7869827456156279192, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7869827456156279192, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
       propertyPath: cargoPrefab
       value: 
       objectReference: {fileID: 3477326976187641239, guid: 181b9bc09fdc8a1468c2f58d4c01bd09, type: 3}
-    m_RemovedComponents:
-    - {fileID: 7869827456156279192, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
---- !u!1 &1060930992564791281 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2355145705375383449, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
-  m_PrefabInstance: {fileID: 3320850123107948648}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &190898758109347880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1060930992564791281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad062e57709838e4fa012a0018a5ba52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cargoOffsetY: 0.35
-  itemPrefab: {fileID: 3477326976187641239, guid: 181b9bc09fdc8a1468c2f58d4c01bd09, type: 3}
-  cargoPrefab: {fileID: 4838037512019052711, guid: 20b2b1444bf556749a2d14e8a8ddc012, type: 3}
-  redCargoHelicopterPrefab: {fileID: 7161830809428624606, guid: 10b3c58114fb8f64890f78242150c2dc, type: 3}
-  blueCargoHelicopterPrefab: {fileID: 3039462896311314065, guid: 4611a701dfdd71549bd4552b54694e4a, type: 3}
 --- !u!4 &4206030093508219829 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1461652834511506397, guid: 210f121909a3db04cba206a32e0964e4, type: 3}

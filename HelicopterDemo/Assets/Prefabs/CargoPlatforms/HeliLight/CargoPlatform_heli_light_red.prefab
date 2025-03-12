@@ -159,9 +159,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6711679150887480477, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711679150887480477, guid: e8bd0973fac8598469f041ea38683839, type: 3}
       propertyPath: cargoPrefab
       value: 
       objectReference: {fileID: 6206908938094128483, guid: 3431791e37f45e044a7bfddccad883b1, type: 3}
+    - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: cargoType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 6206908938094128483, guid: 3431791e37f45e044a7bfddccad883b1, type: 3}
+    - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: cargoPrefab
+      value: 
+      objectReference: {fileID: 6807392142751828364, guid: 308284353b165164e9ca24e5e1a8e6b4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8bd0973fac8598469f041ea38683839, type: 3}
 --- !u!4 &5102556418181850821 stripped

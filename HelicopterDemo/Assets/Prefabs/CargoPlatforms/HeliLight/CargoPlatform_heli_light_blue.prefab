@@ -220,6 +220,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: FriendlyBuild
       objectReference: {fileID: 0}
+    - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: cargoType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 2132880165559326954, guid: 120c48d81a96bc944a8da4b33839f03c, type: 3}
+    - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: cargoPrefab
+      value: 
+      objectReference: {fileID: 6714197346114020702, guid: 8601d332bfaf75d43bc301504cd7af04, type: 3}
+    - target: {fileID: 7869827456156279192, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7869827456156279192, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
       propertyPath: cargoPrefab
       value: 

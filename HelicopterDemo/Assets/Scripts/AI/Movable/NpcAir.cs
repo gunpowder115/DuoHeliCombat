@@ -126,21 +126,17 @@ public class NpcAir : Npc
         }
     }
 
-    
+
     private void ChangeState()
     {
         switch (npcState)
         {
             case NpcState.Delivery:
-                if (transform.position.y <= thisItem.CargoPlatform.transform.position.y)
-                {
-                    transform.position = thisItem.CargoPlatform.transform.position;
-                    foreach (var rotor in rotors)
-                        rotor.StartRotor();
+                foreach (var rotor in rotors)
+                    rotor.StartRotor();
+                if (airDuster)
+                    airDuster.normRotorSpeed = rotors[0].RotSpeedCoef;
 
-                    if (airDuster)
-                        airDuster.normRotorSpeed = rotors[0].RotSpeedCoef;
-                }
                 if (rotors[0].ReadyToTakeoff)
                 {
                     if (airDuster)

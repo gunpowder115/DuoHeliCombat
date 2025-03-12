@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6714197346114020702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6714197346114020697}
+  m_Layer: 0
+  m_Name: BlueLightHeli_cargo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6714197346114020697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6714197346114020702}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5400481691535216476}
+  - {fileID: 7385386765202756129}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &6714197345260117480
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6714197346114020697}
+    m_Modifications:
+    - target: {fileID: 1446107923709128915, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_Name
+      value: CargoRope
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+--- !u!4 &7385386765202756129 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4274959258108399561, guid: 65b381b4d6cfb6443bc545735f8ee283, type: 3}
+  m_PrefabInstance: {fileID: 6714197345260117480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6714197347100060401
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6714197346114020697}
+    m_Modifications:
+    - target: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720308630453085614, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+      propertyPath: m_Name
+      value: BlueLightHeli_3D
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+--- !u!4 &5400481691535216476 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1720308630453085613, guid: 9ed530e7e8fc2744cadce03b6171123a, type: 3}
+  m_PrefabInstance: {fileID: 6714197347100060401}
+  m_PrefabAsset: {fileID: 0}

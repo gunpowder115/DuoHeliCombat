@@ -3,11 +3,12 @@ using static Types;
 
 public class CargoPlatform_new : MonoBehaviour
 {
-    [SerializeField] private float cargoOffsetY;
+    [SerializeField] private float cargoOffsetY = 0f;
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private GameObject cargoPrefab;
     [SerializeField] private GameObject redCargoHelicopterPrefab;
     [SerializeField] private GameObject blueCargoHelicopterPrefab;
+    [SerializeField] private CargoType cargoType = CargoType.OneParachute;
 
     private bool isDeliveryWaiting;
     private CargoHelicopter cargoHelicopter;
@@ -43,7 +44,7 @@ public class CargoPlatform_new : MonoBehaviour
         if (!cargoHelicopter)
         {
             cargoHelicopter = Instantiate(cargoHelicopterPrefab, cargoPosition, transform.rotation).GetComponent<CargoHelicopter>();
-            cargoHelicopter.Init(cargoPrefab, cargoPosition, CargoType.OneParachute);
+            cargoHelicopter.Init(cargoPrefab, cargoPosition, cargoType);
             isDeliveryWaiting = true;
         }
     }
