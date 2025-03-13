@@ -167,13 +167,29 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6711679150887480477, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711679150887480477, guid: e8bd0973fac8598469f041ea38683839, type: 3}
       propertyPath: cargoPrefab
       value: 
       objectReference: {fileID: 5004009015114839929, guid: 2bfb8b912c92fe945ad2195aecd355d5, type: 3}
     - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: cargoType
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 6942920757594619978, guid: 9bc9de239dc63c04dbbd78660bc7a49f, type: 3}
+    - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: cargoPrefab
+      value: 
+      objectReference: {fileID: 8668944401820245149, guid: a287b42a3a7609a4d9a2277e5cf64d74, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8bd0973fac8598469f041ea38683839, type: 3}
 --- !u!4 &8528000240746164078 stripped

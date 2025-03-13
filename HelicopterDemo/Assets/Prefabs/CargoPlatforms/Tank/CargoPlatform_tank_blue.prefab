@@ -221,12 +221,28 @@ PrefabInstance:
       value: FriendlyBuild
       objectReference: {fileID: 0}
     - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: cargoType
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 7269622369787288487, guid: 109a44f62ad7a0340abd76ee0f1f2ad6, type: 3}
+    - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: cargoPrefab
+      value: 
+      objectReference: {fileID: 5343224917685164125, guid: bf36f628e0319a044b7aa1c43aeba671, type: 3}
     - target: {fileID: 7869827456156279192, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
       propertyPath: cargoType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7869827456156279192, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7869827456156279192, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
       propertyPath: cargoPrefab
