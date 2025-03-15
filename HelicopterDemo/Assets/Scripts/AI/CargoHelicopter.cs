@@ -13,6 +13,7 @@ public class CargoHelicopter : MonoBehaviour
     [SerializeField] private float dropDistDelta = 0.5f;
     [SerializeField] private float cableLength = 5f;
     [SerializeField] private float height = 12f;
+    [SerializeField] private float cargoDeltaToHeli = 2f;
 
     public bool CargoIsDelivered { get; private set; }
     public bool NearDropPoint => currDist < dropDistDelta;
@@ -57,7 +58,7 @@ public class CargoHelicopter : MonoBehaviour
                 translation.SetGlobalTranslation(toDeliveryPoint * currentSpeed);
                 if (NearDropPoint && !isEscape && !cargoItem && cargoPrefab)
                 {
-                    cargoItem = Instantiate(cargoPrefab, deliveryPoint, transform.rotation);
+                    cargoItem = Instantiate(cargoPrefab, deliveryPoint - new Vector3(0f, cargoDeltaToHeli, 0f), transform.rotation);
                     isEscape = true;
                 }
             }

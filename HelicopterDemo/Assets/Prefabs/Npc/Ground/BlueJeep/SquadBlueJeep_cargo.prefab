@@ -62,5 +62,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isNpc: 0
   membersCount: 3
-  squadRadius: 12
+  squadRadius: 8
   memberPrefab: {fileID: 3439309055547392312, guid: 705bcbdd3afe39b47b34cdb368eb010e, type: 3}

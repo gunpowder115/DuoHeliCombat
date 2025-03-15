@@ -76,10 +76,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   distance: 40
-  dropDistCoef: 0.2
-  lowSpeedCoef: 0.6
   leaveDistCoef: 1.1
   dropDistDelta: 0.5
   cableLength: 5
-  height: 12
-  parachutePrefab: {fileID: 0}
+  height: 17
+  cargoDeltaToHeli: 2

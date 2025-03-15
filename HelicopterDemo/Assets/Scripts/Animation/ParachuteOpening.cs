@@ -23,6 +23,6 @@ public class ParachuteOpening : MonoBehaviour
 		else
 			currTime += Time.deltaTime;
 
-		transform.localScale = new Vector3(currScale, 1f, currScale);
+		transform.localScale = new Vector3(currScale, currScale, currScale);
 	}
 }
