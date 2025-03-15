@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4946029451874697791}
-  - component: {fileID: 1231538618}
   - component: {fileID: 1885962689000847234}
   m_Layer: 0
   m_Name: Helicopter_CargoPlatform
@@ -35,21 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1231538618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4946029451874697790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f162875f48d6bb438fcc99b210c5c62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cargoHelicopterPrefab: {fileID: 5709780919029235193, guid: ba5a6ea4f7885384bb620e1c27d13828, type: 3}
-  cargoPrefab: {fileID: 5817739379426018126, guid: 952e4893ad3ceb74181ca3dca789dff6, type: 3}
-  cargoType: 0
 --- !u!114 &1885962689000847234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef181ce7dc0acb04caafefdfc50e3692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingSide: 1
+  deadPrefab: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!1001 &2025572322051032513
 PrefabInstance:
   m_ObjectHideFlags: 0

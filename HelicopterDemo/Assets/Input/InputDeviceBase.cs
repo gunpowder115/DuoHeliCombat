@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static Types;
 
 public abstract class InputDeviceBase
 {
@@ -17,6 +18,14 @@ public abstract class InputDeviceBase
     public event Action<int> ChangePlayerConnection;
     public event Action ChangeConfiguration;
     public event Action ChangeOrientation;
+
+    public event Action<int, GlobalSide2> SelectBuildingEvent;
+
+    public event Action<int> UpgradeUpEvent, UpgradeDownEvent;
+    public event Action<int> UpgradeLeftEvent, UpgradeRightEvent;
+    public event Action UpgradeSelectEvent, UpgradeCancelEvent;
+
+    public event Action TakeEvent;
 
     #endregion
 
@@ -254,6 +263,26 @@ public abstract class InputDeviceBase
 
     protected void SwitchOrientation() => ChangeOrientation?.Invoke();
 
+    protected void SelectBuilding(int buildNumber, GlobalSide2 side)
+    {
+        switch(playerState)
+        {
+            case PlayerStates.BuildSelection:
+                SelectBuildingEvent?.Invoke(buildNumber, side);
+                ForceChangePlayerState(PlayerStates.Normal);
+                break;
+        }
+    }
+
+    protected void UpgradeUp() => UpgradeUpEvent?.Invoke(1);
+    protected void UpgradeDown() => UpgradeDownEvent?.Invoke(-1);
+    protected void UpgradeLeft() => UpgradeLeftEvent?.Invoke(-1);
+    protected void UpgradeRight() => UpgradeRightEvent?.Invoke(1);
+    protected void UpgradeSelect() => UpgradeSelectEvent?.Invoke();
+    protected void UpgradeCancel() => UpgradeCancelEvent?.Invoke();
+
+    protected void Take() => TakeEvent?.Invoke();
+
     protected enum VerticalMoveDirection : int
     {
         LeftUp,
@@ -276,6 +305,7 @@ public abstract class InputDeviceBase
         Aiming,
         SelectionFarTarget,
         SelectionAnyTarget,
-        BuildSelection
+        BuildSelection,
+        Takeoff,
     }
 }

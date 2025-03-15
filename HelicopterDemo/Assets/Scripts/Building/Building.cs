@@ -35,9 +35,9 @@ public class Building : MonoBehaviour
         npcController.Remove(gameObject);
         platformController.Add(platform.gameObject);
 
-        if (platform) platform.HidePlatform();
         if (deadPrefab) Instantiate(deadPrefab, transform.position, transform.rotation);
         if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+        if (platform) platform.HidePlatform();
 
         Remove();
         Destroy(gameObject);

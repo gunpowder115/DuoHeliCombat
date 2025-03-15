@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static Types;
@@ -27,7 +28,6 @@ public abstract class Npc : MonoBehaviour
     protected Shooter shooter;
     protected Health health;
     protected GameObject selectedTarget;
-    protected CargoItem thisItem;
     protected NpcController npcController;
     protected List<TargetTracker> trackers;
 
@@ -39,6 +39,7 @@ public abstract class Npc : MonoBehaviour
     protected bool EnemyForPursuit => npcState == NpcState.Attack ?
         HorDistToTgt > MaxAttackDist : HorDistToTgt <= MinPursuitDist; //8
     protected bool EnemyLost => selectedTarget == null; //9
+    protected Action<Caravan> AddToCaravanAction { get; set; }
 
     #endregion
 
@@ -101,6 +102,8 @@ public abstract class Npc : MonoBehaviour
     }
 
     public void _SetSpeed(float speed) => this.speed = speed;
+
+    public void AddToCaravan(Caravan caravan) => AddToCaravanAction?.Invoke(caravan);
 
     public abstract void RequestDestroy();
 }

@@ -5,7 +5,8 @@ public class Platform : MonoBehaviour
 {
     private bool isActive;
 
-    public bool IsFree => !Building.gameObject;
+    public bool IsFree => !Building;
+    public bool IsReserved { get; set; }
     public CommandCenter CommandCenter { get; private set; }
     public Building Building { get; private set; }
 
@@ -44,5 +45,13 @@ public class Platform : MonoBehaviour
             return GlobalSide3.Red;
         else
             return GlobalSide3.Blue;
+    }
+
+    public void InitBuilding(GameObject buildPrefab)
+    {
+        var build = Instantiate(buildPrefab, transform).GetComponent<Building>();
+        SetBuilding(build);
+        CommandCenter.AddBuilding(build);
+        if (CommandCenter.CommandCenterSide == GlobalSide3.Neutral) CommandCenter.CommandCenterSide = GetPlatformSide();
     }
 }

@@ -22,7 +22,7 @@ public class NpcGround : Npc
     public override Vector3 NpcPos => transform.position;
     public override Vector3 NpcCurrDir => rotation.CurrentDirection;
     public Npc AttackSource { get; private set; }
-    public NpcSquad NpcSquad { get; set; }
+    public Squad NpcSquad { get; set; }
 
     private void Awake()
     {

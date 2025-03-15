@@ -21,7 +21,6 @@ public class NpcGroundAlone : Npc
     {
         base.Init();
 
-        thisItem = GetComponent<CargoItem>();
         npcState = NpcState.Exploring;
         npcController.Add(gameObject);
     }

@@ -43,5 +43,11 @@ public class Types
         X_Y_Z
     }
 
+    public enum CargoType
+    {
+        Delivering,
+        Dropping
+    }
+
     #endregion
 }

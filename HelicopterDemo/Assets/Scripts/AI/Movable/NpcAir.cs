@@ -10,7 +10,6 @@ using static Types;
 [RequireComponent(typeof(NpcTakeoff))]
 [RequireComponent(typeof(Translation))]
 [RequireComponent(typeof(Rotation))]
-[RequireComponent(typeof(CargoItem))]
 
 public class NpcAir : Npc
 {
@@ -53,7 +52,6 @@ public class NpcAir : Npc
         base.Init();
 
         npcTakeoff = GetComponent<NpcTakeoff>();
-        thisItem = GetComponent<CargoItem>();
         rotors = new List<SimpleRotor>();
         rotors.AddRange(GetComponentsInChildren<SimpleRotor>());
 
@@ -65,7 +63,7 @@ public class NpcAir : Npc
         if (airDustPrefab)
             airDuster = Instantiate(airDustPrefab, transform).GetComponent<AirDuster>();
 
-        thisItem.InitCargoItem += InitHelicopter;
+        AddToCaravanAction += AddHeliToCaravan;
     }
 
     void Update()
@@ -126,21 +124,17 @@ public class NpcAir : Npc
         }
     }
 
-    
+
     private void ChangeState()
     {
         switch (npcState)
         {
             case NpcState.Delivery:
-                if (transform.position.y <= thisItem.CargoPlatform.transform.position.y)
-                {
-                    transform.position = thisItem.CargoPlatform.transform.position;
-                    foreach (var rotor in rotors)
-                        rotor.StartRotor();
+                foreach (var rotor in rotors)
+                    rotor.StartRotor();
+                if (airDuster)
+                    airDuster.normRotorSpeed = rotors[0].RotSpeedCoef;
 
-                    if (airDuster)
-                        airDuster.normRotorSpeed = rotors[0].RotSpeedCoef;
-                }
                 if (rotors[0].ReadyToTakeoff)
                 {
                     if (airDuster)
@@ -239,7 +233,7 @@ public class NpcAir : Npc
 
     private void EraseLine() => LineToTarget.enabled = false;
 
-    private void InitHelicopter(Caravan caravan)
+    private void AddHeliToCaravan(Caravan caravan)
     {
         if (caravan) caravan.AddEscortItem(gameObject);
         this.caravan = caravan;

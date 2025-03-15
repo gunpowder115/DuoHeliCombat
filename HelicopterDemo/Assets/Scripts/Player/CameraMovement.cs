@@ -20,6 +20,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Vector3 cameraAimPosRight = new Vector3(1.5f, 1.9f, -4.3f);
     [SerializeField] private Vector3 cameraAimingRot = new Vector3(3.3f, 0, 0);
     [SerializeField] private Vector3 cameraTgtSelPos = new Vector3(0, 11, -22);
+    [SerializeField] private Vector3 cameraTakeoffPos = new Vector3(0, 5f, -10f);
 
     [SerializeField] private Player player;
     [SerializeField] private GameObject cameraContainer;
@@ -34,6 +35,10 @@ public class CameraMovement : MonoBehaviour
     private ViewPortController viewPortController;
     private Camera playerCamera;
     private CrosshairController crosshairController;
+
+    public bool CameraInTakeoff { get; set; }
+    public bool MoveCamera { get; set; }
+    public float CameraSpeedInTakeoff { get; set; }
 
     private bool Aiming => player.Aiming;
     private Vector3 AimAngles => player.AimAngles;
@@ -60,6 +65,12 @@ public class CameraMovement : MonoBehaviour
         crosshair = crosshairController.GetCrosshair(player.PlayerNumber);
 
         cameraAimPos = cameraAimPosRight;
+        CameraInTakeoff = player.StartWithTakeoff;
+        if (CameraInTakeoff)
+        {
+            transform.localPosition = player.transform.position + cameraTakeoffPos;
+            transform.LookAt(player.transform);
+        }
     }
 
     private void Update()
@@ -76,7 +87,17 @@ public class CameraMovement : MonoBehaviour
         direction = new Vector2(inputDevice.AimMovement ? toTargetSelection.x : PlayerDir.x,
             inputDevice.AimMovement ? toTargetSelection.y : 0f);
 
-        if (!Aiming)
+        if (CameraInTakeoff)
+        {
+            if (MoveCamera)
+            {
+                RotateHorizontally();
+                RotateVertically();
+            }
+            SetDefault();
+            currAimingSpeed = CameraSpeedInTakeoff;
+        }
+        else if (!Aiming)
         {
             if (IsDelayAfterTargetDestroy())
                 currAimingSpeed = 0f;

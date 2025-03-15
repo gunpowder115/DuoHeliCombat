@@ -25,5 +25,12 @@ public class InputCommon : InputDeviceBase
         playerInput.ViewportDebug.ChangePlayer2.performed += context => SwitchPlayerConnection(2);
         playerInput.ViewportDebug.ChangeConfiguration.performed += context => SwitchConfiguration();
         playerInput.ViewportDebug.ChangeOrientation.performed += context => SwitchOrientation();
+
+        playerInput.Upgrade.Up.performed += context => UpgradeUp();
+        playerInput.Upgrade.Down.performed += context => UpgradeDown();
+        playerInput.Upgrade.Left.performed += context => UpgradeLeft();
+        playerInput.Upgrade.Right.performed += context => UpgradeRight();
+        playerInput.Upgrade.Select.performed += context => UpgradeSelect();
+        playerInput.Upgrade.Cancel.performed += context => UpgradeCancel();
     }
 }

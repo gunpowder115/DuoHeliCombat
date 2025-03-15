@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CargoPlatform_bomb_red
       objectReference: {fileID: 0}
+    - target: {fileID: 1206043630572876444, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: m_TagString
+      value: EnemyBuild
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443192276861054771, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: buildingSide
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2619765961313797848, guid: e8bd0973fac8598469f041ea38683839, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -54,6 +62,30 @@ PrefabInstance:
     - target: {fileID: 2619765961313797848, guid: e8bd0973fac8598469f041ea38683839, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711679150887480477, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711679150887480477, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: cargoPrefab
+      value: 
+      objectReference: {fileID: 3477326976187641239, guid: 181b9bc09fdc8a1468c2f58d4c01bd09, type: 3}
+    - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: cargoType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 3477326976187641239, guid: 181b9bc09fdc8a1468c2f58d4c01bd09, type: 3}
+    - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: cargoPrefab
+      value: 
+      objectReference: {fileID: 4838037512019052711, guid: 20b2b1444bf556749a2d14e8a8ddc012, type: 3}
+    - target: {fileID: 8699840044467723629, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: cargoOffsetY
+      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8bd0973fac8598469f041ea38683839, type: 3}

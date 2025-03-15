@@ -1,125 +1,54 @@
 using UnityEngine;
-
-[RequireComponent(typeof(Building))]
+using static Types;
 
 public class CargoPlatform : MonoBehaviour
 {
-    [SerializeField] private GameObject cargoHelicopterPrefab;
+    [SerializeField] private float cargoOffsetY = 0f;
+    [SerializeField] private GameObject itemPrefab;
     [SerializeField] private GameObject cargoPrefab;
+    [SerializeField] private GameObject redCargoHelicopterPrefab;
+    [SerializeField] private GameObject blueCargoHelicopterPrefab;
     [SerializeField] private Caravan caravan;
-    [SerializeField] private float dropHeight = 25f;
-    [SerializeField] private float parachuteHeight = 10f;
-    [SerializeField] private CargoType cargoType = CargoType.Air;
+    [SerializeField] private CargoType cargoType = CargoType.Dropping;
 
-    private Building building;
-    private GameObject cargoHelicopterObject;
-    private GameObject cargoObject;
+    private bool isDeliveryWaiting;
     private CargoHelicopter cargoHelicopter;
-    private NpcController npcController;
-    private CargoState cargoState;
-
-    public float DropHeight => dropHeight;
-    public float ParachuteHeight => parachuteHeight;
-    public Caravan Caravan => caravan;
+    private GameObject item, cargoHelicopterPrefab;
+    private Building building;
+    private Vector3 cargoPosition;
+    private GlobalSide2 side;
 
     private void Start()
     {
+        isDeliveryWaiting = false;
         building = GetComponent<Building>();
-        npcController = NpcController.Singleton;
-        cargoState = CargoState.Lost;
+        side = building.BuildingSide;
+        cargoHelicopterPrefab = side == GlobalSide2.Blue ? blueCargoHelicopterPrefab : redCargoHelicopterPrefab;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        switch(cargoType)
+        cargoPosition = transform.position + new Vector3(0f, cargoOffsetY, 0f);
+
+        if (isDeliveryWaiting && cargoHelicopter && cargoHelicopter.CargoIsDelivered)
         {
-            case CargoType.Ground:
-                CallGroundCargo();
-                break;
-            case CargoType.Air:
-                CallAirCargo();
-                break;
+            item = Instantiate(itemPrefab, cargoPosition, transform.rotation);
+            var npc = item.GetComponent<Npc>();
+            if (npc) npc.AddToCaravan(caravan);
+            isDeliveryWaiting = false;
         }
+
+        if (!item && !isDeliveryWaiting)
+            CallCargo();
     }
 
-    private void CallGroundCargo()
+    public void CallCargo()
     {
-        switch (cargoState)
+        if (!cargoHelicopter)
         {
-            case CargoState.Works:
-                if (cargoObject.gameObject == null)
-                    cargoState = CargoState.Lost;
-                break;
-            case CargoState.Lost:
-                cargoHelicopterObject = Instantiate(cargoHelicopterPrefab, transform.position, transform.rotation);
-                cargoHelicopter = cargoHelicopterObject.GetComponent<CargoHelicopter>();
-                cargoHelicopter.InitForDrop(transform.position, dropHeight + parachuteHeight);
-                cargoState = CargoState.Expecting;
-                break;
-            case CargoState.Expecting:
-                if (cargoHelicopter.NearDropPoint)
-                {
-                    cargoObject = Instantiate(cargoPrefab, gameObject.transform.position, gameObject.transform.rotation);
-                    if (!cargoObject.GetComponent<NpcSquad>())
-                        npcController.Add(cargoObject);
-                    CargoItem cargoItem = cargoObject.GetComponent<CargoItem>();
-                    if (cargoItem)
-                        cargoItem.Init(this);
-                    cargoState = CargoState.Works;
-                }
-                break;
+            cargoHelicopter = Instantiate(cargoHelicopterPrefab, cargoPosition, transform.rotation).GetComponent<CargoHelicopter>();
+            cargoHelicopter.Init(cargoPrefab, cargoPosition, cargoType);
+            isDeliveryWaiting = true;
         }
-    }
-
-    private void CallAirCargo()
-    {
-        switch (cargoState)
-        {
-            case CargoState.Works:
-                if (cargoObject.gameObject == null)
-                    cargoState = CargoState.Lost;
-                break;
-            case CargoState.Lost:
-                cargoHelicopterObject = Instantiate(cargoHelicopterPrefab, transform.position, transform.rotation);
-                cargoHelicopter = cargoHelicopterObject.GetComponent<CargoHelicopter>();
-                cargoHelicopter.InitForDelivery(transform.position, dropHeight + parachuteHeight);
-
-                cargoObject = Instantiate(cargoPrefab, cargoHelicopter.transform.position - new Vector3(0f, cargoHelicopter.CableLength, 0f), 
-                    cargoHelicopter.transform.rotation, cargoHelicopter.transform);
-                CargoItem cargoItem_ = cargoObject.GetComponent<CargoItem>();
-                if (cargoItem_)
-                    cargoItem_.Init(this);
-                cargoState = CargoState.Expecting;
-                break;
-            case CargoState.Expecting:
-                if (cargoHelicopter.NearDropPoint)
-                {
-                    Destroy(cargoObject);
-                    cargoObject = Instantiate(cargoPrefab, transform.position, transform.rotation);
-                    if (!cargoObject.GetComponent<NpcSquad>())
-                        npcController.Add(cargoObject);
-                    CargoItem cargoItem = cargoObject.GetComponent<CargoItem>();
-                    if (cargoItem)
-                        cargoItem.Init(this);
-                    cargoState = CargoState.Works;
-                }
-                break;
-        }
-    }
-
-    public enum CargoState
-    {
-        Works,
-        Lost,
-        Expecting,
-        Delivered
-    }
-
-    public enum CargoType
-    {
-        Air,
-        Ground,
-        Drop
     }
 }

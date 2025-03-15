@@ -27,6 +27,8 @@ public class InputGamepad : InputDeviceBase
         playerInput.PlayerGamepad.FastMove.performed += context => FastMove();
         playerInput.PlayerGamepad.FastMove.canceled += context => FastMoveCancel();
 
+        playerInput.CommonGamepad.Take.performed += context => Take();
+
         #region Vertical Move
 
         playerInput.PlayerGamepad.LeftUp.performed += context => SetVerticalMove(VerticalMoveDirection.LeftUp);

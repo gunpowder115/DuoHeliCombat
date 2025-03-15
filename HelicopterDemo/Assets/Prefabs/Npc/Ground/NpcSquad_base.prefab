@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8068553150965633044}
   - component: {fileID: 8068553150965633043}
   - component: {fileID: 8068553150965633042}
-  - component: {fileID: 8068553150965633041}
   - component: {fileID: 8068553150965633040}
   m_Layer: 0
   m_Name: NpcSquad_base
@@ -95,20 +94,6 @@ MonoBehaviour:
   moveTime: 3
   lateralMovingCoef: 0.1
   targetHeightDelta: 20
---- !u!114 &8068553150965633041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8068553150965633055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1210418546a3a37469c953a95622b84e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deliverySpeed: 3
-  parachutePrefab: {fileID: 8545945070132798917, guid: 0ead10251ad7954478dd5faf1a4714ce, type: 3}
 --- !u!114 &8068553150965633040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +119,4 @@ MonoBehaviour:
   distDelta: 1
   deadPrefab: {fileID: 0}
   explosion: {fileID: 0}
-  membersCount: 3
-  squadRadius: 6
   memberRadius: 3
-  memberPrefab: {fileID: 0}

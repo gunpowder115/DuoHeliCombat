@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8234471112759265466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8234471112759265457}
+  - component: {fileID: 8234471112759265456}
+  - component: {fileID: 8234471112759265471}
+  - component: {fileID: 8234471112759265470}
+  - component: {fileID: 8234471112759265469}
+  - component: {fileID: 8234471112759265467}
+  - component: {fileID: 8234471112759265458}
+  m_Layer: 0
+  m_Name: SquadRedJeep_alive
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8234471112759265457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234471112759265466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8234471112759265456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234471112759265466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6467bb5296aa4b645ae7e4ec359c736f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMoveTime: 10
+  stopTime: 1
+  absBorderX: 200
+  absBorderZ: 200
+--- !u!114 &8234471112759265471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234471112759265466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b456389afe2684438b9fa6feea6e72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8234471112759265470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234471112759265466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249e88c79374bbb4991e7aa56922b92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToNextLaunch: 0.5
+--- !u!114 &8234471112759265469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234471112759265466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619776e034de7b145938a6b596f54ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHorMoveTime: 3
+  maxVertMoveTime: 0.5
+  moveTime: 3
+  lateralMovingCoef: 0.1
+  targetHeightDelta: 20
+--- !u!114 &8234471112759265467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234471112759265466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ea4e8ae7c4a3b45bdfd82d3b2f7546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFriendly: 0
+  isGround: 1
+  speed: 8
+  lowSpeedCoef: 0.7
+  highSpeedCoef: 1.5
+  acceleration: 1
+  minPursuitDist: 40
+  maxPursuitDist: 50
+  minAttackDist: 10
+  maxAttackDist: 20
+  distDelta: 1
+  deadPrefab: {fileID: 0}
+  explosion: {fileID: 0}
+  memberRadius: 3
+--- !u!114 &8234471112759265458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234471112759265466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc72eaf327f0294688d0516e0202228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isNpc: 1
+  membersCount: 3
+  squadRadius: 8
+  memberPrefab: {fileID: 256884575047269923, guid: 96064c337e346d84c9a109ca3b8abedb, type: 3}
