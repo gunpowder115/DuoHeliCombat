@@ -5561,6 +5561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CargoPlatform_heli_middle_red
       objectReference: {fileID: 0}
+    - target: {fileID: 5414386630552554813, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
+      propertyPath: caravan
+      value: 
+      objectReference: {fileID: 939161311}
     - target: {fileID: 7979082462997855437, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
       propertyPath: caravan
       value: 
@@ -31613,6 +31617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CargoPlatform_heli_middle_red
       objectReference: {fileID: 0}
+    - target: {fileID: 5414386630552554813, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
+      propertyPath: caravan
+      value: 
+      objectReference: {fileID: 939161311}
     - target: {fileID: 7979082462997855437, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
       propertyPath: caravan
       value: 

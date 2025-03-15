@@ -48,7 +48,7 @@ public class CargoHelicopter : MonoBehaviour
         toDeliveryPoint = toDeliveryPoint.normalized;
         float currentSpeed = speed;
 
-        if (cargoType == CargoType.ThreeParachutes || cargoType == CargoType.OneParachute)
+        if (cargoType == CargoType.Dropping)
         {
             if (isEscape)
                 translation.SetGlobalTranslation(toEscapePoint * currentSpeed);
@@ -71,7 +71,7 @@ public class CargoHelicopter : MonoBehaviour
             if (currDist > distance * leaveDistCoef && isEscape)
                 Destroy(gameObject);
         }
-        else if (cargoType == CargoType.Rope)
+        else if (cargoType == CargoType.Delivering)
         {
             if (isEscape)
                 translation.SetGlobalTranslation(toEscapePoint * currentSpeed);
@@ -94,31 +94,6 @@ public class CargoHelicopter : MonoBehaviour
             if (currDist > distance * leaveDistCoef && isEscape)
                 Destroy(gameObject);
         }
-        else
-        {
-            //todo old cargo helicopter logic
-            if (isEscape)
-                translation.SetGlobalTranslation(toEscapePoint * currentSpeed);
-            else
-            {
-                translation.SetGlobalTranslation(toDeliveryPoint * currentSpeed);
-                if (NearDropPoint && !isEscape && !cargoItem && cargoPrefab)
-                    isEscape = true;
-            }
-            //rotation.RotateToDirection(toDeliveryPoint, currentSpeed / speed, true);
-
-            if (currDist > distance * leaveDistCoef)
-                Destroy(gameObject);
-        }
-    }
-
-    public void InitForDrop(Vector3 cargoPlatformPos, float height)
-    {
-        //todo old cargo helicopter logic
-        deliveryPoint = new Vector3(cargoPlatformPos.x, cargoPlatformPos.y + height, cargoPlatformPos.z);
-        currDist = Random.Range(0.8f * distance, 1.2f * distance);
-        transform.Translate(0, height, -currDist);
-        escapePoint = transform.position + transform.forward * 2.5f * distance;
     }
 
     public void Init(GameObject cargoPrefab, Vector3 cargoPlatformPos, CargoType cargoType)
@@ -129,15 +104,13 @@ public class CargoHelicopter : MonoBehaviour
 
         switch (cargoType)
         {
-            case CargoType.Rope:
+            case CargoType.Delivering:
                 deliveryPoint = new Vector3(cargoPlatformPos.x, cargoPlatformPos.y + cableLength, cargoPlatformPos.z);
                 currDist = Random.Range(0.8f * distance, 1.2f * distance);
                 transform.Translate(0, height + cableLength, -currDist);
                 escapePoint = transform.position + transform.forward * 2.5f * distance;
                 break;
-            case CargoType.Squad:
-            case CargoType.OneParachute:
-            case CargoType.ThreeParachutes:
+            case CargoType.Dropping:
                 deliveryPoint = new Vector3(cargoPlatformPos.x, cargoPlatformPos.y + height, cargoPlatformPos.z);
                 currDist = Random.Range(0.8f * distance, 1.2f * distance);
                 transform.Translate(0, height, -currDist);

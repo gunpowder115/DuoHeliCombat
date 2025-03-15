@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 2726147024294508184}
   - component: {fileID: 6539631670836299244}
   - component: {fileID: 2453511131693880975}
-  - component: {fileID: 5802463013704088135}
   - component: {fileID: 332662730367996943}
   - component: {fileID: 215962108869322282}
   m_Layer: 0
@@ -156,20 +155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 3
   normAttitudeAngle: 30
---- !u!114 &5802463013704088135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904929784159531802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1210418546a3a37469c953a95622b84e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deliverySpeed: 3
-  parachutePrefab: {fileID: 8545945070132798917, guid: 0ead10251ad7954478dd5faf1a4714ce, type: 3}
 --- !u!114 &332662730367996943
 MonoBehaviour:
   m_ObjectHideFlags: 0

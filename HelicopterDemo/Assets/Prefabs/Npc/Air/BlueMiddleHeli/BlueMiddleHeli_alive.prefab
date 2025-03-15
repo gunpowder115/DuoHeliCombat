@@ -629,20 +629,6 @@ MonoBehaviour:
   minHeight: 15
   maxHeight: 50
   airDustPrefab: {fileID: 9117464957027130638, guid: 8cb157bf585ff7945a1958d3db898b09, type: 3}
---- !u!114 &2113112153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8342007550954386640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1210418546a3a37469c953a95622b84e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deliverySpeed: 5
-  parachutePrefab: {fileID: 8545945070132798917, guid: 0ead10251ad7954478dd5faf1a4714ce, type: 3}
 --- !u!114 &2113112154
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,8 @@ public class CargoPlatform_new : MonoBehaviour
     [SerializeField] private GameObject cargoPrefab;
     [SerializeField] private GameObject redCargoHelicopterPrefab;
     [SerializeField] private GameObject blueCargoHelicopterPrefab;
-    [SerializeField] private CargoType cargoType = CargoType.OneParachute;
+    [SerializeField] private Caravan caravan;
+    [SerializeField] private CargoType cargoType = CargoType.Dropping;
 
     private bool isDeliveryWaiting;
     private CargoHelicopter cargoHelicopter;
@@ -32,6 +33,8 @@ public class CargoPlatform_new : MonoBehaviour
         if (isDeliveryWaiting && cargoHelicopter && cargoHelicopter.CargoIsDelivered)
         {
             item = Instantiate(itemPrefab, cargoPosition, transform.rotation);
+            var npc = item.GetComponent<Npc>();
+            if (npc) npc.AddToCaravan(caravan);
             isDeliveryWaiting = false;
         }
 

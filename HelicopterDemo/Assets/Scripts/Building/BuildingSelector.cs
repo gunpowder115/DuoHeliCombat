@@ -41,7 +41,7 @@ public class BuildingSelector : MonoBehaviour
         if (!cargoHelicopter)
         {
             cargoHelicopter = Instantiate(side == GlobalSide2.Blue ? blueCargoHelicopterPrefab : redCargoHelicopterPrefab, transform.position, transform.rotation).GetComponent<CargoHelicopter>();
-            cargoHelicopter.Init(cargoPrefab, transform.position, CargoType.ThreeParachutes);
+            cargoHelicopter.Init(cargoPrefab, transform.position, CargoType.Dropping);
             isDeliveryWaiting = true;
             platform.ShowPlatform();
             platform.IsReserved = true;
