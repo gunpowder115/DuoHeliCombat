@@ -1,7 +1,7 @@
 using UnityEngine;
 using static Types;
 
-public class CargoPlatform_new : MonoBehaviour
+public class CargoPlatform : MonoBehaviour
 {
     [SerializeField] private float cargoOffsetY = 0f;
     [SerializeField] private GameObject itemPrefab;
