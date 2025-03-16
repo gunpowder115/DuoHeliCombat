@@ -8803,8 +8803,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7406006692169814026, guid: 63c7262356a6c73428a711f3ed39c9e2, type: 3}
+      propertyPath: L1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406006692169814026, guid: 63c7262356a6c73428a711f3ed39c9e2, type: 3}
+      propertyPath: L2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406006692169814026, guid: 63c7262356a6c73428a711f3ed39c9e2, type: 3}
+      propertyPath: R1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406006692169814026, guid: 63c7262356a6c73428a711f3ed39c9e2, type: 3}
+      propertyPath: R2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406006692169814026, guid: 63c7262356a6c73428a711f3ed39c9e2, type: 3}
       propertyPath: randomConfig
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406006692169814026, guid: 63c7262356a6c73428a711f3ed39c9e2, type: 3}
+      propertyPath: wingStateLeft
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406006692169814026, guid: 63c7262356a6c73428a711f3ed39c9e2, type: 3}
+      propertyPath: wingStateRight
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9109191071767933716, guid: 63c7262356a6c73428a711f3ed39c9e2, type: 3}
       propertyPath: m_LocalPosition.x
