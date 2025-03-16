@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 8945114845874213960}
   - component: {fileID: 2813057506479685341}
   - component: {fileID: 1753789425236184681}
+  - component: {fileID: 2090940099528624269}
   m_Layer: 0
   m_Name: Player_base
   m_TagString: Player
@@ -193,6 +194,34 @@ MonoBehaviour:
   maxRandInput: 0.1
   minMoveTime: 0.8
   maxMoveTime: 1.5
+--- !u!114 &2090940099528624269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5233668109151000797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d280016c781bb340980d44dbc5934fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomConfig: 0
+  wingStateLeft: 0
+  L1: 0
+  L2: 0
+  wingStateRight: 0
+  R1: 0
+  R2: 0
+  leftShortWing: {fileID: 0}
+  rightShortWing: {fileID: 0}
+  leftLongWing: {fileID: 0}
+  rightLongWing: {fileID: 0}
+  weaponPrefabs:
+  - {fileID: 8540618690356369565, guid: 96123eadef2ad4d4b9179d92e585a163, type: 3}
+  - {fileID: 3825230662293248877, guid: 6c1e6399c8bdfcc4f9dc0f530e5f22c6, type: 3}
+  - {fileID: 2376822835430236812, guid: 21b0011a81f911a4c898acc8f3c5df66, type: 3}
+  - {fileID: 7454613888339633021, guid: fc357ed0e63791d47932988708e3e8da, type: 3}
 --- !u!1001 &4292878413097013140
 PrefabInstance:
   m_ObjectHideFlags: 0

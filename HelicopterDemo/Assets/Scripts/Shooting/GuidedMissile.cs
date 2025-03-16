@@ -3,35 +3,22 @@ using UnityEngine;
 public class GuidedMissile : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
+    [SerializeField] private float rotationSpeed = 200f;
     [SerializeField] private float lifetime = 10f;
     [SerializeField] private float damage = 5f;
-    [SerializeField] private float minDistToEmpty = 1f;
-    [SerializeField] private GameObject emptyMissleTargetPrefab;
+    [SerializeField] private float minTrackingDist = 1f;
     [SerializeField] private GameObject explosion;
     [SerializeField] private AudioClip launchSound;
     [SerializeField] private AudioClip flyingSound;
 
     private bool isLaunchSound;
-    private bool isEmptyTarget;
-    private GameObject emptyMissileTargetItem;
+    private float currLifetime;
     private AudioSource projSound;
 
     public GameObject SelectedTarget { get; set; }
 
-    // Start is called before the first frame update
     void Start()
     {
-        emptyMissileTargetItem = Instantiate(emptyMissleTargetPrefab);
-        emptyMissileTargetItem.transform.position = transform.position;
-        emptyMissileTargetItem.transform.rotation = transform.rotation;
-
-        float distToTgt = (SelectedTarget.transform.position - transform.position).magnitude;
-        emptyMissileTargetItem.transform.Translate(0f, 0f, distToTgt, Space.Self);
-
-        EmptyMissileTarget emptyMissileTarget = emptyMissileTargetItem.GetComponent<EmptyMissileTarget>();
-        if (emptyMissileTarget)
-            emptyMissileTarget.SelectedTarget = SelectedTarget;
-
         projSound = GetComponent<AudioSource>();
         if (projSound)
         {
@@ -46,13 +33,20 @@ public class GuidedMissile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 toEmptyTarget = emptyMissileTargetItem.transform.position - transform.position;
-        if (toEmptyTarget.magnitude <= minDistToEmpty && !isEmptyTarget)
-            isEmptyTarget = true;
+        currLifetime += Time.deltaTime;
+        if (currLifetime > lifetime)
+            Destroy(gameObject);
 
-        if (!isEmptyTarget)
-            transform.rotation = Quaternion.LookRotation((emptyMissileTargetItem.transform.position - transform.position).normalized);
+        if (SelectedTarget)
+        {
+            Vector3 dir = (SelectedTarget.transform.position - transform.position);
+            Vector3 dirNorm = dir.normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(dirNorm);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
 
+            if (dir.magnitude < minTrackingDist)
+                SelectedTarget = null;
+        }
         transform.Translate(0f, 0f, speed * Time.deltaTime);
 
         if (isLaunchSound && !projSound.isPlaying && flyingSound)
@@ -68,12 +62,14 @@ public class GuidedMissile : MonoBehaviour
     {
         Health health = other.GetComponent<Health>();
         if (!FriendlyFire(other.gameObject.tag) && health)
-            health.Hurt(damage);
+        {
+            bool damageFromPlayer = gameObject.tag == "Player";
+            health.Hurt(damage, damageFromPlayer, other.GetComponent<Npc>());
+        }
 
         if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
 
         Destroy(gameObject);
-        Destroy(emptyMissileTargetItem.gameObject);
     }
 
     private bool FriendlyFire(string anotherTag) //todo remove tags

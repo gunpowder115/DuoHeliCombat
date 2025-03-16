@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Types;
 
 public class PlayerUpgrade : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class PlayerUpgrade : MonoBehaviour
     [SerializeField] private GameObject[] slotCameraPos;
     [SerializeField] private GameObject[] wingCameraPos;
     [SerializeField] private GameObject mainCameraPos;
-    [SerializeField] private GameObject camera;
+    [SerializeField] private GameObject mainCamera;
 
     private const int SLOTS_COUNT = 4;
 
@@ -21,7 +22,7 @@ public class PlayerUpgrade : MonoBehaviour
     private InputController inputController;
     private InputDeviceBase inputDevice;
     private WeaponSlot[] weaponSlots;
-    private Wing[] wings;
+    private UpgradableWing[] wings;
     private Vector3 currCameraPos, tgtCameraPos;
     private Vector3 currCameraRot, tgtCameraRot;
     private UpgradeCameraState cameraState;
@@ -48,9 +49,9 @@ public class PlayerUpgrade : MonoBehaviour
             weaponSlots[i] = new WeaponSlot(weapons, false);
         }
 
-        wings = new Wing[2];
-        wings[0] = new Wing(weaponSlots[1], weaponSlots[0], leftLongWing, leftShortWing, Wing.WingState.None);
-        wings[1] = new Wing(weaponSlots[2], weaponSlots[3], rightLongWing, rightShortWing, Wing.WingState.None);
+        wings = new UpgradableWing[2];
+        wings[0] = new UpgradableWing(weaponSlots[1], weaponSlots[0], leftLongWing, leftShortWing, WingState.None);
+        wings[1] = new UpgradableWing(weaponSlots[2], weaponSlots[3], rightLongWing, rightShortWing, WingState.None);
 
         inputController = InputController.singleton;
         inputDevice = inputController.GetInputCommon;
@@ -67,8 +68,8 @@ public class PlayerUpgrade : MonoBehaviour
         currCameraPos = Vector3.Lerp(currCameraPos, tgtCameraPos, cameraSpeed * Time.deltaTime);
         currCameraRot = Vector3.Lerp(currCameraRot, tgtCameraRot, cameraSpeed * Time.deltaTime);
 
-        camera.transform.position = currCameraPos;
-        camera.transform.rotation = Quaternion.Euler(currCameraRot);
+        mainCamera.transform.position = currCameraPos;
+        mainCamera.transform.rotation = Quaternion.Euler(currCameraRot);
 
         switch (cameraState)
         {
@@ -135,7 +136,7 @@ public class PlayerUpgrade : MonoBehaviour
                 break;
             case UpgradeCameraState.Wing:
                 cameraState = UpgradeCameraState.Slot;
-                if (wings[currWingIndex].CurrWingState != Wing.WingState.None)
+                if (wings[currWingIndex].CurrWingState != WingState.None)
                 {
                     if (currWingIndex == 0)
                         currSlotIndex = 1;
@@ -198,7 +199,7 @@ public class WeaponSlot
     }
 }
 
-public class Wing
+public class UpgradableWing
 {
     private const int ONE_WING_SLOTS_COUNT = 2;
 
@@ -208,7 +209,7 @@ public class Wing
 
     public WingState CurrWingState => currWingState;
 
-    public Wing(WeaponSlot slot1, WeaponSlot slot2, GameObject longWing, GameObject shortWing, WingState wingState)
+    public UpgradableWing(WeaponSlot slot1, WeaponSlot slot2, GameObject longWing, GameObject shortWing, WingState wingState)
     {
         slots = new WeaponSlot[ONE_WING_SLOTS_COUNT];
         slots[0] = slot1;
@@ -250,13 +251,6 @@ public class Wing
                 shortWing.SetActive(false);
                 break;
         }
-    }
-
-    public enum WingState : int
-    {
-        None,
-        Short,
-        Long
     }
 }
 

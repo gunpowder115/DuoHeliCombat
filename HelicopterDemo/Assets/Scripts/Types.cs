@@ -49,5 +49,20 @@ public class Types
         Dropping
     }
 
+    public enum WingState
+    {
+        None,
+        Short,
+        Long
+    }
+
+    public enum WeaponType
+    {
+        None,
+        Minigun,
+        UnguidMissile,
+        GuidMissile
+    }
+
     #endregion
 }
