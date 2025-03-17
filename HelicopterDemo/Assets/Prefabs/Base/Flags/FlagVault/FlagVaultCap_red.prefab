@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroy: 1
   defaultVisible: 1
+  active: 0
   fadeOutSpeed: 0.25
   waitTime: 0
   defaultAlpha: 0.35
