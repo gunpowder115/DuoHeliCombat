@@ -323,10 +323,10 @@ public class ViewPortController : MonoBehaviour
         float w2 = rect2.width;
         float h2 = rect2.height;
 
-        float x = Mathf.Lerp(x1, x2, speed * Time.deltaTime);
-        float y = Mathf.Lerp(y1, y2, speed * Time.deltaTime);
-        float w = Mathf.Lerp(w1, w2, speed * Time.deltaTime);
-        float h = Mathf.Lerp(h1, h2, speed * Time.deltaTime);
+        float x = Mathf.MoveTowards(x1, x2, speed * Time.deltaTime);
+        float y = Mathf.MoveTowards(y1, y2, speed * Time.deltaTime);
+        float w = Mathf.MoveTowards(w1, w2, speed * Time.deltaTime);
+        float h = Mathf.MoveTowards(h1, h2, speed * Time.deltaTime);
 
         return new Rect(x, y, w, h);
     }
