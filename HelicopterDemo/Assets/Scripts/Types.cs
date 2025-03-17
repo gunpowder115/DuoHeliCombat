@@ -72,5 +72,13 @@ public class Types
         Yellow
     }
 
+    public enum FadingScreenType
+    {
+        None,
+        Darkening,
+        FullDark,
+        Lightening
+    }
+
     #endregion
 }

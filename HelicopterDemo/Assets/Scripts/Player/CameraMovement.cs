@@ -97,6 +97,10 @@ public class CameraMovement : MonoBehaviour
             SetDefault();
             currAimingSpeed = CameraSpeedInTakeoff;
         }
+        else if (!player.IsAlive && player.DeadPlayer)
+        {
+            RotateToDead(player.DeadPlayer);
+        }
         else if (!Aiming)
         {
             if (IsDelayAfterTargetDestroy())
@@ -202,5 +206,25 @@ public class CameraMovement : MonoBehaviour
         }
         else
             return false;
+    }
+
+    private void RotateToDead(GameObject deadPlayer)
+    {
+        float playerDirZ = 1f;
+
+        float targetCameraVertRot;
+        if (playerDirZ > 0f)
+            targetCameraVertRot = playerDirZ * maxVerticalAngle_cameraUp;
+        else if (playerDirZ < 0f)
+            targetCameraVertRot = playerDirZ * maxVerticalAngle_cameraDown;
+        else
+            targetCameraVertRot = defaultVerticalAngle;
+
+        Vector3 eulerAnglesCurrent = transform.localRotation.eulerAngles;
+        float currRotSpeed = rotSpeedManual;
+        Vector3 eulerAnglesTarget = new Vector3(targetCameraVertRot, eulerAnglesCurrent.y, eulerAnglesCurrent.z);
+
+        Quaternion rotationTarget = Quaternion.Euler(eulerAnglesTarget);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, rotationTarget, currRotSpeed * Time.deltaTime);
     }
 }
