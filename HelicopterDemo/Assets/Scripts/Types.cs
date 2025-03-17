@@ -64,5 +64,13 @@ public class Types
         GuidMissile
     }
 
+    public enum KeyType : int
+    {
+        Red,
+        Blue,
+        Purple,
+        Yellow
+    }
+
     #endregion
 }

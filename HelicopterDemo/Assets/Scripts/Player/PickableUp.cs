@@ -29,7 +29,7 @@ public class PickableUp : MonoBehaviour
         {
             playerBody.ItemForTake = this;
         }
-        else
+        else if (distPlayer >= takingDist && playerBody.ItemForTake == this)
         {
             playerBody.ItemForTake = null;
         }
@@ -42,5 +42,8 @@ public class PickableUp : MonoBehaviour
         rigidBody.useGravity = gravity;
     }
 
-    public void SetTrigger(bool trigger) => boxCollider.isTrigger = trigger;
+    public void SetTrigger(bool trigger)
+    {
+        if (boxCollider) boxCollider.isTrigger = trigger;
+    }
 }
