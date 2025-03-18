@@ -8,9 +8,13 @@ public class NpcMoveToTgt : MonoBehaviour
     private Npc npc;
     private NpcAir npcAir;
     private NpcSquad npcSquad;
+    private ObstacleAvoider obstacleAvoider;
+
+    private float currentSpeed;
 
     private bool IsGround => npc.IsGround;
     private float Speed => npc.Speed;
+    private float LowSpeed => npc.LowSpeed;
     private float VerticalSpeed => npcAir.VerticalSpeed;
     private float HeightDelta => npcAir.HeightDelta;
     private float Acceleration => npc.Acceleration;
@@ -23,18 +27,19 @@ public class NpcMoveToTgt : MonoBehaviour
         npc = GetComponent<Npc>();
         npcAir = GetComponent<NpcAir>();
         npcSquad = GetComponent<NpcSquad>();
+        obstacleAvoider = new ObstacleAvoider(SetDirection);
     }
 
     public void Move()
     {
-        SetDirection();
-
         if (IsGround)
         {
+            obstacleAvoider.GroundObstacleAvoid(npc.NpcPos, npc.NpcCurrDir, Speed, LowSpeed, ref targetDirection, ref currentSpeed);
             npcSquad.MoveSquad(targetDirection, Speed);
         }
         else
         {
+            obstacleAvoider.AirObstacleAvoid(npc.NpcPos, npc.NpcCurrDir, Speed, LowSpeed, ref targetDirection, ref currentSpeed);
             TranslateAir();
             VerticalTranslate();
             RotateAir();

@@ -16,12 +16,8 @@ public class NpcExplorer : MonoBehaviour
     private NpcSquad npcSquad;
     private LineRenderer lineToTarget;
 
-    private Vector3 initialDirection, avoidingOffset;
-    private float sideToAvoid;
     private float currentSpeed;
-    private float obstacleRadius;
-    private GameObject obstacle;
-    private AvoidingType avoidingType;
+    private ObstacleAvoider obstacleAvoider;
 
     private bool IsGround => npc.IsGround;
     private float Speed => npc.Speed;
@@ -40,7 +36,6 @@ public class NpcExplorer : MonoBehaviour
         npcAir = GetComponent<NpcAir>();
         npcSquad = GetComponent<NpcSquad>();
         currMoveTime = maxMoveTime;
-        avoidingType = AvoidingType.None;
 
         lineToTarget = GetComponent<LineRenderer>();
         if (!lineToTarget)
@@ -49,39 +44,20 @@ public class NpcExplorer : MonoBehaviour
 
         targetDirection = npc.NpcCurrDir;
         currentSpeed = Speed;
+
+        obstacleAvoider = new ObstacleAvoider(SetDirection);
     }
 
     public void Move()
     {
         if (IsGround)
         {
-            bool npcOut = npc.NpcPos.x > 256 || npc.NpcPos.x < -256 || npc.NpcPos.z > 128 || npc.NpcPos.z < -128;
-            switch (avoidingType)
-            {
-                case AvoidingType.Wall:
-                    NavigateFromWall();
-                    break;
-                case AvoidingType.Obstacle:
-                    if (CheckWall(targetDirection)) 
-                        obstacle = null;
-                    else
-                        NavigateAroundObstacle();
-                    break;
-                default:
-                    if (CheckWall(targetDirection)) { }
-                    else if (obstacle)
-                        DetectNearObstacle();
-                    else
-                    {
-                        SetDirection();
-                        obstacle = DetectFarObstacle();
-                    }
-                    break;
-            }
+            obstacleAvoider.GroundObstacleAvoid(npc.NpcPos, npc.NpcCurrDir, Speed, LowSpeed, ref targetDirection, ref currentSpeed);
             npcSquad.MoveSquad(targetDirection, currentSpeed);
         }
         else
         {
+            obstacleAvoider.AirObstacleAvoid(npc.NpcPos, npc.NpcCurrDir, Speed, LowSpeed, ref targetDirection, ref currentSpeed);
             TranslateAir();
             VerticalTranslate();
             RotateAir();
@@ -150,100 +126,5 @@ public class NpcExplorer : MonoBehaviour
         lineToTarget.endColor = color;
         lineToTarget.SetPosition(0, npc.NpcPos);
         lineToTarget.SetPosition(1, npc.NpcPos + endPoint);
-    }
-
-    private GameObject DetectFarObstacle()
-    {
-        var raycastHits = Physics.SphereCastAll(npc.NpcPos + npc.NpcCurrDir, 5f, npc.NpcCurrDir, 5f);
-        foreach (var hit in raycastHits)
-        {
-            GameObject hitObject = hit.transform.gameObject;
-            if (hitObject.GetComponent<CentralObstacle>() || hitObject.GetComponent<SideObstacle>())
-            {
-                obstacleRadius = (hitObject.transform.position - npc.NpcPos).magnitude - 5f;
-                currentSpeed = LowSpeed;
-                return hitObject;
-            }
-        }
-        return null;
-    }
-
-    private void DetectNearObstacle()
-    {
-        if ((npc.NpcPos - obstacle.transform.position).magnitude < obstacleRadius + 3f)
-        {
-            initialDirection = npc.NpcCurrDir;
-            GetSideOfAvoid(obstacle);
-            avoidingType = AvoidingType.Obstacle;
-        }
-    }
-
-    private void GetSideOfAvoid(GameObject obstacle)
-    {
-        var centralObst = obstacle.GetComponent<CentralObstacle>();
-        var sideObst = obstacle.GetComponent<SideObstacle>();
-
-        Vector3 toObstacle = obstacle.transform.position - npc.NpcPos;
-        toObstacle.y = 0f;
-        toObstacle.Normalize();
-
-        if (centralObst)
-            sideToAvoid = Vector3.Cross(npc.NpcCurrDir, toObstacle).y;
-        else if (sideObst)
-            sideToAvoid = Vector3.Cross(sideObst.ForwardDir, npc.NpcCurrDir).y;
-
-        avoidingOffset = new Vector3(-sideToAvoid * toObstacle.z, 0f, sideToAvoid * toObstacle.x);
-        targetDirection = avoidingOffset;
-    }
-
-    private void NavigateAroundObstacle()
-    {
-        Vector3 toObstacle = obstacle.transform.position - npc.NpcPos;
-        toObstacle.y = 0f;
-        toObstacle.Normalize();
-        targetDirection = new Vector3(-sideToAvoid * toObstacle.z, 0f, sideToAvoid * toObstacle.x);
-
-        if (Vector3.Angle(targetDirection, initialDirection) < 5f)
-        {
-            currentSpeed = Speed;
-            avoidingType = AvoidingType.None;
-            obstacle = null;
-        }
-    }
-
-    private void NavigateFromWall()
-    {
-        if (Vector3.Angle(npc.NpcCurrDir, initialDirection) < 5f)
-        {
-            currentSpeed = Speed;
-            obstacle = null;
-            avoidingType = AvoidingType.None;
-        }
-    }
-
-    private bool CheckWall(Vector3 dir)
-    {
-        var raycastHits = Physics.SphereCastAll(npc.NpcPos + dir, 5f, dir, 5f);
-        foreach (var hit in raycastHits)
-        {
-            GameObject hitObject = hit.transform.gameObject;
-            var wall = hitObject.GetComponent<Wall>();
-            if (wall)
-            {
-                initialDirection = wall.ForwardDir;
-                targetDirection = initialDirection;
-                currentSpeed = LowSpeed;
-                avoidingType = AvoidingType.Wall;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private enum AvoidingType
-    {
-        Wall,
-        Obstacle,
-        None
     }
 }
