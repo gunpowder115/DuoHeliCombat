@@ -50,10 +50,10 @@ public class NpcAttack : MonoBehaviour
         }
         else
         {
-            if (health.IsHurt && !isMoving)
+            if (health.LostHpPart && !isMoving)
             {
                 isMoving = true;
-                health.IsHurt = false;
+                health.LostHpPart = false;
 
                 float dir = Random.Range(0, 2) == 0 ? 1 : -1;
                 targetDirection = new Vector3(dir, 0f, 0f);

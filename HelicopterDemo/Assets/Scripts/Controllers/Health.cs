@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] private int lostHpPartForManeuver = 3;
     [SerializeField] private float baseHealth = 100f;
     [SerializeField] private GameObject smokePrefab;
     [SerializeField] private GameObject healthBarPrefab;
@@ -17,11 +19,14 @@ public class Health : MonoBehaviour
     public bool IsAlive { get; private set; }
     public bool IsHurt { get; set; }
     public bool IsUnderAttack { get; set; }
+    public bool LostHpPart { get; set; }
     public float CurrHp => health;
     public Npc AttackSource { get; private set; }
 
     public void Hurt(float damage, bool damageFromPlayer = false, Npc attackSource = null)
     {
+        CheckLostHpPart(damage);
+
         health -= damage;
         IsHurt = true;
         IsUnderAttack = true;
@@ -79,5 +84,15 @@ public class Health : MonoBehaviour
         npcController = NpcController.Singleton;
         npc = GetComponent<Npc>();
         building = GetComponent<Building>();
+    }
+
+    private void CheckLostHpPart(float damage)
+    {
+        for (int i = lostHpPartForManeuver - 1; i >= 1; i--)
+        {
+            float partHp = baseHealth * (float)i / (float)lostHpPartForManeuver;
+            if (health > partHp && (health - damage) < partHp)
+                LostHpPart = true;
+        }
     }
 }
