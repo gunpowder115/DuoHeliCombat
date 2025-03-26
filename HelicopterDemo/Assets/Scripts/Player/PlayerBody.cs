@@ -93,19 +93,24 @@ public class PlayerBody : MonoBehaviour
                         Destroy(Item.gameObject);
                     }
                     else
-                    {
-                        Item.SetGravity(true);
-                        Item.transform.SetParent(null);
-                        Item = null;
-                    }
+                        LocalDrop();
                 }
             }
-            else
+            else if (Item.GetComponent<Bomb>())
             {
-                Item.transform.SetParent(null);
-                Item.SetGravity(true);
-                Item = null;
+                var bomb = Item.GetComponent<Bomb>();
+                bomb.PlaySound();
+                LocalDrop();
             }
+            else
+                LocalDrop();
         }
+    }
+
+    private void LocalDrop()
+    {
+        Item.transform.SetParent(null);
+        Item.SetGravity(true);
+        Item = null;
     }
 }

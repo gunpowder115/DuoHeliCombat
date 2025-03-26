@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField] float damage = 1000f;
+    [SerializeField] private float damage = 1000f;
     [SerializeField] private GameObject explosion;
+    [SerializeField] private AudioClip flyingSound;
+
+    private AudioSource bombSound;
 
     public bool IsActivated { get; set; }
     public bool IsBombing { get; set; }
@@ -12,14 +15,28 @@ public class Bomb : MonoBehaviour
     {
         IsActivated = false;
         IsBombing = false;
+
+        bombSound = GetComponent<AudioSource>();
+        bombSound.loop = false;
+        bombSound.clip = flyingSound;
+        bombSound.volume = 0.7f;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (bombSound.isPlaying)
+            bombSound.Stop();
+
         if (IsBombing)        
             BombingActivation();
         else
             InGameActivation(collision);
+    }
+
+    public void PlaySound()
+    {
+        if (!bombSound.isPlaying)
+            bombSound.Play();
     }
 
     private void InGameActivation(Collision collision)
