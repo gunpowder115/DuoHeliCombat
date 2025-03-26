@@ -35,6 +35,8 @@ public class Bomb : MonoBehaviour
 
     public void PlaySound()
     {
+        bombSound.clip = flyingSound;
+        bombSound.volume = 0.7f;
         if (!bombSound.isPlaying)
             bombSound.Play();
     }
