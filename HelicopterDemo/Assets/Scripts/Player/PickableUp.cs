@@ -5,18 +5,24 @@ using UnityEngine;
 public class PickableUp : MonoBehaviour
 {
     [SerializeField] private float takingDist = 5f;
+    [SerializeField] private AudioClip pickUpSound;
 
     private Rigidbody rigidBody;
     private BoxCollider boxCollider;
     private NpcController npcController;
+    private AudioSource sound;
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
+        sound = GetComponent<AudioSource>();
         npcController = NpcController.Singleton;
         SetGravity(false);
         SetTrigger(true);
+
+        sound.loop = false;
+        sound.clip = pickUpSound;
     }
 
     private void Update()
@@ -45,5 +51,12 @@ public class PickableUp : MonoBehaviour
     public void SetTrigger(bool trigger)
     {
         if (boxCollider) boxCollider.isTrigger = trigger;
+    }
+
+    public void PlaySound()
+    {
+        sound.clip = pickUpSound;
+        sound.volume = 1f;
+        sound.Play();
     }
 }

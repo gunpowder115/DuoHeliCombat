@@ -137,11 +137,12 @@ MonoBehaviour:
   verticalSpeed: 30
   lateralMovingCoef: 0.18
   acceleration: 2.5
-  delayAfterDestroy: 1
+  delayAfterDestroy: 3
   health: {fileID: 1224130164571485725}
   airDustPrefab: {fileID: 9117464957027130638, guid: 8cb157bf585ff7945a1958d3db898b09, type: 3}
   deadPrefab: {fileID: 0}
   explosion: {fileID: 4954313840775520740, guid: cf4516811cbb5b046947ae5d79ad6a2e, type: 3}
+  screenFading: {fileID: 0}
   controllerType: 0
   playerNumber: 0
   playerState: 0

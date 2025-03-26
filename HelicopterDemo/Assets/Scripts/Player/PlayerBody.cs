@@ -54,6 +54,7 @@ public class PlayerBody : MonoBehaviour
             Item.SetGravity(false);
             Item.SetTrigger(false);
             bomb.IsActivated = true;
+            Item.PlaySound();
         }
         else if (flag && flagHolder)
         {
@@ -64,6 +65,7 @@ public class PlayerBody : MonoBehaviour
             Item.transform.localScale = new Vector3(Item.transform.localScale.x, -Item.transform.localScale.y, Item.transform.localScale.z);
             Item.SetGravity(false);
             Item.SetTrigger(false);
+            Item.PlaySound();
         }
         else if (key && keyHolder)
         {
@@ -73,6 +75,7 @@ public class PlayerBody : MonoBehaviour
             Item.transform.rotation = keyHolder.transform.rotation;
             Item.SetGravity(false);
             Item.SetTrigger(false);
+            Item.PlaySound();
         }
     }
 
@@ -93,19 +96,24 @@ public class PlayerBody : MonoBehaviour
                         Destroy(Item.gameObject);
                     }
                     else
-                    {
-                        Item.SetGravity(true);
-                        Item.transform.SetParent(null);
-                        Item = null;
-                    }
+                        LocalDrop();
                 }
             }
-            else
+            else if (Item.GetComponent<Bomb>())
             {
-                Item.transform.SetParent(null);
-                Item.SetGravity(true);
-                Item = null;
+                var bomb = Item.GetComponent<Bomb>();
+                bomb.PlaySound();
+                LocalDrop();
             }
+            else
+                LocalDrop();
         }
+    }
+
+    private void LocalDrop()
+    {
+        Item.transform.SetParent(null);
+        Item.SetGravity(true);
+        Item = null;
     }
 }

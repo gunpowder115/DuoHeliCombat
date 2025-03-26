@@ -50,14 +50,14 @@ public class NpcAttack : MonoBehaviour
         }
         else
         {
-            //if (health.IsHurt && !isMoving)
-            //{
-            //    isMoving = true;
-            //    health.IsHurt = false;
+            if (health.LostHpPart && !isMoving)
+            {
+                isMoving = true;
+                health.LostHpPart = false;
 
-            //    float dir = Random.Range(0, 2) == 0 ? 1 : -1;
-            //    targetDirection = new Vector3(dir, 0f, 0f);
-            //}
+                float dir = Random.Range(0, 2) == 0 ? 1 : -1;
+                targetDirection = new Vector3(dir, 0f, 0f);
+            }
 
             if (isMoving)
             {
@@ -84,9 +84,22 @@ public class NpcAttack : MonoBehaviour
 
     public void Shoot()
     {
-        shooter.BarrelFire(Target);
-        shooter.UnguidedMissileLaunch(Target);
-        shooter.GuidedMissileLaunch(Target);
+        if (!IsGround)
+        {
+            if (isMoving)
+            {
+                shooter.UnguidedMissileLaunch(Target);
+                shooter.GuidedMissileLaunch(Target);
+            }
+            else
+                shooter.BarrelFire(Target);
+        }
+        else
+        {
+            shooter.BarrelFire(Target);
+            shooter.UnguidedMissileLaunch(Target);
+            shooter.GuidedMissileLaunch(Target);
+        }
     }
 
     public void GuidedMissileLaunch() => shooter.GuidedMissileLaunch(Target);

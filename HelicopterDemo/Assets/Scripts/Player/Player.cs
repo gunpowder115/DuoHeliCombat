@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject airDustPrefab;
     [SerializeField] GameObject deadPrefab;
     [SerializeField] GameObject explosion;
+    [SerializeField] private ScreenFading screenFading;
     [SerializeField] ControllerType controllerType = ControllerType.Keyboard;
     [SerializeField] Players playerNumber = Players.Player1;
     [SerializeField] PlayerStates playerState = PlayerStates.Normal;
@@ -57,11 +58,13 @@ public class Player : MonoBehaviour
     public bool Aiming { get; private set; }
     public bool StartWithTakeoff => startWithTakeoff;
     public bool TargetDestroy { get; set; }
+    public bool IsAlive => health.IsAlive;
     public Players PlayerNumber => playerNumber;
     public Vector3 AimAngles { get; private set; }
     public Vector3 CurrentDirection { get; private set; }
     public InputDeviceBase InputDevice => inputDevice;
     public PlayerBody PlayerBody => playerBody;
+    public GameObject DeadPlayer { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -158,7 +161,7 @@ public class Player : MonoBehaviour
         if (inputDevice.MinigunFire)
             shooter.BarrelFire(selectedTarget);
 
-        if (inputDevice.PlayerState == PlayerStates.Normal)
+        if (IsAlive && inputDevice.PlayerState == PlayerStates.Normal)
             DrawLineToTarget();
         else
             lineDrawer.Enabled = false;
@@ -388,10 +391,13 @@ public class Player : MonoBehaviour
         }
         else
         {
+            if (currDelayAfterDestroy > 2f / 3f * delayAfterDestroy)
+                screenFading.StartFading();
+
             if (health.gameObject.activeSelf)
             {
                 health.gameObject.SetActive(false);
-                if (deadPrefab) Instantiate(deadPrefab, transform.position, health.gameObject.transform.rotation);
+                if (deadPrefab) DeadPlayer = Instantiate(deadPrefab, transform.position, health.gameObject.transform.rotation);
                 if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
             }
 
@@ -403,13 +409,9 @@ public class Player : MonoBehaviour
     private void Take()
     {
         if (playerBody.ItemForTake && !playerBody.Item)
-        {
             playerBody.Take();
-        }
         else if (playerBody.Item)
-        {
             playerBody.Drop();
-        }
     }
 
     public enum TargetTypes

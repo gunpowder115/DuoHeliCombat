@@ -59,6 +59,7 @@ public class NpcAir : Npc
         lineToTarget.enabled = false;
 
         npcState = NpcState.Delivery;
+        npcController.Add(gameObject);
 
         if (airDustPrefab)
             airDuster = Instantiate(airDustPrefab, transform).GetComponent<AirDuster>();
