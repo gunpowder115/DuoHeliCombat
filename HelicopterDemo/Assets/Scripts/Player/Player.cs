@@ -76,9 +76,16 @@ public class Player : MonoBehaviour
         rotors = new List<SimpleRotor>();
         rotors.AddRange(GetComponentsInChildren<SimpleRotor>());
         foreach (var rotor in rotors)
-            rotor.StartRotor();
+        {
+            if (startWithTakeoff)
+                rotor.StartRotor();
+            else
+                rotor.FastStartRotor();
+        }
         lineDrawer = GetComponent<LineDrawer>();
         takeoff = GetComponent<TakeoffProcess>();
+        if (!startWithTakeoff)
+            takeoff.BladesSwipe();
         randomMovement = GetComponent<RandomMovement>();
 
         npcController = NpcController.Singleton;
