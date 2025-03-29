@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class LadderAnimator : MonoBehaviour
 {
+    [SerializeField] private bool ladderActive = false;
     [SerializeField] private bool ladderExit = false;
     [SerializeField] private int ladderCount = 6;
     [SerializeField] private float partOffset = 0.6f;
@@ -19,29 +20,32 @@ public class LadderAnimator : MonoBehaviour
 
     void Start()
     {
-        InitLadder();
-        if (!ladderExit)
+        if (ladderActive)
         {
-            InitMenOnLadder();
-            menInitialized = true;
-        }
+            InitLadder();
+            if (!ladderExit)
+            {
+                InitMenOnLadder();
+                menInitialized = true;
+            }
 
-        rends = GetComponentsInChildren<Renderer>();
-        if (ladderExit)
-        {
-            for (int i = 0; i < rends.Length - 1; i++)
-                rends[i].enabled = false;
-            targetPos = transform.position;
-            transform.Translate(new Vector3(0f, partOffset * ladderCount, 0f));
-            currentPos = transform.position;
-            currentPart = rends.Length - 2;
+            rends = GetComponentsInChildren<Renderer>();
+            if (ladderExit)
+            {
+                for (int i = 0; i < rends.Length - 1; i++)
+                    rends[i].enabled = false;
+                targetPos = transform.position;
+                transform.Translate(new Vector3(0f, partOffset * ladderCount, 0f));
+                currentPos = transform.position;
+                currentPart = rends.Length - 2;
+            }
+            speed = new Vector3(0f, exitSpeed, 0f);
         }
-        speed = new Vector3(0f, exitSpeed, 0f);
     }
 
     private void Update()
     {
-        if (ladderExit)
+        if (ladderActive && ladderExit)
         {
             transform.Translate(-speed * Time.deltaTime);
 
