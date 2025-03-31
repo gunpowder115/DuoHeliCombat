@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 818571496057251194}
   - component: {fileID: 7962191579454649509}
+  - component: {fileID: 8558526506936700666}
   m_Layer: 0
   m_Name: Fence
-  m_TagString: Untagged
+  m_TagString: EnemyPrison
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +49,20 @@ MonoBehaviour:
   buildingSide: 0
   deadPrefab: {fileID: 0}
   explosion: {fileID: 0}
+--- !u!114 &8558526506936700666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818571496057251193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4470a231f8ee1c4087c44558c89bab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2.5
+  man: {fileID: 4734462322619875507, guid: 8cea49fd7aceb264790d4d662d1f3562, type: 3}
 --- !u!1001 &818571495863817542
 PrefabInstance:
   m_ObjectHideFlags: 0

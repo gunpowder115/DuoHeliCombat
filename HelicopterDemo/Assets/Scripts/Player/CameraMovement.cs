@@ -22,6 +22,9 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Vector3 cameraTgtSelPos = new Vector3(0, 11, -22);
     [SerializeField] private Vector3 cameraTakeoffPos = new Vector3(0, 5f, -10f);
 
+    [SerializeField] private Vector3 cameraRescuePos = new Vector3(-1.1f, 2.7f, -7.3f);
+    [SerializeField] private Vector3 cameraRescueRot = new Vector3(37f, 0f, 0f);
+
     [SerializeField] private Player player;
     [SerializeField] private GameObject cameraContainer;
 
@@ -37,6 +40,7 @@ public class CameraMovement : MonoBehaviour
     private CrosshairController crosshairController;
 
     public bool CameraInTakeoff { get; set; }
+    public bool CameraInRescue => player.IsRescue;
     public bool MoveCamera { get; set; }
     public float CameraSpeedInTakeoff { get; set; }
 
@@ -96,6 +100,13 @@ public class CameraMovement : MonoBehaviour
             }
             SetDefault();
             currAimingSpeed = CameraSpeedInTakeoff;
+        }
+        else if (CameraInRescue)
+        {
+            Quaternion rotationTarget = Quaternion.Euler(cameraRescueRot);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, rotationTarget, rotSpeedManual * Time.deltaTime);
+
+            transform.localPosition = Vector3.Lerp(transform.localPosition, cameraRescuePos, currAimingSpeed * Time.deltaTime);
         }
         else if (!player.IsAlive && player.DeadPlayer)
         {

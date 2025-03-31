@@ -29,6 +29,8 @@ public class InputGamepad : InputDeviceBase
 
         playerInput.CommonGamepad.Take.performed += context => Take();
 
+        playerInput.CommonGamepad.Rescue.performed += context => Rescue();
+
         #region Vertical Move
 
         playerInput.PlayerGamepad.LeftUp.performed += context => SetVerticalMove(VerticalMoveDirection.LeftUp);

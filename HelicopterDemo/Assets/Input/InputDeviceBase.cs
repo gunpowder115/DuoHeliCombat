@@ -26,6 +26,7 @@ public abstract class InputDeviceBase
     public event Action UpgradeSelectEvent, UpgradeCancelEvent;
 
     public event Action TakeEvent;
+    public event Action RescueEvent;
 
     #endregion
 
@@ -52,7 +53,7 @@ public abstract class InputDeviceBase
         }
         private set { }
     }
-    public bool PlayerCanTranslate => playerState == PlayerStates.Normal || playerState == PlayerStates.Aiming;
+    public bool PlayerCanTranslate => playerState == PlayerStates.Normal || playerState == PlayerStates.Aiming || playerState == PlayerStates.Rescue;
     public bool AimMovement => playerState == PlayerStates.SelectionAnyTarget || playerState == PlayerStates.SelectionFarTarget;
     public float VerticalMoving
     {
@@ -283,6 +284,8 @@ public abstract class InputDeviceBase
 
     protected void Take() => TakeEvent?.Invoke();
 
+    protected void Rescue() => RescueEvent?.Invoke();
+
     protected enum VerticalMoveDirection : int
     {
         LeftUp,
@@ -306,6 +309,7 @@ public abstract class InputDeviceBase
         SelectionFarTarget,
         SelectionAnyTarget,
         BuildSelection,
-        Takeoff,
+        Rescue,
+        ExitFromRescue,
     }
 }

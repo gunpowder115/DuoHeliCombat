@@ -54,11 +54,13 @@ public class Player : MonoBehaviour
     private List<SimpleRotor> rotors;
     private TakeoffProcess takeoff;
     private RandomMovement randomMovement;
+    private Prison prison;
 
     public bool Aiming { get; private set; }
     public bool StartWithTakeoff => startWithTakeoff;
     public bool TargetDestroy { get; set; }
     public bool IsAlive => health.IsAlive;
+    public bool IsRescue { get; private set; }
     public Players PlayerNumber => playerNumber;
     public Vector3 AimAngles { get; private set; }
     public Vector3 CurrentDirection { get; private set; }
@@ -111,6 +113,7 @@ public class Player : MonoBehaviour
         inputDevice.CancelAiming += CancelAiming;
         inputDevice.SelectBuildingEvent += SelectBuilding;
         inputDevice.TakeEvent += Take;
+        InputDevice.RescueEvent += Rescue;
 
         rotateToDirection = false;
         targetDirection = transform.forward;
@@ -124,8 +127,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 inputDirection = inputDevice.GetInput();
-        float inputVerticalDirection = inputDevice.VerticalMoving;
+        Vector2 inputDirection = inputDevice.PlayerState == PlayerStates.Rescue ? GetRescueHorInput() : inputDevice.GetInput();
+        float inputVerticalDirection = inputDevice.PlayerState == PlayerStates.Rescue ? GetRescueVertInput() : inputDevice.VerticalMoving;
         float inputVerticalFast = inputDevice.VerticalFastMoving;
         float inputX = inputDirection.x;
         float inputZ = inputDirection.y;
@@ -193,6 +196,12 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (inputDevice.PlayerState == PlayerStates.ExitFromRescue)
+        {
+            if (transform.position.y > 10f)
+                inputDevice.ForceChangePlayerState(PlayerStates.Normal);
+        }
+
         airDuster.normRotorSpeed = 1f;
         airDuster.normAltitiude = transform.position.y / 10f;
 
@@ -222,6 +231,17 @@ public class Player : MonoBehaviour
 
             translation.SetRelToTargetTranslation(currSpeed, yawAngle);
         }
+        else if (inputDevice.PlayerState == PlayerStates.Rescue)
+        {
+            Vector3 inputXYZ = new Vector3(inputX, inputY, inputZ);
+            targetSpeed = Vector3.ClampMagnitude(inputXYZ * speed * 0.15f, speed * lowSpeedCoef);
+            currSpeed = Vector3.Lerp(currSpeed, targetSpeed, acceleration * Time.deltaTime);
+            translation.SetHorizontalTranslation(currSpeed);
+        }
+        else if (inputDevice.PlayerState == PlayerStates.ExitFromRescue)
+        {
+            translation.SetHorizontalTranslation(new Vector3(0f, 0f, 0f));
+        }
         else
         {
             Vector3 inputXYZ = new Vector3(inputX, inputY, inputZ);
@@ -241,10 +261,24 @@ public class Player : MonoBehaviour
             translation.SetHorizontalTranslation(currSpeed);
         }
 
-        targetVerticalSpeed = inputY * verticalSpeed;
-        if (inputVerticalFast != 0f) targetVerticalSpeed *= vertFastCoef;
-        currVerticalSpeed = Mathf.Lerp(currVerticalSpeed, targetVerticalSpeed, acceleration * Time.deltaTime);
-        translation.SetVerticalTranslation(currVerticalSpeed);
+        if (inputDevice.PlayerState == PlayerStates.Rescue)
+        {
+            targetVerticalSpeed = inputY * verticalSpeed;
+            targetVerticalSpeed *= 0.2f;
+            currVerticalSpeed = Mathf.Lerp(currVerticalSpeed, targetVerticalSpeed, acceleration * Time.deltaTime);
+            translation.SetVerticalTranslation(currVerticalSpeed);
+        }
+        else if (inputDevice.PlayerState == PlayerStates.ExitFromRescue)
+        {
+            translation.SetVerticalTranslation(verticalSpeed * 0.2f);
+        }
+        else
+        {
+            targetVerticalSpeed = inputY * verticalSpeed;
+            if (inputVerticalFast != 0f) targetVerticalSpeed *= vertFastCoef;
+            currVerticalSpeed = Mathf.Lerp(currVerticalSpeed, targetVerticalSpeed, acceleration * Time.deltaTime);
+            translation.SetVerticalTranslation(currVerticalSpeed);
+        }
     }
 
     void Rotate(float inputX)
@@ -262,6 +296,12 @@ public class Player : MonoBehaviour
         {
             var direction = crosshair.HitPoint - transform.position;
             rotation.RotateToDirection(direction, 0f, true);
+        }
+        else if (inputDevice.PlayerState == PlayerStates.Rescue)
+        {
+            var direction = new Vector3(-1f, 0f, -1f).normalized;
+            var speedCoef = currSpeed.magnitude / speed;
+            rotation.RotateToDirection(direction, speedCoef, rotateToDirection);
         }
         else
         {
@@ -419,6 +459,45 @@ public class Player : MonoBehaviour
             playerBody.Take();
         else if (playerBody.Item)
             playerBody.Drop();
+    }
+
+    private void Rescue()
+    {
+        switch (inputDevice.PlayerState)
+        {
+            case PlayerStates.Rescue:
+                prison = null;
+                IsRescue = false;
+                inputDevice.ForceChangePlayerState(PlayerStates.ExitFromRescue);
+                break;
+            case PlayerStates.ExitFromRescue:
+                break;
+            default:
+                GameObject prisonObj = GameObject.FindGameObjectWithTag("EnemyPrison");
+                if (prisonObj)
+                {
+                    float dist = Vector3.Magnitude(prisonObj.transform.position - transform.position);
+                    if (dist < 10)
+                    {
+                        prison = prisonObj.GetComponent<Prison>();
+                        inputDevice.ForceChangePlayerState(PlayerStates.Rescue);
+                        IsRescue = true;
+                    }
+                }
+                break;
+        }
+    }
+
+    private Vector2 GetRescueHorInput()
+    {
+        float x = Mathf.Clamp(prison.transform.position.x - transform.position.x, -1f, 1f);
+        float z = Mathf.Clamp(prison.transform.position.z - transform.position.z, -1f, 1f);
+        return new Vector2(x, z);
+    }
+
+    private float GetRescueVertInput()
+    {
+        return Mathf.Clamp(5f - transform.position.y, -1f, 1f);
     }
 
     public enum TargetTypes
