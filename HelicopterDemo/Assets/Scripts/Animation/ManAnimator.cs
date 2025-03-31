@@ -8,9 +8,10 @@ public class ManAnimator : MonoBehaviour
     [SerializeField] private GameObject[] limbs;
     [SerializeField] private GameObject head;
 
-    private bool toRight, isWalking;
+    private bool toRight, isWalking, readyToEscape;
     private float currAngle;
     private Vector3 prisonCenter;
+    private Vector3 helicopterPoint;
     private GameObject helicopter;
 
     private void Update()
@@ -18,10 +19,20 @@ public class ManAnimator : MonoBehaviour
         if (isWalking)
         {
             MoveLimbs();
-            transform.Translate(transform.forward * speed * walkingCoef * Time.deltaTime);
+            transform.LookAt(new Vector3(helicopter.transform.position.x, transform.position.y, helicopter.transform.position.z));
+            transform.Translate(transform.worldToLocalMatrix * transform.forward * speed * walkingCoef * Time.deltaTime);
             head.transform.LookAt(helicopter.transform);
-            if (Vector3.Distance(prisonCenter, transform.position) < 0.5f)
+            helicopterPoint = new Vector3(helicopter.transform.position.x, transform.position.y, helicopter.transform.position.z);
+            if (Vector3.Distance(helicopterPoint, transform.position) < 0.75f)
+            {
+                readyToEscape = true;
                 isWalking = false;
+            }
+        }
+        else
+        {
+            foreach (var limb in limbs)
+                limb.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 
@@ -39,7 +50,7 @@ public class ManAnimator : MonoBehaviour
     public void SetArrivingHelicopter(GameObject helicopter)
     {
         this.helicopter = helicopter;
-        isWalking = true;
+        if (!readyToEscape) isWalking = true;
     }
 
     private void MoveLimbs()

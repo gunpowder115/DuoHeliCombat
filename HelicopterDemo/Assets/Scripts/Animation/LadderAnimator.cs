@@ -15,58 +15,47 @@ public class LadderAnimator : MonoBehaviour
     private Renderer[] rends;
     private Vector3 speed;
     private Vector3 targetPos, currentPos;
-    private bool menInitialized;
+    private bool menInitialized, ladderInitialized;
     private int currentPart;
-
-    void Start()
-    {
-        if (ladderActive)
-        {
-            InitLadder();
-            if (!ladderExit)
-            {
-                InitMenOnLadder();
-                menInitialized = true;
-            }
-
-            rends = GetComponentsInChildren<Renderer>();
-            if (ladderExit)
-            {
-                for (int i = 0; i < rends.Length - 1; i++)
-                    rends[i].enabled = false;
-                targetPos = transform.position;
-                transform.Translate(new Vector3(0f, partOffset * ladderCount, 0f));
-                currentPos = transform.position;
-                currentPart = rends.Length - 2;
-            }
-            speed = new Vector3(0f, exitSpeed, 0f);
-        }
-    }
 
     private void Update()
     {
-        if (ladderActive && ladderExit)
+        if (ladderActive)
         {
-            transform.Translate(-speed * Time.deltaTime);
-
-            if (currentPos.y - transform.position.y > partOffset && currentPart >= 0)
+            if (!ladderInitialized)
             {
-                rends[currentPart--].enabled = true;
-                currentPos = transform.position;
+                InitLadder();
+
+                rends = GetComponentsInChildren<Renderer>();
+
+                for (int i = 0; i < rends.Length - 1; i++)
+                    rends[i].enabled = false;
+                targetPos = transform.localPosition;
+                transform.Translate(new Vector3(0f, partOffset * ladderCount, 0f));
+                currentPos = transform.localPosition;
+                currentPart = rends.Length - 2;
+                speed = new Vector3(0f, exitSpeed, 0f);
+
+                ladderInitialized = true;
             }
 
-            if (transform.position.y <= targetPos.y)
+            transform.Translate(-speed * Time.deltaTime);
+
+            if (currentPos.y - transform.localPosition.y > partOffset && currentPart >= 0)
             {
-                transform.position = targetPos;
+                rends[currentPart--].enabled = true;
+                currentPos = transform.localPosition;
+            }
+
+            if (transform.localPosition.y <= targetPos.y)
+            {
+                transform.localPosition = targetPos;
                 ladderExit = false;
-                if (!menInitialized)
-                {
-                    InitMenOnLadder();
-                    menInitialized = true;
-                }
             }
         }
     }
+
+    public void ExitLadder() => ladderActive = true;
 
     private void InitLadder()
     {
@@ -79,8 +68,8 @@ public class LadderAnimator : MonoBehaviour
             else
             {
                 ladderParts[i] = Instantiate(ladderPartPrefab, ladderParts[i - 1].transform);
-                Vector3 pos = ladderParts[i].transform.position;
-                ladderParts[i].transform.position = new Vector3(pos.x, pos.y - partOffset, pos.z);
+                Vector3 pos = ladderParts[i].transform.localPosition;
+                ladderParts[i].transform.localPosition = new Vector3(pos.x, pos.y - partOffset, pos.z);
             }
         }
     }
@@ -98,5 +87,7 @@ public class LadderAnimator : MonoBehaviour
             float xScale = Random.Range(0, 2) == 0 ? 1f : -1f;
             if (men[i]) men[i].transform.localScale = new Vector3(xScale, 1f, i % 2 == 0 ? 1f : -1f);
         }
+
+        menInitialized = true;
     }
 }

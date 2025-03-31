@@ -22,4 +22,10 @@ public class Prison : MonoBehaviour
         manAnimators[1].SetBorders(transform.position, 0f, radius, 0f, -radius);
         manAnimators[2].SetBorders(transform.position, -radius, radius, 0f, radius);
     }
+
+    public void MoveToPlayer(Player player)
+    {
+        foreach (var man in manAnimators)
+            man.SetArrivingHelicopter(player.gameObject);
+    }
 }

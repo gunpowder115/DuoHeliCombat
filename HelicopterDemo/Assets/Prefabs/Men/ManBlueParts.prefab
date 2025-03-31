@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1836012f24fa07b48846f2d19efd6345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
+  speed: 50
   walkingCoef: 0.008
   limbMaxAngle: 45
   limbs:

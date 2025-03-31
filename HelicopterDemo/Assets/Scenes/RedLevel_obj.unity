@@ -8799,10 +8799,6 @@ PrefabInstance:
       propertyPath: spdCoefToTakeoff
       value: 0.9
       objectReference: {fileID: 0}
-    - target: {fileID: 3474694912739021114, guid: 63c7262356a6c73428a711f3ed39c9e2, type: 3}
-      propertyPath: ladderActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3702610091200528474, guid: 63c7262356a6c73428a711f3ed39c9e2, type: 3}
       propertyPath: m_Name
       value: Player_blue

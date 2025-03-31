@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
     private TakeoffProcess takeoff;
     private RandomMovement randomMovement;
     private Prison prison;
+    private LadderAnimator ladder;
 
     public bool Aiming { get; private set; }
     public bool StartWithTakeoff => startWithTakeoff;
@@ -74,6 +75,7 @@ public class Player : MonoBehaviour
         translation = GetComponent<Translation>();
         rotation = GetComponentInChildren<Rotation>();
         playerBody = GetComponentInChildren<PlayerBody>();
+        ladder = GetComponentInChildren<LadderAnimator>();
         shooter = GetComponent<Shooter>();
         rotors = new List<SimpleRotor>();
         rotors.AddRange(GetComponentsInChildren<SimpleRotor>());
@@ -194,6 +196,12 @@ public class Player : MonoBehaviour
                 inputDevice.ForceChangePlayerState(PlayerStates.Normal);
                 ChangeAimState();
             }
+        }
+
+        if (inputDevice.PlayerState == PlayerStates.Rescue && transform.position.y <= 4.5f)
+        {
+            if (prison) prison.MoveToPlayer(this);
+            if (ladder) ladder.ExitLadder();
         }
 
         if (inputDevice.PlayerState == PlayerStates.ExitFromRescue)
@@ -497,7 +505,7 @@ public class Player : MonoBehaviour
 
     private float GetRescueVertInput()
     {
-        return Mathf.Clamp(5f - transform.position.y, -1f, 1f);
+        return Mathf.Clamp(4.5f - transform.position.y, -1f, 1f);
     }
 
     public enum TargetTypes
