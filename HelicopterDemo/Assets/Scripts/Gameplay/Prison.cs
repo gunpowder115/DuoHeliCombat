@@ -28,4 +28,10 @@ public class Prison : MonoBehaviour
         foreach (var man in manAnimators)
             man.SetArrivingHelicopter(player.gameObject);
     }
+
+    public void RemoveMen()
+    {
+        foreach (var man in manAnimators)
+            man.DestroyMan();
+    }
 }

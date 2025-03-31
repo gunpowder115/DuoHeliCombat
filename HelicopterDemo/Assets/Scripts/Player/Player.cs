@@ -210,6 +210,11 @@ public class Player : MonoBehaviour
                 inputDevice.ForceChangePlayerState(PlayerStates.Normal);
         }
 
+        if (ladder && ladder.EndOfLadderExit)
+        {
+            prison.RemoveMen();
+        }
+
         airDuster.normRotorSpeed = 1f;
         airDuster.normAltitiude = transform.position.y / 10f;
 

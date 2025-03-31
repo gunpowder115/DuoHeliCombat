@@ -18,6 +18,8 @@ public class LadderAnimator : MonoBehaviour
     private bool menInitialized, ladderInitialized;
     private int currentPart;
 
+    public bool EndOfLadderExit { get; private set; }
+
     private void Update()
     {
         if (ladderActive)
@@ -50,7 +52,8 @@ public class LadderAnimator : MonoBehaviour
             if (transform.localPosition.y <= targetPos.y)
             {
                 transform.localPosition = targetPos;
-                ladderExit = false;
+                if (!menInitialized) InitMenOnLadder();
+                EndOfLadderExit = false;
             }
         }
     }
@@ -84,8 +87,8 @@ public class LadderAnimator : MonoBehaviour
 
         for (int i = 0; i < men.Length; i++)
         {
-            float xScale = Random.Range(0, 2) == 0 ? 1f : -1f;
-            if (men[i]) men[i].transform.localScale = new Vector3(xScale, 1f, i % 2 == 0 ? 1f : -1f);
+            float xScale = Random.Range(0, 2) == 0 ? 0.5f : -0.5f;
+            if (men[i]) men[i].transform.localScale = new Vector3(xScale, 0.5f, i % 2 == 0 ? 0.5f : -0.5f);
         }
 
         menInitialized = true;
