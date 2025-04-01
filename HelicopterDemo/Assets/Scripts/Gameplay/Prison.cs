@@ -32,6 +32,6 @@ public class Prison : MonoBehaviour
     public void RemoveMen()
     {
         foreach (var man in manAnimators)
-            man.DestroyMan();
+            Destroy(man.gameObject);
     }
 }

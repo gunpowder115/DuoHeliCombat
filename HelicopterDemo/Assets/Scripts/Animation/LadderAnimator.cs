@@ -18,7 +18,7 @@ public class LadderAnimator : MonoBehaviour
     private bool menInitialized, ladderInitialized;
     private int currentPart;
 
-    public bool EndOfLadderExit { get; private set; }
+    public bool ReadyToRescue { get; set; }
 
     private void Update()
     {
@@ -52,8 +52,11 @@ public class LadderAnimator : MonoBehaviour
             if (transform.localPosition.y <= targetPos.y)
             {
                 transform.localPosition = targetPos;
-                if (!menInitialized) InitMenOnLadder();
-                EndOfLadderExit = false;
+                if (!menInitialized)
+                {
+                    InitMenOnLadder();
+                    ReadyToRescue = true;
+                }
             }
         }
     }

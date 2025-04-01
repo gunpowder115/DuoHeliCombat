@@ -48,7 +48,7 @@ MonoBehaviour:
   ladderExit: 0
   ladderCount: 9
   partOffset: 0.35
-  exitSpeed: 0.5
+  exitSpeed: 1
   ladderPartPrefab: {fileID: 5329450796648281855, guid: ce6c1fdd4f1e01148837095f3a9f4c82, type: 3}
   menPrefabs:
   - {fileID: 6705472029136344593, guid: 3063e23df50c965478dd48b8dbab83ad, type: 3}

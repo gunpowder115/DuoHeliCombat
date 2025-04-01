@@ -53,8 +53,6 @@ public class ManAnimator : MonoBehaviour
         if (!readyToEscape) isWalking = true;
     }
 
-    public void DestroyMan() => Destroy(gameObject);
-
     private void MoveLimbs()
     {
         if (toRight)

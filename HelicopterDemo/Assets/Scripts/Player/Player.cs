@@ -201,18 +201,21 @@ public class Player : MonoBehaviour
         if (inputDevice.PlayerState == PlayerStates.Rescue && transform.position.y <= 4.5f)
         {
             if (prison) prison.MoveToPlayer(this);
-            if (ladder) ladder.ExitLadder();
+            if (ladder)
+            {
+                ladder.ExitLadder();
+                if (ladder.ReadyToRescue)
+                {
+                    prison.RemoveMen();
+                    ladder.ReadyToRescue = false;
+                }
+            }
         }
 
         if (inputDevice.PlayerState == PlayerStates.ExitFromRescue)
         {
             if (transform.position.y > 10f)
                 inputDevice.ForceChangePlayerState(PlayerStates.Normal);
-        }
-
-        if (ladder && ladder.EndOfLadderExit)
-        {
-            prison.RemoveMen();
         }
 
         airDuster.normRotorSpeed = 1f;
