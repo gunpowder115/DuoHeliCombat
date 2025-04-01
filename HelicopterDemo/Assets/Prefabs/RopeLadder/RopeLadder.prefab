@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 840998424652301975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405c6a755c6fedd42a7eeb48521b7993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ladderActive: 0
   ladderExit: 0
   ladderCount: 9
   partOffset: 0.35
-  exitSpeed: 0.5
+  exitSpeed: 1
   ladderPartPrefab: {fileID: 5329450796648281855, guid: ce6c1fdd4f1e01148837095f3a9f4c82, type: 3}
   menPrefabs:
   - {fileID: 6705472029136344593, guid: 3063e23df50c965478dd48b8dbab83ad, type: 3}

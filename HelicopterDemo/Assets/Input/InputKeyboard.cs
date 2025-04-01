@@ -30,6 +30,8 @@ public class InputKeyboard : InputDeviceBase
 
         playerInput.CommonKeyboard.Take.performed += context => Take();
 
+        playerInput.CommonKeyboard.Rescue.performed += context => Rescue();
+
         #region Vertical Move
 
         playerInput.PlayerKeyboard.SingleUp.performed += context => SetVerticalMove(VerticalMoveDirection.SingleUp);

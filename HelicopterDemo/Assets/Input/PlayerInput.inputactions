@@ -1237,6 +1237,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Rescue",
+                    "type": "Button",
+                    "id": "d54de779-5568-4c14-a1bc-767d45c1070c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1426,6 +1435,17 @@
                     "action": "Take",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "65587a42-60ea-489a-afdf-6aaaf24a31b1",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Rescue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1473,6 +1493,15 @@
                     "name": "Take",
                     "type": "Button",
                     "id": "f859599a-fe04-4972-9a0f-4528a1ca3584",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Rescue",
+                    "type": "Button",
+                    "id": "9f13b991-9448-4f63-9425-672706fa2cc1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1532,6 +1561,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Take",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc173136-e12b-4722-a17a-b037c14f9c24",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Rescue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

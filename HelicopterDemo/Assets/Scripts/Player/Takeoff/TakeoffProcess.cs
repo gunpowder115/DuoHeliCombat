@@ -56,7 +56,7 @@ public class TakeoffProcess : MonoBehaviour
         }
     }
 
-    private void BladesSwipe()
+    public void BladesSwipe()
     {
         clearRotor.gameObject.SetActive(false);
         blurryRotor.gameObject.SetActive(true);

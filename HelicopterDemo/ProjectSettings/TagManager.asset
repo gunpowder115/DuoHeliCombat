@@ -20,6 +20,7 @@ TagManager:
   - FriendlyBuild
   - Platform
   - EnemyFlagVault
+  - EnemyPrison
   layers:
   - Default
   - TransparentFX

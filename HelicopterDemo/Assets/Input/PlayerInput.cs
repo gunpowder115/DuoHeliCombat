@@ -1259,6 +1259,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rescue"",
+                    ""type"": ""Button"",
+                    ""id"": ""d54de779-5568-4c14-a1bc-767d45c1070c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1448,6 +1457,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Take"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65587a42-60ea-489a-afdf-6aaaf24a31b1"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Rescue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1495,6 +1515,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""name"": ""Take"",
                     ""type"": ""Button"",
                     ""id"": ""f859599a-fe04-4972-9a0f-4528a1ca3584"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rescue"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f13b991-9448-4f63-9425-672706fa2cc1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -1554,6 +1583,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Take"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc173136-e12b-4722-a17a-b037c14f9c24"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Rescue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1927,6 +1967,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CommonKeyboard_AltBuild_5 = m_CommonKeyboard.FindAction("AltBuild_5", throwIfNotFound: true);
         m_CommonKeyboard_AltBuild_6 = m_CommonKeyboard.FindAction("AltBuild_6", throwIfNotFound: true);
         m_CommonKeyboard_Take = m_CommonKeyboard.FindAction("Take", throwIfNotFound: true);
+        m_CommonKeyboard_Rescue = m_CommonKeyboard.FindAction("Rescue", throwIfNotFound: true);
         // CommonGamepad
         m_CommonGamepad = asset.FindActionMap("CommonGamepad", throwIfNotFound: true);
         m_CommonGamepad_MainAction = m_CommonGamepad.FindAction("MainAction", throwIfNotFound: true);
@@ -1934,6 +1975,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CommonGamepad_MinorActionHold = m_CommonGamepad.FindAction("MinorActionHold", throwIfNotFound: true);
         m_CommonGamepad_AnyTargetSelection = m_CommonGamepad.FindAction("AnyTargetSelection", throwIfNotFound: true);
         m_CommonGamepad_Take = m_CommonGamepad.FindAction("Take", throwIfNotFound: true);
+        m_CommonGamepad_Rescue = m_CommonGamepad.FindAction("Rescue", throwIfNotFound: true);
         // ViewportDebug
         m_ViewportDebug = asset.FindActionMap("ViewportDebug", throwIfNotFound: true);
         m_ViewportDebug_ChangePlayer1 = m_ViewportDebug.FindAction("ChangePlayer1", throwIfNotFound: true);
@@ -2415,6 +2457,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_CommonKeyboard_AltBuild_5;
     private readonly InputAction m_CommonKeyboard_AltBuild_6;
     private readonly InputAction m_CommonKeyboard_Take;
+    private readonly InputAction m_CommonKeyboard_Rescue;
     public struct CommonKeyboardActions
     {
         private @PlayerInput m_Wrapper;
@@ -2436,6 +2479,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @AltBuild_5 => m_Wrapper.m_CommonKeyboard_AltBuild_5;
         public InputAction @AltBuild_6 => m_Wrapper.m_CommonKeyboard_AltBuild_6;
         public InputAction @Take => m_Wrapper.m_CommonKeyboard_Take;
+        public InputAction @Rescue => m_Wrapper.m_CommonKeyboard_Rescue;
         public InputActionMap Get() { return m_Wrapper.m_CommonKeyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -2496,6 +2540,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Take.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnTake;
                 @Take.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnTake;
                 @Take.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnTake;
+                @Rescue.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnRescue;
+                @Rescue.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnRescue;
+                @Rescue.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnRescue;
             }
             m_Wrapper.m_CommonKeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -2551,6 +2598,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Take.started += instance.OnTake;
                 @Take.performed += instance.OnTake;
                 @Take.canceled += instance.OnTake;
+                @Rescue.started += instance.OnRescue;
+                @Rescue.performed += instance.OnRescue;
+                @Rescue.canceled += instance.OnRescue;
             }
         }
     }
@@ -2564,6 +2614,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_CommonGamepad_MinorActionHold;
     private readonly InputAction m_CommonGamepad_AnyTargetSelection;
     private readonly InputAction m_CommonGamepad_Take;
+    private readonly InputAction m_CommonGamepad_Rescue;
     public struct CommonGamepadActions
     {
         private @PlayerInput m_Wrapper;
@@ -2573,6 +2624,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @MinorActionHold => m_Wrapper.m_CommonGamepad_MinorActionHold;
         public InputAction @AnyTargetSelection => m_Wrapper.m_CommonGamepad_AnyTargetSelection;
         public InputAction @Take => m_Wrapper.m_CommonGamepad_Take;
+        public InputAction @Rescue => m_Wrapper.m_CommonGamepad_Rescue;
         public InputActionMap Get() { return m_Wrapper.m_CommonGamepad; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -2597,6 +2649,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Take.started -= m_Wrapper.m_CommonGamepadActionsCallbackInterface.OnTake;
                 @Take.performed -= m_Wrapper.m_CommonGamepadActionsCallbackInterface.OnTake;
                 @Take.canceled -= m_Wrapper.m_CommonGamepadActionsCallbackInterface.OnTake;
+                @Rescue.started -= m_Wrapper.m_CommonGamepadActionsCallbackInterface.OnRescue;
+                @Rescue.performed -= m_Wrapper.m_CommonGamepadActionsCallbackInterface.OnRescue;
+                @Rescue.canceled -= m_Wrapper.m_CommonGamepadActionsCallbackInterface.OnRescue;
             }
             m_Wrapper.m_CommonGamepadActionsCallbackInterface = instance;
             if (instance != null)
@@ -2616,6 +2671,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Take.started += instance.OnTake;
                 @Take.performed += instance.OnTake;
                 @Take.canceled += instance.OnTake;
+                @Rescue.started += instance.OnRescue;
+                @Rescue.performed += instance.OnRescue;
+                @Rescue.canceled += instance.OnRescue;
             }
         }
     }
@@ -2835,6 +2893,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnAltBuild_5(InputAction.CallbackContext context);
         void OnAltBuild_6(InputAction.CallbackContext context);
         void OnTake(InputAction.CallbackContext context);
+        void OnRescue(InputAction.CallbackContext context);
     }
     public interface ICommonGamepadActions
     {
@@ -2843,6 +2902,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnMinorActionHold(InputAction.CallbackContext context);
         void OnAnyTargetSelection(InputAction.CallbackContext context);
         void OnTake(InputAction.CallbackContext context);
+        void OnRescue(InputAction.CallbackContext context);
     }
     public interface IViewportDebugActions
     {
