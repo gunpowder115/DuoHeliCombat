@@ -24,7 +24,7 @@ public class SimpleRotor : MonoBehaviour
                                             axis == Axes.Y ? rotSpeed : 0f,
                                             axis == Axes.Z ? rotSpeed : 0f);
 
-            transform.Rotate(rotation, aroundSelf ? Space.Self : Space.World);
+            transform.Rotate(rotation * Time.deltaTime, aroundSelf ? Space.Self : Space.World);
         }
         else
         {
@@ -32,7 +32,7 @@ public class SimpleRotor : MonoBehaviour
             Vector3 rotation = new Vector3(axis == Axes.X ? currRotorSpeed : 0f,
                                             axis == Axes.Y ? currRotorSpeed : 0f,
                                             axis == Axes.Z ? currRotorSpeed : 0f);
-            transform.Rotate(rotation);
+            transform.Rotate(rotation * Time.deltaTime);
         }
     }
 

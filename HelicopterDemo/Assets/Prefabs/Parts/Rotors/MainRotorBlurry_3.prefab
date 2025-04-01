@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alwaysRot: 0
   aroundSelf: 1
-  rotSpeed: 3
+  rotSpeed: 600
   rotAcceleration: 0.3
   spdCoefToTakeoff: 0.9
   axis: 1
