@@ -72,7 +72,7 @@ public class CameraMovement : MonoBehaviour
         CameraInTakeoff = player.StartWithTakeoff;
         if (CameraInTakeoff)
         {
-            transform.localPosition = player.transform.position + cameraTakeoffPos;
+            transform.localPosition = cameraTakeoffPos;
             transform.LookAt(player.transform);
         }
     }

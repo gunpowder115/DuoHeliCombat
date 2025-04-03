@@ -61,8 +61,8 @@ public class Crosshair
     public void Translate(Vector2 direction)
     {
         float aimX, aimY;
-        aimX = Limit(aimItem.transform.position.x + direction.x * aimSpeed, LeftCameraBorder, RightCameraBorder);
-        aimY = Limit(aimItem.transform.position.y + direction.y * aimSpeed, UpCameraBorder, DownCameraBorder);
+        aimX = Limit(aimItem.transform.position.x + direction.x * aimSpeed * Time.deltaTime, LeftCameraBorder, RightCameraBorder);
+        aimY = Limit(aimItem.transform.position.y + direction.y * aimSpeed * Time.deltaTime, UpCameraBorder, DownCameraBorder);
         aimItem.transform.position = new Vector3(aimX, aimY, 0f);
 
         float cameraCoefX = 2f * (aimX - LeftCameraBorder) / CameraWidth - 1f;
