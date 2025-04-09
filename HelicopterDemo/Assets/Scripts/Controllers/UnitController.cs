@@ -37,10 +37,35 @@ public class UnitController
     public void AddBuilding(Building building) => Add(buildings, building);
     public void RemoveBuilding(Building building) => Remove(buildings, building);
 
-    public Npc FindNearestEnemyNpcForMe(IFindable me, out float dist) => FindNearestEntityForMe(npcs, me, out dist) as Npc;
-    public Building FindNearestEnemyBuildingForMe(IFindable me, out float dist) => FindNearestEntityForMe(buildings, me, out dist) as Building;
-    public Player FindNearestEnemyPlayerForMe(IFindable me, out float dist) => FindNearestEntityForMe(players, me, out dist) as Player;
-    public Player FindNearestPlayerForMe(IFindable me, out float dist) => FindNearestEntityForMe(players, me, out dist, false) as Player;
+    public Player FindNearestPlayerForMe(IFindable me, out float dist) => FindNearestUnitForMe(players, me, out dist, false) as Player;
+    public GameObject FindNearestEnemy(IFindable me, out float dist)
+    {
+        float resultDist = Mathf.Infinity;
+        GameObject resultEnemy = null;
+        float enemyDist = Mathf.Infinity;
+
+        var npc = FindNearestEnemyNpcForMe(me, out enemyDist);
+        if (npc && enemyDist < resultDist)
+        {
+            resultEnemy = npc.gameObject;
+            resultDist = enemyDist;
+        }
+        var building = FindNearestEnemyBuildingForMe(me, out enemyDist);
+        if (building && enemyDist < resultDist)
+        {
+            resultEnemy = building.gameObject;
+            resultDist = enemyDist;
+        }
+        var player = FindNearestEnemyPlayerForMe(me, out enemyDist);
+        if (player && enemyDist < resultDist)
+        {
+            resultEnemy = player.gameObject;
+            resultDist = enemyDist;
+        }
+
+        dist = resultDist;
+        return resultEnemy;
+    }
 
     private void Add(List<IFindable> list, IFindable item)
     {
@@ -54,7 +79,11 @@ public class UnitController
             list.Remove(item);
     }
 
-    private T FindNearestEntityForMe<T>(List<T> units, IFindable me, out float dist, bool enemyOnly = true) where T : class, IFindable
+    private Npc FindNearestEnemyNpcForMe(IFindable me, out float dist) => FindNearestUnitForMe(npcs, me, out dist) as Npc;
+    private Building FindNearestEnemyBuildingForMe(IFindable me, out float dist) => FindNearestUnitForMe(buildings, me, out dist) as Building;
+    private Player FindNearestEnemyPlayerForMe(IFindable me, out float dist) => FindNearestUnitForMe(players, me, out dist) as Player;
+
+    private T FindNearestUnitForMe<T>(List<T> units, IFindable me, out float dist, bool enemyOnly = true) where T : class, IFindable
     {
         float minX = Mathf.Infinity;
         float minY = Mathf.Infinity;

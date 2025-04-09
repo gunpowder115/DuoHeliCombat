@@ -343,12 +343,12 @@ public class Player : MonoBehaviour, IFindable
     {
         KeyValuePair<GameObject, float> nearest;
         TargetTypes targetType;
-        float distToNpc = Mathf.Infinity;
-        var nearestNpc = unitController != null ? unitController.FindNearestEnemyNpcForMe(this, out distToNpc) : null;
+        float distToEnemy = Mathf.Infinity;
+        GameObject enemy = unitController.FindNearestEnemy(this, out distToEnemy);
         var nearestPlatform = platformController != null ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
 
-        nearest = distToNpc < nearestPlatform.Value ? new KeyValuePair<GameObject, float>(nearestNpc.gameObject, distToNpc) : nearestPlatform;
-        targetType = distToNpc < nearestPlatform.Value ? TargetTypes.Enemy : TargetTypes.Platform;
+        nearest = distToEnemy < nearestPlatform.Value ? new KeyValuePair<GameObject, float>(enemy, distToEnemy) : nearestPlatform;
+        targetType = distToEnemy < nearestPlatform.Value ? TargetTypes.Enemy : TargetTypes.Platform;
 
         if (nearest.Key)
         {
