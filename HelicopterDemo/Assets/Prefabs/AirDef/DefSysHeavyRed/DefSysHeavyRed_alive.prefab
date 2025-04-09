@@ -705,6 +705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4066cc69765099e4db0f9d9b41d216dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSide: 0
   isFriendly: 0
   isGround: 1
   speed: 0
@@ -758,6 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef0f4fd4e27ad4081a6cc4ded100ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lostHpPartForManeuver: 3
   baseHealth: 100
   smokePrefab: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
   healthBarPrefab: {fileID: 9123654501395373740, guid: 32366473a0622994d8fc730a37961f74, type: 3}
@@ -804,6 +806,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingSide: 0
+  deadPrefab: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!4 &4016027788399251489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3751767114510227841, guid: 92dac6de73a08fb4bb754dfa2885a080, type: 3}

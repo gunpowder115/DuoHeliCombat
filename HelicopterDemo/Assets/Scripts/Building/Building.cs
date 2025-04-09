@@ -1,16 +1,19 @@
+using Assets.Scripts.Controllers;
 using UnityEngine;
 using static Types;
 
-public class Building : MonoBehaviour
+public class Building : MonoBehaviour, IFindable
 {
     [SerializeField] private GlobalSide2 buildingSide = GlobalSide2.Blue;
     [SerializeField] private GameObject deadPrefab;
     [SerializeField] private GameObject explosion;
 
     private Platform platform;
-    private NpcController npcController;
+    private UnitController unitController;
     private PlatformController platformController;
 
+    public Vector3 Position => transform.position;
+    public GlobalSide2 Side => buildingSide;
     public CommandCenter CommandCenter => platform.CommandCenter;
     public GlobalSide2 BuildingSide => buildingSide;
 
@@ -23,16 +26,16 @@ public class Building : MonoBehaviour
 
     private void Start()
     {
-        npcController = NpcController.Singleton;
+        unitController = UnitController.Singleton;
         platformController = PlatformController.Singleton;
-        npcController.Add(gameObject);
+        unitController.AddBuilding(this);
     }
 
     public void Remove() => CommandCenter.RemoveBuilding(this);
 
     public void RequestDestroy()
     {
-        npcController.Remove(gameObject);
+        unitController.RemoveBuilding(this);
         platformController.Add(platform.gameObject);
 
         if (deadPrefab) Instantiate(deadPrefab, transform.position, transform.rotation);

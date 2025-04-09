@@ -8,7 +8,7 @@ public class Squad : MonoBehaviour
     [SerializeField] private float squadRadius = 12f;
     [SerializeField] private GameObject memberPrefab;
 
-    private NpcController npcController;
+    private UnitController unitController;
 
     public float SquadRadius => squadRadius;
     public List<GameObject> Members { get; private set; }
@@ -16,7 +16,7 @@ public class Squad : MonoBehaviour
 
     private void Awake()
     {
-        npcController = NpcController.Singleton;
+        unitController = UnitController.Singleton;
         Members = new List<GameObject>();
         Npcs = new List<NpcGround>();
 
@@ -42,7 +42,7 @@ public class Squad : MonoBehaviour
             {
                 Npcs.Add(Members[i].GetComponent<NpcGround>());
                 Npcs[i].NpcSquad = this;
-                npcController.Add(Members[i]);
+                unitController.AddNpc(Npcs[i]);
             }
         }
     }

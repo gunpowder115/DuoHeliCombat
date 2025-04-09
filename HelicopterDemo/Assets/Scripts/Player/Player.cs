@@ -1,3 +1,4 @@
+using Assets.Scripts.Controllers;
 using System.Collections.Generic;
 using UnityEngine;
 using static InputDeviceBase;
@@ -8,8 +9,9 @@ using static ViewPortController;
 [RequireComponent(typeof(Shooter))]
 [RequireComponent(typeof(LineDrawer))]
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IFindable
 {
+    [SerializeField] private GlobalSide2 playerSide = GlobalSide2.Blue;
     [SerializeField] private bool startWithTakeoff = false;
     [SerializeField] float changeSpeedInput = 0.7f;
     [SerializeField] float vertFastCoef = 5f;
@@ -42,7 +44,7 @@ public class Player : MonoBehaviour
     Translation translation;
     Rotation rotation;
     CrosshairController crosshairController;
-    NpcController npcController;
+    UnitController unitController;
     PlatformController platformController;
     InputDeviceBase inputDevice;
     InputController inputController;
@@ -57,6 +59,8 @@ public class Player : MonoBehaviour
     private Prison prison;
     private LadderAnimator ladder;
 
+    public Vector3 Position => transform.position;
+    public GlobalSide2 Side => playerSide;
     public bool Aiming { get; private set; }
     public bool StartWithTakeoff => startWithTakeoff;
     public bool TargetDestroy { get; set; }
@@ -92,7 +96,8 @@ public class Player : MonoBehaviour
             takeoff.BladesSwipe();
         randomMovement = GetComponent<RandomMovement>();
 
-        npcController = NpcController.Singleton;
+        unitController = UnitController.Singleton;
+        unitController.AddPlayer(this);
         platformController = PlatformController.Singleton;
         crosshairController = CrosshairController.singleton;
         crosshair = crosshairController.GetCrosshair(playerNumber);
@@ -338,11 +343,12 @@ public class Player : MonoBehaviour
     {
         KeyValuePair<GameObject, float> nearest;
         TargetTypes targetType;
-        var nearestNpc = npcController != null ? npcController.FindNearestEnemy(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
+        float distToNpc = Mathf.Infinity;
+        var nearestNpc = unitController != null ? unitController.FindNearestEnemyNpcForMe(this, out distToNpc) : null;
         var nearestPlatform = platformController != null ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
 
-        nearest = nearestNpc.Value < nearestPlatform.Value ? nearestNpc : nearestPlatform;
-        targetType = nearestNpc.Value < nearestPlatform.Value ? TargetTypes.Enemy : TargetTypes.Platform;
+        nearest = distToNpc < nearestPlatform.Value ? new KeyValuePair<GameObject, float>(nearestNpc.gameObject, distToNpc) : nearestPlatform;
+        targetType = distToNpc < nearestPlatform.Value ? TargetTypes.Enemy : TargetTypes.Platform;
 
         if (nearest.Key)
         {
