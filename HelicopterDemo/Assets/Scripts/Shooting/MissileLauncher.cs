@@ -16,6 +16,7 @@ public class MissileLauncher : BaseLauncher
     private float currShotDeltaTime;
     private GameObject[] childObjects;
 
+    public bool IsPlayer { get; set; }
     public GlobalSide2 Side { get; set; }
 
     public void Launch(GameObject target)
@@ -28,12 +29,14 @@ public class MissileLauncher : BaseLauncher
                 var missileItem = Instantiate(missilePrefab, transform.position + transform.forward * 2f, transform.rotation);
                 GuidedMissile guidedMissile = missileItem.GetComponent<GuidedMissile>();
                 guidedMissile.Side = Side;
+                guidedMissile.IsPlayer = IsPlayer;
                 if (guidedMissile) guidedMissile.SelectedTarget = target;
             }
             else
             {
                 var missile = Instantiate(missilePrefab, transform.position + transform.forward * 2f, CalculateDeflection()).GetComponent<Projectile>();
                 missile.Side = Side;
+                missile.IsPlayer = IsPlayer;
             }
         }
         else

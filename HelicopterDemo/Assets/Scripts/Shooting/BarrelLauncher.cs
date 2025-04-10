@@ -13,6 +13,7 @@ public class BarrelLauncher : BaseLauncher
     float currShotDeltaTime, currRechargeTime;
     private float tgtShortDeltaTime;
 
+    public bool IsPlayer { get; set; }
     public GlobalSide2 Side { get; set; }
 
     public void Fire(GameObject target)
@@ -40,6 +41,7 @@ public class BarrelLauncher : BaseLauncher
 
                 var proj = Instantiate(projectilePrefab, this.transform.position, CalculateDeflection()).GetComponent<Projectile>();
                 proj.Side = Side;
+                proj.IsPlayer = IsPlayer;
             }
             else
                 Debug.Log(this.ToString() + ": projectilePrefab is NULL!");

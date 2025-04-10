@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 2090940099528624269}
   m_Layer: 0
   m_Name: Player_base
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25422909cc19844fa03ca8d72fad2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSide: 1
   startWithTakeoff: 0
   changeSpeedInput: 0.9
   vertFastCoef: 5

@@ -16,6 +16,7 @@ public class Projectile : MonoBehaviour
     float currLifetime;
     AudioSource projSound;
 
+    public bool IsPlayer { get; set; }
     public GlobalSide2 Side { get; set; }
 
     void Start()
@@ -69,8 +70,7 @@ public class Projectile : MonoBehaviour
         Health health = other.GetComponent<Health>();
         if (otherFindable != null && !FriendlyFire(otherFindable.Side) && health)
         {
-            bool damageFromPlayer = gameObject.tag == "Player";
-            health.Hurt(damage, damageFromPlayer, other.GetComponent<Npc>());
+            health.Hurt(damage, IsPlayer, other.GetComponent<Npc>());
         }
 
         if (explosion) Instantiate(explosion, gameObject.transform.position + transform.forward, gameObject.transform.rotation);
