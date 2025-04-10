@@ -106,10 +106,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CargoPlatform_heli_light_red
       objectReference: {fileID: 0}
-    - target: {fileID: 1206043630572876444, guid: e8bd0973fac8598469f041ea38683839, type: 3}
-      propertyPath: m_TagString
-      value: EnemyBuild
-      objectReference: {fileID: 0}
     - target: {fileID: 1443192276861054771, guid: e8bd0973fac8598469f041ea38683839, type: 3}
       propertyPath: buildingSide
       value: 0

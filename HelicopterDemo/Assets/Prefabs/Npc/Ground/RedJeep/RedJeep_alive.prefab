@@ -112,10 +112,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedJeep_alive
       objectReference: {fileID: 0}
-    - target: {fileID: 654903885590351315, guid: 67ac8abe6bf12dc468a2e4c5c33e284e, type: 3}
-      propertyPath: m_TagString
-      value: EnemyGround
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ac8abe6bf12dc468a2e4c5c33e284e, type: 3}
 --- !u!4 &256884574402002076 stripped

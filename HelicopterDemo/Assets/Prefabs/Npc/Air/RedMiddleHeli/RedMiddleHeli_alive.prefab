@@ -575,10 +575,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedMiddleHeli_alive
       objectReference: {fileID: 0}
-    - target: {fileID: 6157169485387400612, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}
-      propertyPath: m_TagString
-      value: EnemyAir
-      objectReference: {fileID: 0}
     - target: {fileID: 6157169485387400614, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}
       propertyPath: m_Size.x
       value: 0.7494316

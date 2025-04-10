@@ -124,10 +124,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefSysRed_alive
       objectReference: {fileID: 0}
-    - target: {fileID: 2043951984725440549, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
-      propertyPath: m_TagString
-      value: EnemyGround
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
 --- !u!1 &1241589566971415264 stripped

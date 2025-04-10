@@ -615,10 +615,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefSysHeavyRed_alive
       objectReference: {fileID: 0}
-    - target: {fileID: 3751767114510227840, guid: 92dac6de73a08fb4bb754dfa2885a080, type: 3}
-      propertyPath: m_TagString
-      value: EnemyGround
-      objectReference: {fileID: 0}
     - target: {fileID: 3751767114510227841, guid: 92dac6de73a08fb4bb754dfa2885a080, type: 3}
       propertyPath: m_RootOrder
       value: 0
