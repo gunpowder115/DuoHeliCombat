@@ -105,7 +105,7 @@ public class NpcSquad : Npc
     private void SelectTarget()
     {
         float distToEnemy = Mathf.Infinity;
-        GameObject enemy = unitController.FindNearestEnemy(this, out distToEnemy);
+        GameObject enemy = unitController.FindClosestEnemy(Npcs[0], out distToEnemy).GameObject;
 
         switch (npcState)
         {

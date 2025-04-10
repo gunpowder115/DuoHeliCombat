@@ -14,6 +14,7 @@ public class Building : MonoBehaviour, IFindable
 
     public Vector3 Position => transform.position;
     public GlobalSide2 Side => buildingSide;
+    public GameObject GameObject => gameObject;
     public CommandCenter CommandCenter => platform.CommandCenter;
     public GlobalSide2 BuildingSide => buildingSide;
 

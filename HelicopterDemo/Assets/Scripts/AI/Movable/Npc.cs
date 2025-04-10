@@ -47,6 +47,7 @@ public abstract class Npc : MonoBehaviour, IFindable
 
     public Vector3 Position => transform.position;
     public GlobalSide2 Side => npcSide;
+    public GameObject GameObject => gameObject;
 
     public bool IsFriendly
     {

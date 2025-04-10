@@ -1,4 +1,5 @@
-using Assets.Scripts.Controllers;
+﻿using Assets.Scripts.Controllers;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,34 +38,135 @@ public class UnitController
     public void AddBuilding(Building building) => Add(buildings, building);
     public void RemoveBuilding(Building building) => Remove(buildings, building);
 
-    public Player FindNearestPlayerForMe(IFindable me, out float dist) => FindNearestUnitForMe(players, me, out dist, false) as Player;
-    public GameObject FindNearestEnemy(IFindable me, out float dist)
+    public T FindClosestEnemy<T>(IFindable src, out float dist) where T : class, IFindable
     {
-        float resultDist = Mathf.Infinity;
-        GameObject resultEnemy = null;
-        float enemyDist = Mathf.Infinity;
+        List<T> possibleTargets = new List<T>();
 
-        var npc = FindNearestEnemyNpcForMe(me, out enemyDist);
-        if (npc && enemyDist < resultDist)
+        if (typeof(T) == typeof(Npc))
         {
-            resultEnemy = npc.gameObject;
-            resultDist = enemyDist;
+            foreach (var npc in npcs)
+            {
+                if (npc.Side != src.Side)
+                    possibleTargets.Add(npc as T);
+            }
         }
-        var building = FindNearestEnemyBuildingForMe(me, out enemyDist);
-        if (building && enemyDist < resultDist)
+        else if (typeof(T) == typeof(Building))
         {
-            resultEnemy = building.gameObject;
-            resultDist = enemyDist;
+            foreach (var building in buildings)
+            {
+                if (building.Side != src.Side)
+                    possibleTargets.Add(building as T);
+            }
         }
-        var player = FindNearestEnemyPlayerForMe(me, out enemyDist);
-        if (player && enemyDist < resultDist)
+        else if (typeof(T) == typeof(Player))
         {
-            resultEnemy = player.gameObject;
-            resultDist = enemyDist;
+            foreach (var player in players)
+            {
+                if (player.Side != src.Side)
+                    possibleTargets.Add(player as T);
+            }
+        }
+        else
+        {
+            throw new ArgumentException($"Unsupported type: {typeof(T)}");
         }
 
-        dist = resultDist;
-        return resultEnemy;
+        if (possibleTargets.Count == 0)
+        {
+            dist = float.MaxValue;
+            return null;
+        }
+
+        T closestEnemy = null;
+        float closestSqrDistance = float.MaxValue;
+
+        foreach (var target in possibleTargets)
+        {
+            float sqrDistance = Vector3.SqrMagnitude(src.Position - target.Position);
+            if (sqrDistance < closestSqrDistance)
+            {
+                closestSqrDistance = sqrDistance;
+                closestEnemy = target;
+            }
+        }
+
+        dist = Vector3.Magnitude(src.Position - closestEnemy.Position); ;
+        return closestEnemy;
+    }
+
+    public IFindable FindClosestEnemy(IFindable src, out float dist)
+    {
+        IFindable closestEnemy = null;
+        float closestSqrDistance = float.MaxValue;
+
+        foreach (var npc in npcs)
+        {
+            if (npc.Side != src.Side)
+            {
+                float sqrDistance = Vector3.SqrMagnitude(src.Position - npc.Position);
+                if (sqrDistance < closestSqrDistance)
+                {
+                    closestSqrDistance = sqrDistance;
+                    closestEnemy = npc;
+                }
+            }
+        }
+
+        foreach (var building in buildings)
+        {
+            if (building.Side != src.Side)
+            {
+                float sqrDistance = Vector3.SqrMagnitude(src.Position - building.Position);
+                if (sqrDistance < closestSqrDistance)
+                {
+                    closestSqrDistance = sqrDistance;
+                    closestEnemy = building;
+                }
+            }
+        }
+
+        foreach (var player in players)
+        {
+            if (player.Side != src.Side)
+            {
+                float sqrDistance = Vector3.SqrMagnitude(src.Position - player.Position);
+                if (sqrDistance < closestSqrDistance)
+                {
+                    closestSqrDistance = sqrDistance;
+                    closestEnemy = player;
+                }
+            }
+        }
+
+        dist = Vector3.Magnitude(src.Position - closestEnemy.Position);
+        return closestEnemy;
+    }
+
+    public Player FindClosestPlayer(IFindable src, out float dist)
+    {
+        if (players.Count == 0)
+        {
+            dist = float.MaxValue;
+            return null;
+        }
+
+        IFindable closestPlayer = null;
+        float closestSqrDistance = float.MaxValue;
+
+        foreach (var player in players)
+        {
+            Vector3 offset = player.Position - src.Position;
+            float sqrDistance = offset.sqrMagnitude;
+
+            if (sqrDistance < closestSqrDistance)
+            {
+                closestSqrDistance = sqrDistance;
+                closestPlayer = player;
+            }
+        }
+
+        dist = Vector3.Distance(closestPlayer.Position, src.Position);
+        return closestPlayer as Player;
     }
 
     private void Add(List<IFindable> list, IFindable item)
@@ -77,33 +179,5 @@ public class UnitController
     {
         if (list.Contains(item))
             list.Remove(item);
-    }
-
-    private Npc FindNearestEnemyNpcForMe(IFindable me, out float dist) => FindNearestUnitForMe(npcs, me, out dist) as Npc;
-    private Building FindNearestEnemyBuildingForMe(IFindable me, out float dist) => FindNearestUnitForMe(buildings, me, out dist) as Building;
-    private Player FindNearestEnemyPlayerForMe(IFindable me, out float dist) => FindNearestUnitForMe(players, me, out dist) as Player;
-
-    private T FindNearestUnitForMe<T>(List<T> units, IFindable me, out float dist, bool enemyOnly = true) where T : class, IFindable
-    {
-        float minX = Mathf.Infinity;
-        float minY = Mathf.Infinity;
-        IFindable result = null;
-        if (units != null && units.Count > 0)
-        {
-            foreach (var unit in units)
-            {
-                if (enemyOnly && unit.Side == me.Side) continue;
-                float x = Mathf.Abs(unit.Position.x - me.Position.x);
-                float y = Mathf.Abs(unit.Position.y - me.Position.y);
-                if (x < minX || y < minY)
-                {
-                    minX = x;
-                    minY = y;
-                    result = unit;
-                }
-            }
-        }
-        dist = Vector3.Distance(result.Position, me.Position);
-        return result as T;
     }
 }

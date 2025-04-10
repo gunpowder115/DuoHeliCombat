@@ -61,6 +61,7 @@ public class Player : MonoBehaviour, IFindable
 
     public Vector3 Position => transform.position;
     public GlobalSide2 Side => playerSide;
+    public GameObject GameObject => gameObject;
     public bool Aiming { get; private set; }
     public bool StartWithTakeoff => startWithTakeoff;
     public bool TargetDestroy { get; set; }
@@ -344,7 +345,7 @@ public class Player : MonoBehaviour, IFindable
         KeyValuePair<GameObject, float> nearest;
         TargetTypes targetType;
         float distToEnemy = Mathf.Infinity;
-        GameObject enemy = unitController.FindNearestEnemy(this, out distToEnemy);
+        GameObject enemy = unitController.FindClosestEnemy(this, out distToEnemy).GameObject;
         var nearestPlatform = platformController != null ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
 
         nearest = distToEnemy < nearestPlatform.Value ? new KeyValuePair<GameObject, float>(enemy, distToEnemy) : nearestPlatform;

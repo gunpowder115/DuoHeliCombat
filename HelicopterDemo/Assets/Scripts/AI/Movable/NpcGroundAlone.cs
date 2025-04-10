@@ -89,7 +89,7 @@ public class NpcGroundAlone : Npc
     private void SelectTarget()
     {
         float distToEnemy = Mathf.Infinity;
-        GameObject enemy = unitController.FindNearestEnemy(this, out distToEnemy);
+        GameObject enemy = unitController.FindClosestEnemy(this, out distToEnemy).GameObject;
 
         switch (npcState)
         {

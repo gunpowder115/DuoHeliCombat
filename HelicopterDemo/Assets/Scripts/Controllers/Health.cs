@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
                 healthBar = Instantiate(healthBarPrefab, transform.position + Vector3.up * 3f, transform.rotation, transform).GetComponent<HealthBar>();
                 healthBar.SetFullHealth(baseHealth);
 
-                damageSourcePlayer = unitController.FindNearestPlayerForMe(npc, out float dist).gameObject;
+                damageSourcePlayer = unitController.FindClosestPlayer(npc ? npc : building ? building : null, out float dist).gameObject;
             }
 
             if (healthBar)

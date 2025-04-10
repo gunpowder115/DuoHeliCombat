@@ -16,6 +16,7 @@ public class PickableUp : MonoBehaviour, IFindable
 
     public Vector3 Position => transform.position;
     public GlobalSide2 Side => GlobalSide2.Red;
+    public GameObject GameObject => gameObject;
 
     private void Awake()
     {
@@ -33,7 +34,7 @@ public class PickableUp : MonoBehaviour, IFindable
     private void Update()
     {
         float distToPlayer = Mathf.Infinity;
-        PlayerBody playerBody = unitController.FindNearestPlayerForMe(this, out distToPlayer).PlayerBody;
+        PlayerBody playerBody = unitController.FindClosestPlayer(this, out distToPlayer).PlayerBody;
 
         if (distToPlayer < takingDist)
         {
