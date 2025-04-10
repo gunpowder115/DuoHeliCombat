@@ -216,10 +216,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CargoPlatform_tank_blue
       objectReference: {fileID: 0}
-    - target: {fileID: 2355145705375383449, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
-      propertyPath: m_TagString
-      value: FriendlyBuild
-      objectReference: {fileID: 0}
     - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
       propertyPath: cargoType
       value: 1

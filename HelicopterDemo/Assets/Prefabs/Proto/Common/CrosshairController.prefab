@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9871f573e7020fc498833b69b3a49458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimSpeed: 3
+  aimSpeed: 600
   rayRadius: 1
   maxDistance: 100
   targetHoldTime: 1

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Types;
 
 public class Shooter : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Shooter : MonoBehaviour
     private float currTimeFromLaunch;
     private List<BarrelLauncher> barrels;
     private List<MissileLauncher> unguidedMissiles, guidedMissiles;
+
+    public bool IsPlayer { get; private set; }
+    public GlobalSide2 Side { get; set; }
 
     public void BarrelFire(GameObject target)
     {
@@ -33,10 +37,14 @@ public class Shooter : MonoBehaviour
 
     void Start()
     {
+        IsPlayer = GetComponent<Player>();
         barrels = new List<BarrelLauncher>();
         barrels.AddRange(GetComponentsInChildren<BarrelLauncher>());
         foreach (var bar in barrels)
-            bar.gameObject.tag = gameObject.tag;
+        {
+            bar.Side = Side;
+            bar.IsPlayer = IsPlayer;
+        }
 
         List<MissileLauncher> missiles = new List<MissileLauncher>(GetComponentsInChildren<MissileLauncher>());
         unguidedMissiles = new List<MissileLauncher>();
@@ -45,7 +53,8 @@ public class Shooter : MonoBehaviour
         {
             foreach (var missile in missiles)
             {
-                missile.gameObject.tag = gameObject.tag;
+                missile.Side = Side;
+                missile.IsPlayer = IsPlayer;
                 if (missile.IsGuided)
                     guidedMissiles.Add(missile);
                 else

@@ -1,10 +1,12 @@
+using Assets.Scripts.Controllers;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static Types;
 
-public abstract class Npc : MonoBehaviour
+public abstract class Npc : MonoBehaviour, IFindable
 {
+    [SerializeField] protected GlobalSide2 npcSide = GlobalSide2.Blue;
     [SerializeField] protected bool isFriendly = true;
     [SerializeField] protected bool isGround = false;
     [SerializeField] protected float speed = 20f;
@@ -28,7 +30,7 @@ public abstract class Npc : MonoBehaviour
     protected Shooter shooter;
     protected Health health;
     protected GameObject selectedTarget;
-    protected NpcController npcController;
+    protected UnitController unitController;
     protected List<TargetTracker> trackers;
 
     #region Properties
@@ -42,6 +44,10 @@ public abstract class Npc : MonoBehaviour
     protected Action<Caravan> AddToCaravanAction { get; set; }
 
     #endregion
+
+    public Vector3 Position => transform.position;
+    public GlobalSide2 Side => npcSide;
+    public GameObject GameObject => gameObject;
 
     public bool IsFriendly
     {
@@ -88,8 +94,9 @@ public abstract class Npc : MonoBehaviour
         translation = GetComponent<Translation>();
         rotation = GetComponent<Rotation>();
         shooter = GetComponent<Shooter>();
+        if (shooter) shooter.Side = Side;
         health = GetComponent<Health>();
-        npcController = NpcController.Singleton;
+        unitController = UnitController.Singleton;
 
         trackers = new List<TargetTracker>();
         trackers.AddRange(gameObject.GetComponentsInChildren<TargetTracker>());

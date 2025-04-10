@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Types;
 
 public class BarrelLauncher : BaseLauncher
 {
@@ -11,6 +12,9 @@ public class BarrelLauncher : BaseLauncher
     int currClipVolume;
     float currShotDeltaTime, currRechargeTime;
     private float tgtShortDeltaTime;
+
+    public bool IsPlayer { get; set; }
+    public GlobalSide2 Side { get; set; }
 
     public void Fire(GameObject target)
     {
@@ -35,8 +39,9 @@ public class BarrelLauncher : BaseLauncher
                 GameObject flash = Instantiate(flashPrefab, transform);
                 Destroy(flash, 0.05f);
 
-                var proj = Instantiate(projectilePrefab, this.transform.position, CalculateDeflection());
-                proj.tag = gameObject.tag;
+                var proj = Instantiate(projectilePrefab, this.transform.position, CalculateDeflection()).GetComponent<Projectile>();
+                proj.Side = Side;
+                proj.IsPlayer = IsPlayer;
             }
             else
                 Debug.Log(this.ToString() + ": projectilePrefab is NULL!");

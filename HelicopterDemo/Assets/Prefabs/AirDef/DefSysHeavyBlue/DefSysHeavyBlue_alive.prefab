@@ -539,10 +539,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefSysHeavyBlue_alive
       objectReference: {fileID: 0}
-    - target: {fileID: 1491153474279174191, guid: 289843f4d8352584da31507e3052cd7a, type: 3}
-      propertyPath: m_TagString
-      value: FriendlyGround
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 289843f4d8352584da31507e3052cd7a, type: 3}
 --- !u!4 &8271259110626607295 stripped
@@ -586,6 +582,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToNextLaunch: 1
+--- !u!114 &1661962833004578129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8449829510872370401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef181ce7dc0acb04caafefdfc50e3692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingSide: 1
+  deadPrefab: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!114 &2052017860192536122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,6 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef0f4fd4e27ad4081a6cc4ded100ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lostHpPartForManeuver: 3
   baseHealth: 100
   smokePrefab: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
   healthBarPrefab: {fileID: 6534110175669022320, guid: 355e48911d66ab44ebe8338bf01d585d, type: 3}
@@ -658,6 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4066cc69765099e4db0f9d9b41d216dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSide: 1
   isFriendly: 1
   isGround: 1
   speed: 0
@@ -671,19 +684,6 @@ MonoBehaviour:
   distDelta: 1
   deadPrefab: {fileID: 7945780487119277729, guid: 2627238a9d82f754795d58f935866f5a, type: 3}
   explosion: {fileID: 4954313840775520740, guid: 8d752563071e2c441ac6ab8f2823c632, type: 3}
---- !u!114 &1661962833004578129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8449829510872370401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef181ce7dc0acb04caafefdfc50e3692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingSide: 1
 --- !u!4 &8449829510872370414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1491153474279174176, guid: 289843f4d8352584da31507e3052cd7a, type: 3}

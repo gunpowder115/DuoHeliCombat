@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject healthBarPrefab;
 
     private float health;
-    private NpcController npcController;
+    private UnitController unitController;
     private Npc npc;
     private Building building;
     private GameObject smoke;
@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
                 healthBar = Instantiate(healthBarPrefab, transform.position + Vector3.up * 3f, transform.rotation, transform).GetComponent<HealthBar>();
                 healthBar.SetFullHealth(baseHealth);
 
-                damageSourcePlayer = npcController.FindNearestPlayer(transform.position).Key;
+                damageSourcePlayer = unitController.FindClosestPlayer(npc ? npc : building ? building : null, out float dist).gameObject;
             }
 
             if (healthBar)
@@ -81,7 +81,7 @@ public class Health : MonoBehaviour
     {
         IsAlive = true;
         health = baseHealth;
-        npcController = NpcController.Singleton;
+        unitController = UnitController.Singleton;
         npc = GetComponent<Npc>();
         building = GetComponent<Building>();
     }

@@ -1,3 +1,4 @@
+using Assets.Scripts.Controllers;
 using System.Collections.Generic;
 using UnityEngine;
 using static InputDeviceBase;
@@ -8,8 +9,9 @@ using static ViewPortController;
 [RequireComponent(typeof(Shooter))]
 [RequireComponent(typeof(LineDrawer))]
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IFindable
 {
+    [SerializeField] private GlobalSide2 playerSide = GlobalSide2.Blue;
     [SerializeField] private bool startWithTakeoff = false;
     [SerializeField] float changeSpeedInput = 0.7f;
     [SerializeField] float vertFastCoef = 5f;
@@ -42,7 +44,7 @@ public class Player : MonoBehaviour
     Translation translation;
     Rotation rotation;
     CrosshairController crosshairController;
-    NpcController npcController;
+    UnitController unitController;
     PlatformController platformController;
     InputDeviceBase inputDevice;
     InputController inputController;
@@ -57,6 +59,9 @@ public class Player : MonoBehaviour
     private Prison prison;
     private LadderAnimator ladder;
 
+    public Vector3 Position => transform.position;
+    public GlobalSide2 Side => playerSide;
+    public GameObject GameObject => gameObject;
     public bool Aiming { get; private set; }
     public bool StartWithTakeoff => startWithTakeoff;
     public bool TargetDestroy { get; set; }
@@ -77,6 +82,7 @@ public class Player : MonoBehaviour
         playerBody = GetComponentInChildren<PlayerBody>();
         ladder = GetComponentInChildren<LadderAnimator>();
         shooter = GetComponent<Shooter>();
+        if (shooter) shooter.Side = Side;
         rotors = new List<SimpleRotor>();
         rotors.AddRange(GetComponentsInChildren<SimpleRotor>());
         foreach (var rotor in rotors)
@@ -92,7 +98,8 @@ public class Player : MonoBehaviour
             takeoff.BladesSwipe();
         randomMovement = GetComponent<RandomMovement>();
 
-        npcController = NpcController.Singleton;
+        unitController = UnitController.Singleton;
+        unitController.AddPlayer(this);
         platformController = PlatformController.Singleton;
         crosshairController = CrosshairController.singleton;
         crosshair = crosshairController.GetCrosshair(playerNumber);
@@ -338,11 +345,12 @@ public class Player : MonoBehaviour
     {
         KeyValuePair<GameObject, float> nearest;
         TargetTypes targetType;
-        var nearestNpc = npcController != null ? npcController.FindNearestEnemy(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
+        float distToEnemy = Mathf.Infinity;
+        GameObject enemy = unitController.FindClosestEnemy(this, out distToEnemy).GameObject;
         var nearestPlatform = platformController != null ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
 
-        nearest = nearestNpc.Value < nearestPlatform.Value ? nearestNpc : nearestPlatform;
-        targetType = nearestNpc.Value < nearestPlatform.Value ? TargetTypes.Enemy : TargetTypes.Platform;
+        nearest = distToEnemy < nearestPlatform.Value ? new KeyValuePair<GameObject, float>(enemy, distToEnemy) : nearestPlatform;
+        targetType = distToEnemy < nearestPlatform.Value ? TargetTypes.Enemy : TargetTypes.Platform;
 
         if (nearest.Key)
         {

@@ -1,23 +1,29 @@
+using Assets.Scripts.Controllers;
 using UnityEngine;
+using static Types;
 
 [RequireComponent(typeof(Rigidbody))]
 
-public class PickableUp : MonoBehaviour
+public class PickableUp : MonoBehaviour, IFindable
 {
     [SerializeField] private float takingDist = 5f;
     [SerializeField] private AudioClip pickUpSound;
 
     private Rigidbody rigidBody;
     private BoxCollider boxCollider;
-    private NpcController npcController;
+    private UnitController unitController;
     private AudioSource sound;
+
+    public Vector3 Position => transform.position;
+    public GlobalSide2 Side => GlobalSide2.Red;
+    public GameObject GameObject => gameObject;
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         sound = GetComponent<AudioSource>();
-        npcController = NpcController.Singleton;
+        unitController = UnitController.Singleton;
         SetGravity(false);
         SetTrigger(true);
 
@@ -27,15 +33,14 @@ public class PickableUp : MonoBehaviour
 
     private void Update()
     {
-        var player = npcController.FindNearestPlayer(transform.position);
-        PlayerBody playerBody = player.Key.GetComponent<Player>().PlayerBody;
-        float distPlayer = player.Value;
+        float distToPlayer = Mathf.Infinity;
+        PlayerBody playerBody = unitController.FindClosestPlayer(this, out distToPlayer).PlayerBody;
 
-        if (distPlayer < takingDist)
+        if (distToPlayer < takingDist)
         {
             playerBody.ItemForTake = this;
         }
-        else if (distPlayer >= takingDist && playerBody.ItemForTake == this)
+        else if (distToPlayer >= takingDist && playerBody.ItemForTake == this)
         {
             playerBody.ItemForTake = null;
         }

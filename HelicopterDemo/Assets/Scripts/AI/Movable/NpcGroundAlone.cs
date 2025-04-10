@@ -22,7 +22,7 @@ public class NpcGroundAlone : Npc
         base.Init();
 
         npcState = NpcState.Exploring;
-        npcController.Add(gameObject);
+        unitController.AddNpc(this);
     }
 
     void Update()
@@ -37,7 +37,7 @@ public class NpcGroundAlone : Npc
 
     public override void RequestDestroy()
     {
-        npcController.Remove(gameObject);
+        unitController.RemoveNpc(this);
 
         if (deadPrefab)
             Instantiate(deadPrefab, transform.position, transform.rotation);
@@ -88,28 +88,19 @@ public class NpcGroundAlone : Npc
 
     private void SelectTarget()
     {
-        KeyValuePair<GameObject, float> nearestNpc, nearestPlayer;
-        if (IsFriendly)
-        {
-            nearestNpc = npcController.FindNearestEnemy(transform.position);
-        }
-        else
-        {
-            nearestNpc = npcController.FindNearestFriendly(transform.position);
-            nearestPlayer = npcController.FindNearestPlayer(transform.position);
-            nearestNpc = nearestPlayer.Value < nearestNpc.Value ? nearestPlayer : nearestNpc;
-        }
+        float distToEnemy = Mathf.Infinity;
+        GameObject enemy = unitController.FindClosestEnemy(this, out distToEnemy).GameObject;
 
         switch (npcState)
         {
             case NpcState.Attack:
-                selectedTarget = nearestNpc.Key;
+                selectedTarget = enemy;
                 break;
             case NpcState.MoveToTarget:
-                selectedTarget = nearestNpc.Value > MaxPursuitDist ? null : nearestNpc.Key;
+                selectedTarget = distToEnemy > MaxPursuitDist ? null : enemy;
                 break;
             default:
-                selectedTarget = nearestNpc.Value <= MinPursuitDist ? nearestNpc.Key : null;
+                selectedTarget = distToEnemy <= MinPursuitDist ? enemy : null;
                 break;
         }
     }

@@ -54,7 +54,7 @@ public class NpcGround : Npc
 
     public override void RequestDestroy()
     {
-        npcController.Remove(gameObject);
+        unitController.RemoveNpc(this);
         bool isSquad = NpcSquad.RemoveMember(this);
 
         if (deadPrefab)

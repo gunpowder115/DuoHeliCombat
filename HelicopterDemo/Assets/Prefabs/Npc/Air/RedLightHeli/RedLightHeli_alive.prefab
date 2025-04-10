@@ -11,10 +11,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedLightHeli_alive
       objectReference: {fileID: 0}
-    - target: {fileID: 1031888820047019511, guid: f56ee84ef442ad248be156912b6fc1d3, type: 3}
-      propertyPath: m_TagString
-      value: EnemyAir
-      objectReference: {fileID: 0}
     - target: {fileID: 2883228714481605089, guid: f56ee84ef442ad248be156912b6fc1d3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -78,6 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a3cbb3ce5dae144944e1af4466a2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSide: 0
   isFriendly: 0
   isGround: 0
   speed: 20
@@ -147,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef0f4fd4e27ad4081a6cc4ded100ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lostHpPartForManeuver: 3
   baseHealth: 100
   smokePrefab: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
   healthBarPrefab: {fileID: 9123654501395373740, guid: 32366473a0622994d8fc730a37961f74, type: 3}

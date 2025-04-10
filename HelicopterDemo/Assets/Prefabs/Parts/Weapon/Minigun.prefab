@@ -40,6 +40,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4815506347493503304}
     m_Modifications:
+    - target: {fileID: 4701660604154824101, guid: fec881e0f6309b6409af5da64cab86c0, type: 3}
+      propertyPath: maxDeflectionAngle
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7925028739146149901, guid: fec881e0f6309b6409af5da64cab86c0, type: 3}
       propertyPath: m_RootOrder
       value: 1

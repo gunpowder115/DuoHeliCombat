@@ -40,6 +40,7 @@ public class NpcAttack : MonoBehaviour
         npcSquad = GetComponent<NpcSquad>();
         health = GetComponent<Health>();
         shooter = GetComponent<Shooter>();
+        if (shooter) shooter.Side = npc.Side;
     }
 
     public void Move()
