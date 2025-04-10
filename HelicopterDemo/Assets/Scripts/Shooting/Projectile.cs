@@ -1,4 +1,6 @@
+using Assets.Scripts.Controllers;
 using UnityEngine;
+using static Types;
 
 public class Projectile : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class Projectile : MonoBehaviour
     private bool isLaunchSound;
     float currLifetime;
     AudioSource projSound;
+
+    public GlobalSide2 Side { get; set; }
 
     void Start()
     {
@@ -61,8 +65,9 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        IFindable otherFindable = other.GetComponent<IFindable>();
         Health health = other.GetComponent<Health>();
-        if (!FriendlyFire(other.gameObject.tag) && health)
+        if (otherFindable != null && !FriendlyFire(otherFindable.Side) && health)
         {
             bool damageFromPlayer = gameObject.tag == "Player";
             health.Hurt(damage, damageFromPlayer, other.GetComponent<Npc>());
@@ -72,14 +77,7 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private bool FriendlyFire(string anotherTag) //todo remove tags
-    {
-        string thisTag = gameObject.tag;
-        bool bothIsFriendly = (thisTag.Contains("Friendly") || thisTag.Contains("Player")) && (anotherTag.Contains("Friendly") || anotherTag.Contains("Player"));
-        bool bothIsEnemy = thisTag.Contains("Enemy") && anotherTag.Contains("Enemy");
-
-        return bothIsFriendly || bothIsEnemy;
-    }
+    public bool FriendlyFire(GlobalSide2 anotherSide) => Side == anotherSide;
 
     private enum ProjectileType
     {

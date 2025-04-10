@@ -82,6 +82,7 @@ public class Player : MonoBehaviour, IFindable
         playerBody = GetComponentInChildren<PlayerBody>();
         ladder = GetComponentInChildren<LadderAnimator>();
         shooter = GetComponent<Shooter>();
+        if (shooter) shooter.Side = Side;
         rotors = new List<SimpleRotor>();
         rotors.AddRange(GetComponentsInChildren<SimpleRotor>());
         foreach (var rotor in rotors)

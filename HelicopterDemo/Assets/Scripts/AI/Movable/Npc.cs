@@ -94,6 +94,7 @@ public abstract class Npc : MonoBehaviour, IFindable
         translation = GetComponent<Translation>();
         rotation = GetComponent<Rotation>();
         shooter = GetComponent<Shooter>();
+        if (shooter) shooter.Side = Side;
         health = GetComponent<Health>();
         unitController = UnitController.Singleton;
 

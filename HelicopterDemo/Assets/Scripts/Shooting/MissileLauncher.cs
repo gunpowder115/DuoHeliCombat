@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static Types;
 
 public class MissileLauncher : BaseLauncher
 {
@@ -15,6 +16,8 @@ public class MissileLauncher : BaseLauncher
     private float currShotDeltaTime;
     private GameObject[] childObjects;
 
+    public GlobalSide2 Side { get; set; }
+
     public void Launch(GameObject target)
     {
         this.target = target;
@@ -23,14 +26,14 @@ public class MissileLauncher : BaseLauncher
             if (guided)
             {
                 var missileItem = Instantiate(missilePrefab, transform.position + transform.forward * 2f, transform.rotation);
-                missileItem.tag = gameObject.tag;
                 GuidedMissile guidedMissile = missileItem.GetComponent<GuidedMissile>();
+                guidedMissile.Side = Side;
                 if (guidedMissile) guidedMissile.SelectedTarget = target;
             }
             else
             {
-                var missile = Instantiate(missilePrefab, transform.position + transform.forward * 2f, CalculateDeflection());
-                missile.tag = gameObject.tag;
+                var missile = Instantiate(missilePrefab, transform.position + transform.forward * 2f, CalculateDeflection()).GetComponent<Projectile>();
+                missile.Side = Side;
             }
         }
         else
