@@ -67,8 +67,13 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         IFindable otherFindable = other.GetComponent<IFindable>();
+        IFindable otherParentFindable = other.transform?.parent?.GetComponent<IFindable>();
         Health health = other.GetComponent<Health>();
         if (otherFindable != null && !FriendlyFire(otherFindable.Side) && health)
+        {
+            health.Hurt(damage, IsPlayer, other.GetComponent<Npc>());
+        }
+        else if (otherParentFindable != null && !FriendlyFire(otherParentFindable.Side) && health)
         {
             health.Hurt(damage, IsPlayer, other.GetComponent<Npc>());
         }
