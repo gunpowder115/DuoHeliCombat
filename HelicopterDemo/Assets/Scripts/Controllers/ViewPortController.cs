@@ -14,6 +14,8 @@ public class ViewPortController : MonoBehaviour
     [SerializeField] private Orientation orientation = Orientation.Vertical;
     [SerializeField] private CameraPosition posCamera1;
     [SerializeField] private CameraPosition posCamera2;
+    [SerializeField] private RectTransform screenFading1;
+    [SerializeField] private RectTransform screenFading2;
 
     private bool animForConnect, animForDisconnect;
     private Vector3 divPoint1, divPoint2;
@@ -96,6 +98,14 @@ public class ViewPortController : MonoBehaviour
 
             cameraPlayer1.rect = currRect1;
             cameraPlayer2.rect = currRect2;
+
+            Vector2 minOffset1 = new Vector2(), maxOffset1 = new Vector2(), minOffset2 = new Vector2(), maxOffset2 = new Vector2();
+            SetScreenFadingOffset(posCamera1, ref minOffset1, ref maxOffset1);
+            SetScreenFadingOffset(posCamera2, ref minOffset2, ref maxOffset2);
+            screenFading1.anchorMin = minOffset1;
+            screenFading1.anchorMax = maxOffset1;
+            screenFading2.anchorMin = minOffset2;
+            screenFading2.anchorMax = maxOffset2;
         }
     }
 
@@ -371,6 +381,43 @@ public class ViewPortController : MonoBehaviour
             dividingLine.enabled = false;
             if (cameraPlayer1) cameraPlayer1.fieldOfView = defaultFov;
             if (cameraPlayer2) cameraPlayer2.fieldOfView = defaultFov;
+        }
+    }
+
+    private void SetScreenFadingOffset(CameraPosition cp, ref Vector2 min, ref Vector2 max)
+    {
+        switch (cp)
+        {
+            case CameraPosition.HalfLeft:
+                min = new Vector2(0f, 0f);
+                max = new Vector2(0.5f, 1f);
+                break;
+            case CameraPosition.HalfRight:
+                min = new Vector2(0.5f, 0f);
+                max = new Vector2(1f, 1f);
+                break;
+            case CameraPosition.HalfUp:
+                min = new Vector2(0f, 0f);
+                max = new Vector2(1f, 0.5f);
+                break;
+            case CameraPosition.HalfDown:
+                min = new Vector2(0f, 0.5f);
+                max = new Vector2(1f, 1f);
+                break;
+
+            case CameraPosition.EmptyLeft:
+            case CameraPosition.EmptyDown:
+                min = max = new Vector2(0f, 0f);
+                break;
+            case CameraPosition.EmptyRight:
+            case CameraPosition.EmptyUp:
+                min = max = new Vector2(1f, 1f);
+                break;
+
+            default: //Full
+                min = new Vector2(0f, 0f);
+                max = new Vector2(1f, 1f);
+                break;
         }
     }
 
