@@ -75,6 +75,8 @@ public class Health : MonoBehaviour
     {
         IsAlive = isAlive;
         health = isAlive ? baseHealth : 0f;
+        if (isAlive && smoke)
+            Destroy(smoke);
     }
 
     private void Start()
