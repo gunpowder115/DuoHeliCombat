@@ -96,11 +96,17 @@ MonoBehaviour:
   rotSpeed: 0.5
   rotSpeedManual: 1
   aimingSpeed: 6
+  maxDelay: 0.5
+  shakeDuration: 0.2
+  shakeMagnitude: 0.1
   cameraDefaultPos: {x: 0, y: 11, z: -22}
   cameraDefaultRot: {x: 15, y: 0, z: 0}
   cameraAimPosCenter: {x: 3, y: 3.8, z: -8}
   cameraAimPosRight: {x: 1.5, y: 1.9, z: -4.3}
   cameraAimingRot: {x: 0, y: 0, z: 0}
   cameraTgtSelPos: {x: 0, y: 15, z: -40}
+  cameraTakeoffPos: {x: 0, y: 5, z: -10}
+  cameraRescuePos: {x: -1.1, y: 2.7, z: -7.3}
+  cameraRescueRot: {x: 37, y: 0, z: 0}
   player: {fileID: 0}
   cameraContainer: {fileID: 0}
