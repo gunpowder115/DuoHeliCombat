@@ -1,3 +1,4 @@
+﻿using System.Collections;
 using UnityEngine;
 using static ViewPortController;
 
@@ -12,6 +13,8 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float rotSpeedManual = 1f;
     [SerializeField] private float aimingSpeed = 6f;
     [SerializeField] private float maxDelay = 0.5f;
+    [SerializeField] private float shakeDuration = 0.3f;
+    [SerializeField] private float shakeMagnitude = 0.05f;
 
     [Header("Camera positions & rotations")]
     [SerializeField] private Vector3 cameraDefaultPos = new Vector3(0, 5, -11);
@@ -110,6 +113,12 @@ public class CameraMovement : MonoBehaviour
         }
         else if (!player.IsAlive && player.DeadPlayer)
         {
+            if (player.HitForce > 0f)
+            {
+                StartCoroutine(ShakeRandom(player.HitForce));
+                player.HitForce = 0f;
+            }
+
             RotateToDead(player.DeadPlayer);
         }
         else if (!Aiming)
@@ -122,9 +131,23 @@ public class CameraMovement : MonoBehaviour
             RotateHorizontally();
             RotateVertically();
             SetDefault();
+
+            if (player.HitForce > 0f)
+            {
+                StartCoroutine(ShakeRandom(player.HitForce));
+                player.HitForce = 0f;
+            }
         }
         else
+        {
             RotateWithPlayer();
+
+            if (player.HitForce > 0f)
+            {
+                StartCoroutine(ShakeRandom(player.HitForce));
+                player.HitForce = 0f;
+            }
+        }
     }
 
     private void RotateHorizontally()
@@ -237,5 +260,26 @@ public class CameraMovement : MonoBehaviour
 
         Quaternion rotationTarget = Quaternion.Euler(eulerAnglesTarget);
         transform.localRotation = Quaternion.Lerp(transform.localRotation, rotationTarget, currRotSpeed * Time.deltaTime);
+    }
+
+    private IEnumerator ShakeRandom(float force)
+    {
+        float elapsed = 0f;
+        Vector3 originalPos = transform.localPosition;
+        Quaternion originalRot = transform.localRotation;
+
+        while (elapsed < shakeDuration)
+        {
+            float strength = force * (1f - (elapsed / shakeDuration));
+
+            transform.localPosition = originalPos + Random.insideUnitSphere * strength * shakeMagnitude;
+            transform.localRotation = Quaternion.Euler(originalRot.eulerAngles + Random.insideUnitSphere * shakeMagnitude * 10f);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localPosition = originalPos;
+        transform.localRotation = originalRot;
     }
 }

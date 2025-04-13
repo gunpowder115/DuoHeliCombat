@@ -4,9 +4,10 @@ using static Types;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] float speed = 10.0f;
-    [SerializeField] float lifetime = 10.0f;
-    [SerializeField] float damage = 5.0f;
+    [SerializeField] private float speed = 10.0f;
+    [SerializeField] private float lifetime = 10.0f;
+    [SerializeField] private float damage = 5.0f;
+    [SerializeField] private float explosionForce = 1f;
     [SerializeField] private GameObject explosion;
     [SerializeField] private AudioClip launchSound;
     [SerializeField] private AudioClip flyingSound;
@@ -17,6 +18,7 @@ public class Projectile : MonoBehaviour
     AudioSource projSound;
 
     public bool IsPlayer { get; set; }
+    public float ExplosionForce => explosionForce;
     public GlobalSide2 Side { get; set; }
 
     void Start()
@@ -76,6 +78,7 @@ public class Projectile : MonoBehaviour
         else if (otherParentFindable != null && !FriendlyFire(otherParentFindable.Side) && health)
         {
             health.Hurt(damage, IsPlayer, other.GetComponent<Npc>());
+            (otherParentFindable as Player).HitForce = explosionForce;
         }
 
         if (explosion) Instantiate(explosion, gameObject.transform.position + transform.forward, gameObject.transform.rotation);

@@ -17,6 +17,8 @@ public class UnitController
         }
     }
 
+    public List<IFindable> Players => players;
+
     #endregion
 
     private List<IFindable> players;

@@ -67,6 +67,7 @@ public class Player : MonoBehaviour, IFindable
     public bool TargetDestroy { get; set; }
     public bool IsAlive => health.IsAlive;
     public bool IsRescue { get; private set; }
+    public float HitForce { get; set; }
     public Players PlayerNumber => playerNumber;
     public Vector3 AimAngles { get; private set; }
     public Vector3 CurrentDirection { get; private set; }
@@ -470,6 +471,7 @@ public class Player : MonoBehaviour, IFindable
                 health.gameObject.SetActive(false);
                 if (deadPrefab) DeadPlayer = Instantiate(deadPrefab, transform.position, health.gameObject.transform.rotation);
                 if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+                HitForce = 1f;
             }
 
             currDelayAfterDestroy += Time.deltaTime;

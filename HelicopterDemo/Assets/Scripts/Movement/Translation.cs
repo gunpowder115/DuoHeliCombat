@@ -63,6 +63,7 @@ public class Translation : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (rigidbody) rigidbody.velocity = movement;
+        movement /= Time.fixedDeltaTime;
+        if (rigidbody) rigidbody.velocity = movement * Time.fixedDeltaTime;
     }
 }

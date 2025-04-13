@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467a2ed89bcb34e409b21606ee8cd4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxExplosionShakeDist: 15
+  explosionType: 2
 --- !u!1001 &4861596582348676305
 PrefabInstance:
   m_ObjectHideFlags: 0
