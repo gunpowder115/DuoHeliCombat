@@ -23,16 +23,24 @@ public class Shooter : MonoBehaviour
         }
     }
 
-    public void UnguidedMissileLaunch(GameObject target)
+    public bool UnguidedMissileLaunch(GameObject target)
     {
         if (unguidedMissiles.Count > 0 && unguidedMissiles[unguidedMissileIndex].IsEnable)
+        {
             unguidedMissiles[unguidedMissileIndex].Launch(target);
+            return true;
+        }
+        return false;
     }
 
-    public void GuidedMissileLaunch(GameObject target)
+    public bool GuidedMissileLaunch(GameObject target)
     {
         if (guidedMissiles.Count > 0 && guidedMissiles[guidedMissileIndex].IsEnable)
+        {
             guidedMissiles[guidedMissileIndex].Launch(target);
+            return true;
+        }
+        return false;
     }
 
     void Start()

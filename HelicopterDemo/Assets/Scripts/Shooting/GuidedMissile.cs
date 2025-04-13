@@ -9,6 +9,7 @@ public class GuidedMissile : MonoBehaviour
     [SerializeField] private float lifetime = 10f;
     [SerializeField] private float damage = 5f;
     [SerializeField] private float minTrackingDist = 1f;
+    [SerializeField] private float explosionForce = 1f;
     [SerializeField] private GameObject explosion;
     [SerializeField] private AudioClip launchSound;
     [SerializeField] private AudioClip flyingSound;
@@ -65,10 +66,16 @@ public class GuidedMissile : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         IFindable otherFindable = other.GetComponent<IFindable>();
+        IFindable otherParentFindable = other.transform?.parent?.GetComponent<IFindable>();
         Health health = other.GetComponent<Health>();
         if (otherFindable != null && !FriendlyFire(otherFindable.Side) && health)
         {
             health.Hurt(damage, IsPlayer, other.GetComponent<Npc>());
+        }
+        else if (otherParentFindable != null && !FriendlyFire(otherParentFindable.Side) && health)
+        {
+            health.Hurt(damage, IsPlayer, other.GetComponent<Npc>());
+            (otherParentFindable as Player).HitForce = explosionForce;
         }
 
         if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);

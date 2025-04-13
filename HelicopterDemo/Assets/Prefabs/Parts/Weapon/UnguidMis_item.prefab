@@ -82,6 +82,7 @@ MonoBehaviour:
   speed: 30
   lifetime: 10
   damage: 10
+  explosionForce: 0.5
   explosion: {fileID: 3013695635673224168, guid: 6c0fed8f101a03145bb27014844a670f, type: 3}
   launchSound: {fileID: 8300000, guid: e2cfd8b8b8d0e5e43997109da0505f62, type: 3}
   flyingSound: {fileID: 8300000, guid: c51a2006524cc434e8cc6bb293f14c33, type: 3}
