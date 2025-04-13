@@ -113,6 +113,12 @@ public class CameraMovement : MonoBehaviour
         }
         else if (!player.IsAlive && player.DeadPlayer)
         {
+            if (player.HitForce > 0f)
+            {
+                StartCoroutine(ShakeRandom(player.HitForce));
+                player.HitForce = 0f;
+            }
+
             RotateToDead(player.DeadPlayer);
         }
         else if (!Aiming)

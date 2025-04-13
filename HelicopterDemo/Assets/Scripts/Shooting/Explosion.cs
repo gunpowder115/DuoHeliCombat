@@ -3,19 +3,24 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    [SerializeField] private bool shaking = false;
+    [SerializeField] private float maxExplosionShakeDist = 15f;
     [SerializeField] private ExplosionType explosionType = ExplosionType.Death;
 
     private AudioSource explosionSound;
+    private UnitController unitController;
 
     void Start()
     {
+        unitController = UnitController.Singleton;
+
         ParticleSystem[] parts = GetComponentsInChildren<ParticleSystem>();
         StartCoroutine(WaitForParticleSystemToStop(parts));
 
         explosionSound = GetComponent<AudioSource>();
         if (explosionSound)
         {
-            switch(explosionType)
+            switch (explosionType)
             {
                 case ExplosionType.UnguidMissile:
                     explosionSound.pitch = Random.Range(2f, 2.3f);
@@ -34,6 +39,20 @@ public class Explosion : MonoBehaviour
                     break;
             }
             explosionSound.Play();
+        }
+
+        if (shaking)
+        {
+            foreach (var player in unitController.Players)
+            {
+                if (Mathf.Abs(player.Position.x - transform.position.x) < maxExplosionShakeDist &&
+                    Mathf.Abs(player.Position.y - transform.position.y) < maxExplosionShakeDist &&
+                    Mathf.Abs(player.Position.z - transform.position.z) < maxExplosionShakeDist)
+                {
+                    float dist = (player.Position - transform.position).magnitude;
+                    (player as Player).HitForce = 1f - dist / maxExplosionShakeDist;
+                }
+            }
         }
     }
 

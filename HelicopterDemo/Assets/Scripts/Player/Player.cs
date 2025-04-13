@@ -471,6 +471,7 @@ public class Player : MonoBehaviour, IFindable
                 health.gameObject.SetActive(false);
                 if (deadPrefab) DeadPlayer = Instantiate(deadPrefab, transform.position, health.gameObject.transform.rotation);
                 if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+                HitForce = 1f;
             }
 
             currDelayAfterDestroy += Time.deltaTime;
