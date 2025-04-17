@@ -180,6 +180,8 @@ public class Player : MonoBehaviour, IFindable
 
         if (inputDevice.MinigunFire)
             shooter.BarrelFire(selectedTarget);
+        else
+            shooter.StopBarrelFire();
 
         if (IsAlive && inputDevice.PlayerState == PlayerStates.Normal)
             DrawLineToTarget();

@@ -23,6 +23,15 @@ public class Shooter : MonoBehaviour
         }
     }
 
+    public void StopBarrelFire()
+    {
+        if (barrels.Count > 0)
+        {
+            foreach (var barrel in barrels)
+                if (barrel) barrel.StopFire();
+        }
+    }
+
     public bool UnguidedMissileLaunch(GameObject target)
     {
         if (unguidedMissiles.Count > 0 && unguidedMissiles[unguidedMissileIndex].IsEnable)

@@ -7,17 +7,22 @@ public class MissileLauncher : BaseLauncher
     public bool IsGuided => guided;
     public bool IsEnable => isEnable;
 
-    [SerializeField] GameObject missilePrefab;
-    [SerializeField] float rechargeTime = 5f;
-    [SerializeField] float shotDeltaTime = 0.5f;
-    [SerializeField] bool guided = false;
+    [SerializeField] private GameObject missilePrefab;
+    [SerializeField] private CircleProgress uiCircle;
+    [SerializeField] private float rechargeTime = 5f;
+    [SerializeField] private float shotDeltaTime = 0.5f;
+    [SerializeField] private float maxClipVolume = 1f;
+    [SerializeField] private float volumeRefillSpeed = 0.05f;
+    [SerializeField] private bool guided = false;
 
-    private bool isEnable;
+    private bool isEnable, isRecharge;
     private float currShotDeltaTime;
+    private float currVolume;
     private GameObject[] childObjects;
 
     public bool IsPlayer { get; set; }
     public GlobalSide2 Side { get; set; }
+    private float NormClipVolume => currVolume / maxClipVolume;
 
     public void Launch(GameObject target)
     {
@@ -41,7 +46,10 @@ public class MissileLauncher : BaseLauncher
         }
         else
             Debug.Log(this.ToString() + ": missilePrefab is NULL!");
-        StartCoroutine(MissileActivity());
+        SetMissileActive(false);
+        uiCircle?.SetEmptyColor();
+        isRecharge = true;
+        currVolume = 0f;
         currShotDeltaTime = 0f;
     }
 
@@ -53,16 +61,23 @@ public class MissileLauncher : BaseLauncher
             childObjects[i] = transform.GetChild(i).gameObject;
     }
 
-    IEnumerator MissileActivity()
+    private void Update()
+    {
+        if (currVolume < maxClipVolume)
+            currVolume += volumeRefillSpeed * Time.deltaTime;
+        else
+        {
+            currVolume = maxClipVolume;
+            uiCircle?.SetFillColor();
+            isRecharge = false;
+        }
+        uiCircle?.SetCircleAmount(NormClipVolume);
+    }
+
+    private void SetMissileActive(bool active)
     {
         foreach (var obj in childObjects)
-            obj.SetActive(false);
-        isEnable = false;
-
-        yield return new WaitForSeconds(rechargeTime);
-
-        foreach (var obj in childObjects)
-            obj.SetActive(true);
-        isEnable = true;
+            obj.SetActive(active);
+        isEnable = active;
     }
 }

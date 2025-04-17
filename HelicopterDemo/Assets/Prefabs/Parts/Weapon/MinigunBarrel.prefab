@@ -100,6 +100,18 @@ PrefabInstance:
       propertyPath: shotDeltaTime
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
+      propertyPath: volumeRefillSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
+      propertyPath: maxClipVolumeToRefill
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
+      propertyPath: minClipVolumeToRefill
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
 --- !u!4 &7925028739146149901 stripped

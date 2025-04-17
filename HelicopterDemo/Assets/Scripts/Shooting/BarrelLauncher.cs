@@ -3,34 +3,55 @@ using static Types;
 
 public class BarrelLauncher : BaseLauncher
 {
-    [SerializeField] GameObject projectilePrefab;
-    [SerializeField] GameObject flashPrefab;
-    [SerializeField] float shotDeltaTime = 0.5f;
-    [SerializeField] float rechargeTime = 5f;
-    [SerializeField] int maxClipVolume = 1;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject flashPrefab;
+    [SerializeField] private CircleProgress uiCircle;
+    [SerializeField] private float shotDeltaTime = 0.5f;
+    [SerializeField] private float rechargeTime = 5f;
+    [SerializeField] private float maxClipVolume = 10f;
+    [SerializeField] private float minClipVolumeToRefill = 1f;
+    [SerializeField] private float maxClipVolumeToRefill = 1f;
+    [SerializeField] private float volumeRefillSpeed = 0.05f;
 
-    int currClipVolume;
-    float currShotDeltaTime, currRechargeTime;
+    private bool isFire, isForceRecharge;
+    private float currClipVolume;
+    private float currShotDeltaTime;
     private float tgtShortDeltaTime;
 
     public bool IsPlayer { get; set; }
     public GlobalSide2 Side { get; set; }
+    private float NormClipVolume => currClipVolume / maxClipVolume;
 
     public void Fire(GameObject target)
     {
         this.target = target;
-        if (currClipVolume >= 0f)
-            Shoot();
-        else
-            Recharge();
+        isFire = !isForceRecharge;
     }
+
+    public void StopFire() => isFire = false;
 
     void Start()
     {
         currClipVolume = maxClipVolume;
     }
 
-    void Shoot()
+    private void Update()
+    {
+        if (currClipVolume < minClipVolumeToRefill)
+        {
+            uiCircle?.SetEmptyColor();
+            isForceRecharge = true;
+        }
+
+        if (isForceRecharge)
+            ForceRecharge();
+        else if (isFire)
+            Shoot();
+        else
+            Recharge();
+    }
+
+    private void Shoot()
     {
         if (currShotDeltaTime >= tgtShortDeltaTime)
         {
@@ -46,7 +67,11 @@ public class BarrelLauncher : BaseLauncher
             else
                 Debug.Log(this.ToString() + ": projectilePrefab is NULL!");
 
-            if (maxClipVolume > 0f) currClipVolume--;
+            if (maxClipVolume > 0f)
+            {
+                currClipVolume--;
+                uiCircle?.SetCircleAmount(NormClipVolume);
+            }
             currShotDeltaTime = 0f;
             tgtShortDeltaTime = Random.Range(shotDeltaTime, shotDeltaTime * 1.5f);
         }
@@ -54,14 +79,29 @@ public class BarrelLauncher : BaseLauncher
             currShotDeltaTime += Time.deltaTime;
     }
 
-    void Recharge()
+    private void Recharge()
     {
-        if (currRechargeTime >= rechargeTime)
+        if (currClipVolume < maxClipVolume)
         {
-            currClipVolume = maxClipVolume;
-            currRechargeTime = 0f;
+            currClipVolume += volumeRefillSpeed * Time.deltaTime;
+            uiCircle?.SetCircleAmount(NormClipVolume);
         }
         else
-            currRechargeTime += Time.deltaTime;
+            currClipVolume = maxClipVolume;
+    }
+
+    private void ForceRecharge()
+    {
+        if (currClipVolume < maxClipVolumeToRefill)
+        {
+            currClipVolume += volumeRefillSpeed * Time.deltaTime;
+            uiCircle?.SetCircleAmount(NormClipVolume);
+        }
+        else
+        {
+            currClipVolume = maxClipVolumeToRefill;
+            uiCircle?.SetFillColor();
+            isForceRecharge = false;
+        }
     }
 }
