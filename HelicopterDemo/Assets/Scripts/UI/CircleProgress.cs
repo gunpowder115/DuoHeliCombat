@@ -4,8 +4,10 @@ using UnityEngine.UI;
 public class CircleProgress : MonoBehaviour
 {
     [SerializeField] private bool useInvert = false;
+    [SerializeField] private bool mirrorIcon = false;
     [SerializeField] private Image progressImage;
     [SerializeField] private Image invertProgressImage;
+    [SerializeField] private Image iconImage;
     [SerializeField] private Color fillColor = Color.gray;
     [SerializeField] private Color emptyColor = Color.red;
 
@@ -17,6 +19,10 @@ public class CircleProgress : MonoBehaviour
             invertProgressImage.color = emptyColor;
             invertProgressImage.fillAmount = 0f;
         }
+        if (mirrorIcon)
+            iconImage.rectTransform.localScale = new Vector3(-iconImage.rectTransform.localScale.x,
+                                                            iconImage.rectTransform.localScale.y,
+                                                            iconImage.rectTransform.localScale.z);
     }
 
     public void SetCircleAmount(float amount)

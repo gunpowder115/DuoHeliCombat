@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 5876776311379393928}
   - component: {fileID: 5876776311379393931}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,7 +280,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6db75d12194f4a4082b7666c26b737f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useInvert: 0
+  mirrorIcon: 0
   progressImage: {fileID: 5876776312380599991}
   invertProgressImage: {fileID: 4914926704234488814}
+  iconImage: {fileID: 5876776311379393931}
   fillColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
   emptyColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
