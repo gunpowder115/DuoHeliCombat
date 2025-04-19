@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class CircleProgress : MonoBehaviour
 {
-    [SerializeField] private Image roundImage;
+    [SerializeField] private Image progressImage;
+    [SerializeField] private Image borderImage;
     [SerializeField] private Color fillColor = Color.gray;
     [SerializeField] private Color emptyColor = Color.red;
 
@@ -14,9 +15,9 @@ public class CircleProgress : MonoBehaviour
 
     public void SetCircleAmount(float amount)
     {
-        roundImage.fillAmount = amount;
+        progressImage.fillAmount = borderImage.fillAmount = amount;
     }
 
-    public void SetFillColor() => roundImage.color = fillColor;
-    public void SetEmptyColor() => roundImage.color = emptyColor;
+    public void SetFillColor() => progressImage.color = fillColor;
+    public void SetEmptyColor() => progressImage.color = emptyColor;
 }
