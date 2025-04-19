@@ -5,7 +5,7 @@ public class BarrelLauncher : BaseLauncher
 {
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject flashPrefab;
-    [SerializeField] private CircleProgress uiCircle;
+    [SerializeField] private SingleProgressUI uiCircle;
     [SerializeField] private float shotDeltaTime = 0.5f;
     [SerializeField] private float rechargeTime = 5f;
     [SerializeField] private float maxClipVolume = 10f;

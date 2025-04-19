@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CircleProgress : MonoBehaviour
+public class SingleProgressUI : MonoBehaviour
 {
     [SerializeField] private bool useInvert = false;
     [SerializeField] private bool mirrorIcon = false;

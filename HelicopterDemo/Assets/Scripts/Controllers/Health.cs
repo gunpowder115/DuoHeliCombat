@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float baseHealth = 100f;
     [SerializeField] private GameObject smokePrefab;
     [SerializeField] private GameObject healthBarPrefab;
-    [SerializeField] private CircleProgress uiHealth;
+    [SerializeField] private SingleProgressUI uiHealth;
 
     private float health;
     private UnitController unitController;

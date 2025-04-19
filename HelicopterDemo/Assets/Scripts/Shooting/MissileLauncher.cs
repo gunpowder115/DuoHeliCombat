@@ -8,7 +8,7 @@ public class MissileLauncher : BaseLauncher
     public bool IsEnable => isEnable;
 
     [SerializeField] private GameObject missilePrefab;
-    [SerializeField] private CircleProgress uiCircle;
+    [SerializeField] private SingleProgressUI uiCircle;
     [SerializeField] private float rechargeTime = 5f;
     [SerializeField] private float shotDeltaTime = 0.5f;
     [SerializeField] private float maxClipVolume = 1f;
