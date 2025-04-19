@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float baseHealth = 100f;
     [SerializeField] private GameObject smokePrefab;
     [SerializeField] private GameObject healthBarPrefab;
+    [SerializeField] private CircleProgress uiHealth;
 
     private float health;
     private UnitController unitController;
@@ -15,13 +16,14 @@ public class Health : MonoBehaviour
     private GameObject smoke;
     private HealthBar healthBar;
     private GameObject damageSourcePlayer;
-
+    
     public bool IsAlive { get; private set; }
     public bool IsHurt { get; set; }
     public bool IsUnderAttack { get; set; }
     public bool LostHpPart { get; set; }
     public float CurrHp => health;
     public Npc AttackSource { get; private set; }
+    private float NormHealth => health / baseHealth;
 
     public void Hurt(float damage, bool damageFromPlayer = false, Npc attackSource = null)
     {
@@ -69,6 +71,8 @@ public class Health : MonoBehaviour
             if (npc) npc.RequestDestroy();
             if (building) building.RequestDestroy();
         }
+
+        uiHealth?.SetCircleAmount(NormHealth);
     }
 
     public void SetAlive(bool isAlive)
@@ -77,6 +81,7 @@ public class Health : MonoBehaviour
         health = isAlive ? baseHealth : 0f;
         if (isAlive && smoke)
             Destroy(smoke);
+        uiHealth?.SetCircleAmount(NormHealth);
     }
 
     private void Start()
