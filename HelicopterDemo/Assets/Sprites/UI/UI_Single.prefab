@@ -282,6 +282,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useInvert: 0
   mirrorIcon: 0
+  scaleIfDecreased: 0
+  scaleSpeed: 5
+  scaleCoef: 1.3
   progressImage: {fileID: 5876776312380599991}
   invertProgressImage: {fileID: 4914926704234488814}
   iconImage: {fileID: 5876776311379393931}

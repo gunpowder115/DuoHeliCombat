@@ -5,13 +5,12 @@ public class BarrelLauncher : BaseLauncher
 {
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject flashPrefab;
-    [SerializeField] private SingleProgressUI uiCircle;
+    [SerializeField] private SingleProgressUI uiSingle;
     [SerializeField] private float shotDeltaTime = 0.5f;
-    [SerializeField] private float rechargeTime = 5f;
     [SerializeField] private float maxClipVolume = 10f;
     [SerializeField] private float minClipVolumeToRefill = 1f;
     [SerializeField] private float maxClipVolumeToRefill = 1f;
-    [SerializeField] private float volumeRefillSpeed = 0.05f;
+    [SerializeField] private float volumeRefillSpeed = 5f;
 
     private bool isFire, isForceRecharge;
     private float currClipVolume;
@@ -39,7 +38,7 @@ public class BarrelLauncher : BaseLauncher
     {
         if (currClipVolume < minClipVolumeToRefill)
         {
-            uiCircle?.SetEmptyColor();
+            uiSingle?.SetEmptyColor();
             isForceRecharge = true;
         }
 
@@ -70,7 +69,7 @@ public class BarrelLauncher : BaseLauncher
             if (maxClipVolume > 0f)
             {
                 currClipVolume--;
-                uiCircle?.SetCircleAmount(NormClipVolume);
+                uiSingle?.SetCircleAmount(NormClipVolume);
             }
             currShotDeltaTime = 0f;
             tgtShortDeltaTime = Random.Range(shotDeltaTime, shotDeltaTime * 1.5f);
@@ -84,7 +83,7 @@ public class BarrelLauncher : BaseLauncher
         if (currClipVolume < maxClipVolume)
         {
             currClipVolume += volumeRefillSpeed * Time.deltaTime;
-            uiCircle?.SetCircleAmount(NormClipVolume);
+            uiSingle?.SetCircleAmount(NormClipVolume);
         }
         else
             currClipVolume = maxClipVolume;
@@ -95,12 +94,12 @@ public class BarrelLauncher : BaseLauncher
         if (currClipVolume < maxClipVolumeToRefill)
         {
             currClipVolume += volumeRefillSpeed * Time.deltaTime;
-            uiCircle?.SetCircleAmount(NormClipVolume);
+            uiSingle?.SetCircleAmount(NormClipVolume);
         }
         else
         {
             currClipVolume = maxClipVolumeToRefill;
-            uiCircle?.SetFillColor();
+            uiSingle?.SetFillColor();
             isForceRecharge = false;
         }
     }
