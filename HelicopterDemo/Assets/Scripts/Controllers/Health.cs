@@ -70,6 +70,7 @@ public class Health : MonoBehaviour
             IsAlive = false;
             if (npc) npc.RequestDestroy();
             if (building) building.RequestDestroy();
+            uiHealth?.SetEmptyColor();
         }
 
         uiHealth?.SetCircleAmount(NormHealth);
@@ -82,6 +83,7 @@ public class Health : MonoBehaviour
         if (isAlive && smoke)
             Destroy(smoke);
         uiHealth?.SetCircleAmount(NormHealth);
+        uiHealth?.SetFillColor();
     }
 
     private void Start()

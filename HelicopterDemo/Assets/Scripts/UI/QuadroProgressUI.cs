@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class QuadroProgressUI : MonoBehaviour
 {
     [SerializeField] private Image[] progressImages;
+    [SerializeField] private Image iconImage;
     [SerializeField] private Color fillColor = Color.gray;
     [SerializeField] private Color emptyColor = Color.red;
 
@@ -15,9 +16,11 @@ public class QuadroProgressUI : MonoBehaviour
     public void SetCircleAmount(float amount)
     {
         SetAllAsEmpty();
+        iconImage.color = Color.white;
         if (amount < 0.25f)
         {
             SetPartAsRefilling(progressImages[0], amount);
+            iconImage.color = emptyColor;
         }
         else if (amount >= 0.25f && amount < 0.5f)
         {

@@ -60,6 +60,14 @@ public class SingleProgressUI : MonoBehaviour
             invertProgressImage.fillAmount = 1 - amount;
     }
 
-    public void SetFillColor() => progressImage.color = fillColor;
-    public void SetEmptyColor() => progressImage.color = emptyColor;
+    public void SetFillColor()
+    {
+        progressImage.color = fillColor;
+        iconImage.color = Color.white;
+    }
+    public void SetEmptyColor()
+    {
+        progressImage.color = emptyColor;
+        iconImage.color = emptyColor;
+    }
 }
