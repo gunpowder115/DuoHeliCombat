@@ -47,8 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDeflectionAngle: 0
   missilePrefab: {fileID: 6411020268169245305, guid: 11a13d252b5a06c42869e117a916492e, type: 3}
+  uiCircle: {fileID: 0}
   rechargeTime: 8
   shotDeltaTime: 0.5
+  maxClipVolume: 1
+  volumeRefillSpeed: 0.5
   guided: 1
 --- !u!1001 &6411020269405461322
 PrefabInstance:
