@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3309415596281561066}
   - component: {fileID: 3309415596281561070}
-  - component: {fileID: 3309415596281561067}
   - component: {fileID: 3309415595700181817}
   - component: {fileID: 772855177222925074}
   - component: {fileID: 3695645122444190431}
+  - component: {fileID: -7243556268901709754}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -50,32 +50,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25422909cc19844fa03ca8d72fad2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSide: 1
+  startWithTakeoff: 0
   changeSpeedInput: 0.9
   vertFastCoef: 5
   minDistToAim: 35
   maxDistToAim: 40
+  minDistToBuild: 5
   speed: 30
   lowSpeedCoef: 0.5
   highSpeedCoef: 3
   verticalSpeed: 30
   lateralMovingCoef: 0.18
   acceleration: 2.5
+  delayAfterDestroy: 1
   health: {fileID: 3284091122562222563}
+  airDustPrefab: {fileID: 0}
+  deadPrefab: {fileID: 0}
+  explosion: {fileID: 0}
+  screenFading: {fileID: 0}
   controllerType: 0
---- !u!114 &3309415596281561067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3309415596281561061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHeight: 90
-  minHeight: 10
+  playerNumber: 0
+  playerState: 0
 --- !u!114 &3309415595700181817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249e88c79374bbb4991e7aa56922b92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToNextLaunch: 0.5
 --- !u!54 &772855177222925074
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -117,6 +114,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineObjectPrefab: {fileID: 3466713678183618574, guid: 5f06e4d36b6fe34468647012698e1c2a, type: 3}
+--- !u!114 &-7243556268901709754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309415596281561061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c159a4cb1c554b4580f8018739a9b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 90
+  minHeight: 10
 --- !u!1 &8019078245452962039
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +268,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef0f4fd4e27ad4081a6cc4ded100ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lostHpPartForManeuver: 3
   baseHealth: 100
+  smokePrefab: {fileID: 0}
+  healthBarPrefab: {fileID: 0}
+  uiHealth: {fileID: 0}
 --- !u!4 &1901197804846170525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4003434706837008606, guid: dc3d17aa2ba379a4f879d4b2b7b2bf06, type: 3}

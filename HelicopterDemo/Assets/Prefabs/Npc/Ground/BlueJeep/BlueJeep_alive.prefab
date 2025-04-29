@@ -298,7 +298,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3811478955820155218, guid: 858d922c02f36cb45ac25817ebdd4b7b, type: 3}
       propertyPath: m_Name
-      value: BlueJeep_alive Variant
+      value: BlueJeep_alive
       objectReference: {fileID: 0}
     - target: {fileID: 7191656523222829007, guid: 858d922c02f36cb45ac25817ebdd4b7b, type: 3}
       propertyPath: m_RootOrder
@@ -374,6 +374,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.2874908, z: 2.0617626}
   m_Center: {x: 0, y: 0.69024754, z: 0.033654064}
+--- !u!114 &-2888009802977791253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4850961249104472355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c159a4cb1c554b4580f8018739a9b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 50
+  minHeight: 10
 --- !u!114 &111257029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,20 +428,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 3
   normAttitudeAngle: 30
---- !u!114 &111257031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4850961249104472355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHeight: 50
-  minHeight: 10
 --- !u!114 &111257032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +444,7 @@ MonoBehaviour:
   baseHealth: 100
   smokePrefab: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
   healthBarPrefab: {fileID: 6534110175669022320, guid: 355e48911d66ab44ebe8338bf01d585d, type: 3}
+  uiHealth: {fileID: 0}
 --- !u!114 &111257033
 MonoBehaviour:
   m_ObjectHideFlags: 0

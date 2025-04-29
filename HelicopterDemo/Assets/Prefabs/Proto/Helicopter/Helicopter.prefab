@@ -204,7 +204,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5817739379426018127}
   - component: {fileID: 63990704278970995}
-  - component: {fileID: 5666814190121743709}
   - component: {fileID: 2259622194852320878}
   - component: {fileID: 3507282769396997829}
   - component: {fileID: 8183908897375322973}
@@ -213,6 +212,7 @@ GameObject:
   - component: {fileID: 8925645585097127647}
   - component: {fileID: 6670872994761767698}
   - component: {fileID: 4485110919488551111}
+  - component: {fileID: 2725035884900753657}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -258,20 +258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 3
   normAttitudeAngle: 30
---- !u!114 &5666814190121743709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5817739379426018126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHeight: 50
-  minHeight: 10
 --- !u!114 &2259622194852320878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a3cbb3ce5dae144944e1af4466a2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSide: 1
   isFriendly: 1
   isGround: 0
   speed: 30
@@ -383,9 +370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef0f4fd4e27ad4081a6cc4ded100ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lostHpPartForManeuver: 3
   baseHealth: 100
   smokePrefab: {fileID: 0}
   healthBarPrefab: {fileID: 0}
+  uiHealth: {fileID: 0}
 --- !u!65 &4485110919488551111
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -399,6 +388,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.003881, y: 2.238019, z: 7.552067}
   m_Center: {x: 0.002167046, y: 1.2641132, z: 0.033967495}
+--- !u!114 &2725035884900753657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5817739379426018126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c159a4cb1c554b4580f8018739a9b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 50
+  minHeight: 10
 --- !u!1001 &1104868747
 PrefabInstance:
   m_ObjectHideFlags: 0

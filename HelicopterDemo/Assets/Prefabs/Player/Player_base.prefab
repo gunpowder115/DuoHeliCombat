@@ -41,7 +41,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9059915131655930513}
-  - component: {fileID: 856488369205288197}
   - component: {fileID: 3631590123192163388}
   - component: {fileID: 4831644972789865169}
   - component: {fileID: 8536197478735316719}
@@ -49,6 +48,7 @@ GameObject:
   - component: {fileID: 2813057506479685341}
   - component: {fileID: 1753789425236184681}
   - component: {fileID: 2090940099528624269}
+  - component: {fileID: -8280633372350956860}
   m_Layer: 0
   m_Name: Player_base
   m_TagString: Untagged
@@ -73,20 +73,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &856488369205288197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5233668109151000797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHeight: 90
-  minHeight: 10
 --- !u!114 &3631590123192163388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,10 +118,10 @@ MonoBehaviour:
   minDistToAim: 35
   maxDistToAim: 40
   minDistToBuild: 10
-  speed: 20
+  speed: 1000
   lowSpeedCoef: 0.5
   highSpeedCoef: 3
-  verticalSpeed: 30
+  verticalSpeed: 1500
   lateralMovingCoef: 0.18
   acceleration: 2.5
   delayAfterDestroy: 3
@@ -224,6 +210,20 @@ MonoBehaviour:
   - {fileID: 3825230662293248877, guid: 6c1e6399c8bdfcc4f9dc0f530e5f22c6, type: 3}
   - {fileID: 2376822835430236812, guid: 21b0011a81f911a4c898acc8f3c5df66, type: 3}
   - {fileID: 7454613888339633021, guid: fc357ed0e63791d47932988708e3e8da, type: 3}
+--- !u!114 &-8280633372350956860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5233668109151000797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ed3c5f9d51bdb4a8a5a9338a0622c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 90
+  minHeight: 10
 --- !u!1001 &4292878413097013140
 PrefabInstance:
   m_ObjectHideFlags: 0

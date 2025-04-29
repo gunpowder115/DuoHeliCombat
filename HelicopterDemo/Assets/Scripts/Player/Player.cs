@@ -18,10 +18,10 @@ public class Player : MonoBehaviour, IFindable
     [SerializeField] float minDistToAim = 17f;
     [SerializeField] float maxDistToAim = 20f;
     [SerializeField] private float minDistToBuild = 5f;
-    [SerializeField] float speed = 20f;
+    [SerializeField] float speed = 1000f;
     [SerializeField] float lowSpeedCoef = 0.5f;
     [SerializeField] float highSpeedCoef = 3f;
-    [SerializeField] float verticalSpeed = 30f;
+    [SerializeField] float verticalSpeed = 1500f;
     [SerializeField] float lateralMovingCoef = 0.1f;
     [SerializeField] float acceleration = 1f;
     [SerializeField] float delayAfterDestroy = 1f;

@@ -144,6 +144,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8052605, y: 1.190956, z: 2.9151769}
   m_Center: {x: -0.0021303892, y: 0.61779886, z: 0.1544497}
+--- !u!114 &-6956960848547680010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241589566971415264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c159a4cb1c554b4580f8018739a9b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 50
+  minHeight: 10
 --- !u!114 &5244467544829737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +174,7 @@ MonoBehaviour:
   baseHealth: 100
   smokePrefab: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
   healthBarPrefab: {fileID: 9123654501395373740, guid: 32366473a0622994d8fc730a37961f74, type: 3}
+  uiHealth: {fileID: 0}
 --- !u!114 &1611543407645089211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,20 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToNextLaunch: 0.5
---- !u!114 &4430383022110327027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241589566971415264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHeight: 50
-  minHeight: 10
 --- !u!114 &4523839966268713581
 MonoBehaviour:
   m_ObjectHideFlags: 0
