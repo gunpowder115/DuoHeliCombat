@@ -5,8 +5,9 @@ public class QuadroProgressUI : MonoBehaviour
 {
     [SerializeField] private Image[] progressImages;
     [SerializeField] private Image iconImage;
-    [SerializeField] private Color fillColor = Color.gray;
     [SerializeField] private Color emptyColor = Color.red;
+
+    public Color FillColor { get; set; }
 
     private void Start()
     {
@@ -46,7 +47,7 @@ public class QuadroProgressUI : MonoBehaviour
 
     private void SetPartAsFilled(Image part)
     {
-        part.color = fillColor;
+        part.color = FillColor;
         part.fillAmount = 0.25f;
     }
 

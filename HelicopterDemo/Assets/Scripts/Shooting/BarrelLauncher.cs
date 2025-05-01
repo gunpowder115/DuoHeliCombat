@@ -5,7 +5,6 @@ public class BarrelLauncher : BaseLauncher
 {
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject flashPrefab;
-    [SerializeField] private SingleProgressUI uiSingle;
     [SerializeField] private float shotDeltaTime = 0.5f;
     [SerializeField] private float maxClipVolume = 10f;
     [SerializeField] private float minClipVolumeToRefill = 1f;
@@ -16,9 +15,11 @@ public class BarrelLauncher : BaseLauncher
     private float currClipVolume;
     private float currShotDeltaTime;
     private float tgtShortDeltaTime;
+    private UI_Controller UI_Controller;
 
     public bool IsPlayer { get; set; }
     public GlobalSide2 Side { get; set; }
+    public SingleProgressUI uiSingle { get; set; }
     private float NormClipVolume => currClipVolume / maxClipVolume;
 
     public void Fire(GameObject target)
@@ -32,13 +33,14 @@ public class BarrelLauncher : BaseLauncher
     void Start()
     {
         currClipVolume = maxClipVolume;
+        UI_Controller = UI_Controller.Singleton;
     }
 
     private void Update()
     {
         if (currClipVolume < minClipVolumeToRefill)
         {
-            uiSingle?.SetEmptyColor();
+            uiSingle?.SetDisable();
             isForceRecharge = true;
         }
 
@@ -48,6 +50,11 @@ public class BarrelLauncher : BaseLauncher
             Shoot();
         else
             Recharge();
+
+        if (!uiSingle && IsPlayer)
+        {
+            uiSingle = UI_Controller.CentralUI;
+        }
     }
 
     private void Shoot()
@@ -99,7 +106,7 @@ public class BarrelLauncher : BaseLauncher
         else
         {
             currClipVolume = maxClipVolumeToRefill;
-            uiSingle?.SetFillColor();
+            uiSingle?.SetEnable();
             isForceRecharge = false;
         }
     }

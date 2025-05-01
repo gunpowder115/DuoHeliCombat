@@ -5,6 +5,7 @@ using static Types;
 public class UpgradeConfigSet : MonoBehaviour
 {
     [SerializeField] private bool randomConfig = false;
+    [SerializeField] private int playerIndex = 0;
 
     [SerializeField] private WingState wingStateLeft = WingState.None;
     [SerializeField] private WeaponType L1 = WeaponType.None;
@@ -26,8 +27,12 @@ public class UpgradeConfigSet : MonoBehaviour
     private const float Y = -0.307f;
     private const float Z = 0f;
 
+    private PlayerWeaponController playerWeaponController;
+
     private void Awake()
     {
+        playerWeaponController = PlayerWeaponController.Instance;
+
         if (randomConfig)
         {
             var wingStateArr = Enum.GetValues(typeof(WingState));
@@ -52,16 +57,28 @@ public class UpgradeConfigSet : MonoBehaviour
         SetWingActivity(wingStateRight, rightShortWing, rightLongWing);
 
         if (wingStateLeft > WingState.None)
-            Instantiate(weaponPrefabs[(int)L1], parentPos + parent.localToWorldMatrix * L1_pos, rotation, parent);
+        {
+            var obj = Instantiate(weaponPrefabs[(int)L1], parentPos + parent.localToWorldMatrix * L1_pos, rotation, parent);
+            playerWeaponController.SetWeapon(playerIndex, L1, SlotType.L1, obj);
+        }
 
         if (wingStateLeft > WingState.Short)
-            Instantiate(weaponPrefabs[(int)L2], parentPos + parent.localToWorldMatrix * L2_pos, rotation, parent);
+        {
+            var obj = Instantiate(weaponPrefabs[(int)L2], parentPos + parent.localToWorldMatrix * L2_pos, rotation, parent);
+            playerWeaponController.SetWeapon(playerIndex, L2, SlotType.L2, obj);
+        }
 
         if (wingStateRight > WingState.None)
-            Instantiate(weaponPrefabs[(int)R1], parentPos + parent.localToWorldMatrix * R1_pos, rotation, parent);
+        {
+            var obj = Instantiate(weaponPrefabs[(int)R1], parentPos + parent.localToWorldMatrix * R1_pos, rotation, parent);
+            playerWeaponController.SetWeapon(playerIndex, R1, SlotType.R1, obj);
+        }
 
         if (wingStateRight > WingState.Short)
-            Instantiate(weaponPrefabs[(int)R2], parentPos + parent.localToWorldMatrix * R2_pos, rotation, parent);
+        {
+            var obj = Instantiate(weaponPrefabs[(int)R2], parentPos + parent.localToWorldMatrix * R2_pos, rotation, parent);
+            playerWeaponController.SetWeapon(playerIndex, R2, SlotType.R2, obj);
+        }
     }
 
     private void SetWingActivity(WingState state, GameObject shortWing, GameObject longWing)

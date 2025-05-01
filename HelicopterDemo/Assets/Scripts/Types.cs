@@ -64,6 +64,11 @@ public class Types
         GuidMissile
     }
 
+    public enum SlotType
+    {
+        L1, L2, R1, R2
+    }
+
     public enum KeyType : int
     {
         Red,

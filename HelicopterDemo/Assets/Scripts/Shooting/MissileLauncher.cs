@@ -8,7 +8,6 @@ public class MissileLauncher : BaseLauncher
     public bool IsEnable => isEnable;
 
     [SerializeField] private GameObject missilePrefab;
-    [SerializeField] private SingleProgressUI uiCircle;
     [SerializeField] private float rechargeTime = 5f;
     [SerializeField] private float shotDeltaTime = 0.5f;
     [SerializeField] private float maxClipVolume = 1f;
@@ -22,6 +21,7 @@ public class MissileLauncher : BaseLauncher
 
     public bool IsPlayer { get; set; }
     public GlobalSide2 Side { get; set; }
+    public SingleProgressUI uiSingle { get; set; }
     private float NormClipVolume => currVolume / maxClipVolume;
 
     public void Launch(GameObject target)
@@ -49,7 +49,7 @@ public class MissileLauncher : BaseLauncher
             else
                 Debug.Log(this.ToString() + ": missilePrefab is NULL!");
             SetMissileActive(false);
-            uiCircle?.SetEmptyColor();
+            uiSingle?.SetDisable();
             isRecharge = true;
             currVolume -= 1f;
             currShotDeltaTime = 0f;
@@ -72,11 +72,11 @@ public class MissileLauncher : BaseLauncher
         else
         {
             currVolume = maxClipVolume;
-            uiCircle?.SetFillColor();
+            uiSingle?.SetEnable();
             SetMissileActive(true);
             isRecharge = false;
         }
-        uiCircle?.SetCircleAmount(NormClipVolume);
+        uiSingle?.SetCircleAmount(NormClipVolume);
     }
 
     private void SetMissileActive(bool active)

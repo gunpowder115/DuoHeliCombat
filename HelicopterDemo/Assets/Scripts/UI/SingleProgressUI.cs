@@ -11,15 +11,23 @@ public class SingleProgressUI : MonoBehaviour
     [SerializeField] private Image progressImage;
     [SerializeField] private Image invertProgressImage;
     [SerializeField] private Image iconImage;
-    [SerializeField] private Color fillColor = Color.gray;
     [SerializeField] private Color emptyColor = Color.red;
 
     private bool isScaling;
     private float baseScale;
 
+    public Color FillColor { get; set; }
+    public Sprite IconSprite
+    {
+        set
+        {
+            iconImage.sprite = value;
+        }
+    }
+
     private void Start()
     {
-        SetFillColor();
+        SetEnable();
         if (useInvert)
         {
             invertProgressImage.color = emptyColor;
@@ -60,12 +68,13 @@ public class SingleProgressUI : MonoBehaviour
             invertProgressImage.fillAmount = 1 - amount;
     }
 
-    public void SetFillColor()
+    public void SetEnable()
     {
-        progressImage.color = fillColor;
+        progressImage.color = FillColor;
         iconImage.color = Color.white;
     }
-    public void SetEmptyColor()
+
+    public void SetDisable()
     {
         progressImage.color = emptyColor;
         iconImage.color = emptyColor;
