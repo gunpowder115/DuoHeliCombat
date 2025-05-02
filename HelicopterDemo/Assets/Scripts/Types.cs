@@ -66,7 +66,7 @@ public class Types
 
     public enum SlotType
     {
-        L1, L2, R1, R2
+        L2, L1, C, R1, R2
     }
 
     public enum KeyType : int

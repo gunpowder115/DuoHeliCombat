@@ -10,7 +10,7 @@ public class PlayerWeaponController
 
     private static PlayerWeaponController instance;
 
-    private const int WEAPON_COUNT = 4;
+    private const int WEAPON_COUNT = 5;
 
     public static PlayerWeaponController Instance
     {
@@ -46,35 +46,11 @@ public class PlayerWeaponController
 
     public void SortSlots()
     {
-        if (WeaponTypesPlayer1[1] == WeaponType.None && WeaponTypesPlayer1[0] != WeaponType.None)
-        {
-            WeaponTypesPlayer1[1] = WeaponTypesPlayer1[0];
-            WeaponsPlayer1[1] = WeaponsPlayer1[0];
-            WeaponTypesPlayer1[0] = WeaponType.None;
-            WeaponsPlayer1[0] = null;
-        }
-        if (WeaponTypesPlayer1[2] == WeaponType.None && WeaponTypesPlayer1[3] != WeaponType.None)
-        {
-            WeaponTypesPlayer1[2] = WeaponTypesPlayer1[3];
-            WeaponsPlayer1[2] = WeaponsPlayer1[3];
-            WeaponTypesPlayer1[3] = WeaponType.None;
-            WeaponsPlayer1[3] = null;
-        }
+        SortLeftSlots(WeaponTypesPlayer1, WeaponsPlayer1);
+        SortRightSlots(WeaponTypesPlayer1, WeaponsPlayer1);
 
-        if (WeaponTypesPlayer2[1] == WeaponType.None && WeaponTypesPlayer2[0] != WeaponType.None)
-        {
-            WeaponTypesPlayer2[1] = WeaponTypesPlayer2[0];
-            WeaponsPlayer2[1] = WeaponsPlayer2[0];
-            WeaponTypesPlayer2[0] = WeaponType.None;
-            WeaponsPlayer2[0] = null;
-        }
-        if (WeaponTypesPlayer2[2] == WeaponType.None && WeaponTypesPlayer2[3] != WeaponType.None)
-        {
-            WeaponTypesPlayer2[2] = WeaponTypesPlayer2[3];
-            WeaponsPlayer2[2] = WeaponsPlayer2[3];
-            WeaponTypesPlayer2[3] = WeaponType.None;
-            WeaponsPlayer2[3] = null;
-        }
+        SortLeftSlots(WeaponTypesPlayer2, WeaponsPlayer2);
+        SortRightSlots(WeaponTypesPlayer2, WeaponsPlayer2);
     }
 
     public void LinkUiToWeapon(SingleProgressUI uiSingle, int index)
@@ -82,7 +58,7 @@ public class PlayerWeaponController
         switch(WeaponTypesPlayer1[index])
         {
             case WeaponType.Minigun:
-                WeaponsPlayer1[index].GetComponent<BarrelLauncher>().uiSingle = uiSingle;
+                WeaponsPlayer1[index].GetComponentInChildren<BarrelLauncher>().uiSingle = uiSingle;
                 break;
             case WeaponType.UnguidMissile:
                 WeaponsPlayer1[index].GetComponent<UnguidMisSystem>().uiSingle = uiSingle;
@@ -90,6 +66,29 @@ public class PlayerWeaponController
             case WeaponType.GuidMissile:
                 WeaponsPlayer1[index].GetComponentInChildren<MissileLauncher>().uiSingle = uiSingle;
                 break;
+        }
+    }
+
+    private void SortLeftSlots(WeaponType[] weaponTypes, GameObject[] weaponsPlayer)
+    {
+        if (weaponTypes[1] == WeaponType.None && weaponTypes[0] != WeaponType.None)
+        {
+            weaponTypes[1] = weaponTypes[0];
+            weaponsPlayer[1] = weaponsPlayer[0];
+            weaponTypes[0] = WeaponType.None;
+            weaponsPlayer[0] = null;
+        }
+    }
+
+    private void SortRightSlots(WeaponType[] weaponTypes, GameObject[] weaponsPlayer)
+    {
+        int lastIndex = weaponTypes.Length - 1;
+        if (weaponTypes[lastIndex - 1] == WeaponType.None && weaponTypes[lastIndex] != WeaponType.None)
+        {
+            weaponTypes[lastIndex - 1] = weaponTypes[lastIndex];
+            weaponsPlayer[lastIndex - 1] = weaponsPlayer[lastIndex];
+            weaponTypes[lastIndex] = WeaponType.None;
+            weaponsPlayer[lastIndex] = null;
         }
     }
 }

@@ -4,7 +4,7 @@ using static Types;
 public class UI_Controller : MonoBehaviour
 {
     [SerializeField] private SingleProgressUI centralUI;
-    [Header("Weapon UI (arrays order: L1 L2 R1 R2)")]
+    [Header("Weapon UI (arrays order: L2 L1 C R1 R2)")]
     [SerializeField] private SingleProgressUI[] singleUI;
 
     [SerializeField] private Color minigunColor;
