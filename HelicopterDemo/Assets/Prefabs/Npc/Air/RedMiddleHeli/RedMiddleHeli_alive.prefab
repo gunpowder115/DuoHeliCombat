@@ -683,20 +683,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 3
   normAttitudeAngle: 30
---- !u!114 &474047299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5718092796241895158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHeight: 50
-  minHeight: 10
 --- !u!114 &474047300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,6 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lostHpPartForManeuver: 3
+  playerIndex: -1
   baseHealth: 100
   smokePrefab: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
   healthBarPrefab: {fileID: 9123654501395373740, guid: 32366473a0622994d8fc730a37961f74, type: 3}
@@ -742,6 +729,7 @@ MonoBehaviour:
   moveTime: 3
   lateralMovingCoef: 0.1
   targetHeightDelta: 20
+  shotDeltaTime: 0.5
 --- !u!114 &474047303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,6 +771,20 @@ MonoBehaviour:
   stopTime: 1
   absBorderX: 200
   absBorderZ: 200
+--- !u!114 &6317223293440383381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718092796241895158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c159a4cb1c554b4580f8018739a9b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 50
+  minHeight: 10
 --- !u!4 &5718092796351559472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6157169485306588258, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}

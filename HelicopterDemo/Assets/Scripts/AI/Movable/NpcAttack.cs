@@ -9,11 +9,13 @@ public class NpcAttack : MonoBehaviour
     [SerializeField] private float moveTime = 3f;
     [SerializeField] private float lateralMovingCoef = 0.1f;
     [SerializeField] private float targetHeightDelta = 20f;
+    [SerializeField] private float shotDeltaTime = 0.5f;
 
     private bool isMoving;
     private bool horWait, vertWait;
     private float currHorTime, endHorTime, currVertTime, endVertTime, currMoveTime;
     private float targetVerticalSpeed, currVerticalSpeed, targetVerticalDir;
+    private float currShotDeltaTime;
     private Vector3 targetSpeed, currSpeed;
     private Vector3 targetDirection;
     private Npc npc;
@@ -89,8 +91,12 @@ public class NpcAttack : MonoBehaviour
         {
             if (isMoving)
             {
-                shooter.UnguidedMissileLaunch(Target);
-                shooter.GuidedMissileLaunch(Target);
+                if (currShotDeltaTime >= shotDeltaTime)
+                {
+                    shooter.UnguidedMissileLaunch(Target);
+                    shooter.GuidedMissileLaunch(Target);
+                    currShotDeltaTime = 0f;
+                }
             }
             else
                 shooter.BarrelFire(Target);
@@ -98,9 +104,14 @@ public class NpcAttack : MonoBehaviour
         else
         {
             shooter.BarrelFire(Target);
-            shooter.UnguidedMissileLaunch(Target);
-            shooter.GuidedMissileLaunch(Target);
+            if (currShotDeltaTime >= shotDeltaTime)
+            {
+                shooter.UnguidedMissileLaunch(Target);
+                shooter.GuidedMissileLaunch(Target);
+            }
         }
+
+        currShotDeltaTime += Time.deltaTime;
     }
 
     public void GuidedMissileLaunch() => shooter.GuidedMissileLaunch(Target);

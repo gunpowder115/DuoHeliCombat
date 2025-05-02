@@ -67,6 +67,14 @@ PrefabInstance:
       propertyPath: shotDeltaTime
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
+      propertyPath: maxClipVolumeToRefill
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
+      propertyPath: minClipVolumeToRefill
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
 --- !u!1001 &965618196577661637
@@ -144,6 +152,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8052605, y: 1.190956, z: 2.9151769}
   m_Center: {x: -0.0021303892, y: 0.61779886, z: 0.1544497}
+--- !u!114 &-6956960848547680010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241589566971415264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c159a4cb1c554b4580f8018739a9b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 50
+  minHeight: 10
 --- !u!114 &5244467544829737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lostHpPartForManeuver: 3
+  playerIndex: -1
   baseHealth: 100
   smokePrefab: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
   healthBarPrefab: {fileID: 9123654501395373740, guid: 32366473a0622994d8fc730a37961f74, type: 3}
@@ -205,20 +228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToNextLaunch: 0.5
---- !u!114 &4430383022110327027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241589566971415264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHeight: 50
-  minHeight: 10
 --- !u!114 &4523839966268713581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +402,14 @@ PrefabInstance:
       propertyPath: shotDeltaTime
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
+      propertyPath: maxClipVolumeToRefill
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
+      propertyPath: minClipVolumeToRefill
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
 --- !u!1001 &4572889341171978440
@@ -459,8 +476,12 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
-      propertyPath: shotDeltaTime
-      value: 0.1
+      propertyPath: maxClipVolumeToRefill
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
+      propertyPath: minClipVolumeToRefill
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
@@ -530,6 +551,14 @@ PrefabInstance:
     - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
       propertyPath: shotDeltaTime
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
+      propertyPath: maxClipVolumeToRefill
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714384921057184524, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}
+      propertyPath: minClipVolumeToRefill
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c90536e7b88461b4b8c245ae756cd2fd, type: 3}

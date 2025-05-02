@@ -8,6 +8,7 @@ public class PickableUp : MonoBehaviour, IFindable
 {
     [SerializeField] private float takingDist = 5f;
     [SerializeField] private AudioClip pickUpSound;
+    [SerializeField] private PickableUpType pickableUpType;
 
     private Rigidbody rigidBody;
     private BoxCollider boxCollider;
@@ -17,6 +18,7 @@ public class PickableUp : MonoBehaviour, IFindable
     public Vector3 Position => transform.position;
     public GlobalSide2 Side => GlobalSide2.Red;
     public GameObject GameObject => gameObject;
+    public PickableUpType PickableUpType => pickableUpType;
 
     private void Awake()
     {

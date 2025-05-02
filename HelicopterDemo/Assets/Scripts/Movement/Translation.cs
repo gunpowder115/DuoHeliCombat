@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class Translation : MonoBehaviour
 {
-    [SerializeField] float maxHeight = 50.0f;
-    [SerializeField] float minHeight = 10.0f;
+    [SerializeField] private float maxHeight = 50.0f;
+    [SerializeField] private float minHeight = 10.0f;
 
     public Vector3 TargetDirectionNorm => new Vector3(speed.x, 0f, speed.z).normalized;
     public bool IsHeightBorder => this.gameObject.transform.position.y >= maxHeight || this.gameObject.transform.position.y <= minHeight;
     public bool RotToDir { get; private set; }
 
-    private new Rigidbody rigidbody;
-    private Vector3 speed, movement;
-    private float speedAbs, verticalSpeedAbs;
+    protected Vector3 speed, movement;
+    protected float speedAbs, verticalSpeedAbs;
 
     public void SetHorizontalTranslation(Vector3 speed)
     {
@@ -41,29 +40,5 @@ public class Translation : MonoBehaviour
     {
         RotToDir = !RotToDir;
         return RotToDir;
-    }
-
-    void Start()
-    {
-        rigidbody = GetComponent<Rigidbody>();
-    }
-
-    private void Update()
-    {
-        movement = new Vector3(speed.x, 0f, speed.z);
-        movement = Vector3.ClampMagnitude(movement, speedAbs);
-        movement = new Vector3(movement.x, speed.y, movement.z);
-
-        if (!rigidbody)
-        {
-            movement = transform.InverseTransformDirection(movement);
-            transform.Translate(movement * Time.deltaTime);
-        }
-    }
-
-    void FixedUpdate()
-    {
-        movement /= Time.fixedDeltaTime;
-        if (rigidbody) rigidbody.velocity = movement * Time.fixedDeltaTime;
     }
 }

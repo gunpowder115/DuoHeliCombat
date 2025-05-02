@@ -23,11 +23,12 @@ public class ViewPortController : MonoBehaviour
     private InputController inputController;
     private InputDeviceBase inputDevice;
     private LineRenderer dividingLine;
-
-    private CameraSize SizeCamera1 => GetCameraSize(posCamera1);
-    private CameraSize SizeCamera2 => GetCameraSize(posCamera2);
+    private UI_Controller UI_Controller;
 
     public static ViewPortController singleton { get; private set; }
+    public CameraSize SizeCamera1 => GetCameraSize(posCamera1);
+    public CameraSize SizeCamera2 => GetCameraSize(posCamera2);
+    public CamerasConfig CameraConfig => camerasConfig;
 
     private void Awake()
     {
@@ -51,6 +52,9 @@ public class ViewPortController : MonoBehaviour
         inputDevice.ChangeOrientation += SwitchOrientation;
 
         dividingLine = GetComponent<LineRenderer>();
+
+        UI_Controller = UI_Controller.Singleton;
+        UI_Controller.MoveUiGroups();
     }
 
     // Update is called once per frame
@@ -145,6 +149,8 @@ public class ViewPortController : MonoBehaviour
         {
             Debug.LogError("Invalid ViewPortController SwitchConfiguration");
         }
+
+        UI_Controller.MoveUiGroups();
     }
 
     public void SwitchOrientation()
@@ -183,6 +189,8 @@ public class ViewPortController : MonoBehaviour
         {
             Debug.LogError("ViewPortController: Invalid Player Connection Change");
         }
+
+        UI_Controller.MoveUiGroups();
     }
 
     private Rect GetRect(CameraPosition pos)

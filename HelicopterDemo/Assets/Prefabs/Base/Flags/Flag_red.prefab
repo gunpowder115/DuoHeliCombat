@@ -67,6 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takingDist: 5
   pickUpSound: {fileID: 8300000, guid: fd1dd7e03f42ee24fb9d5c6e3a663651, type: 3}
+  pickableUpType: 5
 --- !u!114 &1950454342976076771
 MonoBehaviour:
   m_ObjectHideFlags: 0

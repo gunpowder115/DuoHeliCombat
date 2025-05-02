@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private int lostHpPartForManeuver = 3;
+    [SerializeField] private int playerIndex = -1;
     [SerializeField] private float baseHealth = 100f;
     [SerializeField] private GameObject smokePrefab;
     [SerializeField] private GameObject healthBarPrefab;
@@ -15,6 +15,8 @@ public class Health : MonoBehaviour
     private GameObject smoke;
     private HealthBar healthBar;
     private GameObject damageSourcePlayer;
+    private UI_Controller UI_Controller;
+    private SingleProgressUI uiSingle;
 
     public bool IsAlive { get; private set; }
     public bool IsHurt { get; set; }
@@ -22,6 +24,7 @@ public class Health : MonoBehaviour
     public bool LostHpPart { get; set; }
     public float CurrHp => health;
     public Npc AttackSource { get; private set; }
+    private float NormHealth => health / baseHealth;
 
     public void Hurt(float damage, bool damageFromPlayer = false, Npc attackSource = null)
     {
@@ -68,7 +71,10 @@ public class Health : MonoBehaviour
             IsAlive = false;
             if (npc) npc.RequestDestroy();
             if (building) building.RequestDestroy();
+            uiSingle?.SetDisable();
         }
+
+        uiSingle?.SetCircleAmount(NormHealth);
     }
 
     public void SetAlive(bool isAlive)
@@ -77,6 +83,8 @@ public class Health : MonoBehaviour
         health = isAlive ? baseHealth : 0f;
         if (isAlive && smoke)
             Destroy(smoke);
+        uiSingle?.SetCircleAmount(NormHealth);
+        uiSingle?.SetEnable();
     }
 
     private void Start()
@@ -86,6 +94,12 @@ public class Health : MonoBehaviour
         unitController = UnitController.Singleton;
         npc = GetComponent<Npc>();
         building = GetComponent<Building>();
+
+        if (playerIndex >= 0)
+        {
+            UI_Controller = UI_Controller.Singleton;
+            uiSingle = playerIndex == 0 ? UI_Controller.HP_UI_player1 : UI_Controller.HP_UI_player2;
+        }
     }
 
     private void CheckLostHpPart(float damage)

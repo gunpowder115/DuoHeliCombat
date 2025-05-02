@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1779685862208550221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1779685862208550223}
+  - component: {fileID: 1779685862208550222}
+  m_Layer: 0
+  m_Name: UI_Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1779685862208550223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779685862208550221}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -21.667225, y: -5.380418, z: -12.734439}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1779685862208550222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779685862208550221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e3e16ff4b23644da15609dad317dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponsUI_player1:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  weaponsUI_player2:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  weaponGroupUI_player1: {fileID: 0}
+  weaponGroupUI_player2: {fileID: 0}
+  hpUI_player1: {fileID: 0}
+  hpUI_player2: {fileID: 0}
+  cargoUI_player1: {fileID: 0}
+  cargoUI_player2: {fileID: 0}
+  minigunColor: {r: 0.7254902, g: 0.7254902, b: 0.7254902, a: 1}
+  unguidMisColor: {r: 1, g: 0.48235294, b: 0, a: 1}
+  guidMisColor: {r: 0.9254902, g: 0.05490196, b: 0.6666667, a: 1}
+  healthColor: {r: 1, g: 0.20392157, b: 0.20392157, a: 1}
+  cargoColor: {r: 0.7529412, g: 0.67058825, b: 0, a: 1}
+  minigunIcon: {fileID: 21300000, guid: 4d69ed3de7fb7204aaa428e8286cb862, type: 3}
+  unguidMisIcon: {fileID: 21300000, guid: febf701813fd03b4bb368a16c1d669c2, type: 3}
+  guidMisIcon: {fileID: 21300000, guid: 5cc24a67f6fafc84da6c439e63e82e3f, type: 3}
+  blueKeyIcon: {fileID: 21300000, guid: 13ae0aaa4dd74de4c8e0514d231433a2, type: 3}
+  purpleKeyIcon: {fileID: 21300000, guid: 66fa2e32c543efa4ca7ae2b7958d93b5, type: 3}
+  redKeyIcon: {fileID: 21300000, guid: 2258d923bc0965e40a1d5a39e44dc87a, type: 3}
+  yellowKeyIcon: {fileID: 21300000, guid: adf77064c39a2ea40a31b8dfc70e11f6, type: 3}
+  blueFlagIcon: {fileID: 21300000, guid: 2495a70a3fec41347b8a9f1989c47380, type: 3}
+  redFlagIcon: {fileID: 21300000, guid: 63fcc9873923dc94399a2bf06f230039, type: 3}
+  bombIcon: {fileID: 21300000, guid: 6151e9b293e0e7447afbe21875fe66d3, type: 3}

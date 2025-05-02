@@ -64,6 +64,11 @@ public class Types
         GuidMissile
     }
 
+    public enum SlotType
+    {
+        L2, L1, C, R1, R2
+    }
+
     public enum KeyType : int
     {
         Red,
@@ -78,6 +83,18 @@ public class Types
         Darkening,
         FullDark,
         Lightening
+    }
+
+    public enum PickableUpType
+    {
+        BlueKey,
+        PurpleKey,
+        RedKey,
+        YellowKey,
+        BlueFlag,
+        RedFlag,
+        Bomb,
+        Ladder
     }
 
     #endregion

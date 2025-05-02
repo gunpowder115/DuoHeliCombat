@@ -18,10 +18,10 @@ public class Player : MonoBehaviour, IFindable
     [SerializeField] float minDistToAim = 17f;
     [SerializeField] float maxDistToAim = 20f;
     [SerializeField] private float minDistToBuild = 5f;
-    [SerializeField] float speed = 20f;
+    [SerializeField] float speed = 1000f;
     [SerializeField] float lowSpeedCoef = 0.5f;
     [SerializeField] float highSpeedCoef = 3f;
-    [SerializeField] float verticalSpeed = 30f;
+    [SerializeField] float verticalSpeed = 1500f;
     [SerializeField] float lateralMovingCoef = 0.1f;
     [SerializeField] float acceleration = 1f;
     [SerializeField] float delayAfterDestroy = 1f;
@@ -81,6 +81,7 @@ public class Player : MonoBehaviour, IFindable
         translation = GetComponent<Translation>();
         rotation = GetComponentInChildren<Rotation>();
         playerBody = GetComponentInChildren<PlayerBody>();
+        playerBody.PlayerNumber = playerNumber;
         ladder = GetComponentInChildren<LadderAnimator>();
         shooter = GetComponent<Shooter>();
         if (shooter) shooter.Side = Side;
@@ -180,6 +181,8 @@ public class Player : MonoBehaviour, IFindable
 
         if (inputDevice.MinigunFire)
             shooter.BarrelFire(selectedTarget);
+        else
+            shooter.StopBarrelFire();
 
         if (IsAlive && inputDevice.PlayerState == PlayerStates.Normal)
             DrawLineToTarget();

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5942652397869489415}
   - component: {fileID: 471556266302183791}
   - component: {fileID: 1636299641708568686}
-  - component: {fileID: 1593070176125164847}
   - component: {fileID: 4779115998712429722}
   - component: {fileID: 6391886208304851064}
   - component: {fileID: 8026476635859781881}
+  - component: {fileID: -1919489398168956787}
   m_Layer: 0
   m_Name: NpcGround_base
   m_TagString: Untagged
@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249e88c79374bbb4991e7aa56922b92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToNextLaunch: 0.5
 --- !u!114 &1636299641708568686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,21 +63,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef0f4fd4e27ad4081a6cc4ded100ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lostHpPartForManeuver: 3
   baseHealth: 100
---- !u!114 &1593070176125164847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6243071375119252631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHeight: 50
-  minHeight: 10
+  smokePrefab: {fileID: 0}
+  healthBarPrefab: {fileID: 0}
+  uiHealth: {fileID: 0}
 --- !u!114 &4779115998712429722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b303d9ccd126e4e861555e78e183f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSide: 1
   isFriendly: 1
   isGround: 1
   speed: 15
@@ -114,6 +106,8 @@ MonoBehaviour:
   minAttackDist: 10
   maxAttackDist: 20
   distDelta: 1
+  deadPrefab: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!65 &8026476635859781881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -127,6 +121,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1919489398168956787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243071375119252631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c159a4cb1c554b4580f8018739a9b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 50
+  minHeight: 10
 --- !u!1001 &929096837814114741
 PrefabInstance:
   m_ObjectHideFlags: 0

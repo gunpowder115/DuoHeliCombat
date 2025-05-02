@@ -1,4 +1,5 @@
 using UnityEngine;
+using static ViewPortController;
 
 public class PlayerBody : MonoBehaviour
 {
@@ -6,13 +7,16 @@ public class PlayerBody : MonoBehaviour
     [SerializeField] private GameObject flagHolder;
     [SerializeField] private GameObject keyHolder;
 
+    public Players PlayerNumber { get; set; }
     public PickableUp ItemForTake { get; set; }
     public PickableUp Item { get; private set; }
 
+    private UI_Controller UI_Controller;
 
     private void Start()
     {
         Item = null;
+        UI_Controller = UI_Controller.Singleton;
     }
 
     private void Update()
@@ -77,6 +81,7 @@ public class PlayerBody : MonoBehaviour
             Item.SetTrigger(false);
             Item.PlaySound();
         }
+        UI_Controller.SetCargoUI(PlayerNumber, Item.PickableUpType);
     }
 
     public void Drop()
@@ -115,5 +120,6 @@ public class PlayerBody : MonoBehaviour
         Item.transform.SetParent(null);
         Item.SetGravity(true);
         Item = null;
+        UI_Controller.UnsetCargoUI(PlayerNumber);
     }
 }

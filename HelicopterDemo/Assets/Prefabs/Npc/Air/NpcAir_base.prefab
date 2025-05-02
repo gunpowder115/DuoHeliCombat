@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: 3971894348322935069}
   - component: {fileID: 81343072453252131}
   - component: {fileID: 2726147024294508184}
-  - component: {fileID: 6539631670836299244}
   - component: {fileID: 2453511131693880975}
   - component: {fileID: 332662730367996943}
   - component: {fileID: 215962108869322282}
+  - component: {fileID: -3195606967326926151}
   m_Layer: 0
   m_Name: NpcAir_base
   m_TagString: Untagged
@@ -112,9 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef0f4fd4e27ad4081a6cc4ded100ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lostHpPartForManeuver: 3
   baseHealth: 100
   smokePrefab: {fileID: 0}
   healthBarPrefab: {fileID: 0}
+  uiHealth: {fileID: 0}
 --- !u!114 &2726147024294508184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,20 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6465ea79b1a71409348b111641c37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6539631670836299244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904929784159531802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHeight: 50
-  minHeight: 10
 --- !u!114 &2453511131693880975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a3cbb3ce5dae144944e1af4466a2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSide: 1
   isFriendly: 1
   isGround: 0
   speed: 20
@@ -197,6 +186,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3195606967326926151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904929784159531802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c159a4cb1c554b4580f8018739a9b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 50
+  minHeight: 10
 --- !u!1001 &1092379326714254872
 PrefabInstance:
   m_ObjectHideFlags: 0

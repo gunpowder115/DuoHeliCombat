@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8017670227449926312}
   - component: {fileID: 4293653167226916538}
   - component: {fileID: 4612686776914474487}
+  - component: {fileID: 2563420383821992159}
   m_Layer: 0
   m_Name: FlagVaultBase
   m_TagString: EnemyFlagVault
@@ -69,6 +70,23 @@ MonoBehaviour:
   - {fileID: 879367046897189736, guid: 0e1a0d964a05c754a9c921c8c5703dea, type: 3}
   - {fileID: 5004411913507430137, guid: 35a5a6ee12a1320498b22b69e5743a43, type: 3}
   - {fileID: 70647692628110699, guid: 1b6f46b94660bfa4794797c7a1dd024a, type: 3}
+--- !u!114 &2563420383821992159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017670227449926315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ef0f4fd4e27ad4081a6cc4ded100ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lostHpPartForManeuver: 3
+  baseHealth: 100
+  smokePrefab: {fileID: 0}
+  healthBarPrefab: {fileID: 0}
+  uiHealth: {fileID: 0}
 --- !u!1001 &771152517985368678
 PrefabInstance:
   m_ObjectHideFlags: 0
