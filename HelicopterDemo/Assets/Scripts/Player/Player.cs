@@ -81,6 +81,7 @@ public class Player : MonoBehaviour, IFindable
         translation = GetComponent<Translation>();
         rotation = GetComponentInChildren<Rotation>();
         playerBody = GetComponentInChildren<PlayerBody>();
+        playerBody.PlayerNumber = playerNumber;
         ladder = GetComponentInChildren<LadderAnimator>();
         shooter = GetComponent<Shooter>();
         if (shooter) shooter.Side = Side;

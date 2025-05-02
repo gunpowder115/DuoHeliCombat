@@ -85,5 +85,17 @@ public class Types
         Lightening
     }
 
+    public enum PickableUpType
+    {
+        BlueKey,
+        PurpleKey,
+        RedKey,
+        YellowKey,
+        BlueFlag,
+        RedFlag,
+        Bomb,
+        Ladder
+    }
+
     #endregion
 }
