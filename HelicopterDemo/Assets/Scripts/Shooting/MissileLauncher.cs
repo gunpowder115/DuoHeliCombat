@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using static Types;
 
@@ -9,13 +8,11 @@ public class MissileLauncher : BaseLauncher
 
     [SerializeField] private GameObject missilePrefab;
     [SerializeField] private float rechargeTime = 5f;
-    [SerializeField] private float shotDeltaTime = 0.5f;
     [SerializeField] private float maxClipVolume = 1f;
     [SerializeField] private float volumeRefillSpeed = 0.05f;
     [SerializeField] private bool guided = false;
 
-    private bool isEnable, isRecharge;
-    private float currShotDeltaTime;
+    private bool isEnable;
     private float currVolume;
     private GameObject[] childObjects;
 
@@ -41,9 +38,7 @@ public class MissileLauncher : BaseLauncher
 
                     SetMissileActive(false);
                     uiSingle?.SetDisable();
-                    isRecharge = true;
                     currVolume -= 1f;
-                    currShotDeltaTime = 0f;
                 }
                 else
                 {
@@ -84,7 +79,6 @@ public class MissileLauncher : BaseLauncher
                 currVolume = maxClipVolume;
                 uiSingle?.SetEnable();
                 SetMissileActive(true);
-                isRecharge = false;
             }
             uiSingle?.SetCircleAmount(NormClipVolume);
         }
