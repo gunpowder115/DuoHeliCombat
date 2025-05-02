@@ -838,6 +838,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1224130164571485725, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: playerIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1507663302920336042, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
       propertyPath: cameraTgtSelPos.y
       value: 11
