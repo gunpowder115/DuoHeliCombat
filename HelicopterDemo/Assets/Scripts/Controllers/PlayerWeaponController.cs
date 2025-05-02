@@ -53,18 +53,18 @@ public class PlayerWeaponController
         SortRightSlots(WeaponTypesPlayer2, WeaponsPlayer2);
     }
 
-    public void LinkUiToWeapon(SingleProgressUI uiSingle, int index)
+    public void LinkUiToWeapon(WeaponType[] weaponTypes, GameObject[] weapons, SingleProgressUI uiSingle, int index)
     {
-        switch(WeaponTypesPlayer1[index])
+        switch(weaponTypes[index])
         {
             case WeaponType.Minigun:
-                WeaponsPlayer1[index].GetComponentInChildren<BarrelLauncher>().uiSingle = uiSingle;
+                weapons[index].GetComponentInChildren<BarrelLauncher>().uiSingle = uiSingle;
                 break;
             case WeaponType.UnguidMissile:
-                WeaponsPlayer1[index].GetComponent<UnguidMisSystem>().uiSingle = uiSingle;
+                weapons[index].GetComponent<UnguidMisSystem>().uiSingle = uiSingle;
                 break;
             case WeaponType.GuidMissile:
-                WeaponsPlayer1[index].GetComponentInChildren<MissileLauncher>().uiSingle = uiSingle;
+                weapons[index].GetComponentInChildren<MissileLauncher>().uiSingle = uiSingle;
                 break;
         }
     }
