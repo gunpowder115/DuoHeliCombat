@@ -18,9 +18,6 @@ public class UI_Controller : MonoBehaviour
     public static UI_Controller Singleton { get; private set; }
     public SingleProgressUI CentralUI => centralUI;
 
-    private const float UI_GROUP_BOTTOM_Y = 88f;
-    private const float UI_DELTA_X = 125f;
-
     private PlayerWeaponController playerWeaponController;
 
     private void Awake()

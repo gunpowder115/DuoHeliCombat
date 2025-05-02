@@ -15,7 +15,6 @@ public class BarrelLauncher : BaseLauncher
     private float currClipVolume;
     private float currShotDeltaTime;
     private float tgtShortDeltaTime;
-    private UI_Controller UI_Controller;
 
     public bool IsPlayer { get; set; }
     public GlobalSide2 Side { get; set; }
@@ -33,7 +32,6 @@ public class BarrelLauncher : BaseLauncher
     void Start()
     {
         currClipVolume = maxClipVolume;
-        UI_Controller = UI_Controller.Singleton;
     }
 
     private void Update()
@@ -50,11 +48,6 @@ public class BarrelLauncher : BaseLauncher
             Shoot();
         else
             Recharge();
-
-        if (!uiSingle && IsPlayer)
-        {
-            uiSingle = UI_Controller.CentralUI;
-        }
     }
 
     private void Shoot()

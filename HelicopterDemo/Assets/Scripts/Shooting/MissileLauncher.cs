@@ -38,6 +38,12 @@ public class MissileLauncher : BaseLauncher
                     guidedMissile.Side = Side;
                     guidedMissile.IsPlayer = IsPlayer;
                     if (guidedMissile) guidedMissile.SelectedTarget = target;
+
+                    SetMissileActive(false);
+                    uiSingle?.SetDisable();
+                    isRecharge = true;
+                    currVolume -= 1f;
+                    currShotDeltaTime = 0f;
                 }
                 else
                 {
@@ -48,12 +54,14 @@ public class MissileLauncher : BaseLauncher
             }
             else
                 Debug.Log(this.ToString() + ": missilePrefab is NULL!");
-            SetMissileActive(false);
-            uiSingle?.SetDisable();
-            isRecharge = true;
-            currVolume -= 1f;
-            currShotDeltaTime = 0f;
         }
+    }
+
+    public void SetMissileActive(bool active)
+    {
+        foreach (var obj in childObjects)
+            obj.SetActive(active);
+        isEnable = active;
     }
 
     void Start()
@@ -67,22 +75,18 @@ public class MissileLauncher : BaseLauncher
 
     private void Update()
     {
-        if (currVolume < maxClipVolume)
-            currVolume += volumeRefillSpeed * Time.deltaTime;
-        else
+        if (IsGuided)
         {
-            currVolume = maxClipVolume;
-            uiSingle?.SetEnable();
-            SetMissileActive(true);
-            isRecharge = false;
+            if (currVolume < maxClipVolume)
+                currVolume += volumeRefillSpeed * Time.deltaTime;
+            else
+            {
+                currVolume = maxClipVolume;
+                uiSingle?.SetEnable();
+                SetMissileActive(true);
+                isRecharge = false;
+            }
+            uiSingle?.SetCircleAmount(NormClipVolume);
         }
-        uiSingle?.SetCircleAmount(NormClipVolume);
-    }
-
-    private void SetMissileActive(bool active)
-    {
-        foreach (var obj in childObjects)
-            obj.SetActive(active);
-        isEnable = active;
     }
 }

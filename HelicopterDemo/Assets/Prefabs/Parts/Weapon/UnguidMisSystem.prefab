@@ -49,6 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f497d0a060fddd54e81ddf03be408513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDeflectionAngle: 15
+  maxVolume: 4
+  forceRechargeVolume: 1
+  volumeRefillSpeed: 0.5
 --- !u!1001 &953326863023469311
 PrefabInstance:
   m_ObjectHideFlags: 0

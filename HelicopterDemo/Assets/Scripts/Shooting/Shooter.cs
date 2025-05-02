@@ -6,10 +6,11 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] private float timeToNextLaunch = 0.5f;
 
-    private int unguidedMissileIndex, guidedMissileIndex;
+    private int guidedMissileIndex;
     private float currTimeFromLaunch;
     private List<BarrelLauncher> barrels;
-    private List<MissileLauncher> unguidedMissiles, guidedMissiles;
+    private List<MissileLauncher> guidedMissiles;
+    private List<UnguidMisSystem> unguidMisSystems;
 
     public bool IsPlayer { get; private set; }
     public GlobalSide2 Side { get; set; }
@@ -34,10 +35,13 @@ public class Shooter : MonoBehaviour
 
     public bool UnguidedMissileLaunch(GameObject target)
     {
-        if (unguidedMissiles.Count > 0 && unguidedMissiles[unguidedMissileIndex].IsEnable)
+        foreach (var misSys in unguidMisSystems)
         {
-            unguidedMissiles[unguidedMissileIndex].Launch(target);
-            return true;
+            if (misSys.IsAvailableToLaunch)
+            {
+                misSys.Launch(target);
+                return true;
+            }
         }
         return false;
     }
@@ -64,7 +68,6 @@ public class Shooter : MonoBehaviour
         }
 
         List<MissileLauncher> missiles = new List<MissileLauncher>(GetComponentsInChildren<MissileLauncher>());
-        unguidedMissiles = new List<MissileLauncher>();
         guidedMissiles = new List<MissileLauncher>();
         if (missiles != null)
         {
@@ -74,9 +77,14 @@ public class Shooter : MonoBehaviour
                 missile.IsPlayer = IsPlayer;
                 if (missile.IsGuided)
                     guidedMissiles.Add(missile);
-                else
-                    unguidedMissiles.Add(missile);
             }
+        }
+
+        unguidMisSystems = new List<UnguidMisSystem>(GetComponentsInChildren<UnguidMisSystem>());
+        foreach (var misSys in unguidMisSystems)
+        {
+            misSys.Side = Side;
+            misSys.IsPlayer = IsPlayer;
         }
     }
 
@@ -86,8 +94,6 @@ public class Shooter : MonoBehaviour
         if (currTimeFromLaunch > timeToNextLaunch)
         {
             currTimeFromLaunch = 0f;
-
-            if (++unguidedMissileIndex >= unguidedMissiles.Count) unguidedMissileIndex = 0;
             if (++guidedMissileIndex >= guidedMissiles.Count) guidedMissileIndex = 0;
         }
     }
