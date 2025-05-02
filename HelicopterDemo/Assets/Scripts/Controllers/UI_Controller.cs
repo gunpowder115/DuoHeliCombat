@@ -6,6 +6,8 @@ public class UI_Controller : MonoBehaviour
     [Header("Weapon UI (arrays order: L2 L1 C R1 R2)")]
     [SerializeField] private SingleProgressUI[] singleUI_player1;
     [SerializeField] private SingleProgressUI[] singleUI_player2;
+    [SerializeField] private GameObject weaponGroupUI_player1;
+    [SerializeField] private GameObject weaponGroupUI_player2;
 
     [SerializeField] private Color minigunColor;
     [SerializeField] private Color unguidMisColor;
@@ -18,6 +20,11 @@ public class UI_Controller : MonoBehaviour
     public static UI_Controller Singleton { get; private set; }
 
     private PlayerWeaponController playerWeaponController;
+    private ViewPortController viewPortController;
+
+    private readonly Vector2 uiPosBottom = new Vector2(0f, 88f);
+    private readonly Vector2 uiPosBottomLeft = new Vector2(-480f, 88f);
+    private readonly Vector2 uiPosBottomRight = new Vector2(480f, 88f);
 
     private void Awake()
     {
@@ -32,6 +39,7 @@ public class UI_Controller : MonoBehaviour
 
     private void Start()
     {
+        viewPortController = ViewPortController.singleton;
         playerWeaponController = PlayerWeaponController.Instance;
         playerWeaponController.SortSlots();
 
@@ -57,6 +65,11 @@ public class UI_Controller : MonoBehaviour
                 playerWeaponController.LinkUiToWeapon(playerWeaponController.WeaponTypesPlayer2, playerWeaponController.WeaponsPlayer2, singleUI_player2[i], i);
             }
         }
+    }
+
+    private void Update()
+    {
+        SetWeaponUiGroups();
     }
 
     private Color SetUiFillColor(WeaponType weaponType)
@@ -86,6 +99,40 @@ public class UI_Controller : MonoBehaviour
                 return guidMisIcon;
             default:
                 return minigunIcon;
+        }
+    }
+
+    private void SetWeaponUiGroups()
+    {
+        if (viewPortController.SizeCamera1 == ViewPortController.CameraSize.Full)
+        {
+            weaponGroupUI_player1.SetActive(true);
+            weaponGroupUI_player1.GetComponent<RectTransform>().anchoredPosition = uiPosBottom;
+
+            weaponGroupUI_player2.SetActive(false);
+        }
+        else if (viewPortController.SizeCamera2 == ViewPortController.CameraSize.Full)
+        {
+            weaponGroupUI_player2.SetActive(true);
+            weaponGroupUI_player2.GetComponent<RectTransform>().anchoredPosition = uiPosBottom;
+
+            weaponGroupUI_player1.SetActive(false);
+        }
+        else if (viewPortController.CameraConfig == ViewPortController.CamerasConfig.player1_player2)
+        {
+            weaponGroupUI_player1.SetActive(true);
+            weaponGroupUI_player1.GetComponent<RectTransform>().anchoredPosition = uiPosBottomLeft;
+
+            weaponGroupUI_player2.SetActive(true);
+            weaponGroupUI_player2.GetComponent<RectTransform>().anchoredPosition = uiPosBottomRight;
+        }
+        else if (viewPortController.CameraConfig == ViewPortController.CamerasConfig.player2_player1)
+        {
+            weaponGroupUI_player1.SetActive(true);
+            weaponGroupUI_player1.GetComponent<RectTransform>().anchoredPosition = uiPosBottomRight;
+
+            weaponGroupUI_player2.SetActive(true);
+            weaponGroupUI_player2.GetComponent<RectTransform>().anchoredPosition = uiPosBottomLeft;
         }
     }
 }

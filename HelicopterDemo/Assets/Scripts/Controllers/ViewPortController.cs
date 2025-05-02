@@ -24,10 +24,10 @@ public class ViewPortController : MonoBehaviour
     private InputDeviceBase inputDevice;
     private LineRenderer dividingLine;
 
-    private CameraSize SizeCamera1 => GetCameraSize(posCamera1);
-    private CameraSize SizeCamera2 => GetCameraSize(posCamera2);
-
     public static ViewPortController singleton { get; private set; }
+    public CameraSize SizeCamera1 => GetCameraSize(posCamera1);
+    public CameraSize SizeCamera2 => GetCameraSize(posCamera2);
+    public CamerasConfig CameraConfig => camerasConfig;
 
     private void Awake()
     {
