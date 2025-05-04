@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &135183136402681404
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2132880164709759954}
+    m_Modifications:
+    - target: {fileID: 8500006236708661092, guid: 0ffc42c6db582cc4b8a7845f112f47b1, type: 3}
+      propertyPath: m_Name
+      value: MainRotorBlurry_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500006236708661093, guid: 0ffc42c6db582cc4b8a7845f112f47b1, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500006236708661093, guid: 0ffc42c6db582cc4b8a7845f112f47b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500006236708661093, guid: 0ffc42c6db582cc4b8a7845f112f47b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.595
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500006236708661093, guid: 0ffc42c6db582cc4b8a7845f112f47b1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.603
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500006236708661093, guid: 0ffc42c6db582cc4b8a7845f112f47b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500006236708661093, guid: 0ffc42c6db582cc4b8a7845f112f47b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500006236708661093, guid: 0ffc42c6db582cc4b8a7845f112f47b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ffc42c6db582cc4b8a7845f112f47b1, type: 3}
+--- !u!1 &8364964598284568920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8500006236708661092, guid: 0ffc42c6db582cc4b8a7845f112f47b1, type: 3}
+  m_PrefabInstance: {fileID: 135183136402681404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7403030237118010238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9,7 +55,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8397930709876421312, guid: 5cc7d0a8bc2437c4ebaabeea903f246d, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8397930709876421312, guid: 5cc7d0a8bc2437c4ebaabeea903f246d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -246,6 +292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6465ea79b1a71409348b111641c37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clearRotor: {fileID: 4005949908815084278}
+  blurryRotor: {fileID: 8364964598284568920}
 --- !u!114 &1389849219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,10 +307,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lostHpPartForManeuver: 3
+  playerIndex: -1
   baseHealth: 100
   smokePrefab: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
   healthBarPrefab: {fileID: 6534110175669022320, guid: 355e48911d66ab44ebe8338bf01d585d, type: 3}
-  uiHealth: {fileID: 0}
 --- !u!114 &1389849220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +328,7 @@ MonoBehaviour:
   moveTime: 3
   lateralMovingCoef: 0.1
   targetHeightDelta: 20
+  shotDeltaTime: 0.5
 --- !u!114 &1389849221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +511,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 208927379061337841, guid: e957579fed35b234b9e351f6fe7d4b3a, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 208927379061337841, guid: e957579fed35b234b9e351f6fe7d4b3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -519,7 +568,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5848811357299225508, guid: c7b1722527f36bc4a832a3c16e128cd0, type: 3}
       propertyPath: m_Name
-      value: MainRotor_2
+      value: MainRotorClear_2
       objectReference: {fileID: 0}
     - target: {fileID: 5848811357299225508, guid: c7b1722527f36bc4a832a3c16e128cd0, type: 3}
       propertyPath: m_IsActive
@@ -571,6 +620,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7b1722527f36bc4a832a3c16e128cd0, type: 3}
+--- !u!1 &4005949908815084278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5848811357299225508, guid: c7b1722527f36bc4a832a3c16e128cd0, type: 3}
+  m_PrefabInstance: {fileID: 7403030238193076562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7403030238303689949
 PrefabInstance:
   m_ObjectHideFlags: 0

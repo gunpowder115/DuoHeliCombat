@@ -152,6 +152,7 @@ public class NpcAir : Npc
                 {
                     if (airDuster) airDuster.normAltitiude = 1f;
                     npcState = caravan ? NpcState.CatchUpCaravan : NpcState.Exploring;
+                    npcTakeoff.SwipeRotors();
                 }
                 break;
             case NpcState.Exploring:

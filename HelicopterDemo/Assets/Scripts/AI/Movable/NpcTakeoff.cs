@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class NpcTakeoff : MonoBehaviour
 {
+    [SerializeField] private GameObject clearRotor;
+    [SerializeField] private GameObject blurryRotor;
+
     private float targetVerticalSpeed, currVerticalSpeed;
     private Npc npc;
     private NpcAir npcAir;
@@ -18,9 +21,17 @@ public class NpcTakeoff : MonoBehaviour
     {
         npc = GetComponent<Npc>();
         npcAir = GetComponent<NpcAir>();
+        clearRotor.SetActive(true);
+        blurryRotor.SetActive(false);
     }
 
     public void Move() => VerticalTranslate();
+
+    public void SwipeRotors()
+    {
+        clearRotor.SetActive(false);
+        blurryRotor.SetActive(true);
+    }
 
     private void VerticalTranslate()
     {
