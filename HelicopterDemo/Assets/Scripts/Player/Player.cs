@@ -74,11 +74,16 @@ public class Player : MonoBehaviour, IFindable
     public InputDeviceBase InputDevice => inputDevice;
     public PlayerBody PlayerBody => playerBody;
     public GameObject DeadPlayer { get; private set; }
+    public Translation PlayerTranslation => translation;
+
+    private void Awake()
+    {
+        translation = GetComponent<Translation>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        translation = GetComponent<Translation>();
         rotation = GetComponentInChildren<Rotation>();
         playerBody = GetComponentInChildren<PlayerBody>();
         playerBody.PlayerNumber = playerNumber;

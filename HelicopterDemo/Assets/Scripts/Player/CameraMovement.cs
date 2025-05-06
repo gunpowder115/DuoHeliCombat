@@ -15,6 +15,9 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float maxDelay = 0.5f;
     [SerializeField] private float shakeDuration = 0.3f;
     [SerializeField] private float shakeMagnitude = 0.05f;
+    [SerializeField] private float rotSpeedAroundPlayer = 50f;
+    [SerializeField] private float minVertAngleAroundPlayer = -45f;
+    [SerializeField] private float maxVertAngleAroundPlayer = 45f;
 
     [Header("Camera positions & rotations")]
     [SerializeField] private Vector3 cameraDefaultPos = new Vector3(0, 5, -11);
@@ -37,6 +40,7 @@ public class CameraMovement : MonoBehaviour
     private Vector2 input, direction, playerInput;
     private Vector3 cameraAimPosLeft;
     private Vector3 cameraAimPos;
+    private Vector3 containerRotation;
     private Crosshair crosshair;
     private ViewPortController viewPortController;
     private Camera playerCamera;
@@ -46,6 +50,7 @@ public class CameraMovement : MonoBehaviour
     public bool CameraInRescue => player.IsRescue;
     public bool MoveCamera { get; set; }
     public float CameraSpeedInTakeoff { get; set; }
+    public Vector3 ContainerRotation => containerRotation;
 
     private bool Aiming => player.Aiming;
     private Vector3 AimAngles => player.AimAngles;
@@ -78,6 +83,8 @@ public class CameraMovement : MonoBehaviour
             transform.localPosition = cameraTakeoffPos;
             transform.LookAt(player.transform);
         }
+
+        player.PlayerTranslation.CameraMovement = this;
     }
 
     private void Update()
@@ -98,8 +105,11 @@ public class CameraMovement : MonoBehaviour
         {
             if (MoveCamera)
             {
-                RotateHorizontally();
-                RotateVertically();
+                //RotateHorAroundCameraCenter();
+                //RotateVertAroundCameraCenter();
+
+                RotateHorAroundPlayer();
+                RotateVertAroundPlayer();
             }
             SetDefault();
             currAimingSpeed = CameraSpeedInTakeoff;
@@ -128,8 +138,12 @@ public class CameraMovement : MonoBehaviour
             else
                 currAimingSpeed = aimingSpeed / 2f;
 
-            RotateHorizontally();
-            RotateVertically();
+            //RotateHorAroundCameraCenter();
+            //RotateVertAroundCameraCenter();
+
+            RotateHorAroundPlayer();
+            RotateVertAroundPlayer();
+
             SetDefault();
 
             if (player.HitForce > 0f)
@@ -150,7 +164,7 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    private void RotateHorizontally()
+    private void RotateHorAroundCameraCenter()
     {
         float playerDirX = direction.x;
         float inputHor = input.x;
@@ -166,7 +180,7 @@ public class CameraMovement : MonoBehaviour
         transform.localRotation = Quaternion.Lerp(transform.localRotation, rotationTarget, currRotSpeed * Time.deltaTime);
     }
 
-    private void RotateVertically()
+    private void RotateVertAroundCameraCenter()
     {
         float playerDirZ = direction.y;
         float inputVert = input.y;
@@ -188,9 +202,19 @@ public class CameraMovement : MonoBehaviour
         transform.localRotation = Quaternion.Lerp(transform.localRotation, rotationTarget, currRotSpeed * Time.deltaTime);
     }
 
+    private void RotateHorAroundPlayer() => containerRotation += new Vector3(0f, input.x * rotSpeedAroundPlayer * Time.deltaTime, 0f);
+
+    private void RotateVertAroundPlayer()
+    {
+        float currAngleX = containerRotation.x;
+        currAngleX += input.y * rotSpeedAroundPlayer * Time.deltaTime;
+        currAngleX = Mathf.Clamp(currAngleX, minVertAngleAroundPlayer, maxVertAngleAroundPlayer);
+        containerRotation.x = currAngleX;
+    }
+
     private void RotateWithPlayer()
     {
-        cameraContainer.transform.rotation = Quaternion.Lerp(cameraContainer.transform.rotation, Quaternion.Euler(AimAngles), aimingSpeed * Time.deltaTime);
+        cameraContainer.transform.localRotation = Quaternion.Lerp(cameraContainer.transform.localRotation, Quaternion.Euler(AimAngles), aimingSpeed * Time.deltaTime);
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(cameraAimingRot), aimingSpeed * Time.deltaTime);
 
         if (twoShoulders)
@@ -213,8 +237,9 @@ public class CameraMovement : MonoBehaviour
     private void SetDefault()
     {
         Vector3 cameraPos = inputDevice.AimMovement ? cameraTgtSelPos : cameraDefaultPos;
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(cameraDefaultRot), currAimingSpeed * Time.deltaTime);
         transform.localPosition = Vector3.Lerp(transform.localPosition, cameraPos, currAimingSpeed * Time.deltaTime);
-        cameraContainer.transform.rotation = Quaternion.Lerp(cameraContainer.transform.rotation, Quaternion.Euler(0f, 0f, 0f), currAimingSpeed * Time.deltaTime);
+        cameraContainer.transform.localRotation = Quaternion.Lerp(cameraContainer.transform.localRotation, Quaternion.Euler(containerRotation), currAimingSpeed * Time.deltaTime);
     }
 
     private bool IsDelayAfterTargetDestroy()

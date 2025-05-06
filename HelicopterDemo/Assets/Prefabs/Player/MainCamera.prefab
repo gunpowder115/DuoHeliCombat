@@ -99,6 +99,9 @@ MonoBehaviour:
   maxDelay: 0.5
   shakeDuration: 0.2
   shakeMagnitude: 0.05
+  rotSpeedAroundPlayer: 50
+  minVertAngleAroundPlayer: -25
+  maxVertAngleAroundPlayer: 35
   cameraDefaultPos: {x: 0, y: 11, z: -22}
   cameraDefaultRot: {x: 15, y: 0, z: 0}
   cameraAimPosCenter: {x: 3, y: 3.8, z: -8}

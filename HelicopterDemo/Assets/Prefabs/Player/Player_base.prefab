@@ -195,9 +195,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomConfig: 0
+  playerIndex: 0
+  playerHelicopterType: 0
   wingStateLeft: 0
-  L1: 0
   L2: 0
+  L1: 0
+  C: 1
   wingStateRight: 0
   R1: 0
   R2: 0

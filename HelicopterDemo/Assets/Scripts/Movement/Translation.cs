@@ -8,12 +8,16 @@ public class Translation : MonoBehaviour
     public Vector3 TargetDirectionNorm => new Vector3(speed.x, 0f, speed.z).normalized;
     public bool IsHeightBorder => this.gameObject.transform.position.y >= maxHeight || this.gameObject.transform.position.y <= minHeight;
     public bool RotToDir { get; private set; }
+    public CameraMovement CameraMovement { get; set; }
 
     protected Vector3 speed, movement;
     protected float speedAbs, verticalSpeedAbs;
 
     public void SetHorizontalTranslation(Vector3 speed)
     {
+        if (CameraMovement)
+            speed = Quaternion.Euler(0f, CameraMovement.ContainerRotation.y, 0f) * speed;
+
         speedAbs = speed.magnitude;
         this.speed = new Vector3(speed.x, this.speed.y, speed.z);
     }
