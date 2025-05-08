@@ -43,6 +43,7 @@ public class Shooter : MonoBehaviour
                 return true;
             }
         }
+        unguidMisSystems[0].uiSingle.ScaleAndSound();
         return false;
     }
 
@@ -53,6 +54,7 @@ public class Shooter : MonoBehaviour
             guidedMissiles[guidedMissileIndex].Launch(target);
             return true;
         }
+        guidedMissiles[0].uiSingle.ScaleAndSound();
         return false;
     }
 

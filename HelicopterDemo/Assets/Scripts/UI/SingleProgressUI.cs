@@ -15,6 +15,7 @@ public class SingleProgressUI : MonoBehaviour
 
     private bool isScaling;
     private float baseScale;
+    private AudioSource audioSource;
 
     public Color FillColor { get; set; }
     public Sprite IconSprite
@@ -39,6 +40,8 @@ public class SingleProgressUI : MonoBehaviour
                                                             iconImage.rectTransform.localScale.z);
 
         baseScale = transform.localScale.x;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -78,5 +81,15 @@ public class SingleProgressUI : MonoBehaviour
     {
         progressImage.color = emptyColor;
         iconImage.color = emptyColor;
+    }
+
+    public void ScaleAndSound()
+    {
+        if (!isScaling && !audioSource.isPlaying)
+        {
+            isScaling = true;
+            transform.localScale = new Vector3(baseScale, baseScale, baseScale) * scaleCoef;
+            audioSource.Play();
+        }
     }
 }
