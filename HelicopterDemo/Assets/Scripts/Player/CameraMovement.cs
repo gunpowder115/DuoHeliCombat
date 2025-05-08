@@ -76,6 +76,7 @@ public class CameraMovement : MonoBehaviour
         crosshairController.SetCamera(playerCamera, player.PlayerNumber);
         crosshair = crosshairController.GetCrosshair(player.PlayerNumber);
 
+        cameraAimPosLeft = new Vector3(-cameraAimPosRight.x, cameraAimPosRight.y, cameraAimPosRight.z);
         cameraAimPos = cameraAimPosRight;
         CameraInTakeoff = player.StartWithTakeoff;
         if (CameraInTakeoff)
@@ -222,15 +223,17 @@ public class CameraMovement : MonoBehaviour
             if (playerInput.x > 0f)
                 cameraAimPos = cameraAimPosRight;
             else if (playerInput.x < 0f)
-            {
-                cameraAimPosLeft = new Vector3(-cameraAimPosRight.x, cameraAimPosRight.y, cameraAimPosRight.z);
                 cameraAimPos = cameraAimPosLeft;
-            }
             else
                 cameraAimPos = cameraAimPosCenter;
         }
         else
-            cameraAimPos = cameraAimPosRight;
+        {
+            if (player.PlayerNumber == Players.Player1)
+                cameraAimPos = cameraAimPosRight;
+            else
+                cameraAimPos = cameraAimPosLeft;
+        }
         transform.localPosition = Vector3.Lerp(transform.localPosition, cameraAimPos, aimingSpeed * Time.deltaTime);
     }
 

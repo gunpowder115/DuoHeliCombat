@@ -33,25 +33,36 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private Sprite redFlagIcon;
     [SerializeField] private Sprite bombIcon;
 
+    [SerializeField] private float speed = 10f;
+
     public static UI_Controller Singleton { get; private set; }
     public SingleProgressUI HP_UI_player1 => hpUI_player1;
     public SingleProgressUI HP_UI_player2 => hpUI_player2;
+    public Player Player1 { get; set; }
+    public Player Player2 { get; set; }
 
     private RectTransform rectWeapon_player1, rectWeapon_player2;
     private RectTransform rectHP_player1, rectHP_player2;
     private RectTransform rectCargo_player1, rectCargo_player2;
     private PlayerWeaponController playerWeaponController;
     private ViewPortController viewPortController;
+    private Vector2 uiTgtPosPlayer1, uiTgtPosPlayer2;
 
     private readonly Vector2 uiPosBottom = new Vector2(0f, 88f);
-    private readonly Vector2 uiPosBottomLeft = new Vector2(-480f, 88f);
-    private readonly Vector2 uiPosBottomRight = new Vector2(480f, 88f);
+    private readonly Vector2 uiPosBottomLeftNear = new Vector2(-350f, 88f);
+    private readonly Vector2 uiPosBottomRightNear = new Vector2(350f, 88f);
+    private readonly Vector2 uiPosBottomLeftMiddle = new Vector2(-480f, 88f);
+    private readonly Vector2 uiPosBottomRightMiddle = new Vector2(480f, 88f);
+    private readonly Vector2 uiPosBottomLeftFar = new Vector2(-610f, 88f);
+    private readonly Vector2 uiPosBottomRightFar = new Vector2(610f, 88f);
     private readonly Vector2 uiPosTopLeft = new Vector2(100f, -100f);
     private readonly Vector2 uiPosTopRight = new Vector2(-100f, -100f);
 
     private readonly Vector2 uiAnchorTop = new Vector2(0.5f, 1f);
     private readonly Vector2 uiAnchorTopLeft = new Vector2(0f, 1f);
     private readonly Vector2 uiAnchorTopRight = new Vector2(1f, 1f);
+
+    private readonly float uiElementDelta = 125f;
 
     private void Awake()
     {
@@ -83,7 +94,7 @@ public class UI_Controller : MonoBehaviour
     {
         viewPortController = ViewPortController.singleton;
         playerWeaponController = PlayerWeaponController.Instance;
-        playerWeaponController.SortSlots();
+        playerWeaponController.SortAllSlots();
 
         for (int i = 0; i < playerWeaponController.WeaponTypesPlayer1.Length; i++)
         {
@@ -109,13 +120,22 @@ public class UI_Controller : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        rectWeapon_player1.anchoredPosition = Vector2.MoveTowards(rectWeapon_player1.anchoredPosition, uiTgtPosPlayer1, speed * Time.deltaTime);
+        rectWeapon_player2.anchoredPosition = Vector2.MoveTowards(rectWeapon_player2.anchoredPosition, uiTgtPosPlayer2, speed * Time.deltaTime);
+    }
+
     public void MoveUiGroups()
     {
-        if (viewPortController.SizeCamera1 == ViewPortController.CameraSize.Full)
+        if (viewPortController.SizeCamera1 == CameraSize.Full)
         {
             weaponGroupUI_player1.SetActive(true);
-            rectWeapon_player1.anchoredPosition = uiPosBottom;
             weaponGroupUI_player2.SetActive(false);
+            if (Player1 && Player1.Aiming)
+                uiTgtPosPlayer1 = uiPosBottomRightFar + new Vector2(playerWeaponController.SkipRightPlayer1, 0f) * uiElementDelta;
+            else
+                uiTgtPosPlayer1 = uiPosBottom;
 
             hpUI_player1.gameObject.SetActive(true);
             hpUI_player2.gameObject.SetActive(false);
@@ -125,11 +145,14 @@ public class UI_Controller : MonoBehaviour
             rectCargo_player1.anchorMin = rectCargo_player1.anchorMax = uiAnchorTopRight;
             rectCargo_player1.anchoredPosition = uiPosTopRight;
         }
-        else if (viewPortController.SizeCamera2 == ViewPortController.CameraSize.Full)
+        else if (viewPortController.SizeCamera2 == CameraSize.Full)
         {
             weaponGroupUI_player2.SetActive(true);
-            rectWeapon_player2.anchoredPosition = uiPosBottom;
             weaponGroupUI_player1.SetActive(false);
+            if (Player2 && Player2.Aiming)
+                uiTgtPosPlayer2 = uiPosBottomLeftFar - new Vector2(playerWeaponController.SkipRightPlayer1, 0f) * uiElementDelta;
+            else
+                uiTgtPosPlayer2 = uiPosBottom;
 
             hpUI_player1.gameObject.SetActive(false);
             hpUI_player2.gameObject.SetActive(true);
@@ -139,12 +162,18 @@ public class UI_Controller : MonoBehaviour
             rectCargo_player2.anchorMin = rectCargo_player2.anchorMax = uiAnchorTopLeft;
             rectCargo_player2.anchoredPosition = uiPosTopLeft;
         }
-        else if (viewPortController.CameraConfig == ViewPortController.CamerasConfig.player1_player2)
+        else if (viewPortController.CameraConfig == CamerasConfig.player1_player2)
         {
             weaponGroupUI_player1.SetActive(true);
-            rectWeapon_player1.anchoredPosition = uiPosBottomLeft;
             weaponGroupUI_player2.SetActive(true);
-            rectWeapon_player2.anchoredPosition = uiPosBottomRight;
+            if (Player1 && Player1.Aiming)
+                uiTgtPosPlayer1 = uiPosBottomLeftNear + new Vector2(playerWeaponController.SkipRightPlayer1, 0f) * uiElementDelta;
+            else
+                uiTgtPosPlayer1 = uiPosBottomLeftMiddle;
+            if (Player2 && Player2.Aiming)
+                uiTgtPosPlayer2 = uiPosBottomRightNear - new Vector2(playerWeaponController.SkipRightPlayer1, 0f) * uiElementDelta;
+            else
+                uiTgtPosPlayer2 = uiPosBottomRightMiddle;
 
             hpUI_player1.gameObject.SetActive(true);
             hpUI_player2.gameObject.SetActive(true);
@@ -157,12 +186,10 @@ public class UI_Controller : MonoBehaviour
             rectCargo_player1.anchoredPosition = uiPosTopRight;
             rectCargo_player2.anchoredPosition = uiPosTopLeft;
         }
-        else if (viewPortController.CameraConfig == ViewPortController.CamerasConfig.player2_player1)
+        else if (viewPortController.CameraConfig == CamerasConfig.player2_player1)
         {
             weaponGroupUI_player1.SetActive(true);
-            rectWeapon_player1.anchoredPosition = uiPosBottomRight;
             weaponGroupUI_player2.SetActive(true);
-            rectWeapon_player2.anchoredPosition = uiPosBottomLeft;
 
             hpUI_player1.gameObject.SetActive(true);
             hpUI_player2.gameObject.SetActive(true);

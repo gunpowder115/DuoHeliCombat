@@ -58,6 +58,7 @@ public class Player : MonoBehaviour, IFindable
     private RandomMovement randomMovement;
     private Prison prison;
     private LadderAnimator ladder;
+    private UI_Controller UI_Controller;
 
     public Vector3 Position => transform.position;
     public GlobalSide2 Side => playerSide;
@@ -110,6 +111,12 @@ public class Player : MonoBehaviour, IFindable
         platformController = PlatformController.Singleton;
         crosshairController = CrosshairController.singleton;
         crosshair = crosshairController.GetCrosshair(playerNumber);
+
+        UI_Controller = UI_Controller.Singleton;
+        if (playerNumber == Players.Player1)
+            UI_Controller.Player1 = this;
+        else
+            UI_Controller.Player2 = this;
 
         if (airDustPrefab)
             airDuster = Instantiate(airDustPrefab, transform).GetComponent<AirDuster>();
@@ -348,6 +355,7 @@ public class Player : MonoBehaviour, IFindable
         Aiming = !Aiming;
         selectedTarget = Aiming ? possibleTarget : null;
         if (Aiming) lineDrawer.Enabled = false;
+        UI_Controller.MoveUiGroups();
     }
 
     void DrawLineToTarget()

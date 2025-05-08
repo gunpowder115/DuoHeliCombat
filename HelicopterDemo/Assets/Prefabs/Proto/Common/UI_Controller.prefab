@@ -77,3 +77,4 @@ MonoBehaviour:
   blueFlagIcon: {fileID: 21300000, guid: 2495a70a3fec41347b8a9f1989c47380, type: 3}
   redFlagIcon: {fileID: 21300000, guid: 63fcc9873923dc94399a2bf06f230039, type: 3}
   bombIcon: {fileID: 21300000, guid: 6151e9b293e0e7447afbe21875fe66d3, type: 3}
+  speed: 2000
