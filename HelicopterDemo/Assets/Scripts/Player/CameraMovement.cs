@@ -18,6 +18,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float rotSpeedAroundPlayer = 50f;
     [SerializeField] private float minVertAngleAroundPlayer = -45f;
     [SerializeField] private float maxVertAngleAroundPlayer = 45f;
+    [SerializeField] private float inputCoefForCameraRotating = 0.8f;
 
     [Header("Camera positions & rotations")]
     [SerializeField] private Vector3 cameraDefaultPos = new Vector3(0, 5, -11);
@@ -203,7 +204,11 @@ public class CameraMovement : MonoBehaviour
         transform.localRotation = Quaternion.Lerp(transform.localRotation, rotationTarget, currRotSpeed * Time.deltaTime);
     }
 
-    private void RotateHorAroundPlayer() => containerRotation += new Vector3(0f, input.x * rotSpeedAroundPlayer * Time.deltaTime, 0f);
+    private void RotateHorAroundPlayer()
+    {
+        float currInput = Mathf.Abs(playerInput.x) > inputCoefForCameraRotating ? Mathf.Clamp(input.x + playerInput.x, -1f, 1f) : input.x;
+        containerRotation += new Vector3(0f, currInput * rotSpeedAroundPlayer * Time.deltaTime, 0f);
+    }
 
     private void RotateVertAroundPlayer()
     {
