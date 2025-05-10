@@ -27,7 +27,7 @@ public class BarrelLauncher : BaseLauncher
         isFire = !isForceRecharge;
 
         if (isForceRecharge)
-            uiSingle.ScaleAndSound();
+            uiSingle?.ScaleAndSound();
     }
 
     public void StopFire() => isFire = false;

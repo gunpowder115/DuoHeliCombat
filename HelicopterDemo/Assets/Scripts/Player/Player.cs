@@ -80,6 +80,8 @@ public class Player : MonoBehaviour, IFindable
     private void Awake()
     {
         translation = GetComponent<Translation>();
+        shooter = GetComponent<Shooter>();
+        if (shooter) shooter.Side = Side;
     }
 
     // Start is called before the first frame update
@@ -89,8 +91,6 @@ public class Player : MonoBehaviour, IFindable
         playerBody = GetComponentInChildren<PlayerBody>();
         playerBody.PlayerNumber = playerNumber;
         ladder = GetComponentInChildren<LadderAnimator>();
-        shooter = GetComponent<Shooter>();
-        if (shooter) shooter.Side = Side;
         rotors = new List<SimpleRotor>();
         rotors.AddRange(GetComponentsInChildren<SimpleRotor>());
         foreach (var rotor in rotors)

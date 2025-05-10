@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static Types;
 
 public abstract class BaseLauncher : MonoBehaviour
 {
