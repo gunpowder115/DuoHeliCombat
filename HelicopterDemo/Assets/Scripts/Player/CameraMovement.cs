@@ -15,10 +15,10 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float maxDelay = 0.5f;
     [SerializeField] private float shakeDuration = 0.3f;
     [SerializeField] private float shakeMagnitude = 0.05f;
-    [SerializeField] private float rotSpeedAroundPlayer = 50f;
     [SerializeField] private float minVertAngleAroundPlayer = -45f;
     [SerializeField] private float maxVertAngleAroundPlayer = 45f;
     [SerializeField] private float inputCoefForCameraRotating = 0.8f;
+    [SerializeField] private float rotSpeedAroundPlayer = 50f;
 
     [Header("Camera positions & rotations")]
     [SerializeField] private Vector3 cameraDefaultPos = new Vector3(0, 5, -11);
@@ -38,7 +38,7 @@ public class CameraMovement : MonoBehaviour
     private bool delayAfterTargetDestroy;
     private float delay;
     private float currAimingSpeed;
-    private Vector2 input, direction, playerInput;
+    private Vector2 direction;
     private Vector3 cameraAimPosLeft;
     private Vector3 cameraAimPos;
     private Vector3 containerRotation;
@@ -51,7 +51,14 @@ public class CameraMovement : MonoBehaviour
     public bool CameraInRescue => player.IsRescue;
     public bool MoveCamera { get; set; }
     public float CameraSpeedInTakeoff { get; set; }
-    public Vector3 ContainerRotation => containerRotation;
+    public Vector3 ContainerRotation
+    {
+        get => containerRotation;
+        set => containerRotation = value;
+    }
+    public Vector2 PlayerInput { get; set; }
+    public Vector2 CameraInput { get; set; }
+    public Vector3 ContainerShift { get; set; }
 
     private bool Aiming => player.Aiming;
     private Vector3 AimAngles => player.AimAngles;
@@ -63,7 +70,7 @@ public class CameraMovement : MonoBehaviour
         playerCamera = GetComponent<Camera>();
 
         viewPortController = ViewPortController.singleton;
-        switch(player.PlayerNumber)
+        switch (player.PlayerNumber)
         {
             case Players.Player2:
                 viewPortController.SetCameraPlayer2(playerCamera);
@@ -91,13 +98,12 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
-        input = inputDevice.GetCameraInput();
-        playerInput = inputDevice.GetInput();
+        cameraContainer.transform.localPosition = ContainerShift;
 
         Vector2 toTargetSelection = new Vector2();
         if (inputDevice.AimMovement)
         {
-            crosshair.Translate(playerInput);
+            crosshair.Translate(PlayerInput);
             toTargetSelection = crosshair.ToTargetSelection;
         }
         direction = new Vector2(inputDevice.AimMovement ? toTargetSelection.x : PlayerDir.x,
@@ -169,7 +175,7 @@ public class CameraMovement : MonoBehaviour
     private void RotateHorAroundCameraCenter()
     {
         float playerDirX = direction.x;
-        float inputHor = input.x;
+        float inputHor = CameraInput.x;
         playerDirX += inputHor;
 
         float targetCameraHorRot = playerDirX * maxHorizontalAngle;
@@ -185,7 +191,7 @@ public class CameraMovement : MonoBehaviour
     private void RotateVertAroundCameraCenter()
     {
         float playerDirZ = direction.y;
-        float inputVert = input.y;
+        float inputVert = CameraInput.y;
         playerDirZ -= inputVert;
 
         float targetCameraVertRot;
@@ -206,14 +212,15 @@ public class CameraMovement : MonoBehaviour
 
     private void RotateHorAroundPlayer()
     {
-        float currInput = Mathf.Abs(playerInput.x) > inputCoefForCameraRotating ? Mathf.Clamp(input.x + playerInput.x, -1f, 1f) : input.x;
-        containerRotation += new Vector3(0f, currInput * rotSpeedAroundPlayer * Time.deltaTime, 0f);
+        float x = Mathf.Abs(PlayerInput.x) > inputCoefForCameraRotating ? Mathf.Clamp(CameraInput.x + PlayerInput.x, -1f, 1f) : CameraInput.x;
+        containerRotation += new Vector3(0f, x * rotSpeedAroundPlayer * Time.deltaTime, 0f);
     }
 
     private void RotateVertAroundPlayer()
     {
+        float y = CameraInput.y;
         float currAngleX = containerRotation.x;
-        currAngleX += input.y * rotSpeedAroundPlayer * Time.deltaTime;
+        currAngleX += y * rotSpeedAroundPlayer * Time.deltaTime;
         currAngleX = Mathf.Clamp(currAngleX, minVertAngleAroundPlayer, maxVertAngleAroundPlayer);
         containerRotation.x = currAngleX;
     }
@@ -225,9 +232,9 @@ public class CameraMovement : MonoBehaviour
 
         if (twoShoulders)
         {
-            if (playerInput.x > 0f)
+            if (PlayerInput.x > 0f)
                 cameraAimPos = cameraAimPosRight;
-            else if (playerInput.x < 0f)
+            else if (PlayerInput.x < 0f)
                 cameraAimPos = cameraAimPosLeft;
             else
                 cameraAimPos = cameraAimPosCenter;
