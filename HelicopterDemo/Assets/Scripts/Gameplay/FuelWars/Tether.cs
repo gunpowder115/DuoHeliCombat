@@ -1,22 +1,30 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using static ViewPortController;
 
 public class Tether : MonoBehaviour
 {
-    [SerializeField] private Transform startPoint;
-    [SerializeField] private Transform endPoint;
+    [SerializeField] private Player heavyPlayer;
+    [SerializeField] private Player lightPlayer;
     [SerializeField] private GameObject segmentPrefab;
     [SerializeField] private int segmentCount = 20;
     [SerializeField] private float segmentLength = 0.5f;
+    [SerializeField] private float maxTetherDistCoef = 0.8f;
 
     private List<GameObject> segments = new List<GameObject>();
+    private float maxTetherDist;
+    private CamerasController camerasController;
+    private float currDist;
 
-    void Start()
+    private Transform heavyPoint => heavyPlayer.transform;
+    private Transform lightPoint => lightPlayer.transform;
+
+    private void Start()
     {
-        Vector3 ropeDirection = (endPoint.position - startPoint.position).normalized;
+        Vector3 ropeDirection = (lightPoint.position - heavyPoint.position).normalized;
         Vector3 spacing = ropeDirection * segmentLength;
 
-        Vector3 currentPos = startPoint.position;
+        Vector3 currentPos = heavyPoint.position;
 
         GameObject previous = null;
 
@@ -31,7 +39,7 @@ public class Tether : MonoBehaviour
             if (i == 0)
             {
                 ConfigurableJoint joint = segment.AddComponent<ConfigurableJoint>();
-                joint.connectedBody = startPoint.GetComponent<Rigidbody>();
+                joint.connectedBody = heavyPoint.GetComponent<Rigidbody>();
                 ConfigureJoint(joint);
             }
             else
@@ -46,7 +54,7 @@ public class Tether : MonoBehaviour
         }
 
         ConfigurableJoint endJoint = segments[segments.Count - 1].AddComponent<ConfigurableJoint>();
-        endJoint.connectedBody = endPoint.GetComponent<Rigidbody>();
+        endJoint.connectedBody = lightPoint.GetComponent<Rigidbody>();
         ConfigureJoint(endJoint);
 
         for (int i = 0; i < segments.Count - 1; i++)
@@ -54,15 +62,30 @@ public class Tether : MonoBehaviour
             var visual = segments[i].GetComponent<TetherSegmentVisual>();
             visual.Target = segments[i + 1].transform;
         }
-        segments[segments.Count - 1].GetComponent<TetherSegmentVisual>().Target = endPoint;
+        segments[segments.Count - 1].GetComponent<TetherSegmentVisual>().Target = lightPoint;
 
         for (int i = 0; i < segments.Count; i++)
         {
             segments[i].GetComponent<TetherSegmentVisual>().IsVisible = i < segments.Count - 1;
         }
+
+        maxTetherDist = segmentLength * segmentCount * maxTetherDistCoef;
+
+        camerasController = CamerasController.Singleton;
     }
 
-    void ConfigureJoint(ConfigurableJoint joint)
+    private void Update()
+    {
+        currDist = Vector3.Distance(heavyPoint.position, lightPoint.position);
+        camerasController.SetCamerasZoomOut(currDist, maxTetherDist);
+    }
+
+    private void FixedUpdate()
+    {
+        CheckIncorrectMovement();
+    }
+
+    private void ConfigureJoint(ConfigurableJoint joint)
     {
         joint.autoConfigureConnectedAnchor = false;
         joint.anchor = Vector3.zero;
@@ -84,5 +107,45 @@ public class Tether : MonoBehaviour
         joint.angularXMotion = ConfigurableJointMotion.Free;
         joint.angularYMotion = ConfigurableJointMotion.Free;
         joint.angularZMotion = ConfigurableJointMotion.Free;
+    }
+
+    private void CheckIncorrectMovement()
+    {
+        Vector3 speedHeavy = heavyPlayer.PlayerTranslation.Movement;
+        Vector3 speedLight = lightPlayer.PlayerTranslation.Movement;
+        Vector3 dirLightToHeavy = (heavyPoint.position - lightPoint.position).normalized;
+
+        if (currDist > maxTetherDist)
+        {
+            if (speedHeavy == Vector3.zero && speedLight != Vector3.zero)
+            {                
+                float dot = Vector3.Dot(dirLightToHeavy, speedLight);                
+                lightPlayer.PlayerTranslation.IsTowing = dot < 0f;
+                lightPlayer.PlayerTranslation.TowingMovement = Vector3.zero;
+            }
+            else if (speedHeavy != Vector3.zero && speedLight == Vector3.zero)
+            {
+            }
+            else
+            {
+                float dot = Vector3.Dot(speedHeavy, speedLight);
+                lightPlayer.PlayerTranslation.IsTowing = dot < 0f;
+                lightPlayer.PlayerTranslation.TowingMovement = Vector3.zero;
+            }
+        }
+        else
+            lightPlayer.PlayerTranslation.IsTowing = false;
+    }
+
+    private void CheckFuelTower()
+    {
+        //Vector3 input1 = ;
+        //Vector3 input2 = ;
+        //float inputDot = Vector3.Dot(input1, input2);
+
+        //for (int i = 0; i < segments.Count; i++)
+        //{
+
+        //}
     }
 }

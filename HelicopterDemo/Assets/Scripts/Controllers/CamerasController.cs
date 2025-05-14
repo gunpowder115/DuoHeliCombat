@@ -3,6 +3,7 @@ using UnityEngine;
 public class CamerasController : MonoBehaviour
 {
     [SerializeField] private bool isSingleCamera = false;
+    [SerializeField] private float maxZoomOut = 3f;
     [SerializeField] private Player player1;
     [SerializeField] private Player player2;
 
@@ -42,5 +43,10 @@ public class CamerasController : MonoBehaviour
 
         cameras[0].ContainerShift = isSingleCamera ? (player2.transform.position - player1.transform.position) / 2f : Vector3.zero;
         cameras[1].ContainerShift = -cameras[0].ContainerShift;
+    }
+
+    public void SetCamerasZoomOut(float currDist, float maxDist)
+    {
+        cameras[0].ZoomOut = cameras[1].ZoomOut = -maxZoomOut / maxDist * currDist;
     }
 }

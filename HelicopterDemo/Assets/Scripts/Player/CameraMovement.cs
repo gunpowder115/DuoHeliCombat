@@ -59,11 +59,13 @@ public class CameraMovement : MonoBehaviour
     public Vector2 PlayerInput { get; set; }
     public Vector2 CameraInput { get; set; }
     public Vector3 ContainerShift { get; set; }
+    public float ZoomOut { get; set; }
 
     private bool Aiming => player.Aiming;
     private Vector3 AimAngles => player.AimAngles;
     private Vector3 PlayerDir => player.CurrentDirection;
     private InputDeviceBase inputDevice => player.InputDevice;
+    private Vector3 ZoomOutShift => new Vector3(0f, 0f, ZoomOut);
 
     private void Start()
     {
@@ -251,7 +253,7 @@ public class CameraMovement : MonoBehaviour
 
     private void SetDefault()
     {
-        Vector3 cameraPos = inputDevice.AimMovement ? cameraTgtSelPos : cameraDefaultPos;
+        Vector3 cameraPos = (inputDevice.AimMovement ? cameraTgtSelPos : cameraDefaultPos) + ZoomOutShift;
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(cameraDefaultRot), currAimingSpeed * Time.deltaTime);
         transform.localPosition = Vector3.Lerp(transform.localPosition, cameraPos, currAimingSpeed * Time.deltaTime);
         cameraContainer.transform.localRotation = Quaternion.Lerp(cameraContainer.transform.localRotation, Quaternion.Euler(containerRotation), currAimingSpeed * Time.deltaTime);

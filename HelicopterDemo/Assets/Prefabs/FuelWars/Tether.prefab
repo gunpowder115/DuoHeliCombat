@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69af8bf47924e34c918fa75fce5b942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPoint: {fileID: 0}
-  endPoint: {fileID: 0}
+  heavyPlayer: {fileID: 0}
+  lightPlayer: {fileID: 0}
   segmentPrefab: {fileID: 3043456078454225036, guid: 10d5dfbf75a0b4c4cb1442b6d9bb5626, type: 3}
-  segmentCount: 30
+  segmentCount: 25
   segmentLength: 0.5
+  maxTetherDistCoef: 1.15

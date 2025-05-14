@@ -9,6 +9,9 @@ public class Translation : MonoBehaviour
     public bool IsHeightBorder => this.gameObject.transform.position.y >= maxHeight || this.gameObject.transform.position.y <= minHeight;
     public bool RotToDir { get; private set; }
     public CameraMovement CameraMovement { get; set; }
+    public Vector3 TowingMovement { get; set; }
+    public Vector3 Movement => movement;
+    public bool IsTowing { get; set; }
 
     protected Vector3 speed, movement;
     protected float speedAbs, verticalSpeedAbs;
