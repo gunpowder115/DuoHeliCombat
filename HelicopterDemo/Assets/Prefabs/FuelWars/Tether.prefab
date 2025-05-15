@@ -50,3 +50,7 @@ MonoBehaviour:
   segmentCount: 25
   segmentLength: 0.5
   maxTetherDistCoef: 1.15
+  maxDistToScanSegmentsCollides: 10
+  maxAngleForCoDir: 30
+  timeToDestroyFuelTower: 1.5
+  heightDeltaForTaut: 1

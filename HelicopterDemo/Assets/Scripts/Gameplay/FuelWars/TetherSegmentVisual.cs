@@ -7,6 +7,7 @@ public class TetherSegmentVisual : MonoBehaviour
 
     public Transform Target { get; set; }
     public bool IsVisible { get; set; }
+    public bool CollidesWithFuelTower { get; private set; }
 
     void LateUpdate()
     {
@@ -25,5 +26,10 @@ public class TetherSegmentVisual : MonoBehaviour
 
         if (!IsVisible)
             visual.gameObject.SetActive(IsVisible);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        CollidesWithFuelTower = collision.gameObject.GetComponent<FuelTower>();
     }
 }
