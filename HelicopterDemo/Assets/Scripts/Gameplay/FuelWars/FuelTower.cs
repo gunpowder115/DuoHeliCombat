@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FuelTower : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem destroyParticleSystem;
+    [SerializeField] private GameObject destroyEffectPrefab;
     [SerializeField] private GameObject fuelTowerDestroyedPrefab;
 
     private FuelTowersController fuelTowersController;
@@ -15,8 +15,8 @@ public class FuelTower : MonoBehaviour
 
     public void CallToDestroy()
     {
-        destroyParticleSystem.Play();
+        if (destroyEffectPrefab) Instantiate(destroyEffectPrefab);
         Destroy(gameObject);
-        Instantiate(fuelTowerDestroyedPrefab);
+        if (fuelTowerDestroyedPrefab) Instantiate(fuelTowerDestroyedPrefab);
     }
 }

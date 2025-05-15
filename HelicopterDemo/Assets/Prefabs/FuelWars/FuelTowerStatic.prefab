@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c07c61f8ff1db4ba341a80dedcd809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyParticleSystem: {fileID: 0}
+  destroyEffectPrefab: {fileID: 5457055956671890165, guid: 75519749c4218b64f93fda545b35dac7, type: 3}
   fuelTowerDestroyedPrefab: {fileID: 5331919464472653530, guid: 5e68a3cf8d452b643aa05024e224dbfd, type: 3}
 --- !u!1 &1035600122032725058
 GameObject:
