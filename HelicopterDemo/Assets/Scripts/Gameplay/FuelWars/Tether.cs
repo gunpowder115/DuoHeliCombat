@@ -90,7 +90,7 @@ public class Tether : MonoBehaviour
         originPos = (lightPoint.position + heavyPoint.position) / 2f;
         GetAverageHeight();
         isTaut = Mathf.Abs(averageHeight - heavyPoint.position.y) < heightDeltaForTaut;
-        Debug.Log(isTaut);
+        //Debug.Log(isTaut);
 
         camerasController.SetCamerasZoomOut(currDist, maxTetherDist);
 
