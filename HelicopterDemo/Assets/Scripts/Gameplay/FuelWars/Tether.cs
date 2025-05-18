@@ -186,6 +186,7 @@ public class Tether : MonoBehaviour
         nearWalker = fuelTowersController.GetNearWalker(originPos, maxDistToScanSegmentsCollides);
         if (nearWalker)
         {
+            nearWalker.StopWalker();
             foreach (var item in segments)
             {
                 if (item.GetComponent<TetherSegmentVisual>().CollidesWithItem)

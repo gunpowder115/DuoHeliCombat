@@ -6,12 +6,12 @@ public class FuelTower : MonoBehaviour, IDestroyableByTether
     [SerializeField] private GameObject destroyEffectPrefab;
     [SerializeField] private GameObject fuelTowerDestroyedPrefab;
 
-    private DestroyableByTetherController fuelTowersController;
+    private DestroyableByTetherController destroyableByTetherController;
 
     private void Awake()
     {
-        fuelTowersController = DestroyableByTetherController.Singleton;
-        fuelTowersController.AddItem(this);
+        destroyableByTetherController = DestroyableByTetherController.Singleton;
+        destroyableByTetherController.AddItem(this);
     }
 
     public void CallToDestroy()

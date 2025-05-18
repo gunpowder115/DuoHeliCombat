@@ -6,6 +6,7 @@ public class Walker : MonoBehaviour, IDestroyableByTether
     [SerializeField] private GameObject leftLeg;
     [SerializeField] private GameObject rightLeg;
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float stepDelta = 1.3f;
     [SerializeField] private float legSpeedCoef = 1.2f;
     [SerializeField] private float legTilt = 10f;
     [SerializeField] private float pause = 0.5f;
@@ -13,27 +14,27 @@ public class Walker : MonoBehaviour, IDestroyableByTether
     [SerializeField] private GameObject destroyEffectPrefab;
     [SerializeField] private GameObject destroyedPrefab;
 
-    private bool isStep, isPause;
-    private bool isWalking;
-    private float zPos, xPos;
+    private bool isStep, isPause, isWalking;
+    private bool isFirstStep, isLastStep;
+    private bool stopRequest;
+    private float yPos;
     private float legSpeed;
     private float currLegAngle, currLegRadius;
     private float pauseTime;
     private LegState leftLegState, rightLegState;
     private Vector3 legCenter;
     private GameObject currLeg, currKnee;
-    private DestroyableByTetherController fuelTowersController;
+    private DestroyableByTetherController destroyableByTetherController;
 
     private void Awake()
     {
-        fuelTowersController = DestroyableByTetherController.Singleton;
-        fuelTowersController.AddItem(this);
+        destroyableByTetherController = DestroyableByTetherController.Singleton;
+        destroyableByTetherController.AddItem(this);
     }
 
     private void Start()
     {
-        zPos = Mathf.Abs(leftLeg.transform.localPosition.z);
-        xPos = Mathf.Abs(leftLeg.transform.localPosition.x);
+        yPos = Mathf.Abs(leftLeg.transform.localPosition.y);
 
         if (leftLeg.transform.localPosition.z == rightLeg.transform.localPosition.z)
             leftLegState = rightLegState = LegState.Middle;
@@ -50,11 +51,12 @@ public class Walker : MonoBehaviour, IDestroyableByTether
 
         legSpeed = legSpeedCoef * speed;
         leftLeg.transform.parent = rightLeg.transform.parent = null;
-        legCenter = new Vector3(xPos, leftLeg.transform.localPosition.y, 0f);
-        currLegRadius = zPos;
 
-        currLeg = leftLegState == LegState.Back ? leftLeg : rightLeg;
+        currLeg = rightLeg;
         currKnee = currLeg.GetComponentInChildren<WalkerKnee>().gameObject;
+
+        isFirstStep = true;
+        isWalking = true;
     }
 
     private void Update()
@@ -68,36 +70,84 @@ public class Walker : MonoBehaviour, IDestroyableByTether
                 isPause = false;
             }
         }
-        else if (Step(currLeg))
+        else if (isWalking)
         {
-            leftLegState = leftLegState == LegState.Back ? LegState.Front : LegState.Back;
-            rightLegState = leftLegState == LegState.Back ? LegState.Front : LegState.Back;
-            isStep = false;
-            isPause = true;
+            if (isFirstStep)
+            {
+                if (Step(currLeg, StepType.First))
+                {
+                    leftLegState = LegState.Back;
+                    rightLegState = LegState.Front;
+                    isStep = false;
+                    isPause = true;
+                    isFirstStep = false;
 
-            currLeg = leftLegState == LegState.Back ? leftLeg : rightLeg;
-            currKnee = currLeg.GetComponentInChildren<WalkerKnee>().gameObject;
+                    currLeg = currLeg == rightLeg ? leftLeg : rightLeg;
+                    currKnee = currLeg.GetComponentInChildren<WalkerKnee>().gameObject;
+                }
+            }
+            else if (isLastStep)
+            {
+                if (Step(currLeg, StepType.Last))
+                {
+                    leftLegState = rightLegState = LegState.Middle;
+                    isStep = false;
+                    isPause = true;
+                    isLastStep = false;
+                    isWalking = false;
+
+                    currLeg = currLeg == rightLeg ? leftLeg : rightLeg;
+                    currKnee = currLeg.GetComponentInChildren<WalkerKnee>().gameObject;
+                }
+            }
+            else if (Step(currLeg))
+            {
+                leftLegState = leftLegState == LegState.Back ? LegState.Front : LegState.Back;
+                rightLegState = leftLegState == LegState.Back ? LegState.Front : LegState.Back;
+                isStep = false;
+                isPause = true;
+
+                currLeg = leftLegState == LegState.Back ? leftLeg : rightLeg;
+                currKnee = currLeg.GetComponentInChildren<WalkerKnee>().gameObject;
+
+                if (stopRequest) isLastStep = true;
+            }
         }
     }
+
+    public void StartWalker()
+    {
+        isWalking = true;
+        isFirstStep = true;
+    }
+
+    public void StopWalker() => stopRequest = true;
 
     public void CallToDestroy()
     {
         if (destroyEffectPrefab) Instantiate(destroyEffectPrefab);
         Destroy(gameObject);
+        Destroy(leftLeg);
+        Destroy(rightLeg);
         if (destroyedPrefab) Instantiate(destroyedPrefab);
     }
 
-    public void Walk()
+    private bool Step(GameObject leg, StepType stepType = StepType.Usual)
     {
-        if (!isWalking)
+        float currLinearSpeed;
+        if (stepType == StepType.Usual)
         {
-            FirstStep();
-            isWalking = true;
+            legCenter = new Vector3(leg.transform.localPosition.x, yPos, 0f);
+            currLegRadius = stepDelta;
+            currLinearSpeed = speed;
         }
-    }
+        else
+        {
+            legCenter = new Vector3(leg.transform.localPosition.x, yPos, (stepType == StepType.First ? stepDelta / 2f : -stepDelta / 2f));
+            currLegRadius = stepDelta / 2f;
+            currLinearSpeed = speed / 2f;
+        }
 
-    private bool Step(GameObject leg)
-    {
         if (!isStep)
         {
             isStep = true;
@@ -116,7 +166,7 @@ public class Walker : MonoBehaviour, IDestroyableByTether
             float z = legCenter.z - Mathf.Cos(-currLegAngle) * currLegRadius;
             float y = legCenter.y - Mathf.Sin(-currLegAngle) * currLegRadius;
             leg.transform.localPosition = new Vector3(leg.transform.localPosition.x, y, z);
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            transform.Translate(Vector3.forward * currLinearSpeed * Time.deltaTime);
 
             leg.transform.localRotation = Quaternion.Euler(GetLegTilt(currLegAngle), 0f, 0f);
             currKnee.transform.localRotation = Quaternion.Euler(GetKneeTilt(currLegAngle), 0f, 0f);
@@ -148,5 +198,12 @@ public class Walker : MonoBehaviour, IDestroyableByTether
         Front,
         Middle,
         Back
+    }
+
+    public enum StepType
+    {
+        First,
+        Usual,
+        Last
     }
 }
