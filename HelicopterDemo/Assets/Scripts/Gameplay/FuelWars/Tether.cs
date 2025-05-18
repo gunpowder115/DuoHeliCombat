@@ -11,7 +11,7 @@ public class Tether : MonoBehaviour
     [SerializeField] private float maxTetherDistCoef = 0.8f;
     [SerializeField] private float maxDistToScanSegmentsCollides = 10f;
     [SerializeField] private float maxAngleForCoDir = 30f;
-    [SerializeField] private float timeToDestroyFuelTower = 2f;
+    [SerializeField] private float timeToDestroyByTether = 2f;
     [SerializeField] private float heightDeltaForTaut = 1f;
 
     private List<GameObject> segments = new List<GameObject>();
@@ -19,9 +19,10 @@ public class Tether : MonoBehaviour
     private CamerasController camerasController;
     private float currDist;
     private Vector3 originPos;
-    private FuelTowersController fuelTowersController;
-    private float fuelTowerCollideTime;
+    private DestroyableByTetherController fuelTowersController;
+    private float collideTime;
     private FuelTower nearFuelTower;
+    private Walker nearWalker;
     private float averageHeight;
     private bool isTaut;
 
@@ -81,7 +82,7 @@ public class Tether : MonoBehaviour
         maxTetherDist = segmentLength * segmentCount * maxTetherDistCoef;
 
         camerasController = CamerasController.Singleton;
-        fuelTowersController = FuelTowersController.Singleton;
+        fuelTowersController = DestroyableByTetherController.Singleton;
     }
 
     private void Update()
@@ -90,18 +91,23 @@ public class Tether : MonoBehaviour
         originPos = (lightPoint.position + heavyPoint.position) / 2f;
         GetAverageHeight();
         isTaut = Mathf.Abs(averageHeight - heavyPoint.position.y) < heightDeltaForTaut;
-        //Debug.Log(isTaut);
 
         camerasController.SetCamerasZoomOut(currDist, maxTetherDist);
 
         if (TetherCollidesWithFuelTower() && isTaut)
         {
-            fuelTowerCollideTime += Time.deltaTime;
-            if (fuelTowerCollideTime > timeToDestroyFuelTower)
-                fuelTowersController.DestroyFuelTower(nearFuelTower);
+            collideTime += Time.deltaTime;
+            if (collideTime > timeToDestroyByTether)
+                fuelTowersController.DestroyItem(nearFuelTower);
+        }
+        else if (TetherCollidesWithWalker() && isTaut)
+        {
+            collideTime += Time.deltaTime;
+            if (collideTime > timeToDestroyByTether)
+                fuelTowersController.DestroyItem(nearWalker);
         }
         else
-            fuelTowerCollideTime = 0f;
+            collideTime = 0f;
     }
 
     private void FixedUpdate()
@@ -168,7 +174,21 @@ public class Tether : MonoBehaviour
         {
             foreach (var item in segments)
             {
-                if (item.GetComponent<TetherSegmentVisual>().CollidesWithFuelTower)
+                if (item.GetComponent<TetherSegmentVisual>().CollidesWithItem)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    private bool TetherCollidesWithWalker()
+    {
+        nearWalker = fuelTowersController.GetNearWalker(originPos, maxDistToScanSegmentsCollides);
+        if (nearWalker)
+        {
+            foreach (var item in segments)
+            {
+                if (item.GetComponent<TetherSegmentVisual>().CollidesWithItem)
                     return true;
             }
         }

@@ -1,16 +1,17 @@
+using Assets.Scripts.Gameplay.FuelWars;
 using UnityEngine;
 
-public class FuelTower : MonoBehaviour
+public class FuelTower : MonoBehaviour, IDestroyableByTether
 {
     [SerializeField] private GameObject destroyEffectPrefab;
     [SerializeField] private GameObject fuelTowerDestroyedPrefab;
 
-    private FuelTowersController fuelTowersController;
+    private DestroyableByTetherController fuelTowersController;
 
     private void Awake()
     {
-        fuelTowersController = FuelTowersController.Singleton;
-        fuelTowersController.AddFuelTower(this);
+        fuelTowersController = DestroyableByTetherController.Singleton;
+        fuelTowersController.AddItem(this);
     }
 
     public void CallToDestroy()

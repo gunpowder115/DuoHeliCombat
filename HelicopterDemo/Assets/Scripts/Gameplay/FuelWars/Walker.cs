@@ -1,6 +1,7 @@
+using Assets.Scripts.Gameplay.FuelWars;
 using UnityEngine;
 
-public class Walker : MonoBehaviour
+public class Walker : MonoBehaviour, IDestroyableByTether
 {
     [SerializeField] private GameObject leftLeg;
     [SerializeField] private GameObject rightLeg;
@@ -8,14 +9,26 @@ public class Walker : MonoBehaviour
     [SerializeField] private float legSpeedCoef = 1.2f;
     [SerializeField] private float legTilt = 10f;
     [SerializeField] private float pause = 0.5f;
+    [SerializeField] private float kneeTilt = -20f;
+    [SerializeField] private GameObject destroyEffectPrefab;
+    [SerializeField] private GameObject destroyedPrefab;
 
     private bool isStep, isPause;
+    private bool isWalking;
     private float zPos, xPos;
     private float legSpeed;
     private float currLegAngle, currLegRadius;
     private float pauseTime;
     private LegState leftLegState, rightLegState;
     private Vector3 legCenter;
+    private GameObject currLeg, currKnee;
+    private DestroyableByTetherController fuelTowersController;
+
+    private void Awake()
+    {
+        fuelTowersController = DestroyableByTetherController.Singleton;
+        fuelTowersController.AddItem(this);
+    }
 
     private void Start()
     {
@@ -39,12 +52,13 @@ public class Walker : MonoBehaviour
         leftLeg.transform.parent = rightLeg.transform.parent = null;
         legCenter = new Vector3(xPos, leftLeg.transform.localPosition.y, 0f);
         currLegRadius = zPos;
+
+        currLeg = leftLegState == LegState.Back ? leftLeg : rightLeg;
+        currKnee = currLeg.GetComponentInChildren<WalkerKnee>().gameObject;
     }
 
     private void Update()
     {
-        GameObject currLeg = leftLegState == LegState.Back ? leftLeg : rightLeg;
-
         if (isPause)
         {
             pauseTime += Time.deltaTime;
@@ -60,9 +74,26 @@ public class Walker : MonoBehaviour
             rightLegState = leftLegState == LegState.Back ? LegState.Front : LegState.Back;
             isStep = false;
             isPause = true;
-        }
 
-        Debug.Log(currLegAngle);
+            currLeg = leftLegState == LegState.Back ? leftLeg : rightLeg;
+            currKnee = currLeg.GetComponentInChildren<WalkerKnee>().gameObject;
+        }
+    }
+
+    public void CallToDestroy()
+    {
+        if (destroyEffectPrefab) Instantiate(destroyEffectPrefab);
+        Destroy(gameObject);
+        if (destroyedPrefab) Instantiate(destroyedPrefab);
+    }
+
+    public void Walk()
+    {
+        if (!isWalking)
+        {
+            FirstStep();
+            isWalking = true;
+        }
     }
 
     private bool Step(GameObject leg)
@@ -88,6 +119,7 @@ public class Walker : MonoBehaviour
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
             leg.transform.localRotation = Quaternion.Euler(GetLegTilt(currLegAngle), 0f, 0f);
+            currKnee.transform.localRotation = Quaternion.Euler(GetKneeTilt(currLegAngle), 0f, 0f);
 
             return false;
         }
@@ -101,6 +133,14 @@ public class Walker : MonoBehaviour
             return -4f * legTilt / Mathf.PI * radAngle + 2f * legTilt;
         else
             return 4f * legTilt / Mathf.PI * radAngle - 4f * legTilt;
+    }
+
+    private float GetKneeTilt(float radAngle)
+    {
+        if (radAngle >= 0f && radAngle < Mathf.PI / 2f)
+            return 2f * kneeTilt / Mathf.PI * radAngle;
+        else
+            return -2f * kneeTilt / Mathf.PI * radAngle + 2f * kneeTilt;
     }
 
     public enum LegState
