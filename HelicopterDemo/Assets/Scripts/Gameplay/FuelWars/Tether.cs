@@ -25,6 +25,7 @@ public class Tether : MonoBehaviour
     private Walker nearWalker;
     private float averageHeight;
     private bool isTaut;
+    private bool collidesFuelTower, collidesWalker;
 
     private Transform heavyPoint => heavyPlayer.transform;
     private Transform lightPoint => lightPlayer.transform;
@@ -94,13 +95,16 @@ public class Tether : MonoBehaviour
 
         camerasController.SetCamerasZoomOut(currDist, maxTetherDist);
 
-        if (TetherCollidesWithFuelTower() && isTaut)
+        collidesFuelTower = TetherCollidesWithFuelTower();
+        collidesWalker = TetherCollidesWithWalker();
+
+        if (collidesFuelTower && isTaut && PlayersAreCoDir())
         {
             collideTime += Time.deltaTime;
             if (collideTime > timeToDestroyByTether)
                 fuelTowersController.DestroyItem(nearFuelTower);
         }
-        else if (TetherCollidesWithWalker() && isTaut)
+        else if (collidesWalker && isTaut && PlayersAreCoDir())
         {
             collideTime += Time.deltaTime;
             if (collideTime > timeToDestroyByTether)
@@ -108,6 +112,8 @@ public class Tether : MonoBehaviour
         }
         else
             collideTime = 0f;
+
+        //Debug.Log(isTaut);
     }
 
     private void FixedUpdate()
@@ -145,13 +151,18 @@ public class Tether : MonoBehaviour
         Vector3 speedLight = lightPlayer.PlayerTranslation.Movement;
         Vector3 dirLightToHeavy = (heavyPoint.position - lightPoint.position).normalized;
 
-        if (currDist > maxTetherDist)
+        if ((collidesFuelTower || collidesWalker) && isTaut)
+        {
+            lightPlayer.PlayerTranslation.IsTowing = heavyPlayer.PlayerTranslation.IsTowing = true;
+            lightPlayer.PlayerTranslation.TowingCoef = heavyPlayer.PlayerTranslation.TowingCoef = 0.5f;
+        }
+        else if (currDist > maxTetherDist)
         {
             if (speedHeavy == Vector3.zero && speedLight != Vector3.zero)
             {
-                float dot = Vector3.Dot(dirLightToHeavy, speedLight);
-                lightPlayer.PlayerTranslation.IsTowing = dot < 0f;
-                lightPlayer.PlayerTranslation.TowingMovement = Vector3.zero;
+                //float dot = Vector3.Dot(dirLightToHeavy, speedLight);
+                //lightPlayer.PlayerTranslation.IsTowing = dot < 0f;
+                //lightPlayer.PlayerTranslation.TowingCoef = 0.5f;
             }
             else if (speedHeavy != Vector3.zero && speedLight == Vector3.zero)
             {
@@ -160,11 +171,14 @@ public class Tether : MonoBehaviour
             {
                 float dot = Vector3.Dot(speedHeavy, speedLight);
                 lightPlayer.PlayerTranslation.IsTowing = dot < 0f;
-                lightPlayer.PlayerTranslation.TowingMovement = Vector3.zero;
+                lightPlayer.PlayerTranslation.TowingCoef = 0f;
             }
         }
         else
+        {
             lightPlayer.PlayerTranslation.IsTowing = false;
+            heavyPlayer.PlayerTranslation.IsTowing = false;
+        }
     }
 
     private bool TetherCollidesWithFuelTower()

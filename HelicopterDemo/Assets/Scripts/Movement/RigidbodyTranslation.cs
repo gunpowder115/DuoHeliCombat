@@ -13,14 +13,11 @@ public class RigidbodyTranslation : Translation
     {
         if (rigidbody)
         {
-            if (IsTowing)
-                movement = TowingMovement;
-            else
-            {
-                movement = new Vector3(speed.x, 0f, speed.z);
-                movement = Vector3.ClampMagnitude(movement, speedAbs);
-                movement = new Vector3(movement.x, speed.y, movement.z);
-            }
+            movement = new Vector3(speed.x, 0f, speed.z);
+            movement = Vector3.ClampMagnitude(movement, speedAbs);
+            movement = new Vector3(movement.x, speed.y, movement.z);
+
+            if (IsTowing) movement *= TowingCoef;
 
             rigidbody.velocity = movement * Time.fixedDeltaTime;
         }
