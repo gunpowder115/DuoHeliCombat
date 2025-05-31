@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Gameplay.FuelWars;
+using UnityEngine;
 
 public class TetherSegmentVisual : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class TetherSegmentVisual : MonoBehaviour
 
     public Transform Target { get; set; }
     public bool IsVisible { get; set; }
-    public bool CollidesWithFuelTower { get; private set; }
+    public bool CollidesWithItem { get; private set; }
 
     void LateUpdate()
     {
@@ -30,6 +31,6 @@ public class TetherSegmentVisual : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        CollidesWithFuelTower = collision.gameObject.GetComponent<FuelTower>();
+        CollidesWithItem = collision.gameObject.GetComponent<IDestroyableByTether>() != null;
     }
 }
