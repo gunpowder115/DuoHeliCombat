@@ -16,8 +16,8 @@ public class FuelTower : MonoBehaviour, IDestroyableByTether
 
     public void CallToDestroy()
     {
-        if (destroyEffectPrefab) Instantiate(destroyEffectPrefab);
+        if (destroyEffectPrefab) Instantiate(destroyEffectPrefab, gameObject.transform.position, gameObject.transform.rotation);
+        if (fuelTowerDestroyedPrefab) Instantiate(fuelTowerDestroyedPrefab, gameObject.transform.position, gameObject.transform.rotation);
         Destroy(gameObject);
-        if (fuelTowerDestroyedPrefab) Instantiate(fuelTowerDestroyedPrefab);
     }
 }

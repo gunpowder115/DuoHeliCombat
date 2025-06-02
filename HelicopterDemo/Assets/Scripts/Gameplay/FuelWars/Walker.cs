@@ -1,4 +1,5 @@
 using Assets.Scripts.Gameplay.FuelWars;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Walker : MonoBehaviour, IDestroyableByTether
@@ -11,8 +12,7 @@ public class Walker : MonoBehaviour, IDestroyableByTether
     [SerializeField] private float legTilt = 10f;
     [SerializeField] private float pause = 0.5f;
     [SerializeField] private float kneeTilt = -20f;
-    [SerializeField] private GameObject destroyEffectPrefab;
-    [SerializeField] private GameObject destroyedPrefab;
+    [SerializeField] private GameObject fallingWalkerPrefab;
 
     private bool isStep, isPause, isWalking;
     private bool isFirstStep, isLastStep;
@@ -25,6 +25,8 @@ public class Walker : MonoBehaviour, IDestroyableByTether
     private Vector3 legCenter;
     private GameObject currLeg, currKnee;
     private DestroyableByTetherController destroyableByTetherController;
+    private List<TargetTracker> trackers;
+    private Shooter shooter;
 
     private void Awake()
     {
@@ -57,6 +59,10 @@ public class Walker : MonoBehaviour, IDestroyableByTether
 
         isFirstStep = true;
         isWalking = true;
+
+        trackers = new List<TargetTracker>();
+        trackers.AddRange(gameObject.GetComponentsInChildren<TargetTracker>());
+        shooter = GetComponent<Shooter>();
     }
 
     private void Update()
@@ -110,27 +116,49 @@ public class Walker : MonoBehaviour, IDestroyableByTether
                 currLeg = leftLegState == LegState.Back ? leftLeg : rightLeg;
                 currKnee = currLeg.GetComponentInChildren<WalkerKnee>().gameObject;
 
-                if (stopRequest) isLastStep = true;
+                if (stopRequest)
+                {
+                    isLastStep = true;
+                    stopRequest = false;
+                }
             }
         }
     }
 
     public void StartWalker()
     {
-        isWalking = true;
-        isFirstStep = true;
+        if (!isWalking)
+        {
+            leftLegState = rightLegState = LegState.Middle;
+            currLeg = rightLeg;
+            currKnee = currLeg.GetComponentInChildren<WalkerKnee>().gameObject;
+            isWalking = true;
+            isFirstStep = true;
+            isLastStep = false;
+            stopRequest = false;
+        }
     }
 
     public void StopWalker() => stopRequest = true;
 
     public void CallToDestroy()
     {
-        if (destroyEffectPrefab) Instantiate(destroyEffectPrefab);
+        if (fallingWalkerPrefab) Instantiate(fallingWalkerPrefab, gameObject.transform.position, gameObject.transform.rotation);
+
         Destroy(gameObject);
         Destroy(leftLeg);
         Destroy(rightLeg);
-        if (destroyedPrefab) Instantiate(destroyedPrefab);
     }
+
+    public void SetRotation(GameObject target)
+    {
+        foreach (var item in trackers)
+            item.SetRotation(target, transform.forward);
+    }
+
+    public void StartFire(GameObject target) => shooter.BarrelFire(target);
+
+    public void StopFire() => shooter.StopBarrelFire();
 
     private bool Step(GameObject leg, StepType stepType = StepType.Usual)
     {

@@ -58,6 +58,12 @@ public class DestroyableByTetherController
             if (Mathf.Abs(origin.x - item.transform.position.x) < maxDist &&
                 Mathf.Abs(origin.z - item.transform.position.z) < maxDist)
                 return item;
+            else
+            {
+                item.StartWalker();
+                item.SetRotation(null);
+                item.StopFire();
+            }
         }
         return null;
     }

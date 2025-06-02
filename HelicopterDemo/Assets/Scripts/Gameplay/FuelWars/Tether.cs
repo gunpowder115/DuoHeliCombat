@@ -201,6 +201,8 @@ public class Tether : MonoBehaviour
         if (nearWalker)
         {
             nearWalker.StopWalker();
+            nearWalker.SetRotation(heavyPlayer.gameObject);
+            nearWalker.StartFire(heavyPlayer.gameObject);
             foreach (var item in segments)
             {
                 if (item.GetComponent<TetherSegmentVisual>().CollidesWithItem)
