@@ -22,4 +22,11 @@ public class RigidbodyTranslation : Translation
             rigidbody.velocity = movement * Time.fixedDeltaTime;
         }
     }
+
+    public void SetConstraints(bool freezePosY)
+    {
+        rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+        if (!freezePosY)
+            rigidbody.constraints |= RigidbodyConstraints.FreezePositionY;
+    }
 }

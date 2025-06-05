@@ -13,6 +13,10 @@ public class Tether : MonoBehaviour
     [SerializeField] private float maxAngleForCoDir = 30f;
     [SerializeField] private float timeToDestroyByTether = 2f;
     [SerializeField] private float heightDeltaForTaut = 1f;
+    [Header("Vertical movement")]
+    [SerializeField] private float maxHeight = 6f;
+    [SerializeField] private float heightForWalker = 3.5f;
+    [SerializeField] private float heightForFuelTower = 5f;
 
     private List<GameObject> segments = new List<GameObject>();
     private float maxTetherDist;
@@ -26,6 +30,7 @@ public class Tether : MonoBehaviour
     private float averageHeight;
     private bool isTaut;
     private bool collidesFuelTower, collidesWalker;
+    private float targetHeight;
 
     private Transform heavyPoint => heavyPlayer.transform;
     private Transform lightPoint => lightPlayer.transform;
@@ -95,6 +100,7 @@ public class Tether : MonoBehaviour
 
         camerasController.SetCamerasZoomOut(currDist, maxTetherDist);
 
+        targetHeight = maxHeight;
         collidesFuelTower = TetherCollidesWithFuelTower();
         collidesWalker = TetherCollidesWithWalker();
 
@@ -112,6 +118,8 @@ public class Tether : MonoBehaviour
         }
         else
             collideTime = 0f;
+
+        VerticalMovement();
 
         //Debug.Log(isTaut);
     }
@@ -186,6 +194,7 @@ public class Tether : MonoBehaviour
         nearFuelTower = fuelTowersController.GetNearFuelTower(originPos, maxDistToScanSegmentsCollides);
         if (nearFuelTower)
         {
+            targetHeight = heightForFuelTower;
             foreach (var item in segments)
             {
                 if (item.GetComponent<TetherSegmentVisual>().CollidesWithItem)
@@ -200,6 +209,7 @@ public class Tether : MonoBehaviour
         nearWalker = fuelTowersController.GetNearWalker(originPos, maxDistToScanSegmentsCollides);
         if (nearWalker)
         {
+            targetHeight = heightForWalker;
             nearWalker.StopWalker();
             nearWalker.SetRotation(heavyPlayer.gameObject);
             nearWalker.StartFire(heavyPlayer.gameObject);
@@ -227,5 +237,19 @@ public class Tether : MonoBehaviour
             averageHeight += item.transform.position.y;
         }
         averageHeight /= segmentCount;
+    }
+
+    private void VerticalMovement()
+    {
+        if (targetHeight == maxHeight)
+        {
+            heavyPlayer.VerticalTranslateToHeight(1, maxHeight);
+            lightPlayer.VerticalTranslateToHeight(1, maxHeight);
+        }
+        else if (targetHeight == heightForWalker || targetHeight == heightForFuelTower)
+        {
+            heavyPlayer.VerticalTranslateToHeight(-1, targetHeight);
+            lightPlayer.VerticalTranslateToHeight(-1, targetHeight);
+        }
     }
 }

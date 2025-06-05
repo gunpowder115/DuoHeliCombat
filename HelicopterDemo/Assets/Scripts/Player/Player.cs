@@ -248,6 +248,25 @@ public class Player : MonoBehaviour, IFindable
         //if (playerNumber == Players.Player1) Debug.Log(inputDevice.PlayerState);
     }
 
+    public void VerticalTranslateToHeight(float vertDir, float targetHeight)
+    {
+        if (vertDir > 0 && transform.position.y < targetHeight)
+        {
+            (translation as RigidbodyTranslation).SetConstraints(true);
+            VerticalTranslate(0.5f, 0f);
+        }
+        else if (vertDir < 0 && transform.position.y > targetHeight)
+        {
+            (translation as RigidbodyTranslation).SetConstraints(true);
+            VerticalTranslate(-0.5f, 0f);
+        }
+        else
+        {
+            (translation as RigidbodyTranslation).SetConstraints(false);
+            VerticalTranslate(0f, 0f);
+        }
+    }
+
     void Translate(float inputX, float inputY, float inputZ, float inputVerticalFast)
     {
         float inputXZ = Mathf.Clamp01(new Vector3(inputX, 0f, inputZ).magnitude);
@@ -300,6 +319,11 @@ public class Player : MonoBehaviour, IFindable
             translation.SetHorizontalTranslation(currSpeed);
         }
 
+        VerticalTranslate(inputY, inputVerticalFast);
+    }
+
+    private void VerticalTranslate(float inputY, float inputVerticalFast)
+    {
         if (inputDevice.PlayerState == PlayerStates.Rescue)
         {
             targetVerticalSpeed = inputY * verticalSpeed;

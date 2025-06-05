@@ -52,5 +52,8 @@ MonoBehaviour:
   maxTetherDistCoef: 1.15
   maxDistToScanSegmentsCollides: 10
   maxAngleForCoDir: 30
-  timeToDestroyFuelTower: 1.5
+  timeToDestroyByTether: 2
   heightDeltaForTaut: 1
+  maxHeight: 6
+  heightForWalker: 3.5
+  heightForFuelTower: 5
