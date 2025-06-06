@@ -68,9 +68,9 @@ public class DestroyableByTetherController
         return null;
     }
 
-    public void DestroyItem(IDestroyableByTether item)
+    public void DestroyItem(IDestroyableByTether item, in Vector3 destroyDir)
     {
         RemoveItem(item);
-        item.CallToDestroy();
+        item.CallToDestroy(destroyDir);
     }
 }

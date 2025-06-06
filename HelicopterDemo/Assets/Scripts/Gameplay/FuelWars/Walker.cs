@@ -141,13 +141,15 @@ public class Walker : MonoBehaviour, IDestroyableByTether
 
     public void StopWalker() => stopRequest = true;
 
-    public void CallToDestroy()
+    public void CallToDestroy(in Vector3 destroyDir)
     {
-        if (fallingWalkerPrefab) Instantiate(fallingWalkerPrefab, gameObject.transform.position, gameObject.transform.rotation);
+        //if (fallingWalkerPrefab) Instantiate(fallingWalkerPrefab, gameObject.transform.position, gameObject.transform.rotation);
 
-        Destroy(gameObject);
-        Destroy(leftLeg);
-        Destroy(rightLeg);
+        //Destroy(gameObject);
+        //Destroy(leftLeg);
+        //Destroy(rightLeg);
+
+        SelectLegToDestroy(destroyDir);
     }
 
     public void SetRotation(GameObject target)
@@ -219,6 +221,14 @@ public class Walker : MonoBehaviour, IDestroyableByTether
             return 2f * kneeTilt / Mathf.PI * radAngle;
         else
             return -2f * kneeTilt / Mathf.PI * radAngle + 2f * kneeTilt;
+    }
+
+    private void SelectLegToDestroy(in Vector3 destroyDir)
+    {
+        Vector3 legVector = rightLeg.transform.position - leftLeg.transform.position;
+        float dot = Vector3.Dot(legVector, destroyDir);
+        if (dot >= 0) Destroy(leftLeg);
+        else Destroy(rightLeg);
     }
 
     public enum LegState

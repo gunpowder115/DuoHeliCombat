@@ -23,7 +23,7 @@ public class Tether : MonoBehaviour
     private CamerasController camerasController;
     private float currDist;
     private Vector3 originPos;
-    private DestroyableByTetherController fuelTowersController;
+    private DestroyableByTetherController destroyableByTetherController;
     private float collideTime;
     private FuelTower nearFuelTower;
     private Walker nearWalker;
@@ -88,7 +88,7 @@ public class Tether : MonoBehaviour
         maxTetherDist = segmentLength * segmentCount * maxTetherDistCoef;
 
         camerasController = CamerasController.Singleton;
-        fuelTowersController = DestroyableByTetherController.Singleton;
+        destroyableByTetherController = DestroyableByTetherController.Singleton;
     }
 
     private void Update()
@@ -108,13 +108,13 @@ public class Tether : MonoBehaviour
         {
             collideTime += Time.deltaTime;
             if (collideTime > timeToDestroyByTether)
-                fuelTowersController.DestroyItem(nearFuelTower);
+                destroyableByTetherController.DestroyItem(nearFuelTower, Vector3.zero);
         }
         else if (collidesWalker && isTaut && PlayersAreCoDir())
         {
             collideTime += Time.deltaTime;
             if (collideTime > timeToDestroyByTether)
-                fuelTowersController.DestroyItem(nearWalker);
+                destroyableByTetherController.DestroyItem(nearWalker, heavyPlayer.PlayerTranslation.Movement);
         }
         else
             collideTime = 0f;
@@ -191,7 +191,7 @@ public class Tether : MonoBehaviour
 
     private bool TetherCollidesWithFuelTower()
     {
-        nearFuelTower = fuelTowersController.GetNearFuelTower(originPos, maxDistToScanSegmentsCollides);
+        nearFuelTower = destroyableByTetherController.GetNearFuelTower(originPos, maxDistToScanSegmentsCollides);
         if (nearFuelTower)
         {
             targetHeight = heightForFuelTower;
@@ -206,7 +206,7 @@ public class Tether : MonoBehaviour
 
     private bool TetherCollidesWithWalker()
     {
-        nearWalker = fuelTowersController.GetNearWalker(originPos, maxDistToScanSegmentsCollides);
+        nearWalker = destroyableByTetherController.GetNearWalker(originPos, maxDistToScanSegmentsCollides);
         if (nearWalker)
         {
             targetHeight = heightForWalker;

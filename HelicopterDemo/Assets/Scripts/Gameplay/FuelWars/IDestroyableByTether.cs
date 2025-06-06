@@ -1,7 +1,9 @@
-﻿namespace Assets.Scripts.Gameplay.FuelWars
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Gameplay.FuelWars
 {
     public interface IDestroyableByTether
     {
-        void CallToDestroy();
+        void CallToDestroy(in Vector3 destroyDir);
     }
 }

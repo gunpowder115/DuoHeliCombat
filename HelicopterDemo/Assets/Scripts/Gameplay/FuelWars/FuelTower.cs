@@ -14,7 +14,7 @@ public class FuelTower : MonoBehaviour, IDestroyableByTether
         destroyableByTetherController.AddItem(this);
     }
 
-    public void CallToDestroy()
+    public void CallToDestroy(in Vector3 destroyDir)
     {
         if (destroyEffectPrefab) Instantiate(destroyEffectPrefab, gameObject.transform.position, gameObject.transform.rotation);
         if (fuelTowerDestroyedPrefab) Instantiate(fuelTowerDestroyedPrefab, gameObject.transform.position, gameObject.transform.rotation);
