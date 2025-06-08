@@ -17,7 +17,7 @@ public class Walker : MonoBehaviour, IDestroyableByTether
     private bool isStep, isPause, isWalking;
     private bool isFirstStep, isLastStep;
     private bool stopRequest;
-    private float yPos;
+    private float yPos, xPos;
     private float legSpeed;
     private float currLegAngle, currLegRadius;
     private float pauseTime;
@@ -37,6 +37,7 @@ public class Walker : MonoBehaviour, IDestroyableByTether
     private void Start()
     {
         yPos = Mathf.Abs(leftLeg.transform.localPosition.y);
+        xPos = Mathf.Abs(leftLeg.transform.localPosition.x);
 
         if (leftLeg.transform.localPosition.z == rightLeg.transform.localPosition.z)
             leftLegState = rightLegState = LegState.Middle;
@@ -143,13 +144,18 @@ public class Walker : MonoBehaviour, IDestroyableByTether
 
     public void CallToDestroy(in Vector3 destroyDir)
     {
-        //if (fallingWalkerPrefab) Instantiate(fallingWalkerPrefab, gameObject.transform.position, gameObject.transform.rotation);
+        Vector3 legVector = rightLeg.transform.position - leftLeg.transform.position;
+        float dot = Vector3.Dot(legVector, destroyDir);
 
-        //Destroy(gameObject);
-        //Destroy(leftLeg);
-        //Destroy(rightLeg);
+        if (fallingWalkerPrefab)
+        {
+            var fallingWalkerItem = Instantiate(fallingWalkerPrefab, transform.position + transform.right * (dot >= 0 ? xPos : -xPos), transform.rotation).GetComponent<FallingWalker>();
+            fallingWalkerItem.SetFallingParams(dot >= 0, 0f);
+        }
 
-        SelectLegToDestroy(destroyDir);
+        Destroy(gameObject);
+        Destroy(leftLeg);
+        Destroy(rightLeg);
     }
 
     public void SetRotation(GameObject target)
@@ -221,14 +227,6 @@ public class Walker : MonoBehaviour, IDestroyableByTether
             return 2f * kneeTilt / Mathf.PI * radAngle;
         else
             return -2f * kneeTilt / Mathf.PI * radAngle + 2f * kneeTilt;
-    }
-
-    private void SelectLegToDestroy(in Vector3 destroyDir)
-    {
-        Vector3 legVector = rightLeg.transform.position - leftLeg.transform.position;
-        float dot = Vector3.Dot(legVector, destroyDir);
-        if (dot >= 0) Destroy(leftLeg);
-        else Destroy(rightLeg);
     }
 
     public enum LegState

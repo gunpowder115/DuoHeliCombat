@@ -10,10 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6111722378944207497}
   - component: {fileID: 6111722378944207606}
-  - component: {fileID: 6111722378944207603}
-  - component: {fileID: 6111722378944207602}
-  - component: {fileID: 6111722378944207605}
-  - component: {fileID: 6111722378944207604}
   - component: {fileID: 1277882805972477299}
   m_Layer: 0
   m_Name: Walker
@@ -61,59 +57,7 @@ MonoBehaviour:
   legTilt: 10
   pause: 0.05
   kneeTilt: -20
-  fallingWalkerPrefab: {fileID: 22212033876344650, guid: b16171450cd459946843c216b67f5fb8, type: 3}
---- !u!65 &6111722378944207603
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6111722378944207496}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7.397537, y: 0.7812787, z: 2.9903412}
-  m_Center: {x: -0.005470276, y: 0.41556603, z: -0.22965622}
---- !u!65 &6111722378944207602
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6111722378944207496}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.6259117, y: 2.235764, z: 1.130024}
-  m_Center: {x: 0.0054683685, y: 1.7005424, z: -1.4660206}
---- !u!65 &6111722378944207605
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6111722378944207496}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.461872, y: 1.8758898, z: 1.8242569}
-  m_Center: {x: 0.021871567, y: 3.315072, z: -1.998436}
---- !u!65 &6111722378944207604
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6111722378944207496}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.4478836, y: 1.5132179, z: 2.7107277}
-  m_Center: {x: 0, y: 4.751148, z: -2.3017025}
+  fallingWalkerPrefab: {fileID: 4834542789713414157, guid: b16171450cd459946843c216b67f5fb8, type: 3}
 --- !u!114 &1277882805972477299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +81,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3888603902129632707}
   - component: {fileID: 5536865342423136636}
-  - component: {fileID: 4153608619348360536}
   m_Layer: 0
   m_Name: WalkerRotating
   m_TagString: Untagged
@@ -184,19 +127,6 @@ MonoBehaviour:
   speed: 2
   minLookDistance: 30
   maxLookDistance: 50
---- !u!65 &4153608619348360536
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7160967503261117643}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.9656763, y: 4.7402024, z: 5.233428}
-  m_Center: {x: 0.043443203, y: 0.28386617, z: -0.13277102}
 --- !u!1001 &563905974887430389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -854,6 +784,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f8c4886ac5e0d49970cc52ec4ff2ce, type: 3}
+--- !u!1 &3094869385175755090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: e0f8c4886ac5e0d49970cc52ec4ff2ce, type: 3}
+  m_PrefabInstance: {fileID: 6611158356018048218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2029087529707713367
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3094869385175755090}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: e0f8c4886ac5e0d49970cc52ec4ff2ce, type: 3}
 --- !u!4 &6644274009170168625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e0f8c4886ac5e0d49970cc52ec4ff2ce, type: 3}
