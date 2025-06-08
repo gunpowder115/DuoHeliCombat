@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftLeg: {fileID: 3818388617854509508}
   rightLeg: {fileID: 3818388617558758672}
+  rotatingPart: {fileID: 5536865342423136636}
   speed: 3
   stepDelta: 1.3
   legSpeedCoef: 1.2

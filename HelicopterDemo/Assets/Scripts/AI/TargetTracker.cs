@@ -10,6 +10,8 @@ public class TargetTracker : MonoBehaviour
 
     private Quaternion targetRotation;
 
+    public Vector3 EulerAngles => transform.localEulerAngles;
+
     private void Start()
     {
         targetRotation = transform.rotation;

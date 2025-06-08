@@ -6,6 +6,7 @@ public class Walker : MonoBehaviour, IDestroyableByTether
 {
     [SerializeField] private GameObject leftLeg;
     [SerializeField] private GameObject rightLeg;
+    [SerializeField] private TargetTracker rotatingPart;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float stepDelta = 1.3f;
     [SerializeField] private float legSpeedCoef = 1.2f;
@@ -150,7 +151,7 @@ public class Walker : MonoBehaviour, IDestroyableByTether
         if (fallingWalkerPrefab)
         {
             var fallingWalkerItem = Instantiate(fallingWalkerPrefab, transform.position + transform.right * (dot >= 0 ? xPos : -xPos), transform.rotation).GetComponent<FallingWalker>();
-            fallingWalkerItem.SetFallingParams(dot >= 0, 0f);
+            fallingWalkerItem.SetFallingParams(dot >= 0, rotatingPart.EulerAngles.y);
         }
 
         Destroy(gameObject);
