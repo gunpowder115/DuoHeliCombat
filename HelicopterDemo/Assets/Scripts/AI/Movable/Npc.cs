@@ -105,7 +105,10 @@ public abstract class Npc : MonoBehaviour, IFindable
     public void SetTrackersRotation()
     {
         foreach (var track in trackers)
-            track.SetRotation(selectedTarget, NpcCurrDir);
+        {
+            if (track)
+                track.SetRotation(selectedTarget, NpcCurrDir);
+        }
     }
 
     public void _SetSpeed(float speed) => this.speed = speed;

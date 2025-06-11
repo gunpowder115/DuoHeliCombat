@@ -58,6 +58,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8742411575227790163}
     m_Modifications:
+    - target: {fileID: 249842889433161911, guid: 49c81c1595975ff42887a47eb7ac789b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 249842890385713348, guid: 49c81c1595975ff42887a47eb7ac789b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -113,6 +117,10 @@ PrefabInstance:
     - target: {fileID: 4653540025896499615, guid: 49c81c1595975ff42887a47eb7ac789b, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419275621087999727, guid: 49c81c1595975ff42887a47eb7ac789b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49c81c1595975ff42887a47eb7ac789b, type: 3}
@@ -193,7 +201,39 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 249842889433161909, guid: 49c81c1595975ff42887a47eb7ac789b, type: 3}
   m_PrefabInstance: {fileID: 8742411576242249334}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2750112155852791493
+--- !u!114 &1727284796792462616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801396837064687299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 50
+  minHeight: 10
+--- !u!114 &2168992257672173993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801396837064687299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619776e034de7b145938a6b596f54ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHorMoveTime: 3
+  maxVertMoveTime: 0.5
+  moveTime: 3
+  lateralMovingCoef: 0.1
+  targetHeightDelta: 20
+  shotDeltaTime: 0.5
+--- !u!114 &2523635109494009161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToNextLaunch: 0.5
---- !u!114 &5591554150212394931
+--- !u!114 &5505468142379895058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,7 +255,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8801396837064687299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7b303d9ccd126e4e861555e78e183f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4066cc69765099e4db0f9d9b41d216dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   npcSide: 0
@@ -232,21 +272,7 @@ MonoBehaviour:
   distDelta: 1
   deadPrefab: {fileID: 0}
   explosion: {fileID: 4954313840775520740, guid: 8d752563071e2c441ac6ab8f2823c632, type: 3}
---- !u!114 &6219136543839954120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8801396837064687299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41175428f113cb24a811def3c61d2f8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 3
-  normAttitudeAngle: 30
---- !u!114 &6539646391516830614
+--- !u!114 &7066578103543700534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,7 +289,7 @@ MonoBehaviour:
   baseHealth: 100
   smokePrefab: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
   healthBarPrefab: {fileID: 9123654501395373740, guid: 32366473a0622994d8fc730a37961f74, type: 3}
---- !u!114 &8051140621407317625
+--- !u!114 &7816614325601085381
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -272,8 +298,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8801396837064687299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415e5073c8781f34baf4a1dade35a55f, type: 3}
+  m_Script: {fileID: 11500000, guid: 41175428f113cb24a811def3c61d2f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHeight: 50
-  minHeight: 10
+  rotationSpeed: 3
+  normAttitudeAngle: 30

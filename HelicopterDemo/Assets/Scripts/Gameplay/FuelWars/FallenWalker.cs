@@ -14,7 +14,7 @@ public class FallenWalker : MonoBehaviour
     private Shooter shooter;
     private List<TargetTracker> targetTrackers;
     private UnitController unitController;
-    private NpcGround npc;
+    private NpcGroundAlone npc;
     private bool init;
 
     public GameObject Target => unitController.FindClosestPlayer(npc).gameObject;
@@ -24,14 +24,19 @@ public class FallenWalker : MonoBehaviour
         if (!init)
         {
             unitController = UnitController.Singleton;
-            npc = GetComponentInChildren<NpcGround>();
+            npc = GetComponentInChildren<NpcGroundAlone>();
             shooter = GetComponentInChildren<Shooter>();
             shooter.BarrelFire(Target);
             init = true;
         }
 
-        foreach (var tracker in targetTrackers)
-            tracker.SetRotation(Target, tracker.transform.forward);
+        if (!npc)
+            Destroy(gameObject);
+        else
+        {
+            foreach (var tracker in targetTrackers)
+                tracker.SetRotation(Target, tracker.transform.forward);
+        }
     }
 
     public void SetFallenParams(bool destroyingLeft, bool isLeftWeapon, in Quaternion headRotation, in Quaternion walkerRotation)
