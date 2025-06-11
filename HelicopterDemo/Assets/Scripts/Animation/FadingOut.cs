@@ -43,12 +43,15 @@ public class FadingOut : MonoBehaviour
 
             foreach (var rend in rends)
             {
-                Color color = rend.material.color;
-                color.a = currAlpha;
-                rend.material.color = color;
+                if (rend)
+                {
+                    Color color = rend.material.color;
+                    color.a = currAlpha;
+                    rend.material.color = color;
 
-                if (color.a <= 0f && destroy)
-                    Destroy(gameObject);
+                    if (color.a <= 0f && destroy)
+                        Destroy(gameObject);
+                }
             }
         }
     }

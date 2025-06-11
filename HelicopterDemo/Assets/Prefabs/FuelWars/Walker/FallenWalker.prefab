@@ -51,6 +51,7 @@ MonoBehaviour:
   rightLeg: {fileID: 1875820585842994810}
   leftWeapon: {fileID: 2209998659264085812}
   rightWeapon: {fileID: 4489316423172532681}
+  destroyedWalkerPrefab: {fileID: 4605094932013397723, guid: cee4f32da0eedbf428972ad974dc586c, type: 3}
 --- !u!1001 &8742411576242249334
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class FallenWalker : MonoBehaviour
     [SerializeField] private GameObject rightLeg;
     [SerializeField] private GameObject leftWeapon;
     [SerializeField] private GameObject rightWeapon;
+    [SerializeField] private GameObject destroyedWalkerPrefab;
 
     private float xPos;
     private Shooter shooter;
@@ -16,6 +17,7 @@ public class FallenWalker : MonoBehaviour
     private UnitController unitController;
     private NpcGroundAlone npc;
     private bool init;
+    private bool destroyingLeft, isLeftWeapon;
 
     public GameObject Target => unitController.FindClosestPlayer(npc).gameObject;
 
@@ -31,7 +33,15 @@ public class FallenWalker : MonoBehaviour
         }
 
         if (!npc)
+        {
+            if (destroyedWalkerPrefab)
+            {
+                var walker = Instantiate(destroyedWalkerPrefab, transform.position, transform.rotation).GetComponent<DestroyedWalker>();
+                walker.SetDestroyindParams(destroyingLeft, isLeftWeapon);
+            }
+
             Destroy(gameObject);
+        }
         else
         {
             foreach (var tracker in targetTrackers)
@@ -41,6 +51,9 @@ public class FallenWalker : MonoBehaviour
 
     public void SetFallenParams(bool destroyingLeft, bool isLeftWeapon, in Quaternion headRotation, in Quaternion walkerRotation)
     {
+        this.destroyingLeft = destroyingLeft;
+        this.isLeftWeapon = isLeftWeapon;
+
         Destroy(destroyingLeft ? leftLeg : rightLeg);
         targetTrackers = new List<TargetTracker>();
         if (isLeftWeapon)
