@@ -171,6 +171,12 @@ public class UnitController
         return closestPlayer as Player;
     }
 
+    public Player FindClosestPlayer(IFindable src)
+    {
+        float dist;
+        return FindClosestPlayer(src, out dist);
+    }
+
     private void Add(List<IFindable> list, IFindable item)
     {
         if (!list.Contains(item))
