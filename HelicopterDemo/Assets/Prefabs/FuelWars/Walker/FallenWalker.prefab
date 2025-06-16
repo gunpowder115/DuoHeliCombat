@@ -272,7 +272,7 @@ MonoBehaviour:
   maxAttackDist: 20
   distDelta: 1
   deadPrefab: {fileID: 0}
-  explosion: {fileID: 4954313840775520740, guid: 8d752563071e2c441ac6ab8f2823c632, type: 3}
+  explosion: {fileID: 822067885297743859, guid: 0cea5c2d58054544aad482cd07dafb64, type: 3}
 --- !u!114 &7066578103543700534
 MonoBehaviour:
   m_ObjectHideFlags: 0
