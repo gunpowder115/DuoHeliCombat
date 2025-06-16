@@ -18,6 +18,7 @@ public class FallenWalker : MonoBehaviour
     private NpcGroundAlone npc;
     private bool init;
     private bool destroyingLeft, isLeftWeapon;
+    private DestroyableByTetherController destroyableByTetherController;
 
     public GameObject Target => unitController.FindClosestPlayer(npc).gameObject;
 
@@ -40,6 +41,7 @@ public class FallenWalker : MonoBehaviour
                 walker.SetDestroyindParams(destroyingLeft, isLeftWeapon);
             }
 
+            destroyableByTetherController.FallenWalker = null;
             Destroy(gameObject);
         }
         else
@@ -53,6 +55,8 @@ public class FallenWalker : MonoBehaviour
     {
         this.destroyingLeft = destroyingLeft;
         this.isLeftWeapon = isLeftWeapon;
+        destroyableByTetherController = DestroyableByTetherController.Singleton;
+        destroyableByTetherController.FallenWalker = this;
 
         Destroy(destroyingLeft ? leftLeg : rightLeg);
         targetTrackers = new List<TargetTracker>();

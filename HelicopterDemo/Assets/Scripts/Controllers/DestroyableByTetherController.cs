@@ -15,8 +15,10 @@ public class DestroyableByTetherController
         }
     }
 
-    public List<FuelTower> fuelTowers;
-    public List<Walker> walkers;
+    public FallenWalker FallenWalker { get; set; }
+
+    private List<FuelTower> fuelTowers;
+    private List<Walker> walkers;
 
     private DestroyableByTetherController()
     {

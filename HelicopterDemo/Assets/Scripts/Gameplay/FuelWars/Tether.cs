@@ -159,7 +159,12 @@ public class Tether : MonoBehaviour
         Vector3 speedLight = lightPlayer.PlayerTranslation.Movement;
         Vector3 dirLightToHeavy = (heavyPoint.position - lightPoint.position).normalized;
 
-        if ((collidesFuelTower || collidesWalker) && isTaut)
+        if (destroyableByTetherController.FallenWalker)
+        {
+            lightPlayer.PlayerTranslation.IsTowing = heavyPlayer.PlayerTranslation.IsTowing = true;
+            lightPlayer.PlayerTranslation.TowingCoef = heavyPlayer.PlayerTranslation.TowingCoef = 0.5f;
+        }
+        else if ((collidesFuelTower || collidesWalker) && isTaut)
         {
             lightPlayer.PlayerTranslation.IsTowing = heavyPlayer.PlayerTranslation.IsTowing = true;
             lightPlayer.PlayerTranslation.TowingCoef = heavyPlayer.PlayerTranslation.TowingCoef = 0.5f;
