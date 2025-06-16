@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 27986d8519c1a3c4c98b50c9bb7744b8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: a9683056bfeca3343b0c8f85e96ae24a, type: 2}
     - target: {fileID: 919132149155446097, guid: 27986d8519c1a3c4c98b50c9bb7744b8, type: 3}
       propertyPath: m_Name
       value: walker_test-2
@@ -248,7 +248,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: bbe7e858834dc69478a67e476c876969, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: a9683056bfeca3343b0c8f85e96ae24a, type: 2}
     - target: {fileID: 919132149155446097, guid: bbe7e858834dc69478a67e476c876969, type: 3}
       propertyPath: m_Name
       value: walker_test-1
