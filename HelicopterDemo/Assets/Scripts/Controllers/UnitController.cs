@@ -177,6 +177,34 @@ public class UnitController
         return FindClosestPlayer(src, out dist);
     }
 
+    //todo duplicating FindClosestPlayer(IFindable src, out float dist)
+    public Player FindClosestPlayer(GameObject src, out float dist)
+    {
+        if (players.Count == 0)
+        {
+            dist = float.MaxValue;
+            return null;
+        }
+
+        IFindable closestPlayer = null;
+        float closestSqrDistance = float.MaxValue;
+
+        foreach (var player in players)
+        {
+            Vector3 offset = player.Position - src.transform.position;
+            float sqrDistance = offset.sqrMagnitude;
+
+            if (sqrDistance < closestSqrDistance)
+            {
+                closestSqrDistance = sqrDistance;
+                closestPlayer = player;
+            }
+        }
+
+        dist = Vector3.Distance(closestPlayer.Position, src.transform.position);
+        return closestPlayer as Player;
+    }
+
     private void Add(List<IFindable> list, IFindable item)
     {
         if (!list.Contains(item))

@@ -13,6 +13,7 @@ public class Tether : MonoBehaviour
     [SerializeField] private float maxAngleForCoDir = 30f;
     [SerializeField] private float timeToDestroyByTether = 2f;
     [SerializeField] private float heightDeltaForTaut = 1f;
+    [SerializeField] private GameObject windingBarPrefab;
     [Header("Vertical movement")]
     [SerializeField] private float maxHeight = 6f;
     [SerializeField] private float heightForWalker = 3.5f;
@@ -31,6 +32,8 @@ public class Tether : MonoBehaviour
     private bool isTaut;
     private bool collidesFuelTower, collidesWalker;
     private float targetHeight;
+    private HealthBar windingBar;
+    private UnitController unitController;
 
     private Transform heavyPoint => heavyPlayer.transform;
     private Transform lightPoint => lightPlayer.transform;
@@ -89,6 +92,7 @@ public class Tether : MonoBehaviour
 
         camerasController = CamerasController.Singleton;
         destroyableByTetherController = DestroyableByTetherController.Singleton;
+        unitController = UnitController.Singleton;
     }
 
     private void Update()
@@ -113,11 +117,28 @@ public class Tether : MonoBehaviour
         else if (collidesWalker && isTaut && PlayersAreCoDir())
         {
             collideTime += Time.deltaTime;
+
+            if (windingBarPrefab && !windingBar)
+            {
+                windingBar = Instantiate(windingBarPrefab, nearWalker.transform.position + Vector3.up * 12f,
+                    nearWalker.transform.rotation, nearWalker.transform).GetComponent<HealthBar>();
+                windingBar.SetFullHealth(timeToDestroyByTether);
+            }
+
+            if (windingBar)
+            {
+                GameObject windingSourcePlayer = unitController.FindClosestPlayer(nearWalker.gameObject, out float dist).gameObject;
+                windingBar.SetHealth(timeToDestroyByTether - collideTime);
+                windingBar.SetDamageSource(windingSourcePlayer);
+            }
+
             if (collideTime > timeToDestroyByTether)
                 destroyableByTetherController.DestroyItem(nearWalker, heavyPlayer.PlayerTranslation.Movement);
         }
         else
+        {
             collideTime = 0f;
+        }
 
         VerticalMovement();
 

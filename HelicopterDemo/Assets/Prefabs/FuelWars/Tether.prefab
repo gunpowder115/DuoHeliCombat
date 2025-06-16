@@ -54,6 +54,7 @@ MonoBehaviour:
   maxAngleForCoDir: 30
   timeToDestroyByTether: 2
   heightDeltaForTaut: 1
+  windingBarPrefab: {fileID: 9123654501395373740, guid: 4fa17bcdefb3806428dd106222320ef6, type: 3}
   maxHeight: 6
   heightForWalker: 3.5
   heightForFuelTower: 5
