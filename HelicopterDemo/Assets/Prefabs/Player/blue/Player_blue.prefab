@@ -159,7 +159,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8b79ac54b06e10646a0d33aad9d497dd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: 4838460e3dfff694e9188b98672c1a63, type: 2}
     - target: {fileID: 919132149155446097, guid: 8b79ac54b06e10646a0d33aad9d497dd, type: 3}
       propertyPath: m_Name
       value: rightLongWing
@@ -295,7 +295,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: b7141cda26953e74bbe02d5d0840a03f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: 4838460e3dfff694e9188b98672c1a63, type: 2}
     - target: {fileID: 919132149155446097, guid: b7141cda26953e74bbe02d5d0840a03f, type: 3}
       propertyPath: m_Name
       value: rightShortWing
@@ -427,7 +427,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8b79ac54b06e10646a0d33aad9d497dd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: 4838460e3dfff694e9188b98672c1a63, type: 2}
     - target: {fileID: 919132149155446097, guid: 8b79ac54b06e10646a0d33aad9d497dd, type: 3}
       propertyPath: m_Name
       value: leftLongWing
@@ -563,7 +563,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: b7141cda26953e74bbe02d5d0840a03f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: 4838460e3dfff694e9188b98672c1a63, type: 2}
     - target: {fileID: 919132149155446097, guid: b7141cda26953e74bbe02d5d0840a03f, type: 3}
       propertyPath: m_Name
       value: leftShortWing
@@ -691,10 +691,14 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 0b7a8a76949b2054ab3866b5fa2c8f26, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: 4838460e3dfff694e9188b98672c1a63, type: 2}
     - target: {fileID: 919132149155446097, guid: 0b7a8a76949b2054ab3866b5fa2c8f26, type: 3}
       propertyPath: m_Name
       value: player_var1_blue_body (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 0b7a8a76949b2054ab3866b5fa2c8f26, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b7a8a76949b2054ab3866b5fa2c8f26, type: 3}

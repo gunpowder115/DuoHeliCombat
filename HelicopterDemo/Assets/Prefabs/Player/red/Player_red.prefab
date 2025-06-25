@@ -160,6 +160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: glass
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 498de63c2905d5a47a23f17daaa422e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 498de63c2905d5a47a23f17daaa422e0, type: 3}
 --- !u!4 &2565793411056492197 stripped
@@ -221,7 +225,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 560bb308293ae254ea2f437217516b82, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: cce8ebfafaf23614098ee9f8f05c8427, type: 2}
     - target: {fileID: 919132149155446097, guid: 560bb308293ae254ea2f437217516b82, type: 3}
       propertyPath: m_Name
       value: leftLongWing
@@ -423,7 +427,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 0108528012f7ac74084e4f0ca86b61fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: cce8ebfafaf23614098ee9f8f05c8427, type: 2}
     - target: {fileID: 919132149155446097, guid: 0108528012f7ac74084e4f0ca86b61fc, type: 3}
       propertyPath: m_Name
       value: rightShortWing
@@ -753,7 +757,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 560bb308293ae254ea2f437217516b82, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: cce8ebfafaf23614098ee9f8f05c8427, type: 2}
     - target: {fileID: 919132149155446097, guid: 560bb308293ae254ea2f437217516b82, type: 3}
       propertyPath: m_Name
       value: rightLongWing
@@ -823,10 +827,14 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: a4b2dadda170ac944ab0c6e240aead99, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: cce8ebfafaf23614098ee9f8f05c8427, type: 2}
     - target: {fileID: 919132149155446097, guid: a4b2dadda170ac944ab0c6e240aead99, type: 3}
       propertyPath: m_Name
       value: player_var2_red_body (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a4b2dadda170ac944ab0c6e240aead99, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b2dadda170ac944ab0c6e240aead99, type: 3}
@@ -889,7 +897,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 0108528012f7ac74084e4f0ca86b61fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: cce8ebfafaf23614098ee9f8f05c8427, type: 2}
     - target: {fileID: 919132149155446097, guid: 0108528012f7ac74084e4f0ca86b61fc, type: 3}
       propertyPath: m_Name
       value: leftShortWing
