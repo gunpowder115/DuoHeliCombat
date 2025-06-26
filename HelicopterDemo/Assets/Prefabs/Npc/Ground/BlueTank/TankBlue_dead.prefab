@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 61879484048597489}
     m_Modifications:
+    - target: {fileID: 3719497663644139022, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
       propertyPath: m_Name
       value: Smoke
@@ -122,7 +126,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 09cc953d2ffdfad4da09983b167e2344, type: 2}
     - target: {fileID: 8625695807979126336, guid: 390a4eb07930e8642962b6c18797304a, type: 3}
       propertyPath: m_Name
-      value: TankBlue_dead Variant
+      value: TankBlue_dead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 390a4eb07930e8642962b6c18797304a, type: 3}
@@ -148,5 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b850890db36e3408ec2e3a26388571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy: 1
+  defaultVisible: 1
+  active: 1
   fadeOutSpeed: 0.5
   waitTime: 10
+  defaultAlpha: 1

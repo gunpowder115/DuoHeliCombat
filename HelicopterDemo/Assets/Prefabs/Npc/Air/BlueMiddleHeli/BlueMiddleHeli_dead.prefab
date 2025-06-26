@@ -4761,7 +4761,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4878,20 +4878,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4084656863911623160, guid: 3684ad70f78c0d8429e8262a14b174d2, type: 3}
   m_PrefabInstance: {fileID: 1051883576646264374}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1437319337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3906476081774944206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b850890db36e3408ec2e3a26388571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeOutSpeed: 0.5
-  waitTime: 10
 --- !u!54 &1437319336
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4908,6 +4894,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1437319337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3906476081774944206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b850890db36e3408ec2e3a26388571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 1
+  defaultVisible: 1
+  active: 1
+  fadeOutSpeed: 0.5
+  waitTime: 10
+  defaultAlpha: 1
 --- !u!4 &3906476081774944207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4084656863911623161, guid: 3684ad70f78c0d8429e8262a14b174d2, type: 3}

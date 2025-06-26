@@ -61,8 +61,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroy: 0
   defaultVisible: 0
+  active: 1
   fadeOutSpeed: 0.5
   waitTime: 2
+  defaultAlpha: 1
 --- !u!1001 &5634870819630367775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,6 +120,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7902628907438131447, guid: 46d65c9b434dcd64490c0d8fa23b1383, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46d65c9b434dcd64490c0d8fa23b1383, type: 3}
 --- !u!4 &9097880826239544848 stripped

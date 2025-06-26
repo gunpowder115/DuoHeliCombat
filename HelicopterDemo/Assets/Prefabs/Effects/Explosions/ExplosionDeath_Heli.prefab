@@ -154,6 +154,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4954313840775520741}
     m_Modifications:
+    - target: {fileID: 5116335436613203992, guid: 21d8ddcce6fb65346a725fbf264aae1d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 5116335436613203993, guid: 21d8ddcce6fb65346a725fbf264aae1d, type: 3}
       propertyPath: ShapeModule.type
       value: 2
@@ -366,6 +370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Expl_DeathSmoke
       objectReference: {fileID: 0}
+    - target: {fileID: 4667719260257335870, guid: a192c6e7d54ed6744ad13502a9f95dc3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a192c6e7d54ed6744ad13502a9f95dc3, type: 3}
 --- !u!4 &8239046182198199727 stripped
