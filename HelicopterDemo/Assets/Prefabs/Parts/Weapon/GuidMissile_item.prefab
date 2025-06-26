@@ -204,6 +204,22 @@ PrefabInstance:
       value: 1.5707963
       objectReference: {fileID: 0}
     - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.2901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
       propertyPath: InitialModule.startRotation.minMaxState
       value: 3
       objectReference: {fileID: 0}
@@ -350,6 +366,22 @@ PrefabInstance:
     - target: {fileID: 1763633737916489444, guid: 3c98d65e1c0a44443b13e7f7e86068e7, type: 3}
       propertyPath: InitialModule.startRotation.scalar
       value: 1.5707963
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: 3c98d65e1c0a44443b13e7f7e86068e7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.8352941
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: 3c98d65e1c0a44443b13e7f7e86068e7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.35236263
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: 3c98d65e1c0a44443b13e7f7e86068e7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.1745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: 3c98d65e1c0a44443b13e7f7e86068e7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1763633737916489444, guid: 3c98d65e1c0a44443b13e7f7e86068e7, type: 3}
       propertyPath: InitialModule.startRotation.minMaxState

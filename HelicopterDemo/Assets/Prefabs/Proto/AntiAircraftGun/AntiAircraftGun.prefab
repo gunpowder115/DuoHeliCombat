@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,7 +159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef0f4fd4e27ad4081a6cc4ded100ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lostHpPartForManeuver: 3
+  playerIndex: -1
   baseHealth: 100
+  smokePrefab: {fileID: 0}
+  healthBarPrefab: {fileID: 0}
 --- !u!114 &1077166908547307591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249e88c79374bbb4991e7aa56922b92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToNextLaunch: 0.5
 --- !u!1001 &3974072946117010308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -227,6 +232,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5437424496373657935, guid: 87e09daafba09004ebff2c06e56eb6af, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 8901551328901929335, guid: 87e09daafba09004ebff2c06e56eb6af, type: 3}
       propertyPath: shotDelay
       value: 0.2

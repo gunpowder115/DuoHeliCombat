@@ -118,6 +118,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4946029451874697791}
     m_Modifications:
+    - target: {fileID: 6394993681959866271, guid: 96aa0b2782a448c4c8f256551234c9b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    - target: {fileID: 6394993682083269413, guid: 96aa0b2782a448c4c8f256551234c9b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    - target: {fileID: 6394993682765792649, guid: 96aa0b2782a448c4c8f256551234c9b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 6394993682784021894, guid: 96aa0b2782a448c4c8f256551234c9b9, type: 3}
       propertyPath: m_Name
       value: Radar
