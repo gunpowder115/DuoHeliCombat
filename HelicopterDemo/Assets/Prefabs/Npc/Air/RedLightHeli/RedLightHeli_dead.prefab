@@ -4761,7 +4761,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4821,7 +4821,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1031888820047019511, guid: f56ee84ef442ad248be156912b6fc1d3, type: 3}
       propertyPath: m_Name
-      value: RedLightHeli_dead Variant
+      value: RedLightHeli_dead
       objectReference: {fileID: 0}
     - target: {fileID: 1367216936131250314, guid: f56ee84ef442ad248be156912b6fc1d3, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4911,5 +4911,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b850890db36e3408ec2e3a26388571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy: 1
+  defaultVisible: 1
+  active: 1
   fadeOutSpeed: 0.5
   waitTime: 10
+  defaultAlpha: 1

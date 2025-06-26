@@ -265,6 +265,18 @@ PrefabInstance:
       value: 1.5707963
       objectReference: {fileID: 0}
     - target: {fileID: 1763633737916489444, guid: cfe46c446844edb408774e54e8710b40, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.11792451
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: cfe46c446844edb408774e54e8710b40, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.6298883
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: cfe46c446844edb408774e54e8710b40, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763633737916489444, guid: cfe46c446844edb408774e54e8710b40, type: 3}
       propertyPath: InitialModule.startRotation.minMaxState
       value: 3
       objectReference: {fileID: 0}
@@ -345,6 +357,26 @@ PrefabInstance:
     - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
       propertyPath: InitialModule.startRotation.scalar
       value: 1.5707963
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.2901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 18890
       objectReference: {fileID: 0}
     - target: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
       propertyPath: InitialModule.startRotation.minMaxState

@@ -23,6 +23,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3793dfc958dd0f84a879728db3376e0f, type: 2}
+    - target: {fileID: 4946029451273555684, guid: c2e88146d7dcaec4892f4f2f3902f031, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    - target: {fileID: 4946029451396585061, guid: c2e88146d7dcaec4892f4f2f3902f031, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 4946029451874697790, guid: c2e88146d7dcaec4892f4f2f3902f031, type: 3}
       propertyPath: m_Name
       value: HelicopterEnemy_CargoPlatformEnemy
@@ -75,5 +83,13 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3793dfc958dd0f84a879728db3376e0f, type: 2}
+    - target: {fileID: 4946029452348878585, guid: c2e88146d7dcaec4892f4f2f3902f031, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    - target: {fileID: 4946029452527003656, guid: c2e88146d7dcaec4892f4f2f3902f031, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2e88146d7dcaec4892f4f2f3902f031, type: 3}

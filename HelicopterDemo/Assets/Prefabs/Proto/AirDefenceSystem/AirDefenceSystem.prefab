@@ -95,7 +95,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -185,6 +185,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerGroup
       objectReference: {fileID: 0}
+    - target: {fileID: 1732628963887845226, guid: 28e0f48c57444d0409f7bd6712909d02, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents:
     - {fileID: 7942603905754371764, guid: 28e0f48c57444d0409f7bd6712909d02, type: 3}
     - {fileID: 5776885701490751858, guid: 28e0f48c57444d0409f7bd6712909d02, type: 3}

@@ -269,10 +269,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lostHpPartForManeuver: 3
+  playerIndex: -1
   baseHealth: 100
   smokePrefab: {fileID: 0}
   healthBarPrefab: {fileID: 0}
-  uiHealth: {fileID: 0}
 --- !u!4 &1901197804846170525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4003434706837008606, guid: dc3d17aa2ba379a4f879d4b2b7b2bf06, type: 3}

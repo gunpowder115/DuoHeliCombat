@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,7 +145,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -242,7 +242,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -339,7 +339,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -436,7 +436,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -515,14 +515,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftLeg: {fileID: 338408216059716652}
   rightLeg: {fileID: 338408216797707869}
+  rotatingPart: {fileID: 0}
   speed: 3
   stepDelta: 1.3
   legSpeedCoef: 1.2
   legTilt: 10
   pause: 0.05
   kneeTilt: -20
-  destroyEffectPrefab: {fileID: 0}
-  destroyedPrefab: {fileID: 0}
+  fallingWalkerPrefab: {fileID: 0}
 --- !u!65 &4882828877494301535
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -635,10 +635,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4882828877494301528}
     m_Modifications:
+    - target: {fileID: 1529351476383780935, guid: 466555dd7a70ccd4fb88deb239a31185, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5147911813204753348, guid: 466555dd7a70ccd4fb88deb239a31185, type: 3}
       propertyPath: m_Name
       value: RightLeg
       objectReference: {fileID: 0}
+    - target: {fileID: 7157105470790073590, guid: 466555dd7a70ccd4fb88deb239a31185, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    - target: {fileID: 8459963894308347375, guid: 466555dd7a70ccd4fb88deb239a31185, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 8618343123353157794, guid: 466555dd7a70ccd4fb88deb239a31185, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -702,10 +714,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4882828877494301528}
     m_Modifications:
+    - target: {fileID: 1529351476383780935, guid: 466555dd7a70ccd4fb88deb239a31185, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5147911813204753348, guid: 466555dd7a70ccd4fb88deb239a31185, type: 3}
       propertyPath: m_Name
       value: LeftLeg
       objectReference: {fileID: 0}
+    - target: {fileID: 7157105470790073590, guid: 466555dd7a70ccd4fb88deb239a31185, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    - target: {fileID: 8459963894308347375, guid: 466555dd7a70ccd4fb88deb239a31185, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 8618343123353157794, guid: 466555dd7a70ccd4fb88deb239a31185, type: 3}
       propertyPath: m_RootOrder
       value: 2
