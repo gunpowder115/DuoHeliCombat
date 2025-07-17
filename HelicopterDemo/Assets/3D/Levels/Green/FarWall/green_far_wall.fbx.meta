@@ -12,8 +12,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: WallDecor
-    second: {fileID: 2100000, guid: a0ec15a0ecff8e443b584152524705c5, type: 2}
+      name: WallDecor_1
+    second: {fileID: 2100000, guid: 80c78e18a82911a4c933c8c62f9e344c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallDecor_2
+    second: {fileID: 2100000, guid: 43c5df3a74568bd4682baf5b3ab321d9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
