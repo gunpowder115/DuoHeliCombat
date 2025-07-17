@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4189766298877853509}
   - component: {fileID: 4189766298877853508}
+  - component: {fileID: -6279699318862565781}
   m_Layer: 0
   m_Name: LongWallCollider
   m_TagString: Untagged
@@ -43,5 +44,17 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 513.28357, y: 64.894615, z: 5.2838974}
-  m_Center: {x: 0, y: 0, z: 0.4711274}
+  m_Size: {x: 513.28357, y: 64.894615, z: 8.288931}
+  m_Center: {x: 0, y: 0, z: 1.9736446}
+--- !u!114 &-6279699318862565781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4189766298877853511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1cec5908d937248b048d22917b168e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
