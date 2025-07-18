@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b7a8a76949b2054ab3866b5fa2c8f26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b7a8a76949b2054ab3866b5fa2c8f26, type: 3}
       propertyPath: m_LocalPosition.y
@@ -153,7 +153,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 5c952881c97096c4e8acdc88f7b45f8b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5b54048bc3bb946479485bf1ec29555b, type: 2}
+      objectReference: {fileID: 2100000, guid: 2e52714a9e4488d4f84b79d2704266d9, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c952881c97096c4e8acdc88f7b45f8b, type: 3}
       propertyPath: m_Name
       value: player_blue_outline
