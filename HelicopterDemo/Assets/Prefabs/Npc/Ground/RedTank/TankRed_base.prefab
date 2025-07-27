@@ -119,7 +119,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 50b105fb00909a048b0381b28b89b2c3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: cce8ebfafaf23614098ee9f8f05c8427, type: 2}
     - target: {fileID: 919132149155446097, guid: 50b105fb00909a048b0381b28b89b2c3, type: 3}
       propertyPath: m_Name
       value: tank_var_1_red_barrel
@@ -201,7 +201,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8093801dd97e8f848b88e4b4d1beaa96, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: cce8ebfafaf23614098ee9f8f05c8427, type: 2}
     - target: {fileID: 919132149155446097, guid: 8093801dd97e8f848b88e4b4d1beaa96, type: 3}
       propertyPath: m_Name
       value: tank_var_1_red_tower
@@ -288,7 +288,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 4f7229e55ca22e843a9e0cbdeeec65bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: cce8ebfafaf23614098ee9f8f05c8427, type: 2}
     - target: {fileID: 919132149155446097, guid: 4f7229e55ca22e843a9e0cbdeeec65bc, type: 3}
       propertyPath: m_Name
       value: tank_var_1_red_body
