@@ -285,7 +285,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 120938081d9e1284a9db7c86c22f831e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41fa7151b22cec44d8bb86e5a0275a82, type: 2}
+      objectReference: {fileID: 2100000, guid: 4838460e3dfff694e9188b98672c1a63, type: 2}
     - target: {fileID: 919132149155446097, guid: 120938081d9e1284a9db7c86c22f831e, type: 3}
       propertyPath: m_Name
       value: cargo_helicopter_var2_body_blue
