@@ -63,4 +63,4 @@ MonoBehaviour:
   isNpc: 0
   membersCount: 3
   squadRadius: 8
-  memberPrefab: {fileID: 6761449689015852737, guid: 35c18964e8ed87f40895d67dc045b141, type: 3}
+  memberPrefab: {fileID: 2719115793137094271, guid: 4652daab6d957aa42a896266e70c7d35, type: 3}
