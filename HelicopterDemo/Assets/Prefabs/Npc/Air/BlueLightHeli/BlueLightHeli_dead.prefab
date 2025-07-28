@@ -4819,10 +4819,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 446091155373938438, guid: a3a190fa4eb994846979d133898459df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 528740209569789051, guid: a3a190fa4eb994846979d133898459df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 600565182167770647, guid: a3a190fa4eb994846979d133898459df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080655286616339245, guid: a3a190fa4eb994846979d133898459df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378811221124867342, guid: a3a190fa4eb994846979d133898459df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745161607051488115, guid: a3a190fa4eb994846979d133898459df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860769418074964064, guid: a3a190fa4eb994846979d133898459df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7867018617197244549, guid: a3a190fa4eb994846979d133898459df, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 09cc953d2ffdfad4da09983b167e2344, type: 2}
+    - target: {fileID: 7905332275096231898, guid: a3a190fa4eb994846979d133898459df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8873599739998337664, guid: a3a190fa4eb994846979d133898459df, type: 3}
       propertyPath: m_Name
       value: BlueLightHeli_dead
@@ -4911,5 +4943,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b850890db36e3408ec2e3a26388571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy: 1
+  defaultVisible: 1
+  active: 1
   fadeOutSpeed: 0.5
   waitTime: 10
+  defaultAlpha: 1

@@ -227,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 5237572762632130664, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
       propertyPath: cargoPrefab
       value: 
-      objectReference: {fileID: 5362843333078127308, guid: fd5009e3f92ce054c8da88747018e805, type: 3}
+      objectReference: {fileID: 9112449824145893691, guid: 29992032d4a2fb344bfb143f6acfcd8e, type: 3}
     - target: {fileID: 7869827456156279192, guid: 210f121909a3db04cba206a32e0964e4, type: 3}
       propertyPath: m_Enabled
       value: 0
