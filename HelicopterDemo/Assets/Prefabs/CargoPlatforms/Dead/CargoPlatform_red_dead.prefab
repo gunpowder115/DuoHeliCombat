@@ -205,7 +205,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 91a6cc11753dbda4fb6fe7946e7c78b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cce8ebfafaf23614098ee9f8f05c8427, type: 2}
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     - target: {fileID: 919132149155446097, guid: 91a6cc11753dbda4fb6fe7946e7c78b3, type: 3}
       propertyPath: m_Name
       value: square_outside_platform
@@ -272,6 +272,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radar_dead
       objectReference: {fileID: 0}
+    - target: {fileID: 926460693020442789, guid: cca8992dd9d363843a1246f45cc1f6b3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
+    - target: {fileID: 2885838339259975435, guid: cca8992dd9d363843a1246f45cc1f6b3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
+    - target: {fileID: 3595660583594504817, guid: cca8992dd9d363843a1246f45cc1f6b3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cca8992dd9d363843a1246f45cc1f6b3, type: 3}
 --- !u!4 &8820704372833159463 stripped

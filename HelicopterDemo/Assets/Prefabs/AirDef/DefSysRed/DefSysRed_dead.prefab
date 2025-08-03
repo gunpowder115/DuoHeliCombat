@@ -80,6 +80,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 09cc953d2ffdfad4da09983b167e2344, type: 2}
+    - target: {fileID: 1136915485023688320, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517241929767227708, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     - target: {fileID: 2043951984725440548, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -128,6 +136,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefSysRed_dead
       objectReference: {fileID: 0}
+    - target: {fileID: 2323400816928741653, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3185401950410132965, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962503365336105751, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
+    - target: {fileID: 4248883847186266202, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feffc4c298398ed42b69a54de1f01985, type: 3}
 --- !u!1 &1510866225054500462 stripped

@@ -4831,10 +4831,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2862840128844701965, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4013530437937422730, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4428067640688804943, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     - target: {fileID: 4862393588591422701, guid: e3d59edaf50360c4babc5c5b9d80f74e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

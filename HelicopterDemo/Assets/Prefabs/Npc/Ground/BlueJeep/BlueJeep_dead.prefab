@@ -68,9 +68,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2370594671034948417, guid: 858d922c02f36cb45ac25817ebdd4b7b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     - target: {fileID: 3811478955820155218, guid: 858d922c02f36cb45ac25817ebdd4b7b, type: 3}
       propertyPath: m_Name
       value: BlueJeep_dead
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192704640599274908, guid: 858d922c02f36cb45ac25817ebdd4b7b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5723611919543110450, guid: 858d922c02f36cb45ac25817ebdd4b7b, type: 3}
       propertyPath: m_Materials.Array.data[0]

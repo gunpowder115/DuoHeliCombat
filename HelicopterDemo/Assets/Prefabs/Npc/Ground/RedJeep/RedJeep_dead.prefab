@@ -64,6 +64,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 533258513118867399, guid: 67ac8abe6bf12dc468a2e4c5c33e284e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     - target: {fileID: 654903885590351314, guid: 67ac8abe6bf12dc468a2e4c5c33e284e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -110,7 +114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 654903885590351315, guid: 67ac8abe6bf12dc468a2e4c5c33e284e, type: 3}
       propertyPath: m_Name
-      value: RedJeep_dead Variant
+      value: RedJeep_dead
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139194608239148200, guid: 67ac8abe6bf12dc468a2e4c5c33e284e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2242431629628086260, guid: 67ac8abe6bf12dc468a2e4c5c33e284e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -135,8 +143,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b850890db36e3408ec2e3a26388571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy: 1
+  defaultVisible: 1
+  active: 1
   fadeOutSpeed: 0.5
   waitTime: 10
+  defaultAlpha: 1
 --- !u!4 &3362308445258027607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 654903885590351314, guid: 67ac8abe6bf12dc468a2e4c5c33e284e, type: 3}
