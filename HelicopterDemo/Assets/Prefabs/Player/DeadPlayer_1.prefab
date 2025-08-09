@@ -138,10 +138,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3527683377208532893}
     m_Modifications:
-    - target: {fileID: 3719497663644139022, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
       propertyPath: m_Name
       value: Smoke

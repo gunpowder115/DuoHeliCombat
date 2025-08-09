@@ -108,6 +108,10 @@ PrefabInstance:
       value: CargoPlatform_heli_middle_red
       objectReference: {fileID: 0}
     - target: {fileID: 1443192276861054771, guid: e8bd0973fac8598469f041ea38683839, type: 3}
+      propertyPath: deadPrefab
+      value: 
+      objectReference: {fileID: 8912947239113623384, guid: 80d2182f1f4ab594e9c6089d4b73a84d, type: 3}
+    - target: {fileID: 1443192276861054771, guid: e8bd0973fac8598469f041ea38683839, type: 3}
       propertyPath: buildingSide
       value: 0
       objectReference: {fileID: 0}
