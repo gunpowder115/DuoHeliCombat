@@ -215,10 +215,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4065219865265414227}
     m_Modifications:
-    - target: {fileID: 1211060273521591383, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 616b91e583dcd034ebf16a133e179342, type: 2}
     - target: {fileID: 4450342287222462407, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -262,30 +258,6 @@ PrefabInstance:
     - target: {fileID: 4450342287222462407, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7794894122400226849, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
-      propertyPath: UVModule.tilesX
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7794894122400226849, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
-      propertyPath: UVModule.tilesY
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7794894122400226849, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
-      propertyPath: UVModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7794894122400226849, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7794894122400226849, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7794894122400226849, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8747251697340280286, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
       propertyPath: m_Name
