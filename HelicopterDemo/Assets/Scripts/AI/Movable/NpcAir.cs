@@ -17,12 +17,14 @@ public class NpcAir : Npc
     [SerializeField] private float minHeight = 15f;
     [SerializeField] private float maxHeight = 50f;
     [SerializeField] private GameObject airDustPrefab;
+    [SerializeField] private GameObject fallingPrefab;
 
     private NpcTakeoff npcTakeoff;
     private List<SimpleRotor> rotors;
     private LineRenderer lineToTarget;
     private AirDuster airDuster;
     private Caravan caravan;
+    private FallingHelicopter fallingHelicopter;
 
     #region Properties
 
@@ -81,11 +83,23 @@ public class NpcAir : Npc
     {
         unitController.RemoveNpc(this);
 
-        if (deadPrefab)
-            Instantiate(deadPrefab, transform.position, transform.rotation);
+        float randomValue = Random.value;
 
-        if (explosion)
-            Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+        if (randomValue > 0.3f && fallingPrefab)
+        {
+            fallingHelicopter = Instantiate(fallingPrefab, transform.position, transform.rotation).GetComponent<FallingHelicopter>();
+
+            fallingHelicopter.DeadPrefab = deadPrefab;
+            fallingHelicopter.ExplosionPrefab = explosion;
+        }
+        else
+        {
+            if (deadPrefab)
+                Instantiate(deadPrefab, transform.position, transform.rotation);
+
+            if (explosion)
+                Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+        }
 
         Destroy(gameObject);
     }

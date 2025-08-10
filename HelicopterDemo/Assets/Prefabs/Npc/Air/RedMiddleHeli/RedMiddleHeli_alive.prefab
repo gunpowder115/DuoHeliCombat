@@ -260,6 +260,7 @@ MonoBehaviour:
   minHeight: 15
   maxHeight: 50
   airDustPrefab: {fileID: 9117464957027130638, guid: 8cb157bf585ff7945a1958d3db898b09, type: 3}
+  fallingPrefab: {fileID: 103770020665621420, guid: 50d1ca02ca6798c488a7796cd26e388e, type: 3}
 --- !u!114 &474047298
 MonoBehaviour:
   m_ObjectHideFlags: 0

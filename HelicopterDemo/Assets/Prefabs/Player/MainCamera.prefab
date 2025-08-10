@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6878582592513183703}
   - component: {fileID: 6878582592513183704}
   - component: {fileID: 3422478316054150462}
+  - component: {fileID: 1541416751859727820}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -99,9 +100,10 @@ MonoBehaviour:
   maxDelay: 0.5
   shakeDuration: 0.2
   shakeMagnitude: 0.05
-  rotSpeedAroundPlayer: 50
   minVertAngleAroundPlayer: -25
   maxVertAngleAroundPlayer: 35
+  inputCoefForCameraRotating: 0.8
+  rotSpeedAroundPlayer: 50
   cameraDefaultPos: {x: 0, y: 11, z: -22}
   cameraDefaultRot: {x: 15, y: 0, z: 0}
   cameraAimPosCenter: {x: 3, y: 3.8, z: -8}
@@ -113,3 +115,36 @@ MonoBehaviour:
   cameraRescueRot: {x: 37, y: 0, z: 0}
   player: {fileID: 0}
   cameraContainer: {fileID: 0}
+--- !u!114 &1541416751859727820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6878582592513183706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
