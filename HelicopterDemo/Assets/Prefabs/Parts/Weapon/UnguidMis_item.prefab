@@ -87,6 +87,7 @@ MonoBehaviour:
   launchSound: {fileID: 8300000, guid: e2cfd8b8b8d0e5e43997109da0505f62, type: 3}
   flyingSound: {fileID: 8300000, guid: c51a2006524cc434e8cc6bb293f14c33, type: 3}
   projectileType: 2
+  smokeTail: {fileID: 8397058520282686541}
 --- !u!82 &793831967301536909
 AudioSource:
   m_ObjectHideFlags: 0
@@ -439,5 +440,10 @@ PrefabInstance:
 --- !u!4 &2469424670585735188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6860972130369659931, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
+  m_PrefabInstance: {fileID: 9039350532557286415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8397058520282686541 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 718994115312568386, guid: 199b93d6feb14b046a11152aeee595d2, type: 3}
   m_PrefabInstance: {fileID: 9039350532557286415}
   m_PrefabAsset: {fileID: 0}
