@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467a2ed89bcb34e409b21606ee8cd4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shaking: 0
   maxExplosionShakeDist: 15
   explosionType: 0
 --- !u!82 &-4661153369383737086
@@ -229,7 +230,7 @@ PrefabInstance:
     - target: {fileID: 1211060273521591383, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 61c9bd7dcdd5d8d46bd84b8862c0fb2d, type: 2}
+      objectReference: {fileID: 2100000, guid: ed3468e8b225d404886fe377fa513e51, type: 2}
     - target: {fileID: 4450342287222462407, guid: 6058ff984900cbe43ac6fc3b57e9e65a, type: 3}
       propertyPath: m_RootOrder
       value: 0

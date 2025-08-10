@@ -138,10 +138,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3527683377208532893}
     m_Modifications:
-    - target: {fileID: 3719497663644139022, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
       propertyPath: m_Name
       value: Smoke
@@ -251,7 +247,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 0b7a8a76949b2054ab3866b5fa2c8f26, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 09cc953d2ffdfad4da09983b167e2344, type: 2}
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     - target: {fileID: 919132149155446097, guid: 0b7a8a76949b2054ab3866b5fa2c8f26, type: 3}
       propertyPath: m_Name
       value: player_var1_blue_body (7)
@@ -321,7 +317,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8b79ac54b06e10646a0d33aad9d497dd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 09cc953d2ffdfad4da09983b167e2344, type: 2}
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     - target: {fileID: 919132149155446097, guid: 8b79ac54b06e10646a0d33aad9d497dd, type: 3}
       propertyPath: m_Name
       value: long_wing_blue (4)
@@ -391,7 +387,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8b79ac54b06e10646a0d33aad9d497dd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 09cc953d2ffdfad4da09983b167e2344, type: 2}
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     - target: {fileID: 919132149155446097, guid: 8b79ac54b06e10646a0d33aad9d497dd, type: 3}
       propertyPath: m_Name
       value: long_wing_blue (3)

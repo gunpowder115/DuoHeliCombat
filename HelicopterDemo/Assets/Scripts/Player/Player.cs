@@ -14,7 +14,6 @@ public class Player : MonoBehaviour, IFindable
     [SerializeField] private GlobalSide2 playerSide = GlobalSide2.Blue;
     [SerializeField] private bool startWithTakeoff = false;
     [SerializeField] float changeSpeedInput = 0.7f;
-    [SerializeField] float vertFastCoef = 5f;
     [SerializeField] float minDistToAim = 17f;
     [SerializeField] float maxDistToAim = 20f;
     [SerializeField] private float minDistToBuild = 5f;
@@ -152,10 +151,9 @@ public class Player : MonoBehaviour, IFindable
     {
         Vector2 inputDirection = inputDevice.PlayerState == PlayerStates.Rescue ? GetRescueHorInput() : inputDevice.GetInput();
         float inputVerticalDirection = inputDevice.PlayerState == PlayerStates.Rescue ? GetRescueVertInput() : inputDevice.VerticalMoving;
-        float inputVerticalFast = inputDevice.VerticalFastMoving;
         float inputX = inputDirection.x;
         float inputZ = inputDirection.y;
-        float inputY = inputVerticalFast != 0f ? inputVerticalFast : inputVerticalDirection;
+        float inputY = inputVerticalDirection;
 
         if (!health.IsAlive && Respawn())
         {
@@ -172,7 +170,7 @@ public class Player : MonoBehaviour, IFindable
                 Vector3 randMov = new Vector3();
                 if (takeoff.ClimbSpeed > 0f)
                     randMov = randomMovement.GetRandomInput();
-                Translate(randMov.x, takeoff.ClimbSpeed, randMov.z, 0f);
+                Translate(randMov.x, takeoff.ClimbSpeed, randMov.z);
             }
         }
         else
@@ -184,7 +182,7 @@ public class Player : MonoBehaviour, IFindable
             //    inputX = randomInput.x;
             //    inputZ = randomInput.z;
             //}
-            Translate(inputX, inputY, inputZ, inputVerticalFast);
+            Translate(inputX, inputY, inputZ);
         }
 
         //rotation around X, Y, Z
@@ -253,21 +251,21 @@ public class Player : MonoBehaviour, IFindable
         if (vertDir > 0 && transform.position.y < targetHeight)
         {
             (translation as RigidbodyTranslation).SetConstraints(true);
-            VerticalTranslate(0.5f, 0f);
+            VerticalTranslate(0.5f);
         }
         else if (vertDir < 0 && transform.position.y > targetHeight)
         {
             (translation as RigidbodyTranslation).SetConstraints(true);
-            VerticalTranslate(-0.5f, 0f);
+            VerticalTranslate(-0.5f);
         }
         else
         {
             (translation as RigidbodyTranslation).SetConstraints(false);
-            VerticalTranslate(0f, 0f);
+            VerticalTranslate(0f);
         }
     }
 
-    void Translate(float inputX, float inputY, float inputZ, float inputVerticalFast)
+    void Translate(float inputX, float inputY, float inputZ)
     {
         float inputXZ = Mathf.Clamp01(new Vector3(inputX, 0f, inputZ).magnitude);
 
@@ -319,10 +317,10 @@ public class Player : MonoBehaviour, IFindable
             translation.SetHorizontalTranslation(currSpeed);
         }
 
-        VerticalTranslate(inputY, inputVerticalFast);
+        VerticalTranslate(inputY);
     }
 
-    private void VerticalTranslate(float inputY, float inputVerticalFast)
+    private void VerticalTranslate(float inputY)
     {
         if (inputDevice.PlayerState == PlayerStates.Rescue)
         {
@@ -338,7 +336,6 @@ public class Player : MonoBehaviour, IFindable
         else
         {
             targetVerticalSpeed = inputY * verticalSpeed;
-            if (inputVerticalFast != 0f) targetVerticalSpeed *= vertFastCoef;
             currVerticalSpeed = Mathf.Lerp(currVerticalSpeed, targetVerticalSpeed, acceleration * Time.deltaTime);
             translation.SetVerticalTranslation(currVerticalSpeed);
         }

@@ -13,6 +13,7 @@ public class GuidedMissile : MonoBehaviour
     [SerializeField] private GameObject explosion;
     [SerializeField] private AudioClip launchSound;
     [SerializeField] private AudioClip flyingSound;
+    [SerializeField] private ParticleSystem smokeTail;
 
     private bool isLaunchSound;
     private float currLifetime;
@@ -79,7 +80,19 @@ public class GuidedMissile : MonoBehaviour
         }
 
         if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+        if (smokeTail)
+        {
+            smokeTail.transform.parent = null;
+            smokeTail.Stop();
 
+            ParticleSystem.Particle[] particles = new ParticleSystem.Particle[smokeTail.particleCount];
+            int count = smokeTail.GetParticles(particles);
+
+            for (int i = 0; i < count; i++)
+                particles[i].velocity = Vector3.zero;
+
+            smokeTail.SetParticles(particles, count);
+        }
         Destroy(gameObject);
     }
 

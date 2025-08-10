@@ -338,10 +338,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Expl_DeathSmoke
       objectReference: {fileID: 0}
-    - target: {fileID: 4667719260257335870, guid: a192c6e7d54ed6744ad13502a9f95dc3, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 8877604304388401797, guid: a192c6e7d54ed6744ad13502a9f95dc3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877604304388401797, guid: a192c6e7d54ed6744ad13502a9f95dc3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877604304388401797, guid: a192c6e7d54ed6744ad13502a9f95dc3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.509434
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a192c6e7d54ed6744ad13502a9f95dc3, type: 3}
 --- !u!4 &8239046182198199727 stripped

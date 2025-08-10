@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class NpcGround : Npc
 {
+    [SerializeField] private GameObject dust;
+
     public bool UnderAttack
     {
         get
@@ -31,10 +33,18 @@ public class NpcGround : Npc
 
     public void SetTarget(GameObject tgt) => selectedTarget = tgt;
 
-    public void Translate(Vector3 targetSpeed)
+    public void Translate(in Vector3 currDir, float currSpeedAbs)
     {
-        CurrentSpeed = Vector3.Lerp(CurrentSpeed, targetSpeed, Acceleration * Time.deltaTime);
+        Vector3 tgtSpd = currDir * currSpeedAbs;
+
+        CurrentSpeed = Vector3.Lerp(CurrentSpeed, tgtSpd, Acceleration * Time.deltaTime);
         translation.SetHorizontalTranslation(CurrentSpeed);
+
+        if (dust)
+        {
+            float scale = currSpeedAbs / speed;
+            dust.transform.localScale = new Vector3(scale, scale, scale);
+        }
     }
 
     public void Drop(float speed) => translation.SetVerticalTranslation(speed);

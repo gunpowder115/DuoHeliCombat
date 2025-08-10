@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private AudioClip launchSound;
     [SerializeField] private AudioClip flyingSound;
     [SerializeField] private ProjectileType projectileType = ProjectileType.Minigun;
+    [SerializeField] private ParticleSystem smokeTail;
 
     private bool isLaunchSound;
     float currLifetime;
@@ -82,6 +83,19 @@ public class Projectile : MonoBehaviour
         }
 
         if (explosion) Instantiate(explosion, gameObject.transform.position + transform.forward, gameObject.transform.rotation);
+        if (smokeTail)
+        {
+            smokeTail.transform.parent = null;
+            smokeTail.Stop();
+
+            ParticleSystem.Particle[] particles = new ParticleSystem.Particle[smokeTail.particleCount];
+            int count = smokeTail.GetParticles(particles);
+
+            for (int i = 0; i < count; i++)
+                particles[i].velocity = Vector3.zero;
+
+            smokeTail.SetParticles(particles, count);
+        }
         Destroy(gameObject);
     }
 

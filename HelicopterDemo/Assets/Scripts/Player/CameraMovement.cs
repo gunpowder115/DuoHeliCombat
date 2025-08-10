@@ -230,6 +230,7 @@ public class CameraMovement : MonoBehaviour
     private void RotateWithPlayer()
     {
         cameraContainer.transform.localRotation = Quaternion.Lerp(cameraContainer.transform.localRotation, Quaternion.Euler(AimAngles), aimingSpeed * Time.deltaTime);
+        containerRotation.y = cameraContainer.transform.localRotation.eulerAngles.y;
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(cameraAimingRot), aimingSpeed * Time.deltaTime);
 
         if (twoShoulders)

@@ -138,10 +138,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4989350652572415034}
     m_Modifications:
-    - target: {fileID: 3719497663644139022, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6736473127027900025, guid: dec177192ad53554fa0458d1e0f82dd0, type: 3}
       propertyPath: m_Name
       value: Smoke
@@ -255,7 +251,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 560bb308293ae254ea2f437217516b82, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 09cc953d2ffdfad4da09983b167e2344, type: 2}
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     - target: {fileID: 919132149155446097, guid: 560bb308293ae254ea2f437217516b82, type: 3}
       propertyPath: m_Name
       value: long_wing_red (1)
@@ -325,7 +321,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 560bb308293ae254ea2f437217516b82, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 09cc953d2ffdfad4da09983b167e2344, type: 2}
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     - target: {fileID: 919132149155446097, guid: 560bb308293ae254ea2f437217516b82, type: 3}
       propertyPath: m_Name
       value: long_wing_red (2)
@@ -395,7 +391,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: a4b2dadda170ac944ab0c6e240aead99, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 09cc953d2ffdfad4da09983b167e2344, type: 2}
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
     - target: {fileID: 919132149155446097, guid: a4b2dadda170ac944ab0c6e240aead99, type: 3}
       propertyPath: m_Name
       value: player_var2_red_body (1)

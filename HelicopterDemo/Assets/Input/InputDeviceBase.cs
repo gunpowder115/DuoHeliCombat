@@ -59,20 +59,11 @@ public abstract class InputDeviceBase
     {
         get
         {
-            bool up = ((LeftUp || RightUp) && LeftUp != RightUp) || SingleUp;
-            bool down = ((LeftDown || RightDown) && LeftDown != RightDown) || SingleDown;
+            bool up = LeftUp || RightUp || SingleUp;
+            bool down = LeftDown || RightDown || SingleDown;
 
             if (up) return 1f;
             if (down) return -1f;
-            return 0f;
-        }
-    }
-    public float VerticalFastMoving
-    {
-        get
-        {
-            if (fastUp) return 1f;
-            if (fastDown) return -1f;
             return 0f;
         }
     }
@@ -124,7 +115,6 @@ public abstract class InputDeviceBase
     readonly int singleDownIndex = (int)VerticalMoveDirection.SingleDown;
 
     bool unguidedMissileLaunch, guidedMissileLaunch;
-    bool fastUp, fastDown;
     bool[] verticalInputButtons;
     PlayerStates playerState;
     protected PlayerInput playerInput;
@@ -227,10 +217,6 @@ public abstract class InputDeviceBase
         {
             case PlayerStates.Normal:
                 verticalInputButtons[(int)vertMoveDir] = true;
-                if (LeftUp && RightUp)
-                    fastUp = true;
-                else if (LeftDown && RightDown)
-                    fastDown = true;
                 break;
             case PlayerStates.Aiming:
                 verticalInputButtons[(int)vertMoveDir] = true;
@@ -240,23 +226,13 @@ public abstract class InputDeviceBase
         if (((LeftUp || RightUp) && (LeftDown || RightDown)) || (SingleUp && SingleDown))
         {
             LeftUp = RightUp = LeftDown = RightDown = SingleUp = SingleDown = false;
-            fastUp = fastDown = false;
         }
     }
 
     protected void CancelVerticalMove(VerticalMoveDirection vertMoveDir)
     {
-        fastUp = fastDown = false;
         verticalInputButtons[(int)vertMoveDir] = false;
     }
-
-    protected void SetVerticalSingleFast()
-    {
-        if (SingleUp && !SingleDown) fastUp = true;
-        if (SingleDown && !SingleUp) fastDown = true;
-    }
-
-    protected void CancelVerticalSingleFast() => fastUp = fastDown = false;
 
     protected void SwitchPlayerConnection(int playerNumber) => ChangePlayerConnection?.Invoke(playerNumber);
 

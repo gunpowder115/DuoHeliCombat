@@ -88,6 +88,7 @@ MonoBehaviour:
   explosion: {fileID: 3013695635673224168, guid: 8588982e93436e04c8fd419c27851296, type: 3}
   launchSound: {fileID: 8300000, guid: e2cfd8b8b8d0e5e43997109da0505f62, type: 3}
   flyingSound: {fileID: 8300000, guid: c51a2006524cc434e8cc6bb293f14c33, type: 3}
+  smokeTail: {fileID: 2926978516552736497}
 --- !u!82 &5807290076575967705
 AudioSource:
   m_ObjectHideFlags: 0
@@ -277,6 +278,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
+--- !u!198 &2926978516552736497 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
+  m_PrefabInstance: {fileID: 2406283556912240307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9102839072872198824 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6860972130369659931, guid: 706a57f334fc6d948aeda5741832b935, type: 3}

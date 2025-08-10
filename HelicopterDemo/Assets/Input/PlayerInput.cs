@@ -98,15 +98,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""VertFastMod"",
-                    ""type"": ""Button"",
-                    ""id"": ""00202cc1-e7d8-4e98-ab7c-ab4c96f3ab36"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -305,17 +296,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""SingleDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4557c57a-1a36-4d12-9ed5-b5b90d48c6da"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""VertFastMod"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1917,7 +1897,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_RightDown = m_Player.FindAction("RightDown", throwIfNotFound: true);
         m_Player_SingleUp = m_Player.FindAction("SingleUp", throwIfNotFound: true);
         m_Player_SingleDown = m_Player.FindAction("SingleDown", throwIfNotFound: true);
-        m_Player_VertFastMod = m_Player.FindAction("VertFastMod", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_Move = m_Camera.FindAction("Move", throwIfNotFound: true);
@@ -2057,7 +2036,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RightDown;
     private readonly InputAction m_Player_SingleUp;
     private readonly InputAction m_Player_SingleDown;
-    private readonly InputAction m_Player_VertFastMod;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -2070,7 +2048,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @RightDown => m_Wrapper.m_Player_RightDown;
         public InputAction @SingleUp => m_Wrapper.m_Player_SingleUp;
         public InputAction @SingleDown => m_Wrapper.m_Player_SingleDown;
-        public InputAction @VertFastMod => m_Wrapper.m_Player_VertFastMod;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -2104,9 +2081,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @SingleDown.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSingleDown;
                 @SingleDown.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSingleDown;
                 @SingleDown.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSingleDown;
-                @VertFastMod.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVertFastMod;
-                @VertFastMod.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVertFastMod;
-                @VertFastMod.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVertFastMod;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -2135,9 +2109,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @SingleDown.started += instance.OnSingleDown;
                 @SingleDown.performed += instance.OnSingleDown;
                 @SingleDown.canceled += instance.OnSingleDown;
-                @VertFastMod.started += instance.OnVertFastMod;
-                @VertFastMod.performed += instance.OnVertFastMod;
-                @VertFastMod.canceled += instance.OnVertFastMod;
             }
         }
     }
@@ -2836,7 +2807,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnRightDown(InputAction.CallbackContext context);
         void OnSingleUp(InputAction.CallbackContext context);
         void OnSingleDown(InputAction.CallbackContext context);
-        void OnVertFastMod(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {

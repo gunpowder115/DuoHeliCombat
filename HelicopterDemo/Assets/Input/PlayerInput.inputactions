@@ -76,15 +76,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "VertFastMod",
-                    "type": "Button",
-                    "id": "00202cc1-e7d8-4e98-ab7c-ab4c96f3ab36",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -283,17 +274,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "SingleDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4557c57a-1a36-4d12-9ed5-b5b90d48c6da",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "VertFastMod",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

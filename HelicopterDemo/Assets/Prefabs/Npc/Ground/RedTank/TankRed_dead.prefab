@@ -64,6 +64,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 919727346541815138, guid: 3657f1b896dd5e644a0e22fd5c031a3c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588353145690776250, guid: 3657f1b896dd5e644a0e22fd5c031a3c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
+    - target: {fileID: 2565734149311096213, guid: 3657f1b896dd5e644a0e22fd5c031a3c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130399535530521564, guid: 3657f1b896dd5e644a0e22fd5c031a3c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
+    - target: {fileID: 4967831553028666442, guid: 3657f1b896dd5e644a0e22fd5c031a3c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2869cf4dea31b25468b746a789f57b60, type: 2}
+    - target: {fileID: 6789239769341921004, guid: 3657f1b896dd5e644a0e22fd5c031a3c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6992521968891466456, guid: 3657f1b896dd5e644a0e22fd5c031a3c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -110,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6992521968891466457, guid: 3657f1b896dd5e644a0e22fd5c031a3c, type: 3}
       propertyPath: m_Name
-      value: TankRed_dead Variant
+      value: TankRed_dead
       objectReference: {fileID: 0}
     - target: {fileID: 8575545953408464404, guid: 3657f1b896dd5e644a0e22fd5c031a3c, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -143,8 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b850890db36e3408ec2e3a26388571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy: 1
+  defaultVisible: 1
+  active: 1
   fadeOutSpeed: 0.5
   waitTime: 10
+  defaultAlpha: 1
 --- !u!4 &6293301443229630429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6992521968891466456, guid: 3657f1b896dd5e644a0e22fd5c031a3c, type: 3}

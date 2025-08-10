@@ -57,6 +57,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+HelicopterDemo/Build32/
 
 # Crashlytics generated file
 crashlytics-build.properties

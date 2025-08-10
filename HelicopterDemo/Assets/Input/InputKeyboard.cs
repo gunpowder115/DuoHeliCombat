@@ -36,11 +36,9 @@ public class InputKeyboard : InputDeviceBase
 
         playerInput.PlayerKeyboard.SingleUp.performed += context => SetVerticalMove(VerticalMoveDirection.SingleUp);
         playerInput.PlayerKeyboard.SingleDown.performed += context => SetVerticalMove(VerticalMoveDirection.SingleDown);
-        playerInput.PlayerKeyboard.VertFastMod.performed += context => SetVerticalSingleFast();
 
         playerInput.PlayerKeyboard.SingleUp.canceled += context => CancelVerticalMove(VerticalMoveDirection.SingleUp);
         playerInput.PlayerKeyboard.SingleDown.canceled += context => CancelVerticalMove(VerticalMoveDirection.SingleDown);
-        playerInput.PlayerKeyboard.VertFastMod.canceled += context => CancelVerticalSingleFast();
 
         #endregion
 
