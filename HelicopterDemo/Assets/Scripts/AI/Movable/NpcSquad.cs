@@ -84,7 +84,7 @@ public class NpcSquad : Npc
 
             for (int i = 0; i < Npcs.Count; i++)
             {
-                Npcs[i].Translate(Npcs[i].NpcCurrDir * speed);
+                Npcs[i].Translate(Npcs[i].NpcCurrDir, speed);
                 Npcs[i].Rotation.RotateByYaw(targetDir);
 
                 //check this for use corrected speed!
@@ -95,7 +95,7 @@ public class NpcSquad : Npc
         else
         {
             squadPos = squad.GetSquadPos(0);
-            Npcs[0].Translate(Npcs[0].NpcCurrDir * speed);
+            Npcs[0].Translate(Npcs[0].NpcCurrDir, speed);
             Npcs[0].Rotation.RotateByYaw(targetDir);
         }
     }
