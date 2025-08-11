@@ -55,8 +55,8 @@ public class UpgradeConfigSet : MonoBehaviour
             R1 = (WeaponType)weaponTypeArr.GetValue(UnityEngine.Random.Range(0, weaponTypeArr.Length));
         }
 
-        Transform parent = leftShortWing.transform.parent;
-        Quaternion rotation = leftShortWing.transform.rotation;
+        Transform parent = leftShortWing ? leftShortWing.transform.parent : null;
+        Quaternion rotation = leftShortWing ? leftShortWing.transform.rotation : Quaternion.identity;
         float y_pos = playerHelicopterType == 0 ? Y_T1 : Y_T2;
         float z_pos = playerHelicopterType == 0 ? Z_T1 : Z_T2;
         Vector3 L1_pos = new Vector3(X_L1, y_pos, z_pos);
@@ -64,39 +64,43 @@ public class UpgradeConfigSet : MonoBehaviour
         Vector3 R1_pos = new Vector3(X_R1, y_pos, z_pos);
         Vector3 R2_pos = new Vector3(X_R2, y_pos, z_pos);
         Vector3 C_pos = playerHelicopterType == 0 ? new Vector3(X_C, Y_C_T1, Z_C_T1) : new Vector3(X_C, Y_C_T2, Z_C_T2);
-        Vector4 parentPos = new Vector4(parent.position.x, parent.position.y, parent.position.z, 0f);
 
-        SetWingActivity(wingStateLeft, leftShortWing, leftLongWing);
-        SetWingActivity(wingStateRight, rightShortWing, rightLongWing);
-
-        if (wingStateLeft > WingState.None)
+        if (parent)
         {
-            var obj = Instantiate(weaponPrefabs[(int)L1], parentPos + parent.localToWorldMatrix * L1_pos, rotation, parent);
-            playerWeaponController.SetWeapon(playerIndex, L1, SlotType.L1, obj);
-        }
+            Vector4 parentPos = new Vector4(parent.position.x, parent.position.y, parent.position.z, 0f);
 
-        if (wingStateLeft > WingState.Short)
-        {
-            var obj = Instantiate(weaponPrefabs[(int)L2], parentPos + parent.localToWorldMatrix * L2_pos, rotation, parent);
-            playerWeaponController.SetWeapon(playerIndex, L2, SlotType.L2, obj);
-        }
+            SetWingActivity(wingStateLeft, leftShortWing, leftLongWing);
+            SetWingActivity(wingStateRight, rightShortWing, rightLongWing);
 
-        if (wingStateRight > WingState.None)
-        {
-            var obj = Instantiate(weaponPrefabs[(int)R1], parentPos + parent.localToWorldMatrix * R1_pos, rotation, parent);
-            playerWeaponController.SetWeapon(playerIndex, R1, SlotType.R1, obj);
-        }
+            if (wingStateLeft > WingState.None)
+            {
+                var obj = Instantiate(weaponPrefabs[(int)L1], parentPos + parent.localToWorldMatrix * L1_pos, rotation, parent);
+                playerWeaponController.SetWeapon(playerIndex, L1, SlotType.L1, obj);
+            }
 
-        if (wingStateRight > WingState.Short)
-        {
-            var obj = Instantiate(weaponPrefabs[(int)R2], parentPos + parent.localToWorldMatrix * R2_pos, rotation, parent);
-            playerWeaponController.SetWeapon(playerIndex, R2, SlotType.R2, obj);
-        }
+            if (wingStateLeft > WingState.Short)
+            {
+                var obj = Instantiate(weaponPrefabs[(int)L2], parentPos + parent.localToWorldMatrix * L2_pos, rotation, parent);
+                playerWeaponController.SetWeapon(playerIndex, L2, SlotType.L2, obj);
+            }
 
-        //central minigun - there is always
-        {
-            var obj = Instantiate(weaponPrefabs[(int)C], parentPos + parent.localToWorldMatrix * C_pos, rotation, parent);
-            playerWeaponController.SetWeapon(playerIndex, C, SlotType.C, obj);
+            if (wingStateRight > WingState.None)
+            {
+                var obj = Instantiate(weaponPrefabs[(int)R1], parentPos + parent.localToWorldMatrix * R1_pos, rotation, parent);
+                playerWeaponController.SetWeapon(playerIndex, R1, SlotType.R1, obj);
+            }
+
+            if (wingStateRight > WingState.Short)
+            {
+                var obj = Instantiate(weaponPrefabs[(int)R2], parentPos + parent.localToWorldMatrix * R2_pos, rotation, parent);
+                playerWeaponController.SetWeapon(playerIndex, R2, SlotType.R2, obj);
+            }
+
+            //central minigun - there is always
+            {
+                var obj = Instantiate(weaponPrefabs[(int)C], parentPos + parent.localToWorldMatrix * C_pos, rotation, parent);
+                playerWeaponController.SetWeapon(playerIndex, C, SlotType.C, obj);
+            }
         }
     }
 
