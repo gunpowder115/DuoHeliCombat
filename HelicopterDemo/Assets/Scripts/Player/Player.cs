@@ -29,6 +29,7 @@ public class Player : MonoBehaviour, IFindable
     [SerializeField] GameObject deadPrefab;
     [SerializeField] GameObject explosion;
     [SerializeField] private ScreenFading screenFading;
+    [SerializeField] private GameObject buildingMenu;
     [SerializeField] ControllerType controllerType = ControllerType.Keyboard;
     [SerializeField] Players playerNumber = Players.Player1;
     [SerializeField] PlayerStates playerState = PlayerStates.Normal;
@@ -58,6 +59,8 @@ public class Player : MonoBehaviour, IFindable
     private Prison prison;
     private LadderAnimator ladder;
     private UI_Controller UI_Controller;
+    private RadialMenuController buildingMenuController;
+    private RadialMenuSelector buildingMenuSelector;
 
     public Vector3 Position => transform.position;
     public GlobalSide2 Side => playerSide;
@@ -133,7 +136,6 @@ public class Player : MonoBehaviour, IFindable
         inputDevice.StartSelectionAnyTarget += StartSelectionAnyTarget;
         inputDevice.CancelSelectionAnytarget += CancelSelectionAnytarget;
         inputDevice.CancelAiming += CancelAiming;
-        inputDevice.SelectBuildingEvent += SelectBuilding;
         inputDevice.TakeEvent += Take;
         InputDevice.RescueEvent += Rescue;
 
@@ -144,6 +146,11 @@ public class Player : MonoBehaviour, IFindable
         //hide cursor in center of screen
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        buildingMenuController = buildingMenu.GetComponent<RadialMenuController>();
+        buildingMenuSelector = buildingMenu.GetComponent<RadialMenuSelector>();
+        buildingMenuSelector.InputDevice = inputDevice;
+        buildingMenuSelector.SelectBuildingEvent += SelectBuilding;
     }
 
     // Update is called once per frame
@@ -459,10 +466,15 @@ public class Player : MonoBehaviour, IFindable
     void StartBuildSelection()
     {
         selectedPlatform = possiblePlatform;
+        buildingMenuController.ShowMenu();
         lineDrawer.Enabled = false;
     }
 
-    void CancelBuildSelection() => selectedPlatform = null;
+    void CancelBuildSelection()
+    {
+        selectedPlatform = null;
+        buildingMenuController.HideMenu();
+    }
 
     void TryLaunchGuidedMissile()
     {
@@ -478,10 +490,14 @@ public class Player : MonoBehaviour, IFindable
 
     void CancelAiming() => ChangeAimState();
 
-    private void SelectBuilding(int buildNumber, GlobalSide2 side)
+    private void SelectBuilding(int buildNumber)
     {
         if (selectedPlatform)
-            selectedPlatform.GetComponent<BuildingSelector>().CallBuilding(buildNumber, side);
+        {
+            selectedPlatform.GetComponent<BuildingSelector>().CallBuilding(buildNumber, playerSide);
+            inputDevice.ForceChangePlayerState(PlayerStates.Normal);
+            buildingMenuController.HideMenu();
+        }
     }
 
     private bool Respawn()

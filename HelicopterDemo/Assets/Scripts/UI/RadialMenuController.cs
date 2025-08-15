@@ -6,16 +6,19 @@ public class RadialMenuController : MonoBehaviour
     [SerializeField] private float animationTime = 0.3f;
 
     private CanvasGroup canvasGroup;
+    private RadialMenuSelector radialMenuSelector;
 
     private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        ShowMenu();
+        radialMenuSelector = GetComponent<RadialMenuSelector>();
+        gameObject.SetActive(false);
     }
 
     public void ShowMenu()
     {
         gameObject.SetActive(true);
+        radialMenuSelector.ResetSelectedIndex();
         StartCoroutine(AnimateMenu(0f, 1f));
     }
 
@@ -24,22 +27,24 @@ public class RadialMenuController : MonoBehaviour
         StartCoroutine(AnimateMenu(1f, 0f, () => gameObject.SetActive(false)));
     }
 
-    IEnumerator AnimateMenu(float startAlpha, float endAlpha, System.Action onComplete = null)
+    private IEnumerator AnimateMenu(float startAlpha, float endAlpha, System.Action onComplete = null)
     {
         float t = 0f;
-        transform.localScale = Vector3.zero;
+        Vector3 startScale = startAlpha == 0f ? Vector3.zero : Vector3.one;
+        Vector3 endScale = startAlpha == 0f ? Vector3.one : Vector3.zero;
+        transform.localScale = startScale;
 
         while (t < animationTime)
         {
             t += Time.deltaTime;
             float progress = t / animationTime;
             canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, progress);
-            transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, progress);
+            transform.localScale = Vector3.Lerp(startScale, endScale, progress);
             yield return null;
         }
 
         canvasGroup.alpha = endAlpha;
-        transform.localScale = Vector3.one;
+        transform.localScale = endScale;
         onComplete?.Invoke();
     }
 }
