@@ -426,6 +426,7 @@ public class Player : MonoBehaviour, IFindable
                 {
                     var platform = lastPlatform.GetComponent<Platform>();
                     if (!platform.IsReserved) platform.HidePlatform();
+                    lastPlatform = null;
                 }
 
                 lineDrawer.Enabled = false;
