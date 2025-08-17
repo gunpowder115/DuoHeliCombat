@@ -64,6 +64,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2774542681570511777, guid: 03a7344912b910540b48a523105e1f71, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093988664993273772, guid: 03a7344912b910540b48a523105e1f71, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5823282789280839773, guid: 03a7344912b910540b48a523105e1f71, type: 3}
       propertyPath: m_Name
       value: CargoPlatform_cargo_heli_middle_blue

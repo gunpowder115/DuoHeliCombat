@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformController
 {
-    public static PlatformController Singleton 
+    public static PlatformController Singleton
     {
         get
         {
@@ -34,30 +34,22 @@ public class PlatformController
             platforms.Remove(platform);
     }
 
-    public Dictionary<GameObject, float> FindDistToPlatforms(in Vector3 origin)
+    public GameObject FindClosesPlatform(GameObject src, out float dist)
     {
-        Dictionary<GameObject, float> result = new Dictionary<GameObject, float>();
+        GameObject closestPlatform = null;
+        float closestSqrDistance = float.MaxValue;
 
         foreach (var platform in platforms)
         {
-            if (!result.ContainsKey(platform))
+            float sqrDistance = Vector3.SqrMagnitude(src.transform.position - platform.transform.position);
+            if (sqrDistance < closestSqrDistance)
             {
-                float distTo = Vector3.Magnitude(platform.transform.position - origin);
-                result.Add(platform, distTo);
+                closestSqrDistance = sqrDistance;
+                closestPlatform = platform;
             }
         }
 
-        var sortedResult = result.OrderBy(platform => platform.Value)
-                      .ToDictionary(platform => platform.Key, platform => platform.Value);
-
-        return sortedResult;
-    }
-
-    public KeyValuePair<GameObject, float> FindNearestPlatform(in Vector3 origin)
-    {
-        Dictionary<GameObject, float> platforms = FindDistToPlatforms(in origin);
-        bool arePlatforms = platforms.Count > 0;
-        KeyValuePair<GameObject, float> nearestPlatform = arePlatforms ? platforms.ElementAt(0) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
-        return nearestPlatform;
+        dist = Vector3.Magnitude(src.transform.position - closestPlatform.transform.position);
+        return closestPlatform;
     }
 }

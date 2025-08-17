@@ -35,8 +35,8 @@ public class BuildingSelector : MonoBehaviour
 
     public void CallBuilding(int buildNumber, GlobalSide2 side)
     {
-        buildingPrefab = side == GlobalSide2.Blue ? blueBuildingsPrefabs[buildNumber - 1] : redBuildingsPrefabs[buildNumber - 1];
-        cargoPrefab = side == GlobalSide2.Blue ? blueCargosPrefabs[buildNumber - 1] : redCargosPrefabs[buildNumber - 1];
+        buildingPrefab = side == GlobalSide2.Blue ? blueBuildingsPrefabs[buildNumber] : redBuildingsPrefabs[buildNumber];
+        cargoPrefab = side == GlobalSide2.Blue ? blueCargosPrefabs[buildNumber] : redCargosPrefabs[buildNumber];
 
         if (!cargoHelicopter)
         {

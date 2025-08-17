@@ -1124,114 +1124,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Build_1"",
-                    ""type"": ""Button"",
-                    ""id"": ""93acb043-2e4d-4d93-8c5f-0269f591be7f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Build_2"",
-                    ""type"": ""Button"",
-                    ""id"": ""0e6f06e0-4aa0-4926-8c26-02237cd16f5c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Build_3"",
-                    ""type"": ""Button"",
-                    ""id"": ""6b87ef74-3e63-44ce-9415-0bf15987f117"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Build_4"",
-                    ""type"": ""Button"",
-                    ""id"": ""2f880b62-62ca-4bf9-a051-bc1d70126e4d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Build_5"",
-                    ""type"": ""Button"",
-                    ""id"": ""48c58390-42b6-4690-ad2d-e445b858d4cb"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Build_6"",
-                    ""type"": ""Button"",
-                    ""id"": ""abce3221-f2cc-41ce-a380-33b32ccd9dd0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""AltBuild_1"",
-                    ""type"": ""Button"",
-                    ""id"": ""bc565a50-0db1-40a4-b0e7-98cd86de01e4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""AltBuild_2"",
-                    ""type"": ""Button"",
-                    ""id"": ""5f2636bc-629e-4f12-90d5-1e48168068d3"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""AltBuild_3"",
-                    ""type"": ""Button"",
-                    ""id"": ""64669ce8-2d90-4432-957b-f77af1cebaf4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""AltBuild_4"",
-                    ""type"": ""Button"",
-                    ""id"": ""24acefae-c99c-4646-8420-54b72c3734f1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""AltBuild_5"",
-                    ""type"": ""Button"",
-                    ""id"": ""527caf45-fa7a-4569-825b-1a2e8655e298"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""AltBuild_6"",
-                    ""type"": ""Button"",
-                    ""id"": ""021c03a6-2381-441d-ae17-40ec1c0bb10f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Take"",
                     ""type"": ""Button"",
                     ""id"": ""d2236e42-7697-49f7-bea6-d14897661f9d"",
@@ -1292,138 +1184,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""AnyTargetSelection"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cff8f7fb-882a-4828-bb4c-12b734b93f4e"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Build_2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""aba9d905-a0e6-4b6f-bb6a-6982dbe67e91"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Build_1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""baa7750f-639c-4c1b-9c2a-3830e08c4e25"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Build_3"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4301ea40-ab3b-4c24-bcb4-f7293e6ffa94"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Build_4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c769ba6c-f3ab-4953-aa10-9d9cc2b7e29d"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Build_5"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""642624b7-c773-43b4-bd9a-a154567d482b"",
-                    ""path"": ""<Keyboard>/6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Build_6"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""475c90e2-f3ea-4583-8c78-d843a789a39e"",
-                    ""path"": ""<Keyboard>/7"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""AltBuild_1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2e0cbf90-cf02-4da6-a94e-306987713c7f"",
-                    ""path"": ""<Keyboard>/8"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""AltBuild_2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""067f1960-c83f-4ae7-b3b2-96aec279d9f6"",
-                    ""path"": ""<Keyboard>/9"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""AltBuild_3"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""671a854d-f710-42e7-9e72-7851d5a1a09c"",
-                    ""path"": ""<Keyboard>/0"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""AltBuild_4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e425c878-844e-49f4-9a1a-35c6ad06cfed"",
-                    ""path"": ""<Keyboard>/minus"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""AltBuild_5"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fbe60635-3dab-402e-8c81-7127d9d87fc1"",
-                    ""path"": ""<Keyboard>/equals"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""AltBuild_6"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1933,18 +1693,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CommonKeyboard_MinorAction = m_CommonKeyboard.FindAction("MinorAction", throwIfNotFound: true);
         m_CommonKeyboard_MinorActionHold = m_CommonKeyboard.FindAction("MinorActionHold", throwIfNotFound: true);
         m_CommonKeyboard_AnyTargetSelection = m_CommonKeyboard.FindAction("AnyTargetSelection", throwIfNotFound: true);
-        m_CommonKeyboard_Build_1 = m_CommonKeyboard.FindAction("Build_1", throwIfNotFound: true);
-        m_CommonKeyboard_Build_2 = m_CommonKeyboard.FindAction("Build_2", throwIfNotFound: true);
-        m_CommonKeyboard_Build_3 = m_CommonKeyboard.FindAction("Build_3", throwIfNotFound: true);
-        m_CommonKeyboard_Build_4 = m_CommonKeyboard.FindAction("Build_4", throwIfNotFound: true);
-        m_CommonKeyboard_Build_5 = m_CommonKeyboard.FindAction("Build_5", throwIfNotFound: true);
-        m_CommonKeyboard_Build_6 = m_CommonKeyboard.FindAction("Build_6", throwIfNotFound: true);
-        m_CommonKeyboard_AltBuild_1 = m_CommonKeyboard.FindAction("AltBuild_1", throwIfNotFound: true);
-        m_CommonKeyboard_AltBuild_2 = m_CommonKeyboard.FindAction("AltBuild_2", throwIfNotFound: true);
-        m_CommonKeyboard_AltBuild_3 = m_CommonKeyboard.FindAction("AltBuild_3", throwIfNotFound: true);
-        m_CommonKeyboard_AltBuild_4 = m_CommonKeyboard.FindAction("AltBuild_4", throwIfNotFound: true);
-        m_CommonKeyboard_AltBuild_5 = m_CommonKeyboard.FindAction("AltBuild_5", throwIfNotFound: true);
-        m_CommonKeyboard_AltBuild_6 = m_CommonKeyboard.FindAction("AltBuild_6", throwIfNotFound: true);
         m_CommonKeyboard_Take = m_CommonKeyboard.FindAction("Take", throwIfNotFound: true);
         m_CommonKeyboard_Rescue = m_CommonKeyboard.FindAction("Rescue", throwIfNotFound: true);
         // CommonGamepad
@@ -2415,18 +2163,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_CommonKeyboard_MinorAction;
     private readonly InputAction m_CommonKeyboard_MinorActionHold;
     private readonly InputAction m_CommonKeyboard_AnyTargetSelection;
-    private readonly InputAction m_CommonKeyboard_Build_1;
-    private readonly InputAction m_CommonKeyboard_Build_2;
-    private readonly InputAction m_CommonKeyboard_Build_3;
-    private readonly InputAction m_CommonKeyboard_Build_4;
-    private readonly InputAction m_CommonKeyboard_Build_5;
-    private readonly InputAction m_CommonKeyboard_Build_6;
-    private readonly InputAction m_CommonKeyboard_AltBuild_1;
-    private readonly InputAction m_CommonKeyboard_AltBuild_2;
-    private readonly InputAction m_CommonKeyboard_AltBuild_3;
-    private readonly InputAction m_CommonKeyboard_AltBuild_4;
-    private readonly InputAction m_CommonKeyboard_AltBuild_5;
-    private readonly InputAction m_CommonKeyboard_AltBuild_6;
     private readonly InputAction m_CommonKeyboard_Take;
     private readonly InputAction m_CommonKeyboard_Rescue;
     public struct CommonKeyboardActions
@@ -2437,18 +2173,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @MinorAction => m_Wrapper.m_CommonKeyboard_MinorAction;
         public InputAction @MinorActionHold => m_Wrapper.m_CommonKeyboard_MinorActionHold;
         public InputAction @AnyTargetSelection => m_Wrapper.m_CommonKeyboard_AnyTargetSelection;
-        public InputAction @Build_1 => m_Wrapper.m_CommonKeyboard_Build_1;
-        public InputAction @Build_2 => m_Wrapper.m_CommonKeyboard_Build_2;
-        public InputAction @Build_3 => m_Wrapper.m_CommonKeyboard_Build_3;
-        public InputAction @Build_4 => m_Wrapper.m_CommonKeyboard_Build_4;
-        public InputAction @Build_5 => m_Wrapper.m_CommonKeyboard_Build_5;
-        public InputAction @Build_6 => m_Wrapper.m_CommonKeyboard_Build_6;
-        public InputAction @AltBuild_1 => m_Wrapper.m_CommonKeyboard_AltBuild_1;
-        public InputAction @AltBuild_2 => m_Wrapper.m_CommonKeyboard_AltBuild_2;
-        public InputAction @AltBuild_3 => m_Wrapper.m_CommonKeyboard_AltBuild_3;
-        public InputAction @AltBuild_4 => m_Wrapper.m_CommonKeyboard_AltBuild_4;
-        public InputAction @AltBuild_5 => m_Wrapper.m_CommonKeyboard_AltBuild_5;
-        public InputAction @AltBuild_6 => m_Wrapper.m_CommonKeyboard_AltBuild_6;
         public InputAction @Take => m_Wrapper.m_CommonKeyboard_Take;
         public InputAction @Rescue => m_Wrapper.m_CommonKeyboard_Rescue;
         public InputActionMap Get() { return m_Wrapper.m_CommonKeyboard; }
@@ -2472,42 +2196,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @AnyTargetSelection.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAnyTargetSelection;
                 @AnyTargetSelection.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAnyTargetSelection;
                 @AnyTargetSelection.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAnyTargetSelection;
-                @Build_1.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_1;
-                @Build_1.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_1;
-                @Build_1.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_1;
-                @Build_2.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_2;
-                @Build_2.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_2;
-                @Build_2.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_2;
-                @Build_3.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_3;
-                @Build_3.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_3;
-                @Build_3.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_3;
-                @Build_4.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_4;
-                @Build_4.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_4;
-                @Build_4.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_4;
-                @Build_5.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_5;
-                @Build_5.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_5;
-                @Build_5.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_5;
-                @Build_6.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_6;
-                @Build_6.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_6;
-                @Build_6.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnBuild_6;
-                @AltBuild_1.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_1;
-                @AltBuild_1.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_1;
-                @AltBuild_1.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_1;
-                @AltBuild_2.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_2;
-                @AltBuild_2.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_2;
-                @AltBuild_2.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_2;
-                @AltBuild_3.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_3;
-                @AltBuild_3.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_3;
-                @AltBuild_3.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_3;
-                @AltBuild_4.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_4;
-                @AltBuild_4.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_4;
-                @AltBuild_4.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_4;
-                @AltBuild_5.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_5;
-                @AltBuild_5.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_5;
-                @AltBuild_5.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_5;
-                @AltBuild_6.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_6;
-                @AltBuild_6.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_6;
-                @AltBuild_6.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnAltBuild_6;
                 @Take.started -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnTake;
                 @Take.performed -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnTake;
                 @Take.canceled -= m_Wrapper.m_CommonKeyboardActionsCallbackInterface.OnTake;
@@ -2530,42 +2218,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @AnyTargetSelection.started += instance.OnAnyTargetSelection;
                 @AnyTargetSelection.performed += instance.OnAnyTargetSelection;
                 @AnyTargetSelection.canceled += instance.OnAnyTargetSelection;
-                @Build_1.started += instance.OnBuild_1;
-                @Build_1.performed += instance.OnBuild_1;
-                @Build_1.canceled += instance.OnBuild_1;
-                @Build_2.started += instance.OnBuild_2;
-                @Build_2.performed += instance.OnBuild_2;
-                @Build_2.canceled += instance.OnBuild_2;
-                @Build_3.started += instance.OnBuild_3;
-                @Build_3.performed += instance.OnBuild_3;
-                @Build_3.canceled += instance.OnBuild_3;
-                @Build_4.started += instance.OnBuild_4;
-                @Build_4.performed += instance.OnBuild_4;
-                @Build_4.canceled += instance.OnBuild_4;
-                @Build_5.started += instance.OnBuild_5;
-                @Build_5.performed += instance.OnBuild_5;
-                @Build_5.canceled += instance.OnBuild_5;
-                @Build_6.started += instance.OnBuild_6;
-                @Build_6.performed += instance.OnBuild_6;
-                @Build_6.canceled += instance.OnBuild_6;
-                @AltBuild_1.started += instance.OnAltBuild_1;
-                @AltBuild_1.performed += instance.OnAltBuild_1;
-                @AltBuild_1.canceled += instance.OnAltBuild_1;
-                @AltBuild_2.started += instance.OnAltBuild_2;
-                @AltBuild_2.performed += instance.OnAltBuild_2;
-                @AltBuild_2.canceled += instance.OnAltBuild_2;
-                @AltBuild_3.started += instance.OnAltBuild_3;
-                @AltBuild_3.performed += instance.OnAltBuild_3;
-                @AltBuild_3.canceled += instance.OnAltBuild_3;
-                @AltBuild_4.started += instance.OnAltBuild_4;
-                @AltBuild_4.performed += instance.OnAltBuild_4;
-                @AltBuild_4.canceled += instance.OnAltBuild_4;
-                @AltBuild_5.started += instance.OnAltBuild_5;
-                @AltBuild_5.performed += instance.OnAltBuild_5;
-                @AltBuild_5.canceled += instance.OnAltBuild_5;
-                @AltBuild_6.started += instance.OnAltBuild_6;
-                @AltBuild_6.performed += instance.OnAltBuild_6;
-                @AltBuild_6.canceled += instance.OnAltBuild_6;
                 @Take.started += instance.OnTake;
                 @Take.performed += instance.OnTake;
                 @Take.canceled += instance.OnTake;
@@ -2850,18 +2502,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnMinorAction(InputAction.CallbackContext context);
         void OnMinorActionHold(InputAction.CallbackContext context);
         void OnAnyTargetSelection(InputAction.CallbackContext context);
-        void OnBuild_1(InputAction.CallbackContext context);
-        void OnBuild_2(InputAction.CallbackContext context);
-        void OnBuild_3(InputAction.CallbackContext context);
-        void OnBuild_4(InputAction.CallbackContext context);
-        void OnBuild_5(InputAction.CallbackContext context);
-        void OnBuild_6(InputAction.CallbackContext context);
-        void OnAltBuild_1(InputAction.CallbackContext context);
-        void OnAltBuild_2(InputAction.CallbackContext context);
-        void OnAltBuild_3(InputAction.CallbackContext context);
-        void OnAltBuild_4(InputAction.CallbackContext context);
-        void OnAltBuild_5(InputAction.CallbackContext context);
-        void OnAltBuild_6(InputAction.CallbackContext context);
         void OnTake(InputAction.CallbackContext context);
         void OnRescue(InputAction.CallbackContext context);
     }

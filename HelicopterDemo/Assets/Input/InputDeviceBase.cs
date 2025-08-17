@@ -19,8 +19,6 @@ public abstract class InputDeviceBase
     public event Action ChangeConfiguration;
     public event Action ChangeOrientation;
 
-    public event Action<int, GlobalSide2> SelectBuildingEvent;
-
     public event Action<int> UpgradeUpEvent, UpgradeDownEvent;
     public event Action<int> UpgradeLeftEvent, UpgradeRightEvent;
     public event Action UpgradeSelectEvent, UpgradeCancelEvent;
@@ -200,6 +198,7 @@ public abstract class InputDeviceBase
         switch (playerState)
         {
             case PlayerStates.Normal:
+            case PlayerStates.BuildSelection:
                 FastMoving = true;
                 break;
             case PlayerStates.Aiming:
@@ -239,17 +238,6 @@ public abstract class InputDeviceBase
     protected void SwitchConfiguration() => ChangeConfiguration?.Invoke();
 
     protected void SwitchOrientation() => ChangeOrientation?.Invoke();
-
-    protected void SelectBuilding(int buildNumber, GlobalSide2 side)
-    {
-        switch(playerState)
-        {
-            case PlayerStates.BuildSelection:
-                SelectBuildingEvent?.Invoke(buildNumber, side);
-                ForceChangePlayerState(PlayerStates.Normal);
-                break;
-        }
-    }
 
     protected void UpgradeUp() => UpgradeUpEvent?.Invoke(1);
     protected void UpgradeDown() => UpgradeDownEvent?.Invoke(-1);

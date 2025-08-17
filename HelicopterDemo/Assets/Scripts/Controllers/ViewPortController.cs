@@ -29,6 +29,7 @@ public class ViewPortController : MonoBehaviour
     public CameraSize SizeCamera1 => GetCameraSize(posCamera1);
     public CameraSize SizeCamera2 => GetCameraSize(posCamera2);
     public CamerasConfig CameraConfig => camerasConfig;
+    public Orientation CameraOrientation => orientation;
 
     private void Awake()
     {

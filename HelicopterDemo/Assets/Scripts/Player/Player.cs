@@ -29,6 +29,7 @@ public class Player : MonoBehaviour, IFindable
     [SerializeField] GameObject deadPrefab;
     [SerializeField] GameObject explosion;
     [SerializeField] private ScreenFading screenFading;
+    [SerializeField] private GameObject buildingMenu;
     [SerializeField] ControllerType controllerType = ControllerType.Keyboard;
     [SerializeField] Players playerNumber = Players.Player1;
     [SerializeField] PlayerStates playerState = PlayerStates.Normal;
@@ -58,6 +59,8 @@ public class Player : MonoBehaviour, IFindable
     private Prison prison;
     private LadderAnimator ladder;
     private UI_Controller UI_Controller;
+    private RadialMenuController buildingMenuController;
+    private RadialMenuSelector buildingMenuSelector;
 
     public Vector3 Position => transform.position;
     public GlobalSide2 Side => playerSide;
@@ -133,7 +136,6 @@ public class Player : MonoBehaviour, IFindable
         inputDevice.StartSelectionAnyTarget += StartSelectionAnyTarget;
         inputDevice.CancelSelectionAnytarget += CancelSelectionAnytarget;
         inputDevice.CancelAiming += CancelAiming;
-        inputDevice.SelectBuildingEvent += SelectBuilding;
         inputDevice.TakeEvent += Take;
         InputDevice.RescueEvent += Rescue;
 
@@ -144,6 +146,11 @@ public class Player : MonoBehaviour, IFindable
         //hide cursor in center of screen
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        buildingMenuController = buildingMenu.GetComponent<RadialMenuController>();
+        buildingMenuSelector = buildingMenu.GetComponent<RadialMenuSelector>();
+        buildingMenuSelector.InputDevice = inputDevice;
+        buildingMenuSelector.SelectBuildingEvent += SelectBuilding;
     }
 
     // Update is called once per frame
@@ -384,16 +391,18 @@ public class Player : MonoBehaviour, IFindable
         KeyValuePair<GameObject, float> nearest;
         TargetTypes targetType;
         float distToEnemy = Mathf.Infinity;
-        GameObject enemy = unitController.FindClosestEnemy(this, out distToEnemy).GameObject;
-        var nearestPlatform = platformController != null ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
+        float distToPlatform = Mathf.Infinity;
+        GameObject closestEnemy = unitController.FindClosestEnemy(this, out distToEnemy).GameObject;
+        GameObject closestPlatform = platformController.FindClosesPlatform(gameObject, out distToPlatform);
 
-        nearest = distToEnemy < nearestPlatform.Value ? new KeyValuePair<GameObject, float>(enemy, distToEnemy) : nearestPlatform;
-        targetType = distToEnemy < nearestPlatform.Value ? TargetTypes.Enemy : TargetTypes.Platform;
+        nearest = distToEnemy < distToPlatform ? new KeyValuePair<GameObject, float>(closestEnemy, distToEnemy) : 
+            new KeyValuePair<GameObject, float>(closestPlatform, distToPlatform);
+        targetType = distToEnemy < distToPlatform ? TargetTypes.Enemy : TargetTypes.Platform;
 
         if (nearest.Key)
         {
             var aimOrigin = nearest.Key.GetComponentInChildren<AimOrigin>();
-            if (nearest.Value < minDistToAim && targetType == TargetTypes.Enemy)
+            if (targetType == TargetTypes.Enemy && nearest.Value < minDistToAim)
             {
                 lineDrawer.Enabled = true;
                 Color lineColor = Color.red;
@@ -402,7 +411,7 @@ public class Player : MonoBehaviour, IFindable
                 possibleTarget = nearest.Key;
                 possiblePlatform = null;
             }
-            else if (nearest.Value < minDistToBuild && targetType == TargetTypes.Platform)
+            else if (targetType == TargetTypes.Platform && nearest.Value < minDistToBuild)
             {
                 lineDrawer.Enabled = true;
                 Color lineColor = Color.blue;
@@ -419,6 +428,7 @@ public class Player : MonoBehaviour, IFindable
                 {
                     var platform = lastPlatform.GetComponent<Platform>();
                     if (!platform.IsReserved) platform.HidePlatform();
+                    lastPlatform = null;
                 }
 
                 lineDrawer.Enabled = false;
@@ -459,10 +469,15 @@ public class Player : MonoBehaviour, IFindable
     void StartBuildSelection()
     {
         selectedPlatform = possiblePlatform;
+        buildingMenuController.ShowMenu();
         lineDrawer.Enabled = false;
     }
 
-    void CancelBuildSelection() => selectedPlatform = null;
+    void CancelBuildSelection()
+    {
+        selectedPlatform = null;
+        buildingMenuController.HideMenu();
+    }
 
     void TryLaunchGuidedMissile()
     {
@@ -478,10 +493,14 @@ public class Player : MonoBehaviour, IFindable
 
     void CancelAiming() => ChangeAimState();
 
-    private void SelectBuilding(int buildNumber, GlobalSide2 side)
+    private void SelectBuilding(int buildNumber)
     {
         if (selectedPlatform)
-            selectedPlatform.GetComponent<BuildingSelector>().CallBuilding(buildNumber, side);
+        {
+            selectedPlatform.GetComponent<BuildingSelector>().CallBuilding(buildNumber, playerSide);
+            inputDevice.ForceChangePlayerState(PlayerStates.Normal);
+            buildingMenuController.HideMenu();
+        }
     }
 
     private bool Respawn()

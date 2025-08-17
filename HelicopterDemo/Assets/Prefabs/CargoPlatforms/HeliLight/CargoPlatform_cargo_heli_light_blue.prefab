@@ -64,6 +64,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1516569182479947316, guid: bd587911bd055c74f904b46acde67b8b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2286403805574613104, guid: bd587911bd055c74f904b46acde67b8b, type: 3}
       propertyPath: m_Name
       value: CargoPlatform_cargo_heli_light_blue
@@ -110,6 +114,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3124668205760494644, guid: bd587911bd055c74f904b46acde67b8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8627278414836721537, guid: bd587911bd055c74f904b46acde67b8b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:

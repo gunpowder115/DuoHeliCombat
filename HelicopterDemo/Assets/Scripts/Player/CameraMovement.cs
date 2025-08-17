@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using static InputDeviceBase;
 using static ViewPortController;
 
 public class CameraMovement : MonoBehaviour
@@ -140,6 +141,10 @@ public class CameraMovement : MonoBehaviour
             }
 
             RotateToDead(player.DeadPlayer);
+        }
+        else if (inputDevice.PlayerState == PlayerStates.BuildSelection)
+        {
+
         }
         else if (!Aiming)
         {
