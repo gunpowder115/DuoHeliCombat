@@ -272,6 +272,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7794894122400226849, guid: 3e62cff62dac68c4aa99507c8d235f14, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8747251697340280286, guid: 3e62cff62dac68c4aa99507c8d235f14, type: 3}
       propertyPath: m_Name
       value: Expl_DeathFire
@@ -337,6 +341,10 @@ PrefabInstance:
     - target: {fileID: 4437301994103628875, guid: a192c6e7d54ed6744ad13502a9f95dc3, type: 3}
       propertyPath: m_Name
       value: Expl_DeathSmoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877604304388401797, guid: a192c6e7d54ed6744ad13502a9f95dc3, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8877604304388401797, guid: a192c6e7d54ed6744ad13502a9f95dc3, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
