@@ -7,9 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3080117065469506779, guid: cd6a908be2f643c41a93024e501acc59, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4809411199201516330, guid: cd6a908be2f643c41a93024e501acc59, type: 3}
       propertyPath: m_Name
       value: CargoPlatform_cargo_tank_red
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430769708975026486, guid: cd6a908be2f643c41a93024e501acc59, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8528000240746164078, guid: cd6a908be2f643c41a93024e501acc59, type: 3}
       propertyPath: m_RootOrder

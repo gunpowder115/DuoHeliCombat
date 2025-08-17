@@ -112,6 +112,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CargoPlatform_cargo_heli_middle_red
       objectReference: {fileID: 0}
+    - target: {fileID: 4081293876438408792, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414386630552554813, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7979082462997855437, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}
     - {fileID: 1034949182239602617, guid: d9ab9f136838b0b4da03a2e506739b29, type: 3}

@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4229936348325746122, guid: 1422e2a67ba52d24a9658e88ad58a885, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274744781508326064, guid: 1422e2a67ba52d24a9658e88ad58a885, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5959230518848698939, guid: 1422e2a67ba52d24a9658e88ad58a885, type: 3}
       propertyPath: m_Name
       value: CargoPlatform_cargo_jeep_red
