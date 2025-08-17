@@ -70,6 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationTime: 0.3
+  deltaX: 480
+  deltaY: 270
+  playerNumber: 0
 --- !u!225 &6720416903190771054
 CanvasGroup:
   m_ObjectHideFlags: 0

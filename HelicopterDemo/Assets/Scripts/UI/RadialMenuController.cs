@@ -1,22 +1,58 @@
 ﻿using System.Collections;
 using UnityEngine;
+using static Types;
+using static ViewPortController;
 
 public class RadialMenuController : MonoBehaviour
 {
     [SerializeField] private float animationTime = 0.3f;
+    [SerializeField] private float deltaX = 480f;
+    [SerializeField] private float deltaY = 0f;
+    [SerializeField] private Players playerNumber = Players.Player1;
 
+    private float centerPosX, centerPosY;
     private CanvasGroup canvasGroup;
     private RadialMenuSelector radialMenuSelector;
+    private ViewPortController viewPortController;
 
     private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         radialMenuSelector = GetComponent<RadialMenuSelector>();
         gameObject.SetActive(false);
+
+        viewPortController = ViewPortController.singleton;
+        centerPosX = transform.position.x;
+        centerPosY = transform.position.y;
     }
 
     public void ShowMenu()
     {
+        if (playerNumber == Players.Player1)
+        {
+            if (viewPortController.SizeCamera1 == CameraSize.Half)
+            {
+                if (viewPortController.CameraOrientation == Orientation.Vertical)
+                    transform.position = new Vector3(centerPosX - deltaX, transform.position.y, transform.position.z);
+                else
+                    transform.position = new Vector3(centerPosX, centerPosY + deltaY, transform.position.z);
+            }
+            else
+                transform.position = new Vector3(centerPosX, centerPosY, transform.position.z);
+        }
+        else
+        {
+            if (viewPortController.SizeCamera2 == CameraSize.Half)
+            {
+                if (viewPortController.CameraOrientation == Orientation.Vertical)
+                    transform.position = new Vector3(centerPosX + deltaX, transform.position.y, transform.position.z);
+                else
+                    transform.position = new Vector3(centerPosX, centerPosY - deltaY, transform.position.z);
+            }
+            else
+                transform.position = new Vector3(centerPosX, centerPosY, transform.position.z);
+        }
+
         gameObject.SetActive(true);
         radialMenuSelector.ResetSelectedIndex();
         StartCoroutine(AnimateMenu(0f, 1f));
