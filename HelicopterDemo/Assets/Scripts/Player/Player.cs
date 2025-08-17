@@ -391,16 +391,18 @@ public class Player : MonoBehaviour, IFindable
         KeyValuePair<GameObject, float> nearest;
         TargetTypes targetType;
         float distToEnemy = Mathf.Infinity;
-        GameObject enemy = unitController.FindClosestEnemy(this, out distToEnemy).GameObject;
-        var nearestPlatform = platformController != null ? platformController.FindNearestPlatform(transform.position) : new KeyValuePair<GameObject, float>(null, Mathf.Infinity);
+        float distToPlatform = Mathf.Infinity;
+        GameObject closestEnemy = unitController.FindClosestEnemy(this, out distToEnemy).GameObject;
+        GameObject closestPlatform = platformController.FindClosesPlatform(gameObject, out distToPlatform);
 
-        nearest = distToEnemy < nearestPlatform.Value ? new KeyValuePair<GameObject, float>(enemy, distToEnemy) : nearestPlatform;
-        targetType = distToEnemy < nearestPlatform.Value ? TargetTypes.Enemy : TargetTypes.Platform;
+        nearest = distToEnemy < distToPlatform ? new KeyValuePair<GameObject, float>(closestEnemy, distToEnemy) : 
+            new KeyValuePair<GameObject, float>(closestPlatform, distToPlatform);
+        targetType = distToEnemy < distToPlatform ? TargetTypes.Enemy : TargetTypes.Platform;
 
         if (nearest.Key)
         {
             var aimOrigin = nearest.Key.GetComponentInChildren<AimOrigin>();
-            if (nearest.Value < minDistToAim && targetType == TargetTypes.Enemy)
+            if (targetType == TargetTypes.Enemy && nearest.Value < minDistToAim)
             {
                 lineDrawer.Enabled = true;
                 Color lineColor = Color.red;
@@ -409,7 +411,7 @@ public class Player : MonoBehaviour, IFindable
                 possibleTarget = nearest.Key;
                 possiblePlatform = null;
             }
-            else if (nearest.Value < minDistToBuild && targetType == TargetTypes.Platform)
+            else if (targetType == TargetTypes.Platform && nearest.Value < minDistToBuild)
             {
                 lineDrawer.Enabled = true;
                 Color lineColor = Color.blue;

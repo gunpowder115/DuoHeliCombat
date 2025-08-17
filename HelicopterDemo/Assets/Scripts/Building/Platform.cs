@@ -7,6 +7,7 @@ public class Platform : MonoBehaviour
 
     public bool IsFree => !Building;
     public bool IsReserved { get; set; }
+    public bool IsBuildingSelection { get; set; }
     public CommandCenter CommandCenter { get; private set; }
     public Building Building { get; private set; }
 
