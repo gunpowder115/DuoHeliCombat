@@ -437,7 +437,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 190, y: 190}
+  m_SizeDelta: {x: 210, y: 210}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &352436288
 MonoBehaviour:
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fe45cc2a5cefa2b4fba55ab0a4f6131c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e2544e9a78dd974aa2d90e0ada20fcd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -501,7 +501,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373398063}
   m_LocalRotation: {x: -0.12154803, y: 0.86512166, z: -0.25565323, w: 0.41404358}
-  m_LocalPosition: {x: -0.051, y: -0.523, z: 5.174}
+  m_LocalPosition: {x: -0.27, y: -0.64, z: 4.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1364,6 +1364,10 @@ PrefabInstance:
     - target: {fileID: 8342007550954386640, guid: 195299a07efa10143beb4ad30348650b, type: 3}
       propertyPath: m_Name
       value: BlueMiddleHeli_alive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342007550954386640, guid: 195299a07efa10143beb4ad30348650b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8342007550954386641, guid: 195299a07efa10143beb4ad30348650b, type: 3}
       propertyPath: m_RootOrder
