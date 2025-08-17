@@ -124,6 +124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkerModel
       objectReference: {fileID: 0}
+    - target: {fileID: 1549105205612000870, guid: 49c81c1595975ff42887a47eb7ac789b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e8689973b353a24e825f4114d4e36b3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49c81c1595975ff42887a47eb7ac789b, type: 3}
 --- !u!4 &4497645311284668459 stripped
