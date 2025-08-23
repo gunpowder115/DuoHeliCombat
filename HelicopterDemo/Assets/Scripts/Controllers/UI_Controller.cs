@@ -26,7 +26,7 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private Sprite unguidMisIcon;
     [SerializeField] private Sprite guidMisIcon;
     [SerializeField] private Sprite blueKeyIcon;
-    [SerializeField] private Sprite purpleKeyIcon;
+    [SerializeField] private Sprite greenKeyIcon;
     [SerializeField] private Sprite redKeyIcon;
     [SerializeField] private Sprite yellowKeyIcon;
     [SerializeField] private Sprite blueFlagIcon;
@@ -211,7 +211,7 @@ public class UI_Controller : MonoBehaviour
         switch (cargoType)
         {
             case PickableUpType.BlueKey: cargoUI.IconSprite = blueKeyIcon; break;
-            case PickableUpType.PurpleKey: cargoUI.IconSprite = purpleKeyIcon; break;
+            case PickableUpType.GreenKey: cargoUI.IconSprite = greenKeyIcon; break;
             case PickableUpType.RedKey: cargoUI.IconSprite = redKeyIcon; break;
             case PickableUpType.YellowKey: cargoUI.IconSprite = yellowKeyIcon; break;
 

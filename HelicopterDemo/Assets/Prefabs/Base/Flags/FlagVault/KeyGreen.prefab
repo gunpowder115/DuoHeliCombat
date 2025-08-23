@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4329027364354688130}
   - component: {fileID: -464203016891832259}
   m_Layer: 0
-  m_Name: KeyPurple
+  m_Name: KeyGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5004411913507430137, guid: 35a5a6ee12a1320498b22b69e5743a43, type: 3}
       propertyPath: m_Name
-      value: KeyPurple_3D
+      value: KeyGreen_3D
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35a5a6ee12a1320498b22b69e5743a43, type: 3}

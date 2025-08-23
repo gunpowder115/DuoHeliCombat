@@ -88,7 +88,7 @@ public class Types
     public enum PickableUpType
     {
         BlueKey,
-        PurpleKey,
+        GreenKey,
         RedKey,
         YellowKey,
         BlueFlag,
