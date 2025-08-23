@@ -15,6 +15,8 @@ public class CamerasController : MonoBehaviour
 
     public static CamerasController Singleton { get; private set; }
 
+    public GameObject CameraPlayer1 => cameras[0].gameObject;
+
     private void Awake()
     {
         Singleton = this;

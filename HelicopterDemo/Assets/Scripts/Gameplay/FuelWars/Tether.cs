@@ -129,7 +129,7 @@ public class Tether : MonoBehaviour
             {
                 GameObject windingSourcePlayer = unitController.FindClosestPlayer(nearWalker.gameObject, out float dist).gameObject;
                 windingBar.SetHealth(timeToDestroyByTether - collideTime);
-                windingBar.SetDamageSource(windingSourcePlayer);
+                windingBar.SetDamageSource(camerasController.CameraPlayer1);
             }
 
             if (collideTime > timeToDestroyByTether)
