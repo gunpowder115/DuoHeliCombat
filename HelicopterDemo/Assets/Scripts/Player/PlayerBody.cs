@@ -97,7 +97,7 @@ public class PlayerBody : MonoBehaviour
                     float dist = Vector3.Magnitude(vault.transform.position - transform.position);
                     if (dist < 10)
                     {
-                        vault.GetComponent<FlagVault>().SetKey(Types.KeyType.Purple);
+                        vault.GetComponent<FlagVault>().SetKey(Types.KeyType.Yellow);
                         Destroy(Item.gameObject);
                     }
                     else
