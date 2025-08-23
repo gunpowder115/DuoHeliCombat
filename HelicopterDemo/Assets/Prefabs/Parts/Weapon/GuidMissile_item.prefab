@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6877627246866119841}
-  - {fileID: 9102839072872198824}
+  - {fileID: 8498785402145112832}
   - {fileID: 2602380198996706864}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   explosion: {fileID: 3013695635673224168, guid: 8588982e93436e04c8fd419c27851296, type: 3}
   launchSound: {fileID: 8300000, guid: e2cfd8b8b8d0e5e43997109da0505f62, type: 3}
   flyingSound: {fileID: 8300000, guid: c51a2006524cc434e8cc6bb293f14c33, type: 3}
-  smokeTail: {fileID: 2926978516552736497}
+  smokeTail: {fileID: 0}
 --- !u!82 &5807290076575967705
 AudioSource:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &2406283556912240307
+--- !u!1001 &3082381369539258139
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -194,15 +194,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 14396856207633455, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
       propertyPath: m_Name
-      value: GuidMis_smoke
-      objectReference: {fileID: 0}
-    - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
-      propertyPath: InitialModule.startRotation.scalar
-      value: 1.5707963
+      value: GuidMis_smoke (1)
       objectReference: {fileID: 0}
     - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
@@ -219,10 +211,6 @@ PrefabInstance:
     - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.8018868
-      objectReference: {fileID: 0}
-    - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
-      propertyPath: InitialModule.startRotation.minMaxState
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
@@ -278,15 +266,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
---- !u!198 &2926978516552736497 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 718994115312568386, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
-  m_PrefabInstance: {fileID: 2406283556912240307}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &9102839072872198824 stripped
+--- !u!4 &8498785402145112832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6860972130369659931, guid: 706a57f334fc6d948aeda5741832b935, type: 3}
-  m_PrefabInstance: {fileID: 2406283556912240307}
+  m_PrefabInstance: {fileID: 3082381369539258139}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6411020269405461322
 PrefabInstance:
