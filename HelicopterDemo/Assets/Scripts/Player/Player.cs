@@ -147,10 +147,13 @@ public class Player : MonoBehaviour, IFindable
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        buildingMenuController = buildingMenu.GetComponent<RadialMenuController>();
-        buildingMenuSelector = buildingMenu.GetComponent<RadialMenuSelector>();
-        buildingMenuSelector.InputDevice = inputDevice;
-        buildingMenuSelector.SelectBuildingEvent += SelectBuilding;
+        if (buildingMenu)
+        {
+            buildingMenuController = buildingMenu.GetComponent<RadialMenuController>();
+            buildingMenuSelector = buildingMenu.GetComponent<RadialMenuSelector>();
+            buildingMenuSelector.InputDevice = inputDevice;
+            buildingMenuSelector.SelectBuildingEvent += SelectBuilding;
+        }
     }
 
     // Update is called once per frame
@@ -469,14 +472,14 @@ public class Player : MonoBehaviour, IFindable
     void StartBuildSelection()
     {
         selectedPlatform = possiblePlatform;
-        buildingMenuController.ShowMenu();
+        buildingMenuController?.ShowMenu();
         lineDrawer.Enabled = false;
     }
 
     void CancelBuildSelection()
     {
         selectedPlatform = null;
-        buildingMenuController.HideMenu();
+        buildingMenuController?.HideMenu();
     }
 
     void TryLaunchGuidedMissile()
@@ -499,7 +502,7 @@ public class Player : MonoBehaviour, IFindable
         {
             selectedPlatform.GetComponent<BuildingSelector>().CallBuilding(buildNumber, playerSide);
             inputDevice.ForceChangePlayerState(PlayerStates.Normal);
-            buildingMenuController.HideMenu();
+            buildingMenuController?.HideMenu();
         }
     }
 
