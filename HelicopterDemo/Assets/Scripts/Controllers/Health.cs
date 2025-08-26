@@ -52,14 +52,15 @@ public class Health : MonoBehaviour
             }
         }
 
-        if (health <= 50f)
+        if (health <= baseHealth / 2f)
         {
             if (!smoke && smokePrefab)
             {
                 smoke = Instantiate(smokePrefab, transform);
                 smoke.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
-            else if (smoke)
+
+            if (smoke)
             {
                 float scale = (baseHealth - health) / baseHealth;
                 smoke.transform.localScale = new Vector3(scale, scale, scale);
