@@ -27,6 +27,7 @@ public class Player : MonoBehaviour, IFindable
     [SerializeField] Health health;
     [SerializeField] GameObject airDustPrefab;
     [SerializeField] GameObject deadPrefab;
+    [SerializeField] GameObject fallingPrefab;
     [SerializeField] GameObject explosion;
     [SerializeField] private ScreenFading screenFading;
     [SerializeField] private GameObject buildingMenu;
@@ -398,7 +399,7 @@ public class Player : MonoBehaviour, IFindable
         GameObject closestEnemy = unitController.FindClosestEnemy(this, out distToEnemy).GameObject;
         GameObject closestPlatform = platformController.FindClosesPlatform(gameObject, out distToPlatform);
 
-        nearest = distToEnemy < distToPlatform ? new KeyValuePair<GameObject, float>(closestEnemy, distToEnemy) : 
+        nearest = distToEnemy < distToPlatform ? new KeyValuePair<GameObject, float>(closestEnemy, distToEnemy) :
             new KeyValuePair<GameObject, float>(closestPlatform, distToPlatform);
         targetType = distToEnemy < distToPlatform ? TargetTypes.Enemy : TargetTypes.Platform;
 
@@ -518,6 +519,7 @@ public class Player : MonoBehaviour, IFindable
             transform.rotation = Quaternion.Euler(0, 0, 0);
 
             currDelayAfterDestroy = 0f;
+            DeadPlayer = null;
             return true;
         }
         else
@@ -528,11 +530,26 @@ public class Player : MonoBehaviour, IFindable
             if (health.gameObject.activeSelf)
             {
                 health.gameObject.SetActive(false);
-                if (deadPrefab) DeadPlayer = Instantiate(deadPrefab, transform.position, health.gameObject.transform.rotation);
-                if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+
+                float randomValue = Random.value;
+
+                if (randomValue > 0.3f && fallingPrefab)
+                {
+                    DeadPlayer = Instantiate(fallingPrefab, transform.position, health.gameObject.transform.rotation);
+                    var fallingPlayer = DeadPlayer.GetComponent<FallingHelicopter>();
+                    DeadPlayer.GetComponent<UpgradeConfigSet>().ForceSetConfig(GetComponent<UpgradeConfigSet>().GetConfig());
+                    fallingPlayer.DeadPrefab = deadPrefab;
+                    fallingPlayer.ExplosionPrefab = explosion;
+                    fallingPlayer.ExplosionEvent = (GameObject x) => { DeadPlayer = x; };
+                }
+                else
+                {
+                    if (deadPrefab) DeadPlayer = Instantiate(deadPrefab, transform.position, health.gameObject.transform.rotation);
+                    if (explosion) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+                }
+
                 HitForce = 1f;
             }
-
             currDelayAfterDestroy += Time.deltaTime;
             return false;
         }

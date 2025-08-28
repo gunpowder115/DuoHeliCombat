@@ -43,6 +43,54 @@ public class UpgradeConfigSet : MonoBehaviour
     {
         playerWeaponController = PlayerWeaponController.Instance;
 
+        SetConfig();
+    }
+
+    public void ForceSetConfig(in WingWeaponConfig config)
+    {
+        wingStateLeft = config.wingStateLeft;
+        wingStateRight = config.wingStateRight;
+        C = config.C;
+        L1 = config.L1;
+        L2 = config.L2;
+        R1 = config.R1;
+        R2 = config.R2;
+
+        SetConfig();
+    }
+
+    public WingWeaponConfig GetConfig()
+    {
+        return new WingWeaponConfig
+        {
+            wingStateLeft = this.wingStateLeft,
+            wingStateRight = this.wingStateRight,
+            C = this.C,
+            L1 = this.L1,
+            L2 = this.L2,
+            R1 = this.R1,
+            R2 = this.R2,
+        };
+    }
+
+    private void SetWingActivity(WingState state, GameObject shortWing, GameObject longWing)
+    {
+        shortWing.SetActive(false);
+        longWing.SetActive(false);
+        switch (state)
+        {
+            case WingState.Short:
+                shortWing.SetActive(true);
+                break;
+            case WingState.Long:
+                longWing.SetActive(true);
+                break;
+            default: break;
+        }
+    }
+
+    private void SetConfig()
+    {
         if (randomConfig)
         {
             var wingStateArr = Enum.GetValues(typeof(WingState));
@@ -101,22 +149,6 @@ public class UpgradeConfigSet : MonoBehaviour
                 var obj = Instantiate(weaponPrefabs[(int)C], parentPos + parent.localToWorldMatrix * C_pos, rotation, parent);
                 playerWeaponController.SetWeapon(playerIndex, C, SlotType.C, obj);
             }
-        }
-    }
-
-    private void SetWingActivity(WingState state, GameObject shortWing, GameObject longWing)
-    {
-        shortWing.SetActive(false);
-        longWing.SetActive(false);
-        switch (state)
-        {
-            case WingState.Short:
-                shortWing.SetActive(true);
-                break;
-            case WingState.Long:
-                longWing.SetActive(true);
-                break;
-            default: break;
         }
     }
 }

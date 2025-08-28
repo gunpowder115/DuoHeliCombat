@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -9,6 +10,8 @@ public class FallingHelicopter : MonoBehaviour
 
     public GameObject DeadPrefab { get; set; }
     public GameObject ExplosionPrefab { get; set; }
+
+    public Action<GameObject> ExplosionEvent;
 
     private bool isCrashed;
     private Rigidbody rigidbody;
@@ -23,7 +26,10 @@ public class FallingHelicopter : MonoBehaviour
         if (isCrashed)
         {
             if (DeadPrefab)
-                Instantiate(DeadPrefab, transform.position, transform.rotation);
+            {
+                var deadItem = Instantiate(DeadPrefab, transform.position, transform.rotation);
+                ExplosionEvent?.Invoke(deadItem);
+            }
 
             if (ExplosionPrefab)
                 Instantiate(ExplosionPrefab, gameObject.transform.position, gameObject.transform.rotation);

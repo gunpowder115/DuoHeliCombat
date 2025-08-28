@@ -64,6 +64,17 @@ public class Types
         GuidMissile
     }
 
+    public struct WingWeaponConfig
+    {
+        public WingState wingStateLeft;
+        public WeaponType L2;
+        public WeaponType L1;
+        public WeaponType C;
+        public WingState wingStateRight;
+        public WeaponType R1;
+        public WeaponType R2;
+    }
+
     public enum SlotType
     {
         L2, L1, C, R1, R2
