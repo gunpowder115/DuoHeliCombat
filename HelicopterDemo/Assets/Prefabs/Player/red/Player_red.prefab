@@ -746,6 +746,10 @@ PrefabInstance:
       propertyPath: playerSide
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: fallingPrefab
+      value: 
+      objectReference: {fileID: 8006507338856003960, guid: 18437d2716d0dbc4f84ddbcaadcbd730, type: 3}
     - target: {fileID: 9059915131655930513, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
       propertyPath: m_RootOrder
       value: 0

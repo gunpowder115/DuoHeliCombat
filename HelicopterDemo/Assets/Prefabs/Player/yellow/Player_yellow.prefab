@@ -309,6 +309,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
+      propertyPath: fallingPrefab
+      value: 
+      objectReference: {fileID: 7188416366835160361, guid: 0836eb56996309645afd817c18e8b49f, type: 3}
+    - target: {fileID: 8536197478735316719, guid: 332ae96b237a47041b13e1d8f3aaff99, type: 3}
       propertyPath: controllerType
       value: 1
       objectReference: {fileID: 0}
