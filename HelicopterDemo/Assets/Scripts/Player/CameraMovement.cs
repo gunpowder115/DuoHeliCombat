@@ -33,6 +33,10 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Vector3 cameraRescuePos = new Vector3(-1.1f, 2.7f, -7.3f);
     [SerializeField] private Vector3 cameraRescueRot = new Vector3(37f, 0f, 0f);
 
+    [Header("For vertical mode")]
+    [SerializeField] private Vector3 cameraAimPosVertRight_2players = new Vector3(1.5f, 0.6f, -4.3f);
+    [SerializeField] private Vector3 cameraAimPosVertRight_1player = new Vector3(1f, 1.9f, -4.3f);
+
     [SerializeField] private Player player;
     [SerializeField] private GameObject cameraContainer;
 
@@ -47,6 +51,9 @@ public class CameraMovement : MonoBehaviour
     private ViewPortController viewPortController;
     private Camera playerCamera;
     private CrosshairController crosshairController;
+
+    //for vertical mode
+    private Vector3 cameraAimPosVertLeft_2players;
 
     public bool CameraInTakeoff { get; set; }
     public bool CameraInRescue => player.IsRescue;
@@ -67,6 +74,7 @@ public class CameraMovement : MonoBehaviour
     private Vector3 PlayerDir => player.CurrentDirection;
     private InputDeviceBase inputDevice => player.InputDevice;
     private Vector3 ZoomOutShift => new Vector3(0f, 0f, ZoomOut);
+    private bool IsVerticalMode => viewPortController.CameraOrientation == Orientation.Horizontal;
 
     private void Start()
     {
@@ -95,6 +103,8 @@ public class CameraMovement : MonoBehaviour
             transform.localPosition = cameraTakeoffPos;
             transform.LookAt(player.transform);
         }
+
+        cameraAimPosVertLeft_2players = new Vector3(-cameraAimPosVertRight_2players.x, cameraAimPosVertRight_2players.y, cameraAimPosVertRight_2players.z);
 
         player.PlayerTranslation.CameraMovement = this;
     }
@@ -250,9 +260,14 @@ public class CameraMovement : MonoBehaviour
         else
         {
             if (player.PlayerNumber == Players.Player1)
-                cameraAimPos = cameraAimPosRight;
+            {
+                if (IsVerticalMode)
+                    cameraAimPos = viewPortController.SizeCamera2 == CameraSize.Half ? cameraAimPosVertRight_2players : cameraAimPosVertRight_1player;
+                else
+                    cameraAimPos = cameraAimPosRight;
+            }
             else
-                cameraAimPos = cameraAimPosLeft;
+                cameraAimPos = IsVerticalMode ? cameraAimPosVertLeft_2players : cameraAimPosLeft;
         }
         transform.localPosition = Vector3.Lerp(transform.localPosition, cameraAimPos, aimingSpeed * Time.deltaTime);
     }
