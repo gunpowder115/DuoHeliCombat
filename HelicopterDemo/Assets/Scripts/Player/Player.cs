@@ -62,6 +62,7 @@ public class Player : MonoBehaviour, IFindable
     private UI_Controller UI_Controller;
     private RadialMenuController buildingMenuController;
     private RadialMenuSelector buildingMenuSelector;
+    private SmartSound3DController smartSound3DController;
 
     public Vector3 Position => transform.position;
     public GlobalSide2 Side => playerSide;
@@ -155,6 +156,9 @@ public class Player : MonoBehaviour, IFindable
             buildingMenuSelector.InputDevice = inputDevice;
             buildingMenuSelector.SelectBuildingEvent += SelectBuilding;
         }
+
+        smartSound3DController = SmartSound3DController.Singleton;
+        smartSound3DController.AddPlayer(this, playerNumber);
     }
 
     // Update is called once per frame
