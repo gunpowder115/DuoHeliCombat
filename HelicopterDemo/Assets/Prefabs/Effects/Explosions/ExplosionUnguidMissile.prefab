@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4065219865265414227}
   - component: {fileID: 4628403557280277008}
   - component: {fileID: -4661153369383737086}
+  - component: {fileID: 6294923455746023634}
   m_Layer: 0
   m_Name: ExplosionUnguidMissile
   m_TagString: Untagged
@@ -146,6 +147,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6294923455746023634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013695635673224168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d78218a695463d4bba85c8cc93778e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHearingDistance: 30
 --- !u!1001 &6469448499745546379
 PrefabInstance:
   m_ObjectHideFlags: 0

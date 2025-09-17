@@ -7,7 +7,7 @@ public class Explosion : MonoBehaviour
     [SerializeField] private float maxExplosionShakeDist = 15f;
     [SerializeField] private ExplosionType explosionType = ExplosionType.Death;
 
-    private AudioSource explosionSound;
+    private SmartSound3D explosionSound;
     private UnitController unitController;
 
     void Start()
@@ -17,25 +17,25 @@ public class Explosion : MonoBehaviour
         ParticleSystem[] parts = GetComponentsInChildren<ParticleSystem>();
         StartCoroutine(WaitForParticleSystemToStop(parts));
 
-        explosionSound = GetComponent<AudioSource>();
+        explosionSound = GetComponent<SmartSound3D>();
         if (explosionSound)
         {
             switch (explosionType)
             {
                 case ExplosionType.UnguidMissile:
-                    explosionSound.pitch = Random.Range(2f, 2.3f);
+                    explosionSound.Pitch = Random.Range(2f, 2.3f);
                     break;
                 case ExplosionType.GuidMissile:
-                    explosionSound.pitch = Random.Range(1.3f, 1.5f);
+                    explosionSound.Pitch = Random.Range(1.3f, 1.5f);
                     break;
                 case ExplosionType.CannonHit:
-                    explosionSound.pitch = Random.Range(0.7f, 0.9f);
+                    explosionSound.Pitch = Random.Range(0.7f, 0.9f);
                     break;
                 case ExplosionType.Death:
-                    explosionSound.pitch = Random.Range(1f, 1.2f);
+                    explosionSound.Pitch = Random.Range(1f, 1.2f);
                     break;
                 default:
-                    explosionSound.pitch = 1f;
+                    explosionSound.Pitch = 1f;
                     break;
             }
             explosionSound.Play();
