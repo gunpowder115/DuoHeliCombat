@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
 
     private bool isLaunchSound;
     float currLifetime;
-    AudioSource projSound;
+    private SmartSound3D smartSound;
 
     public bool IsPlayer { get; set; }
     public float ExplosionForce => explosionForce;
@@ -25,27 +25,27 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         currLifetime = 0.0f;
-        projSound = GetComponent<AudioSource>();
-        if (projSound)
+        smartSound = GetComponent<SmartSound3D>();
+        if (smartSound)
         {
             switch (projectileType)
             {
                 case ProjectileType.UnguidMissile:
-                    projSound.pitch = Random.Range(1.3f, 1.5f);
+                    smartSound.Pitch = Random.Range(1.3f, 1.5f);
                     break;
                 case ProjectileType.Cannon:
-                    projSound.pitch = Random.Range(0.7f, 0.9f);
+                    smartSound.Pitch = Random.Range(0.7f, 0.9f);
                     break;
                 case ProjectileType.Minigun:
-                    projSound.pitch = Random.Range(0.5f, 0.6f);
+                    smartSound.Pitch = Random.Range(0.5f, 0.6f);
                     break;
                 default:
-                    projSound.pitch = 1f;
+                    smartSound.Pitch = 1f;
                     break;
             }
-            projSound.loop = false;
-            projSound.clip = launchSound;
-            projSound.Play();
+            smartSound.Loop = false;
+            smartSound.Clip = launchSound;
+            smartSound.Play();
             isLaunchSound = true;
         }
     }
@@ -58,11 +58,11 @@ public class Projectile : MonoBehaviour
         if (currLifetime >= lifetime)
             Destroy(this.gameObject);
 
-        if (isLaunchSound && !projSound.isPlaying && flyingSound)
+        if (isLaunchSound && !smartSound.IsPlaying && flyingSound)
         {
-            projSound.loop = true;
-            projSound.clip = flyingSound;
-            projSound.Play();
+            smartSound.Loop = true;
+            smartSound.Clip = flyingSound;
+            smartSound.Play();
             isLaunchSound = false;
         }
     }
