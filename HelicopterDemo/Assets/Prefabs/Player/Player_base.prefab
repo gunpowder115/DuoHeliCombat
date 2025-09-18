@@ -114,7 +114,6 @@ MonoBehaviour:
   playerSide: 1
   startWithTakeoff: 0
   changeSpeedInput: 0.9
-  vertFastCoef: 5
   minDistToAim: 35
   maxDistToAim: 40
   minDistToBuild: 10
@@ -128,8 +127,10 @@ MonoBehaviour:
   health: {fileID: 1224130164571485725}
   airDustPrefab: {fileID: 9117464957027130638, guid: 8cb157bf585ff7945a1958d3db898b09, type: 3}
   deadPrefab: {fileID: 0}
+  fallingPrefab: {fileID: 0}
   explosion: {fileID: 4954313840775520740, guid: cf4516811cbb5b046947ae5d79ad6a2e, type: 3}
   screenFading: {fileID: 0}
+  buildingMenu: {fileID: 0}
   controllerType: 0
   playerNumber: 0
   playerState: 0
@@ -166,7 +167,7 @@ MonoBehaviour:
   clearRotor: {fileID: 6358393885554414344}
   blurryRotor: {fileID: 885729668997040816}
   playerCamera: {fileID: 1507663302920336042}
-  audioSource: {fileID: 4365838574372581158}
+  audioSource: {fileID: 0}
 --- !u!114 &1753789425236184681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,11 +454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef0f4fd4e27ad4081a6cc4ded100ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &4365838574372581158 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8915332587869061924, guid: 012bbc5fe4922ca4e95c8c360c52e94c, type: 3}
-  m_PrefabInstance: {fileID: 5129332577593371650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6358393885554414344 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2238994082879127306, guid: 012bbc5fe4922ca4e95c8c360c52e94c, type: 3}
