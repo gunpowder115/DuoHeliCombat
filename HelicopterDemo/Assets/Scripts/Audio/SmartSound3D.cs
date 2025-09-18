@@ -36,6 +36,8 @@ public class SmartSound3D : MonoBehaviour
     private void Awake()
     {
         smartSound3DController = SmartSound3DController.Singleton;
+        smartSound3DController.AddSound(this);
+
         audioSource = GetComponent<AudioSource>();
         if (audioSource.spatialBlend != 0)
         {
@@ -46,7 +48,6 @@ public class SmartSound3D : MonoBehaviour
 
     private void Start()
     {
-        smartSound3DController.AddSound(this);
     }
 
     private void OnDestroy()

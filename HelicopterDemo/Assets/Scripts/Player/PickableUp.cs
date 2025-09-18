@@ -28,9 +28,6 @@ public class PickableUp : MonoBehaviour, IFindable
         unitController = UnitController.Singleton;
         SetGravity(false);
         SetTrigger(true);
-
-        pickSound.Loop = false;
-        pickSound.Clip = pickUpSound;
     }
 
     private void Update()
@@ -63,6 +60,7 @@ public class PickableUp : MonoBehaviour, IFindable
     public void PlaySound()
     {
         pickSound.Clip = pickUpSound;
+        pickSound.Loop = false;
         pickSound.Play();
     }
 }

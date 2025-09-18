@@ -1,22 +1,31 @@
 using System.Collections.Generic;
-using UnityEngine;
 using static ViewPortController;
 
-public class SmartSound3DController : MonoBehaviour
+public class SmartSound3DController
 {
     private List<SmartSound3D> sounds;
 
-    public static SmartSound3DController Singleton { get; private set; }
+    private static SmartSound3DController singleton;
+
+    public static SmartSound3DController Singleton
+    {
+        get
+        {
+            if (singleton == null)
+                singleton = new SmartSound3DController();
+            return singleton;
+        }
+
+    }
     public Player Player1 { get; private set; }
     public Player Player2 { get; private set; }
 
-    private void Awake()
+    private SmartSound3DController()
     {
-        Singleton = this;
         sounds = new();
     }
 
-    private void Update()
+    public void UpdateAllVolumes()
     {
         foreach (var sound in sounds)
             sound.UpdateVolume();
