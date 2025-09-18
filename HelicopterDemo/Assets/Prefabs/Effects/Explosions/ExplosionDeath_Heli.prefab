@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4954313840775520741}
   - component: {fileID: 6853435935528951774}
   - component: {fileID: 8359471707733054652}
+  - component: {fileID: 7007805792957974754}
   m_Layer: 0
   m_Name: ExplosionDeath_Heli
   m_TagString: Untagged
@@ -107,7 +108,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -147,6 +148,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7007805792957974754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4954313840775520740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d78218a695463d4bba85c8cc93778e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHearingDistance: 30
 --- !u!1001 &270670938813189586
 PrefabInstance:
   m_ObjectHideFlags: 0

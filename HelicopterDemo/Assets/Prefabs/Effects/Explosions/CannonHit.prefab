@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3941862368302685987}
   - component: {fileID: 790168487945347103}
   - component: {fileID: -7372616701211669833}
+  - component: {fileID: -8780127139156474423}
   m_Layer: 0
   m_Name: CannonHit
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467a2ed89bcb34e409b21606ee8cd4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shaking: 0
   maxExplosionShakeDist: 15
   explosionType: 3
 --- !u!82 &-7372616701211669833
@@ -104,7 +106,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -144,6 +146,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8780127139156474423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2197625208462685866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d78218a695463d4bba85c8cc93778e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHearingDistance: 30
 --- !u!1001 &2932704944012551276
 PrefabInstance:
   m_ObjectHideFlags: 0
