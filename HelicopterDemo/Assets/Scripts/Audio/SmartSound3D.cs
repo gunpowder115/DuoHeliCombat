@@ -68,4 +68,6 @@ public class SmartSound3D : MonoBehaviour
         UpdateVolume();
         audioSource.Play();
     }
+
+    public void Stop() => audioSource.Stop();
 }

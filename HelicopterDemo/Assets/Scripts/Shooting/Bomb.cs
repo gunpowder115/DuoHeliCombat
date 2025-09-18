@@ -6,7 +6,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] private GameObject explosion;
     [SerializeField] private AudioClip flyingSound;
 
-    private AudioSource bombSound;
+    private SmartSound3D bombSound;
 
     public bool IsActivated { get; set; }
     public bool IsBombing { get; set; }
@@ -16,15 +16,14 @@ public class Bomb : MonoBehaviour
         IsActivated = false;
         IsBombing = false;
 
-        bombSound = GetComponent<AudioSource>();
-        bombSound.loop = false;
-        bombSound.clip = flyingSound;
-        bombSound.volume = 0.7f;
+        bombSound = GetComponent<SmartSound3D>();
+        bombSound.Loop = false;
+        bombSound.Clip = flyingSound;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (bombSound.isPlaying)
+        if (bombSound.IsPlaying)
             bombSound.Stop();
 
         if (IsBombing)        
@@ -35,9 +34,8 @@ public class Bomb : MonoBehaviour
 
     public void PlaySound()
     {
-        bombSound.clip = flyingSound;
-        bombSound.volume = 0.7f;
-        if (!bombSound.isPlaying)
+        bombSound.Clip = flyingSound;
+        if (!bombSound.IsPlaying)
             bombSound.Play();
     }
 

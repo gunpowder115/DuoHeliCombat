@@ -13,7 +13,7 @@ public class PickableUp : MonoBehaviour, IFindable
     private Rigidbody rigidBody;
     private BoxCollider boxCollider;
     private UnitController unitController;
-    private AudioSource sound;
+    private SmartSound3D pickSound;
 
     public Vector3 Position => transform.position;
     public GlobalSide2 Side => GlobalSide2.Red;
@@ -24,13 +24,13 @@ public class PickableUp : MonoBehaviour, IFindable
     {
         rigidBody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
-        sound = GetComponent<AudioSource>();
+        pickSound = GetComponent<SmartSound3D>();
         unitController = UnitController.Singleton;
         SetGravity(false);
         SetTrigger(true);
 
-        sound.loop = false;
-        sound.clip = pickUpSound;
+        pickSound.Loop = false;
+        pickSound.Clip = pickUpSound;
     }
 
     private void Update()
@@ -62,8 +62,7 @@ public class PickableUp : MonoBehaviour, IFindable
 
     public void PlaySound()
     {
-        sound.clip = pickUpSound;
-        sound.volume = 1f;
-        sound.Play();
+        pickSound.Clip = pickUpSound;
+        pickSound.Play();
     }
 }
