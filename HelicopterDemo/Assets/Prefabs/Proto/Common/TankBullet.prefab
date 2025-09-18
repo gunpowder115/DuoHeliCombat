@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7959457585482296904}
   - component: {fileID: -272087940686587736}
   - component: {fileID: -8617007902382941016}
+  - component: {fileID: -4676705734508570308}
   m_Layer: 0
   m_Name: TankBullet
   m_TagString: Untagged
@@ -120,6 +121,7 @@ MonoBehaviour:
   launchSound: {fileID: 8300000, guid: ab61c37136de62b4f9a733c9ff49679a, type: 3}
   flyingSound: {fileID: 0}
   projectileType: 1
+  smokeTail: {fileID: 0}
 --- !u!82 &-272087940686587736
 AudioSource:
   m_ObjectHideFlags: 0
@@ -176,7 +178,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -232,3 +234,16 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4676705734508570308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414063744379305735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d78218a695463d4bba85c8cc93778e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHearingDistance: 30

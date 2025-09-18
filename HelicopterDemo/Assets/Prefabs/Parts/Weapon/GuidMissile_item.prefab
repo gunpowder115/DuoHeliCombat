@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2787702784966028031}
   - component: {fileID: 7808801253432217548}
   - component: {fileID: 5807290076575967705}
+  - component: {fileID: 4327992342571049340}
   m_Layer: 0
   m_Name: GuidMissile_item
   m_TagString: Untagged
@@ -145,7 +146,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -185,6 +186,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4327992342571049340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6411020268169245305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d78218a695463d4bba85c8cc93778e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHearingDistance: 30
 --- !u!1001 &3082381369539258139
 PrefabInstance:
   m_ObjectHideFlags: 0
