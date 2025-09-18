@@ -17,7 +17,7 @@ public class GuidedMissile : MonoBehaviour
 
     private bool isLaunchSound;
     private float currLifetime;
-    private AudioSource projSound;
+    private SmartSound3D missileSound;
 
     public bool IsPlayer { get; set; }
     public GameObject SelectedTarget { get; set; }
@@ -25,13 +25,13 @@ public class GuidedMissile : MonoBehaviour
 
     void Start()
     {
-        projSound = GetComponent<AudioSource>();
-        if (projSound)
+        missileSound = GetComponent<SmartSound3D>();
+        if (missileSound)
         {
-            projSound.pitch = Random.Range(0.6f, 0.8f);
-            projSound.loop = false;
-            projSound.clip = launchSound;
-            projSound.Play();
+            missileSound.Pitch = Random.Range(0.6f, 0.8f);
+            missileSound.Loop = false;
+            missileSound.Clip = launchSound;
+            missileSound.Play();
             isLaunchSound = true;
         }
     }
@@ -55,11 +55,11 @@ public class GuidedMissile : MonoBehaviour
         }
         transform.Translate(0f, 0f, speed * Time.deltaTime);
 
-        if (isLaunchSound && !projSound.isPlaying && flyingSound)
+        if (isLaunchSound && !missileSound.IsPlaying && flyingSound)
         {
-            projSound.loop = true;
-            projSound.clip = flyingSound;
-            projSound.Play();
+            missileSound.Loop = true;
+            missileSound.Clip = flyingSound;
+            missileSound.Play();
             isLaunchSound = false;
         }
     }

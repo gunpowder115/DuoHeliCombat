@@ -40,7 +40,7 @@ public class SmartSound3D : MonoBehaviour
         if (audioSource.spatialBlend != 0)
         {
             audioSource.spatialBlend = 0;
-            Debug.LogWarning("Smart3DSound работает только с 2D AudioSource (Spatial Blend = 0)");
+            Debug.LogWarning("SmartSound3D working only with 2D AudioSource (Spatial Blend = 0)");
         }
     }
 
