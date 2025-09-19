@@ -17,10 +17,13 @@ public class NpcGroundAlone : Npc
 
     #endregion
 
-    private void Start()
+    private void Awake()
     {
         base.Init();
+    }
 
+    private void Start()
+    {
         npcState = NpcState.Exploring;
         unitController.AddNpc(this);
     }

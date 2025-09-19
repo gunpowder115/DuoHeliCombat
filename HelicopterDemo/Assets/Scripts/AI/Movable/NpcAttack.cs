@@ -35,7 +35,7 @@ public class NpcAttack : MonoBehaviour
     private Translation Translation => npc.Translation;
     private Rotation Rotation => npc.Rotation;
 
-    void Start()
+    private void Awake()
     {
         npc = GetComponent<Npc>();
         npcAir = GetComponent<NpcAir>();
