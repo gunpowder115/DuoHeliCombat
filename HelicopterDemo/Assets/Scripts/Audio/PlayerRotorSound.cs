@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerRotorSound : MonoBehaviour
 {
+    [SerializeField] private float rotorVolume = 0.2f;
+
     private AudioSource audioSource;
     private UnitController unitController;
 
@@ -17,7 +19,7 @@ public class PlayerRotorSound : MonoBehaviour
         {
             if ((player as Player).IsAlive)
             {
-                audioSource.volume = 1f;
+                audioSource.volume = rotorVolume;
                 return;
             }            
         }

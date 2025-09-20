@@ -141,3 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8daaef1703f66334fb5616aeae69f9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotorVolume: 0.3
