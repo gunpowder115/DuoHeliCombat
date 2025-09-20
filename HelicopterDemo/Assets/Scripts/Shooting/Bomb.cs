@@ -17,8 +17,6 @@ public class Bomb : MonoBehaviour
         IsBombing = false;
 
         bombSound = GetComponent<SmartSound3D>();
-        bombSound.Loop = false;
-        bombSound.Clip = flyingSound;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -34,6 +32,7 @@ public class Bomb : MonoBehaviour
 
     public void PlaySound()
     {
+        bombSound.Loop = false;
         bombSound.Clip = flyingSound;
         if (!bombSound.IsPlaying)
             bombSound.Play();
